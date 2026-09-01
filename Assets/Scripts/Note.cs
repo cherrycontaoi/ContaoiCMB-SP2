@@ -27,11 +27,14 @@ public class Note : MonoBehaviour
         );
         boxCollider.offset = new Vector2(0f, -80f); // estimate
     }
+        private void LateUpdate()
+    {
+        UpdateColliderSize();
+    }
 
     public void SetNote(string text)
     {
         textField.SetText(text);
-        UpdateColliderSize();
     }
     
 }

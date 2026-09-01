@@ -9,9 +9,14 @@ public class NotesController : MonoBehaviour
 {
 
     // [SerializeField] private GameObject notesPanel;
-    [SerializeField] private Transform container;
+    [SerializeField] private ToggleSystem toggleSystem;
+    [SerializeField] private Transform notesContainer;
+    [SerializeField] private Transform ordersContainer;
     [SerializeField] private Note notePrefab;
+    [SerializeField] private Order orderPrefab;
     [SerializeField] private List<NoteText> notes = new List<NoteText>();
+    [SerializeField] private List<NoteText> orders = new List<NoteText>();
+    public TMP_InputField textInput;
 
     public class NoteText
     {
@@ -29,47 +34,67 @@ public class NotesController : MonoBehaviour
 
         foreach(var note in notes)
         {
-            var newNote = Instantiate(notePrefab, container);
+            var newNote = Instantiate(notePrefab, notesContainer);
             newNote.SetNote(note.Text);
+        }
+
+        foreach(var order in orders)
+        {
+            var newOrder = Instantiate(orderPrefab, ordersContainer);
+            newOrder.SetOrder(order.Text);
         }
     }
     private void ClearNotes()
     {
-        foreach(Transform child in container)
+        foreach(Transform child in notesContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach(Transform child in ordersContainer)
         {
             Destroy(child.gameObject);
         }
     }
 
-
-    // public List<string> Notes;
-
-    // // void AddNote(TMP_Text note)
-    // // {
-    // //     Notes.Append(note);
-    // // }
-
-    // public TextMeshProUGUI output;
-    public TMP_InputField textInput;
-
     public void AddNoteButton()
     {
+        string noteType = toggleSystem.getToggledOn();
         NoteText newNote = new NoteText
         {
             Text = textInput.text
             //  Text = "- " + textInput.text
         };
-        AddNote(newNote);
-        notes.Add(newNote);
+
+        if (noteType == "Note")
+        {
+            AddNote(newNote);
+            notes.Add(newNote);
+        }
+
+        else if (noteType == "Order")
+        {
+            AddOrder(newNote);
+            orders.Add(newNote);
+        }
+        
         textInput.text = "";
-        // CreateNotes();
+        
     }
 
     private void AddNote(NoteText newNoteText)
     {
-        var newNote = Instantiate(notePrefab, container);
+        var newNote = Instantiate(notePrefab, notesContainer);
         newNote.SetNote(newNoteText.Text);
     }
+
+    private void AddOrder(NoteText newNoteText)
+    {
+        var newNote = Instantiate(orderPrefab, ordersContainer);
+        newNote.SetOrder(newNoteText.Text);
+    }
+
+
 
 
 

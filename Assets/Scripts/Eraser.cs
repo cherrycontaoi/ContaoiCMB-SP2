@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Eraser : MonoBehaviour
 {
+    // TO DO: NEED TO INCREASE SIZE OF ERASER CURSOR!!!!
 
     private Camera mainCamera;
     private bool isActive;
