@@ -2,15 +2,26 @@ using UnityEngine;
 
 public class Pencil : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField]
+    public GameObject createNotePanel;
+
+    private bool isActive;
+
+    public void Write()
     {
-        
+        // enable add note/order
+        createNotePanel.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ActivatePencil()
     {
-        
+        isActive = true;
+        Write();
+    }
+
+    public void DeactivatePencil()
+    {
+        isActive = false;
+        createNotePanel.SetActive(false);
     }
 }

@@ -56,7 +56,8 @@ public class NotesController : MonoBehaviour
     {
         NoteText newNote = new NoteText
         {
-            Text = "- " + textInput.text
+            Text = textInput.text
+            //  Text = "- " + textInput.text
         };
         AddNote(newNote);
         notes.Add(newNote);
@@ -69,6 +70,7 @@ public class NotesController : MonoBehaviour
         var newNote = Instantiate(notePrefab, container);
         newNote.SetNote(newNoteText.Text);
     }
+
 
 
 
