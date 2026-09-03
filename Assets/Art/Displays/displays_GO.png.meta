@@ -1120,10 +1120,10 @@ TextureImporter:
       name: skyflakes_display
       rect:
         serializedVersion: 2
-        x: 166
+        x: 165
         y: 142
-        width: 12
-        height: 14
+        width: 13
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3119,7 +3119,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nescafe
+      name: nestea_display
       rect:
         serializedVersion: 2
         x: 43
@@ -3210,10 +3210,10 @@ TextureImporter:
       name: rebiscoplain_display
       rect:
         serializedVersion: 2
-        x: 179
+        x: 178
         y: 142
-        width: 12
-        height: 14
+        width: 14
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3234,8 +3234,8 @@ TextureImporter:
         serializedVersion: 2
         x: 192
         y: 142
-        width: 12
-        height: 14
+        width: 13
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3256,8 +3256,8 @@ TextureImporter:
         serializedVersion: 2
         x: 205
         y: 142
-        width: 12
-        height: 14
+        width: 13
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3276,10 +3276,10 @@ TextureImporter:
       name: rebiscochoco_display
       rect:
         serializedVersion: 2
-        x: 166
-        y: 131
-        width: 12
-        height: 10
+        x: 164
+        y: 129
+        width: 14
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3298,10 +3298,10 @@ TextureImporter:
       name: rebiscostrawb_display
       rect:
         serializedVersion: 2
-        x: 179
-        y: 131
-        width: 12
-        height: 10
+        x: 178
+        y: 129
+        width: 14
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3321,9 +3321,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 131
+        y: 129
         width: 12
-        height: 10
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3342,10 +3342,10 @@ TextureImporter:
       name: rebiscobutter_display
       rect:
         serializedVersion: 2
-        x: 205
-        y: 131
-        width: 12
-        height: 10
+        x: 204
+        y: 129
+        width: 15
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3508,8 +3508,8 @@ TextureImporter:
       mantika_display: 2739167389765674015
       meatloaf_display: 5625235678646562022
       milo_display: 360845167
-      nescafe: 699696004
       nescafe_display: 517780320
+      nestea_display: 699696004
       patatas_display: -1238867825601166494
       patis_display: 7181731777392220514
       piattosblue_display: 4160592973274761676
