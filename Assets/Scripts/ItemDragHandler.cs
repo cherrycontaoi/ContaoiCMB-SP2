@@ -6,6 +6,8 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     Transform originalParent; // slot
     CanvasGroup canvasGroup;
 
+    private bool freshItem;     // dragged from display
+
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -13,7 +15,10 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnBeginDrag(PointerEventData eventData)
     {
         originalParent = transform.parent;  // save the original parent
+        freshItem = false;
+
         transform.SetParent(transform.root);    // ensure above any other canvas
+
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = 0.6f;   // semi-transparent during drag
     }
@@ -37,32 +42,67 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 dropSlot = item.GetComponentInParent<Slot>();
             }
         }
-        Slot originalSlot = originalParent.GetComponent<Slot>();
 
-        if(dropSlot != null)    // if slot is not empty
+        // item is fresh from display (no parent slot)
+        if (freshItem)
         {
-            if(dropSlot.currentItem != null)
+            if (dropSlot != null)
             {
-                dropSlot.currentItem.transform.SetParent(originalSlot.transform);
-                originalSlot.currentItem = dropSlot.currentItem;
-                dropSlot.currentItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                if (dropSlot.currentItem != null)
+                {
+                    Destroy(dropSlot.currentItem);      // replace item
+                }
+
+                transform.SetParent(dropSlot.transform);
+                dropSlot.currentItem = gameObject;
+
+                GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                GetComponent<RectTransform>().anchorMin = new Vector2(0.5f,0.5f);
+                GetComponent<RectTransform>().anchorMax = new Vector2(0.5f,0.5f);
             }
             else
             {
-                originalSlot.currentItem = null;
+                Destroy(gameObject);        // not dropped in the basket
             }
-
-            // move item to drop slot
-            transform.SetParent(dropSlot.transform);
-            dropSlot.currentItem = gameObject;
         }
+
+
+        // item is just being moved 
         else
         {
-            // no slot under drop point
-            transform.SetParent(originalParent);    // snap back to orig parent
-        }
+            Slot originalSlot = originalParent.GetComponent<Slot>();
 
-        GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            if(dropSlot != null)    // if slot is not empty
+            {
+                if(dropSlot.currentItem != null)
+                {
+                    dropSlot.currentItem.transform.SetParent(originalSlot.transform);
+                    originalSlot.currentItem = dropSlot.currentItem;
+                    dropSlot.currentItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                }
+                else
+                {
+                    originalSlot.currentItem = null;
+                }
+
+                // move item to drop slot
+                transform.SetParent(dropSlot.transform);
+                dropSlot.currentItem = gameObject;
+            }
+            else
+            {
+                // no slot under drop point
+                transform.SetParent(originalParent);    // snap back to orig parent
+            }
+
+            GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        }
+    }
+
+    public void ItemIsFresh()
+    {
+        freshItem = true;
+        originalParent = null;
     }
 
 }
