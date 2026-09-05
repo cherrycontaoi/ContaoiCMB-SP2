@@ -102,3 +102,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   currentItem: {fileID: 0}
+  slotID: 0

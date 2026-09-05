@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,9 +18,9 @@ public class PlayerController : MonoBehaviour
         eraser.DeactivateEraser();
     }
 
-    public void OnClick(InputAction.CallbackContext context)
+    public void Update()
     {
-        if (!context.started) return;
+        if(!Mouse.current.leftButton.wasPressedThisFrame) return;
 
         var rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));
 
@@ -36,6 +37,6 @@ public class PlayerController : MonoBehaviour
             pencil.DeactivatePencil();
             eraser.ActivateEraser();
         }
-        
     }
+
 }

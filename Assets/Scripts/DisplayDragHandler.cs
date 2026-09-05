@@ -9,6 +9,7 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
     private GameObject newItem;
     private CanvasGroup canvasGroup;
     private ItemDragHandler itemDragHandler;
+    private Item itemComponent;
     
     
     public void OnBeginDrag(PointerEventData eventData)
@@ -19,7 +20,9 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
 
         canvasGroup = newItem.GetComponent<CanvasGroup>();
         itemDragHandler = newItem.GetComponent<ItemDragHandler>();
+        itemComponent = newItem.GetComponent<Item>();
 
+        itemComponent.BeingDragged();
         itemDragHandler.ItemIsFresh();
 
         canvasGroup.blocksRaycasts = false;

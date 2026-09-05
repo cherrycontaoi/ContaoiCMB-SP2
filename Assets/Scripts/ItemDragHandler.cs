@@ -1,19 +1,25 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    Transform originalParent; // slot
-    CanvasGroup canvasGroup;
-
+    private Transform originalParent; // slot
+    private CanvasGroup canvasGroup;
+    private BasketController basketController;
     private bool freshItem;     // dragged from display
+    private Item itemComponent;
 
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+        basketController = FindAnyObjectByType<BasketController>();
+        itemComponent = gameObject.GetComponent<Item>();
     }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
+        itemComponent.BeingDragged();
         originalParent = transform.parent;  // save the original parent
         freshItem = false;
 
@@ -42,10 +48,10 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 dropSlot = item.GetComponentInParent<Slot>();
             }
         }
-
         // item is fresh from display (no parent slot)
         if (freshItem)
         {
+
             if (dropSlot != null)
             {
                 if (dropSlot.currentItem != null)
@@ -54,8 +60,14 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 }
 
                 transform.SetParent(dropSlot.transform);
+                
                 dropSlot.currentItem = gameObject;
+                
 
+                basketController.AddToBasket(gameObject, dropSlot.slotID);
+                
+                itemComponent.PlacedInBasket();
+                
                 GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                 GetComponent<RectTransform>().anchorMin = new Vector2(0.5f,0.5f);
                 GetComponent<RectTransform>().anchorMax = new Vector2(0.5f,0.5f);
@@ -79,25 +91,35 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                     dropSlot.currentItem.transform.SetParent(originalSlot.transform);
                     originalSlot.currentItem = dropSlot.currentItem;
                     dropSlot.currentItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+
+                    basketController.AddToBasket(gameObject, dropSlot.slotID);
                 }
                 else
                 {
                     originalSlot.currentItem = null;
+                    
+                    basketController.RemoveFromBasket(originalSlot.slotID);    // remove from items
                 }
 
                 // move item to drop slot
                 transform.SetParent(dropSlot.transform);
                 dropSlot.currentItem = gameObject;
+
+                basketController.AddToBasket(gameObject, dropSlot.slotID);
             }
             else
             {
                 // no slot under drop point
                 transform.SetParent(originalParent);    // snap back to orig parent
             }
-
+            itemComponent.PlacedInBasket();
             GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         }
+        
+        itemComponent.NotBeingDragged();
+
     }
+
 
     public void ItemIsFresh()
     {

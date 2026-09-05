@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,6 +12,7 @@ public class Eraser : MonoBehaviour
     private Camera mainCamera;
     private bool isActive;
     [SerializeField] private CursorController cursorController;
+    [SerializeField] public GameObject eraserReminder;
 
 
     private void Awake()
@@ -54,11 +56,13 @@ public class Eraser : MonoBehaviour
     {
         isActive = true;
         cursorController.SetToEraser();
+        eraserReminder.SetActive(true);
     }
 
     public void DeactivateEraser()
     {
         isActive = false;
         cursorController.SetToDefault();
+        eraserReminder.SetActive(false);
     }
 }

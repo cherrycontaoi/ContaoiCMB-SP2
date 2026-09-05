@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class Pencil : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject createNotePanel;
+    [SerializeField] public GameObject createNotePanel;
+    [SerializeField] public GameObject pencilReminder;
+
 
     private bool isActive;
 
@@ -11,6 +12,8 @@ public class Pencil : MonoBehaviour
     {
         // enable add note/order
         createNotePanel.SetActive(true);
+        pencilReminder.SetActive(true);
+
     }
 
     public void ActivatePencil()
@@ -23,5 +26,6 @@ public class Pencil : MonoBehaviour
     {
         isActive = false;
         createNotePanel.SetActive(false);
+        pencilReminder.SetActive(false);
     }
 }
