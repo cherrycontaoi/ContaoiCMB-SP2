@@ -57,6 +57,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 if (dropSlot.currentItem != null)
                 {
                     Destroy(dropSlot.currentItem);      // replace item
+                    basketController.DecrementNoOfItems();
                 }
 
                 transform.SetParent(dropSlot.transform);
@@ -92,20 +93,20 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                     originalSlot.currentItem = dropSlot.currentItem;
                     dropSlot.currentItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
-                    basketController.AddToBasket(gameObject, dropSlot.slotID);
+                    basketController.MoveInBasket(gameObject, dropSlot.slotID);
                 }
                 else
                 {
                     originalSlot.currentItem = null;
                     
-                    basketController.RemoveFromBasket(originalSlot.slotID);    // remove from items
+                    basketController.EmptySlot(originalSlot.slotID);    // remove from items
                 }
 
                 // move item to drop slot
                 transform.SetParent(dropSlot.transform);
                 dropSlot.currentItem = gameObject;
 
-                basketController.AddToBasket(gameObject, dropSlot.slotID);
+                basketController.MoveInBasket(gameObject, dropSlot.slotID);
             }
             else
             {
