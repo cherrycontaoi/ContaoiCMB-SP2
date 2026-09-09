@@ -1,6 +1,6 @@
-using System;
-using System.Text.RegularExpressions;
+
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
         mainCamera = Camera.main;
         pencil.DeactivatePencil();
         eraser.DeactivateEraser();
+        
     }
 
     public void Update()

@@ -16,7 +16,7 @@ public class CounterDisplayController : MonoBehaviour
         bagImage = plasticBag.GetComponent<SpriteRenderer>();
     }
     private void Update(){ 
-        noOfOrders = gameObject.GetComponentInParent<BasketController>().noOfItemsInBasket;
+        noOfOrders = gameObject.GetComponentInParent<BasketController>().numOfItemsInBasket;
         // Debug.Log("Orders: " + noOfOrders);
 
     }

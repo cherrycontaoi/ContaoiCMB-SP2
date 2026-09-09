@@ -12,8 +12,8 @@ public class NotesController : MonoBehaviour
     [SerializeField] private ToggleSystem toggleSystem;
     [SerializeField] private Transform notesContainer;
     [SerializeField] private Transform ordersContainer;
-    [SerializeField] private Note notePrefab;
-    [SerializeField] private Order orderPrefab;
+    [SerializeField] private Rule_Note notePrefab;
+    [SerializeField] private Order_Note orderPrefab;
     [SerializeField] private List<NoteText> notes = new List<NoteText>();
     [SerializeField] private List<NoteText> orders = new List<NoteText>();
     public TMP_InputField textInput;

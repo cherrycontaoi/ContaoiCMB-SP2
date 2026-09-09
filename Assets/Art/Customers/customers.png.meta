@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: 0fb19ccd6869f47d9b0cb70d750586c6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1581277078940950190
+    second: customers_0
+  - first:
+      213: -2741036132238627156
+    second: customers_1
+  - first:
+      213: 3751151932447079472
+    second: customers_2
+  - first:
+      213: 3697410610699197170
+    second: customers_3
+  - first:
+      213: -905793843128123665
+    second: customers_4
+  - first:
+      213: -4774410424953501379
+    second: customers_5
+  - first:
+      213: 8328635219194767163
+    second: customers_6
+  - first:
+      213: -3608161447539971578
+    second: customers_7
+  - first:
+      213: -2442666453482896079
+    second: customers_8
+  - first:
+      213: -5073353747915601838
+    second: customers_9
+  - first:
+      213: 4254994746908264793
+    second: customers_10
+  - first:
+      213: -8957823173422029907
+    second: customers_11
+  - first:
+      213: -2666705911920010413
+    second: customers_12
+  - first:
+      213: -6834272413800167586
+    second: customers_13
+  - first:
+      213: -5144648261289185322
+    second: customers_14
+  - first:
+      213: 6911158398033672493
+    second: customers_15
+  - first:
+      213: -5985663410534813282
+    second: customers_16
+  - first:
+      213: 4820120139282011669
+    second: customers_17
+  - first:
+      213: 1986475423377746558
+    second: customers_18
+  - first:
+      213: -5450669063227653842
+    second: customers_19
+  - first:
+      213: 3862584859421184606
+    second: customers_20
+  - first:
+      213: -4572513993680145566
+    second: customers_21
+  - first:
+      213: 5831685255165676477
+    second: customers_22
+  - first:
+      213: -4394255626981108839
+    second: customers_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: boy_speak
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 800
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eae1eb51023d1f510800000000000000
+      internalID: 1581277078940950190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boy_happy
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 800
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caee76d0922e5f9d0800000000000000
+      internalID: -2741036132238627156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boy_neutral
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 800
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03c3700eec4ce0430800000000000000
+      internalID: 3751151932447079472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guy_speak
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 688
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fa5c775c57df4330800000000000000
+      internalID: 3697410610699197170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guy_happy
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 688
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: feebc9c7c49fd63f0800000000000000
+      internalID: -905793843128123665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guy_neutral
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 688
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3989b0b303edbdb0800000000000000
+      internalID: -4774410424953501379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tatay_speak
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 576
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3769e7da91459370800000000000000
+      internalID: 8328635219194767163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tatay_happy
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 576
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60aee13c74c3dedc0800000000000000
+      internalID: -3608161447539971578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tatay_neutral
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 576
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13583676dc7e91ed0800000000000000
+      internalID: -2442666453482896079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rider_speak
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 464
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 258089365a3d799b0800000000000000
+      internalID: -5073353747915601838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rider_happy
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 464
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 959ce9aad27cc0b30800000000000000
+      internalID: 4254994746908264793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rider_neutral
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 464
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da3ea6bc84b6fa380800000000000000
+      internalID: -8957823173422029907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nanay_speak
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 352
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35bd2971a15fdfad0800000000000000
+      internalID: -2666705911920010413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nanay_happy
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 352
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e57803df279c721a0800000000000000
+      internalID: -6834272413800167586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nanay_neutral
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 352
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dfe683f9a98a98b0800000000000000
+      internalID: -5144648261289185322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lola_speak
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 240
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d29314532fd59ef50800000000000000
+      internalID: 6911158398033672493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lola_happy
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 240
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e91f40e67d6aeeca0800000000000000
+      internalID: -5985663410534813282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lola_neutral
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 240
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5165c948ab184e240800000000000000
+      internalID: 4820120139282011669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: woman_speak
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 128
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7a697d6fd0619b10800000000000000
+      internalID: 1986475423377746558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: woman_happy
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 128
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e21ca1aad555b54b0800000000000000
+      internalID: -5450669063227653842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: woman_neutral
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 128
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e521a9cf678aa9530800000000000000
+      internalID: 3862584859421184606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: girl_speak
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 16
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 263313cbfba2b80c0800000000000000
+      internalID: -4572513993680145566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: girl_happy
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 16
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbb880c87de4ee050800000000000000
+      internalID: 5831685255165676477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: girl_neutral
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 16
+        width: 73
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 993978df9c77403c0800000000000000
+      internalID: -4394255626981108839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6460e01bb732c4f90b1ad36024bc3478
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      boy_happy: -2741036132238627156
+      boy_neutral: 3751151932447079472
+      boy_speak: 1581277078940950190
+      girl_happy: 5831685255165676477
+      girl_neutral: -4394255626981108839
+      girl_speak: -4572513993680145566
+      guy_happy: -905793843128123665
+      guy_neutral: -4774410424953501379
+      guy_speak: 3697410610699197170
+      lola_happy: -5985663410534813282
+      lola_neutral: 4820120139282011669
+      lola_speak: 6911158398033672493
+      nanay_happy: -6834272413800167586
+      nanay_neutral: -5144648261289185322
+      nanay_speak: -2666705911920010413
+      rider_happy: 4254994746908264793
+      rider_neutral: -8957823173422029907
+      rider_speak: -5073353747915601838
+      tatay_happy: -3608161447539971578
+      tatay_neutral: -2442666453482896079
+      tatay_speak: 8328635219194767163
+      woman_happy: -5450669063227653842
+      woman_neutral: 3862584859421184606
+      woman_speak: 1986475423377746558
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

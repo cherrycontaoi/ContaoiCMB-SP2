@@ -1,42 +1,47 @@
-using TMPro;
 using UnityEngine;
 
 public class Order : MonoBehaviour
 {
-    [SerializeField] private TMP_Text textField;
+    [SerializeField] private Item[] itemsToBuy;
+    private Item[] paninda;
+    private int numOfItems;       // max num of items is 9
 
-    private BoxCollider2D boxCollider;
-    private RectTransform rectTransform;
-
-    private void Awake()
+    private void Start()
     {
-        rectTransform = GetComponent<RectTransform>();
-        boxCollider = GetComponent<BoxCollider2D>();
-    }
+        numOfItems = Random.Range(1,9);
+        itemsToBuy = new Item[numOfItems];
+        paninda = Resources.LoadAll<Item>("Prefabs/ItemPrefabs");     // get all Item 
 
-    private void Reset()
-    {
-        textField = GetComponent<TMP_Text>();
-    }
+        if (paninda.Length == 0)
+        {
+            Debug.Log("No assets found at the Prefabs folder!");
+            return;
+        }
 
-    private void UpdateColliderSize()
-    {
-        boxCollider.size = new Vector2(
-            rectTransform.rect.width,
-            rectTransform.rect.height/4f
-        );
-        boxCollider.offset = new Vector2(0f, -80f); // estimate
-    }
+        CreateOrder();
 
-    private void LateUpdate()
-    {
-        UpdateColliderSize();
+        foreach(Item item in itemsToBuy)
+        {
+            Debug.Log(item.name);
+        }
     }
+    // public void CheckInventory()
+    // {
+    //     paninda = Resources.LoadAll("Prefabs/ItemPrefabs");
 
-    public void SetOrder(string text)
+    //     foreach(var item in paninda)
+    //     {
+    //         Debug.Log(item.name);
+    //     }
+    // }
+
+    private void CreateOrder()
     {
-        textField.SetText(text);
+        for(int i=0; i<numOfItems; i++)
+        {
+            int index = Random.Range(0, paninda.Length);
+            itemsToBuy[i] = paninda[index];     // randomize ano bibilhin
+        }
     }
-    
     
 }

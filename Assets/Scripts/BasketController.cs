@@ -8,7 +8,7 @@ public class BasketController : MonoBehaviour
     public GameObject slotPrefab;
     public int slotCount;
     public GameObject[] itemsInBasket = new GameObject[9];
-    public int noOfItemsInBasket;
+    public int numOfItemsInBasket;
     
     private CounterDisplayController counterDisplayController;
     // private int slotIDCounter;
@@ -32,7 +32,7 @@ public class BasketController : MonoBehaviour
 
     void Update()
     {
-        if (noOfItemsInBasket >= 1)
+        if (numOfItemsInBasket >= 1)
         {
             givePanel.SetActive(true);
         }
@@ -55,13 +55,13 @@ public class BasketController : MonoBehaviour
     public void AddToBasket(GameObject itemToAdd, int slotID)
     {
         itemsInBasket[slotID] = itemToAdd;
-        noOfItemsInBasket++;
+        numOfItemsInBasket++;
     }
 
     public void RemoveFromBasket(int slotID)
     {
         itemsInBasket[slotID] = null;
-        noOfItemsInBasket--;
+        numOfItemsInBasket--;
     }
     
     public void ResetBasket()
@@ -78,11 +78,11 @@ public class BasketController : MonoBehaviour
             }
             
         }
-        noOfItemsInBasket = 0;
+        numOfItemsInBasket = 0;
     }
 
     public void DecrementNoOfItems()
     {
-        noOfItemsInBasket--;
+        numOfItemsInBasket--;
     }
 }
