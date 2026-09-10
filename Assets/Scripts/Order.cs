@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class Order : MonoBehaviour
 {
-    [SerializeField] private Item[] itemsToBuy;
-    private Item[] paninda;
+    [SerializeField] private GameObject[] itemsToBuy;
+    private GameObject[] paninda;
     private int numOfItems;       // max num of items is 9
 
     private void Start()
     {
         numOfItems = Random.Range(1,9);
-        itemsToBuy = new Item[numOfItems];
-        paninda = Resources.LoadAll<Item>("Prefabs/ItemPrefabs");     // get all Item 
+        itemsToBuy = new GameObject[numOfItems];
+        paninda = Resources.LoadAll<GameObject>("Prefabs/ItemPrefabs");     // get all GameObject 
 
         if (paninda.Length == 0)
         {
@@ -20,7 +20,7 @@ public class Order : MonoBehaviour
 
         CreateOrder();
 
-        foreach(Item item in itemsToBuy)
+        foreach(GameObject item in itemsToBuy)
         {
             Debug.Log(item.name);
         }
@@ -42,6 +42,11 @@ public class Order : MonoBehaviour
             int index = Random.Range(0, paninda.Length);
             itemsToBuy[i] = paninda[index];     // randomize ano bibilhin
         }
+    }
+
+    public GameObject[] GetItems()
+    {
+        return itemsToBuy;
     }
     
 }

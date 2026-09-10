@@ -16,6 +16,7 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
     {
         newItem = Instantiate(itemPrefab,basketPanel.transform);
         newItem.transform.position = eventData.position;
+        newItem.name = itemPrefab.name;
     
 
         canvasGroup = newItem.GetComponent<CanvasGroup>();

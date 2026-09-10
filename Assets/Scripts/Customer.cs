@@ -4,10 +4,11 @@ public class Customer : MonoBehaviour
 {
 
     [SerializeField] Order orderPrefab;
-    [SerializeField] private Order order;
     [SerializeField] private Sprite[] expressions;
     private SpriteRenderer customerSpriteRenderer;
     private CustomerState customerState = CustomerState.Idle;
+
+    [SerializeField] public Order order;
 
     void Start()
     {

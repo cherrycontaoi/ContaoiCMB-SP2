@@ -47,7 +47,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         isInBasket = true;
         slotID = gameObject.GetComponentInParent<Slot>().slotID;
-        Debug.Log("Item is dropped in the basket");
+        Debug.Log(gameObject.name + " is dropped in the basket");
     }
 
     public void BeingDragged()

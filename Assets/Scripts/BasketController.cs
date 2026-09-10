@@ -1,29 +1,33 @@
+using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class BasketController : MonoBehaviour
 {
-    public GameObject basketPanel;
-    public GameObject givePanel;
-    public GameObject slotPrefab;
-    public int slotCount;
-    public GameObject[] itemsInBasket = new GameObject[9];
     public int numOfItemsInBasket;
+
+    [SerializeField] private GameObject basketPanel;
+    [SerializeField] private GameObject givePanel;
+    [SerializeField] private GameObject slotPrefab;
+    [SerializeField] private int slotCount;
+    [SerializeField] public GameObject[] basketSlots = new GameObject[9];
     
-    private CounterDisplayController counterDisplayController;
+    
+    // private CounterDisplayController counterDisplayController;
     // private int slotIDCounter;
 
     void Start()
     {
-        counterDisplayController = GetComponent<CounterDisplayController>();
+        // counterDisplayController = GetComponent<CounterDisplayController>();
 
         for(int i=0; i<slotCount; i++)
         {
             Slot slot = Instantiate(slotPrefab, basketPanel.transform).GetComponent<Slot>();
             slot.slotID = i;
-            if (i < itemsInBasket.Length && itemsInBasket[i] !=null)
+            if (i < basketSlots.Length && basketSlots[i] !=null)
             {
-                GameObject item = Instantiate(itemsInBasket[i], slot.transform);
+                GameObject item = Instantiate(basketSlots[i], slot.transform);
                 item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero; // item is centered in the slot
                 slot.currentItem = item;
             }
@@ -44,23 +48,23 @@ public class BasketController : MonoBehaviour
 
     public void MoveInBasket(GameObject itemToMove, int slotID)
     {
-        itemsInBasket[slotID] = itemToMove;
+        basketSlots[slotID] = itemToMove;
     }
 
     public void EmptySlot(int slotID)
     {
-        itemsInBasket[slotID] = null;
+        basketSlots[slotID] = null;
     }
 
     public void AddToBasket(GameObject itemToAdd, int slotID)
     {
-        itemsInBasket[slotID] = itemToAdd;
+        basketSlots[slotID] = itemToAdd;
         numOfItemsInBasket++;
     }
 
     public void RemoveFromBasket(int slotID)
     {
-        itemsInBasket[slotID] = null;
+        basketSlots[slotID] = null;
         numOfItemsInBasket--;
     }
     
@@ -70,7 +74,7 @@ public class BasketController : MonoBehaviour
         
         for(int i=0; i<slotCount; i++)
         {
-            itemsInBasket[i] = null;
+            basketSlots[i] = null;
             slots[i].currentItem = null;
             if (slots[i].transform.childCount > 0)
             {
@@ -84,5 +88,22 @@ public class BasketController : MonoBehaviour
     public void DecrementNoOfItems()
     {
         numOfItemsInBasket--;
+    }
+
+    public GameObject[] GetActualItemsInBasket()
+    {
+        GameObject[] actualItems = new GameObject[numOfItemsInBasket];
+        int index = 0;
+
+        foreach(GameObject basketSlot in basketSlots)
+        {
+            if (basketSlot != null)
+            {
+                actualItems[index] = basketSlot;
+                index++;
+            }
+        }
+
+        return actualItems;
     }
 }

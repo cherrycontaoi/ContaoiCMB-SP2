@@ -15,13 +15,8 @@ public class CounterDisplayController : MonoBehaviour
     {
         bagImage = plasticBag.GetComponent<SpriteRenderer>();
     }
-    private void Update(){ 
-        noOfOrders = gameObject.GetComponentInParent<BasketController>().numOfItemsInBasket;
-        // Debug.Log("Orders: " + noOfOrders);
-
-    }
     
-    public void DisplayPlasticBag()
+    public void DisplayPlasticBag(int noOfOrders)
     {        
         if (noOfOrders <= 3)
         {
@@ -43,25 +38,24 @@ public class CounterDisplayController : MonoBehaviour
         Debug.Log("Put out bag!");
 
         
-        gameObject.GetComponentInParent<BasketController>().ResetBasket();
-        StartCoroutine(WaitCoroutine());
+        // gameObject.GetComponentInParent<BasketController>().ResetBasket();
+        // StartCoroutine(WaitAndClearCoroutine());
     }
-
-    private IEnumerator WaitCoroutine()
-    {
-        yield return new WaitForSeconds(2f);
-
-
-        ClearCounter();
-        Debug.Log("Ok done clearing everything!");
-    }
-
+    
     public bool IsBagged()
     {
         return alreadyInBag;
     }
     
-    public void ClearCounter()
+    public IEnumerator WaitAndClearCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
+
+        ClearCounter();
+        Debug.Log("Ok done clearing everything!");
+    }
+
+    private void ClearCounter()
     {
         alreadyInBag = false;
         plasticBag.SetActive(false);
