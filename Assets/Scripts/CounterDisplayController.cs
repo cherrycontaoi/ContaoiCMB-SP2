@@ -1,14 +1,19 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class CounterDisplayController : MonoBehaviour
 {
     [SerializeField] private GameObject plasticBag;
     [SerializeField] private Sprite[] plasticBagSprites = new Sprite[3];
     [SerializeField] private GameObject givePanel;
+    [SerializeField] private GameObject plasticBagGreen;
+    [SerializeField] private GameObject plasticBagYellow;
+    [SerializeField] private GameObject plasticBagOrange;
     // [SerializeField] private BasketController basketController;
     private bool alreadyInBag;
-    private int noOfOrders;
+    private string chosenBag;
+    // private int noOfOrders;
     private SpriteRenderer bagImage;
 
     private void Start()
@@ -18,28 +23,47 @@ public class CounterDisplayController : MonoBehaviour
     
     public void DisplayPlasticBag(int noOfOrders)
     {        
-        if (noOfOrders <= 3)
-        {
-            bagImage.sprite = plasticBagSprites[0];
-        }
-        else if (noOfOrders <= 6 && noOfOrders > 3)
-        {
-            bagImage.sprite = plasticBagSprites[1];
-        }
-        else
-        {
-            bagImage.sprite = plasticBagSprites[2];
-        }
-
         alreadyInBag = true;
         plasticBag.SetActive(true);
         givePanel.SetActive(false);
+        RemovePBFromCounter();
 
-        Debug.Log("Put out bag!");
+        Debug.Log("Bag already on the counter!");
 
         
         // gameObject.GetComponentInParent<BasketController>().ResetBasket();
         // StartCoroutine(WaitAndClearCoroutine());
+    }
+
+    public void ChoosePlasticBag(string PBColor)
+    {
+
+        Debug.Log("The plastic bag to be used is: " + PBColor);
+        if(PBColor == "PBGreen")
+        {
+            plasticBagYellow.SetActive(false);
+            plasticBagOrange.SetActive(false);
+
+            plasticBagGreen.SetActive(true);
+            bagImage.sprite = plasticBagSprites[0];
+        }
+
+        else if (PBColor == "PBYellow")
+        {
+            plasticBagGreen.SetActive(false);
+            plasticBagOrange.SetActive(false);
+
+            plasticBagYellow.SetActive(true);
+            bagImage.sprite = plasticBagSprites[1];
+        }
+        else if (PBColor == "PBOrange")
+        {
+            plasticBagGreen.SetActive(false);
+            plasticBagYellow.SetActive(false);
+
+            plasticBagOrange.SetActive(true);
+            bagImage.sprite = plasticBagSprites[2];
+        }
     }
     
     public bool IsBagged()
@@ -52,7 +76,7 @@ public class CounterDisplayController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         ClearCounter();
-        Debug.Log("Ok done clearing everything!");
+        Debug.Log("Coroutine done!");
     }
 
     private void ClearCounter()
@@ -60,6 +84,13 @@ public class CounterDisplayController : MonoBehaviour
         alreadyInBag = false;
         plasticBag.SetActive(false);
 
-        Debug.Log("Clear the counter!");
+        Debug.Log("Counter is cleared!");
+    }
+
+    private void RemovePBFromCounter()
+    {
+        plasticBagGreen.SetActive(false);
+        plasticBagYellow.SetActive(false);
+        plasticBagOrange.SetActive(false);
     }
 }

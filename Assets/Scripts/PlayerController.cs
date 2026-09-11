@@ -10,6 +10,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Pencil pencil;
     [SerializeField] private Eraser eraser;
+    [SerializeField] private CounterDisplayController counterDisplayController;
+
+    private void Start()
+    {
+        counterDisplayController = FindAnyObjectByType<CounterDisplayController>();
+    }
 
     private void Awake()
     {
@@ -37,6 +43,10 @@ public class PlayerController : MonoBehaviour
 
             pencil.DeactivatePencil();
             eraser.ActivateEraser();
+        }
+        else if(rayHit.collider.gameObject.CompareTag("PlasticBag"))
+        {
+            counterDisplayController.ChoosePlasticBag(rayHit.collider.gameObject.name);
         }
     }
 
