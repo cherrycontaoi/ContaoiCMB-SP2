@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -16,6 +16,8 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         gameController = GameObject.Find("GameController");
         basketController = gameController.GetComponent<BasketController>();
+
+        
     }
 
 
@@ -45,6 +47,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void PlacedInBasket()
     {
+        GetComponent<Image>().SetNativeSize();
         isInBasket = true;
         slotID = gameObject.GetComponentInParent<Slot>().slotID;
         Debug.Log(gameObject.name + " is dropped in the basket");

@@ -10,14 +10,14 @@ public class CounterDisplayController : MonoBehaviour
     [SerializeField] private GameObject plasticBagGreen;
     [SerializeField] private GameObject plasticBagYellow;
     [SerializeField] private GameObject plasticBagOrange;
-    // [SerializeField] private BasketController basketController;
+    [SerializeField] private BasketController basketController;
     private bool alreadyInBag;
-    private string chosenBag;
     // private int noOfOrders;
     private SpriteRenderer bagImage;
 
     private void Start()
     {
+        basketController = GetComponent<BasketController>();
         bagImage = plasticBag.GetComponent<SpriteRenderer>();
     }
     
@@ -26,7 +26,7 @@ public class CounterDisplayController : MonoBehaviour
         alreadyInBag = true;
         plasticBag.SetActive(true);
         givePanel.SetActive(false);
-        RemovePBFromCounter();
+        RemovePBFromPlayerSpace();
 
         Debug.Log("Bag already on the counter!");
 
@@ -64,6 +64,9 @@ public class CounterDisplayController : MonoBehaviour
             plasticBagOrange.SetActive(true);
             bagImage.sprite = plasticBagSprites[2];
         }
+
+        basketController.PlayerHasChosenBag();
+        
     }
     
     public bool IsBagged()
@@ -87,7 +90,7 @@ public class CounterDisplayController : MonoBehaviour
         Debug.Log("Counter is cleared!");
     }
 
-    private void RemovePBFromCounter()
+    private void RemovePBFromPlayerSpace()
     {
         plasticBagGreen.SetActive(false);
         plasticBagYellow.SetActive(false);

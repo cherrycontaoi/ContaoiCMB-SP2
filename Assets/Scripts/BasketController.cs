@@ -12,6 +12,8 @@ public class BasketController : MonoBehaviour
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private int slotCount;
     [SerializeField] public GameObject[] basketSlots = new GameObject[9];
+
+    private bool bagAvailable;  // player has already chosen a bag
     
     
     // private CounterDisplayController counterDisplayController;
@@ -19,8 +21,9 @@ public class BasketController : MonoBehaviour
 
     void Start()
     {
-        // counterDisplayController = GetComponent<CounterDisplayController>();
+        basketPanel.SetActive(false);       // don't show yet pag di pa nakapili ng bag 
 
+        // initialize basket slots
         for(int i=0; i<slotCount; i++)
         {
             Slot slot = Instantiate(slotPrefab, basketPanel.transform).GetComponent<Slot>();
@@ -44,6 +47,12 @@ public class BasketController : MonoBehaviour
         {
             givePanel.SetActive(false);
         }
+    }
+
+    public void PlayerHasChosenBag()
+    {
+        bagAvailable = true;
+        basketPanel.SetActive(true);
     }
 
     public void MoveInBasket(GameObject itemToMove, int slotID)
@@ -70,6 +79,7 @@ public class BasketController : MonoBehaviour
     
     public void ResetBasket()
     {
+        basketPanel.SetActive(false);
         Slot[] slots = basketPanel.GetComponentsInChildren<Slot>();
         
         for(int i=0; i<slotCount; i++)

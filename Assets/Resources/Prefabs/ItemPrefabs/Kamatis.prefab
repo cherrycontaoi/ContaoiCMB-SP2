@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8179031434132328423, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
       propertyPath: m_Name
-      value: Kamatis Variant
+      value: Kamatis
       objectReference: {fileID: 0}
     - target: {fileID: 8278605234870786553, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
       propertyPath: m_Sprite
@@ -42,11 +42,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8766807550631569652, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 80
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8766807550631569652, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 70
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8766807550631569652, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
       propertyPath: m_LocalPosition.x
