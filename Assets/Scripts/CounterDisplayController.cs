@@ -12,6 +12,7 @@ public class CounterDisplayController : MonoBehaviour
     [SerializeField] private GameObject plasticBagOrange;
     [SerializeField] private BasketController basketController;
     private bool alreadyInBag;
+    private bool userCanStartDragging = false;
     // private int noOfOrders;
     private SpriteRenderer bagImage;
 
@@ -19,6 +20,7 @@ public class CounterDisplayController : MonoBehaviour
     {
         basketController = GetComponent<BasketController>();
         bagImage = plasticBag.GetComponent<SpriteRenderer>();
+        userCanStartDragging = false;
     }
     
     public void DisplayPlasticBag(int noOfOrders)
@@ -66,6 +68,7 @@ public class CounterDisplayController : MonoBehaviour
         }
 
         basketController.PlayerHasChosenBag();
+        userCanStartDragging = true;
         
     }
     
@@ -73,7 +76,7 @@ public class CounterDisplayController : MonoBehaviour
     {
         return alreadyInBag;
     }
-    
+
     public IEnumerator WaitAndClearCoroutine()
     {
         yield return new WaitForSeconds(2f);
@@ -86,6 +89,7 @@ public class CounterDisplayController : MonoBehaviour
     {
         alreadyInBag = false;
         plasticBag.SetActive(false);
+        userCanStartDragging = false;
 
         Debug.Log("Counter is cleared!");
     }
@@ -96,4 +100,10 @@ public class CounterDisplayController : MonoBehaviour
         plasticBagYellow.SetActive(false);
         plasticBagOrange.SetActive(false);
     }
+
+    public bool CanUserStartDragging()
+    {
+        return userCanStartDragging;
+    }
+    
 }

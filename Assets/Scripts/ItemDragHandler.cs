@@ -7,18 +7,29 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private Transform originalParent; // slot
     private CanvasGroup canvasGroup;
     private BasketController basketController;
+    private CounterDisplayController counterDisplayController;
     private bool freshItem;     // dragged from display
+    private bool isDragging;
     private Item itemComponent;
 
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         basketController = FindAnyObjectByType<BasketController>();
+        counterDisplayController = FindAnyObjectByType<CounterDisplayController>();
         itemComponent = gameObject.GetComponent<Item>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!counterDisplayController.CanUserStartDragging())
+        {
+            isDragging = false;
+            return;
+        }
+
+        isDragging = true;
+
         itemComponent.BeingDragged();
         originalParent = transform.parent;  // save the original parent
         freshItem = false;
@@ -31,11 +42,15 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
+        if(!isDragging) return;
+
         transform.position = eventData.position;    // follow the mouse
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if(!isDragging) return;
+
         canvasGroup.blocksRaycasts = true;  //enable raycasts
         canvasGroup.alpha = 1f;
 
@@ -118,6 +133,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         }
         
         itemComponent.NotBeingDragged();
+        isDragging = false;
 
     }
 
@@ -127,5 +143,6 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         freshItem = true;
         originalParent = null;
     }
+
 
 }
