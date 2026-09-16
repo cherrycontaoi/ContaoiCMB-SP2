@@ -7,7 +7,8 @@ public class TransactionController : MonoBehaviour
     private Customer customer;
     private BasketController basketController;
     private CounterDisplayController counterDisplayController;
-    private GameObject[] itemsInBasket;
+    private ScoreChecker scoreChecker;
+    private List<GameObject> itemsInBasket = new List<GameObject>();
     private GameObject[] customerOrder;
 
     private bool transactionDone;
@@ -17,6 +18,7 @@ public class TransactionController : MonoBehaviour
         customer = FindAnyObjectByType<Customer>();
         basketController = gameObject.GetComponent<BasketController>();
         counterDisplayController = gameObject.GetComponent<CounterDisplayController>();
+        scoreChecker = gameObject.GetComponent<ScoreChecker>();
 
         if (basketController == null)
         {
@@ -38,6 +40,8 @@ public class TransactionController : MonoBehaviour
 
     public void Checkout()
     {
+        scoreChecker.CheckItems();
+
         itemsInBasket = basketController.GetActualItemsInBasket();
         customerOrder = customer.order.GetItems();
 
@@ -60,7 +64,7 @@ public class TransactionController : MonoBehaviour
         // }
         
 
-        if (itemsInBasket.Length != customerOrder.Length)
+        if (itemsInBasket.Count != customerOrder.Length)
         {
             Debug.Log("The number of items in the basket doesn't match with the customer's order!");
             customer.ChangeCustomerState(CustomerState.NeutralExpression);
@@ -109,6 +113,7 @@ public class TransactionController : MonoBehaviour
     private void CompleteTransaction()
     {
         basketController.ResetBasket();
+        scoreChecker.ResetScore();
         StartCoroutine(ByeCustomer());
 
         

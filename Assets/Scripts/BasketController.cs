@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BasketController : MonoBehaviour
@@ -13,8 +11,7 @@ public class BasketController : MonoBehaviour
     [SerializeField] private int slotCount;
     [SerializeField] public GameObject[] basketSlots = new GameObject[9];
 
-    private bool bagAvailable;  // player has already chosen a bag
-    
+    [SerializeField] public List<GameObject> basketQueue = new List<GameObject>();  // based on the order items were put in the bag
     
     // private CounterDisplayController counterDisplayController;
     // private int slotIDCounter;
@@ -51,7 +48,6 @@ public class BasketController : MonoBehaviour
 
     public void PlayerHasChosenBag()
     {
-        bagAvailable = true;
         basketPanel.SetActive(true);
     }
 
@@ -69,12 +65,25 @@ public class BasketController : MonoBehaviour
     {
         basketSlots[slotID] = itemToAdd;
         numOfItemsInBasket++;
+
+        // enqueueueueue
+        basketQueue.Add(itemToAdd);
     }
 
     public void RemoveFromBasket(int slotID)
     {
         basketSlots[slotID] = null;
         numOfItemsInBasket--;
+
+        // dequeue
+        foreach(GameObject item in basketQueue)
+        {
+            if (item.GetComponent<Item>().GetSlotID() == slotID)
+            {
+                basketQueue.Remove(item);
+                break;
+            }
+        }
     }
     
     public void ResetBasket()
@@ -93,6 +102,7 @@ public class BasketController : MonoBehaviour
             
         }
         numOfItemsInBasket = 0;
+        basketQueue.Clear();
     }
 
     public void DecrementNoOfItems()
@@ -100,20 +110,14 @@ public class BasketController : MonoBehaviour
         numOfItemsInBasket--;
     }
 
-    public GameObject[] GetActualItemsInBasket()
+    public List<GameObject> GetActualItemsInBasket()
     {
-        GameObject[] actualItems = new GameObject[numOfItemsInBasket];
-        int index = 0;
-
-        foreach(GameObject basketSlot in basketSlots)
-        {
-            if (basketSlot != null)
-            {
-                actualItems[index] = basketSlot;
-                index++;
-            }
-        }
-
-        return actualItems;
+        return basketQueue;
+    }
+    
+    // returns the basket without removing the empty slots
+    public GameObject[] GetFullBasket()
+    {
+        return basketSlots;
     }
 }

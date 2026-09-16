@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot
       objectReference: {fileID: 0}
+    - target: {fileID: 8179031434132328423, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
+      propertyPath: m_TagString
+      value: Produce
+      objectReference: {fileID: 0}
     - target: {fileID: 8278605234870786553, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
       propertyPath: m_Sprite
       value: 

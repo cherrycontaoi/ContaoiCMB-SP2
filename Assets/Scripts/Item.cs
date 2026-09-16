@@ -16,8 +16,6 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         gameController = GameObject.Find("GameController");
         basketController = gameController.GetComponent<BasketController>();
-
-        
     }
 
 
@@ -60,6 +58,11 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void NotBeingDragged()
     {
         isBeingDragged = false;
+    }
+
+    public int GetSlotID()
+    {
+        return slotID;
     }
 
 
