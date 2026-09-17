@@ -162,6 +162,7 @@ public class RulesCollection : MonoBehaviour
             }
         }
 
+        // if there's one, egg should be placed next to chicken noodle
         // check if there's chicken noodle in neighbors (1:1 ratio)
         if (scoreChecker.ilangChickenNoodles > 0)
         {
@@ -171,8 +172,15 @@ public class RulesCollection : MonoBehaviour
                 {
                     if(neighboringItem.name == "LuckyMeChicken")
                     { 
-                        ilangChickenNoodlesMatched++;
-                        break;
+                        Item itlog = item.GetComponent<Item>();
+                        Item chickenNoodle = neighboringItem.GetComponent<Item>();
+
+                        if (!itlog.isMatched && !chickenNoodle.isMatched)
+                        {
+                            itlog.isMatched = chickenNoodle.isMatched = true;    
+                            ilangChickenNoodlesMatched++;
+                            break;
+                        }
                             
                     }   
                 }
@@ -199,8 +207,15 @@ public class RulesCollection : MonoBehaviour
                 {
                     if(neighboringItem.name == "Bawang")
                     {
-                        ilangSibuyasMatched++;
-                        break;
+                        Item sibuyas = item.GetComponent<Item>();
+                        Item bawang = neighboringItem.GetComponent<Item>();
+
+                        if (!sibuyas.isMatched && !bawang.isMatched)
+                        {
+                            sibuyas.isMatched = bawang.isMatched = true;
+                            ilangSibuyasMatched++;
+                            break;
+                        }
                     }
                 }
             // }
@@ -235,9 +250,17 @@ public class RulesCollection : MonoBehaviour
                 {
                     if (neighboringItem.CompareTag("Chips")) // (1:1)
                     {
+
+                        Item soda = item.GetComponent<Item>();
+                        Item chips = neighboringItem.GetComponent<Item>();
+
+                        if (!soda.isMatched && !chips.isMatched)
+                        {
+                            soda.isMatched = chips.isMatched = true;
+                            ilangSodaMatched++;
+                            break;
+                        }
                         // foundChips = true;
-                        ilangSodaMatched++;
-                        break;
                     }
                 }
 
@@ -283,8 +306,16 @@ public class RulesCollection : MonoBehaviour
                     if(neighboringItem.name == "Suka")
                     {
                         // foundSuka = true;
-                        ilangSukaMatched++;
-                        break;
+
+                        Item toyo = item.GetComponent<Item>();
+                        Item suka = neighboringItem.GetComponent<Item>();
+
+                        if (!toyo.isMatched && !suka.isMatched)
+                        {
+                            toyo.isMatched = suka.isMatched = true;
+                            ilangSukaMatched++;
+                            break;
+                        }
                     }
                 }
 

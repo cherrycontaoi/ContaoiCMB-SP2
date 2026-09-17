@@ -10774,6 +10774,8 @@ GameObject:
   - component: {fileID: 1031242756}
   - component: {fileID: 1031242757}
   - component: {fileID: 1031242758}
+  - component: {fileID: 1031242760}
+  - component: {fileID: 1031242761}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -10841,6 +10843,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  basketQueue: []
 --- !u!114 &1031242757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10875,6 +10878,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6ce99426b604ed193571b564f983de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &1031242760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031242753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da2a4bf8f0884849806a391456e8446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreController
+  rulesCollection: {fileID: 0}
+  TagsWithConstraints: []
+  playerScore: 100
+  mayBawangBa: 0
+  mayChickenNoodlesBa: 0
+  maySukaBa: 0
+  mayChipsBa: 0
+  mayProduceBa: 0
+  ilangCanned: 0
+  ilangItlog: 0
+  ilangChickenNoodles: 0
+  ilangBawang: 0
+  ilangSibuyas: 0
+  ilangChips: 0
+  ilangSoda: 0
+  ilangSuka: 0
+  ilangToyo: 0
+--- !u!114 &1031242761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031242753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7002b895e30184e029523bce2dc043db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RulesCollection
 --- !u!1001 &1046257187
 PrefabInstance:
   m_ObjectHideFlags: 0

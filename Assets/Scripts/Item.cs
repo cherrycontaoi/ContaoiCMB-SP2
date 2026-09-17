@@ -12,6 +12,8 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private float holdDownTime;
     private int slotID;
 
+    public bool isMatched;
+
     public void Start()
     {
         gameController = GameObject.Find("GameController");

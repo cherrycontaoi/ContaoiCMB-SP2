@@ -7,6 +7,12 @@ TagManager:
   - Note
   - Customer
   - PlasticBag
+  - Detergent
+  - Produce
+  - Glass Bottle
+  - Soda
+  - Chips
+  - Canned
   layers:
   - Default
   - TransparentFX

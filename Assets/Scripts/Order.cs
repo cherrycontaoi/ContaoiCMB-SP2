@@ -3,8 +3,11 @@ using UnityEngine;
 public class Order : MonoBehaviour
 {
     [SerializeField] private GameObject[] itemsToBuy;
+    [SerializeField] private GameObject[] panindaWithConstraints;
+    [SerializeField] private GameObject[] panindaWithoutConstraints;
     private GameObject[] paninda;
-    private int numOfItems;       // max num of items is 9
+    private int numOfItems, itlogCurrentNum;       // max num of items is 9
+    private int itlogLimit = 5;
 
     private void Start()
     {
@@ -40,7 +43,22 @@ public class Order : MonoBehaviour
         for(int i=0; i<numOfItems; i++)
         {
             int index = Random.Range(0, paninda.Length);
-            itemsToBuy[i] = paninda[index];     // randomize ano bibilhin
+            if (paninda[index].name == "Itlog")
+            {
+                if (itlogCurrentNum < itlogLimit)   // egg has a limit of 5
+                {
+                    itemsToBuy[i] = paninda[index];     // randomize ano bibilhin
+                    itlogCurrentNum++;
+                }
+                else
+                {
+                    i--;        // go back to the slot since egg wasn't added
+                }
+            }
+            else
+            {
+                itemsToBuy[i] = paninda[index];     // randomize ano bibilhin
+            }
         }
     }
 
