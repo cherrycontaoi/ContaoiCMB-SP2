@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -5,14 +6,18 @@ using UnityEngine.UI;
 public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private GameObject gameController;
+    [SerializeField] private GameObject[] matchingObject;   // should be neighbor
+    [SerializeField] private ItemType itemType;
     private BasketController basketController;
     private bool isInBasket;
     private bool isBeingDragged;
     private float holdDownStartTime;
     private float holdDownTime;
     private int slotID;
+    
 
     public bool isMatched;
+    
 
     public void Start()
     {
@@ -62,10 +67,44 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         isBeingDragged = false;
     }
 
+    public void Unmatch()
+    {
+        isMatched = false;
+    }
+
+    public void Match()
+    {
+        isMatched = true;
+    }
+
     public int GetSlotID()
     {
         return slotID;
     }
 
+    public ItemType GetItemType()
+    {
+        return itemType;
+    }
 
+    public List<string> GetMatchingItemNames()
+    {
+        List<string> matchingItemNames = new List<string>();
+
+        foreach (GameObject item in matchingObject)
+        {
+            matchingItemNames.Add(item.name);
+        }
+
+        return matchingItemNames;
+    }
+
+
+}
+
+public enum ItemType
+{
+    SlotDecider,        // slot decider = items included in matching
+    SlotDependent,      // slot dependent = items also included in matching (should be adjacent to decider)
+    FreeForAll          // no constraint
 }

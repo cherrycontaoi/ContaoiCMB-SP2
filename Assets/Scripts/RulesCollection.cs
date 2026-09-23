@@ -74,7 +74,7 @@ public class RulesCollection : MonoBehaviour
 
             for (int i=0; i<scoreChecker.ilangCanned; i++)
             {
-                if (basketQueue[i].CompareTag("Canned"))
+                if (!basketQueue[i].CompareTag("Canned"))
                 {
                     Debug.Log("Canned should be placed first!");
                     scoreChecker.DeductScore(5);
