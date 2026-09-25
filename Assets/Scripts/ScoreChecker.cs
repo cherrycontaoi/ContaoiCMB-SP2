@@ -113,7 +113,6 @@ public class ScoreChecker : MonoBehaviour
         mayBawangBa = mayChickenNoodlesBa = maySukaBa = mayChipsBa = mayProduceBa = false;
         ilangItlog = ilangCanned = ilangChickenNoodles = ilangBawang = ilangSibuyas = ilangSuka = ilangToyo = ilangChips = ilangSoda = 0;
 
-        Debug.Log("The player's score for this level: " + playerScore);
     }
 
     public List<GameObject> GetNeighboringItems(GameObject item)
@@ -162,6 +161,11 @@ public class ScoreChecker : MonoBehaviour
     public void ResetScore()
     {
         playerScore = 100;
+    }
+
+    public int GetPlayerScore()
+    {
+        return playerScore;
     }
 
     public List<GameObject> GetBasketContent()

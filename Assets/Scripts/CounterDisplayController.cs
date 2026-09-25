@@ -13,6 +13,7 @@ public class CounterDisplayController : MonoBehaviour
     [SerializeField] private BasketController basketController;
     private bool alreadyInBag;
     private bool userCanStartDragging = false;
+    private string colorChosen;
     // private int noOfOrders;
     private SpriteRenderer bagImage;
 
@@ -39,7 +40,6 @@ public class CounterDisplayController : MonoBehaviour
 
     public void ChoosePlasticBag(string PBColor)
     {
-
         Debug.Log("The plastic bag to be used is: " + PBColor);
         if(PBColor == "PBGreen")
         {
@@ -68,6 +68,7 @@ public class CounterDisplayController : MonoBehaviour
         }
 
         basketController.PlayerHasChosenBag();
+        colorChosen = PBColor;
         userCanStartDragging = true;
         
     }
@@ -104,6 +105,11 @@ public class CounterDisplayController : MonoBehaviour
     public bool CanUserStartDragging()
     {
         return userCanStartDragging;
+    }
+
+    public string GetUserChosenPB()
+    {
+        return colorChosen;
     }
     
 }

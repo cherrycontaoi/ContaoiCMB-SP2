@@ -331,5 +331,5 @@ public class RulesCollection : MonoBehaviour
             
         }
     }
-
+    
 }

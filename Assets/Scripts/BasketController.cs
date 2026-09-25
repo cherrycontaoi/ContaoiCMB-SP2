@@ -112,6 +112,7 @@ public class BasketController : MonoBehaviour
 
     public List<GameObject> GetActualItemsInBasket()
     {
+        basketQueue.RemoveAll(item => item == null);
         return basketQueue;
     }
     

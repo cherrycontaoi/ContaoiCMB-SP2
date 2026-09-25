@@ -62,15 +62,18 @@ public class TransactionController : MonoBehaviour
         // {
         //     Debug.Log(item.name);
         // }
+
+        
         
 
         if (itemsInBasket.Count != customerOrder.Length)
         {
             Debug.Log("The number of items in the basket doesn't match with the customer's order!");
-            customer.ChangeCustomerState(CustomerState.NeutralExpression);
-            counterDisplayController.DisplayPlasticBag(customerOrder.Length);
-            CompleteTransaction();
-            return;
+            scoreChecker.DeductScore(5);
+            // customer.ChangeCustomerState(CustomerState.NeutralExpression);
+            // counterDisplayController.DisplayPlasticBag(customerOrder.Length);
+            // CompleteTransaction();
+            // return;
         }
 
 
@@ -94,24 +97,40 @@ public class TransactionController : MonoBehaviour
             }
         }
 
+        ApplyPlasticBagRule();
         counterDisplayController.DisplayPlasticBag(customerOrder.Length);
 
-        if (itemsToCheck.Count == 0)
-        {
-            Debug.Log("Order matches with the basket content!");
-            customer.ChangeCustomerState(CustomerState.HappyExpression);
-        }
-        else
-        {
-            Debug.Log("Oops, order doesn't match.");
-            customer.ChangeCustomerState(CustomerState.NeutralExpression);
-        }
+        // if (itemsToCheck.Count == 0)
+        // {
+        //     Debug.Log("Order matches with the basket content!");
+        //     customer.ChangeCustomerState(CustomerState.HappyExpression);
+        // }
+        // else
+        // {
+        //     Debug.Log("Oops, order doesn't match.");
+        //     customer.ChangeCustomerState(CustomerState.NeutralExpression);
+        // }
         
         CompleteTransaction();
     }
 
     private void CompleteTransaction()
     {
+        int playerScore = scoreChecker.GetPlayerScore();
+        Debug.Log("The player's score for this level: " + playerScore);
+        if (playerScore < 100)
+        {
+            Debug.Log("There are some mistakes on the customer's order");
+            customer.ChangeCustomerState(CustomerState.NeutralExpression);
+        }
+
+        else
+        {
+            Debug.Log("Customer is happy!");
+            customer.ChangeCustomerState(CustomerState.HappyExpression);
+        }
+
+
         basketController.ResetBasket();
         scoreChecker.ResetScore();
         StartCoroutine(ByeCustomer());
@@ -125,6 +144,33 @@ public class TransactionController : MonoBehaviour
 
         Destroy(customer.gameObject);
     }
+
+    private void ApplyPlasticBagRule()
+    {
+
+        string playerChosenBag = counterDisplayController.GetUserChosenPB();
+        string correctPlasticBag;
+
+        if (customerOrder.Length <= 3)
+        {
+            correctPlasticBag = "PBGreen";
+        }
+        else if (customerOrder.Length > 3 && customerOrder.Length <= 6)
+        {
+            correctPlasticBag = "PBYellow";
+        }
+        else
+        {
+            correctPlasticBag = "PBOrange";
+        }
+
+        if (correctPlasticBag != playerChosenBag)
+        {
+            Debug.Log("The correct plastic bag to use is "+ correctPlasticBag + ", not " + playerChosenBag);
+            scoreChecker.DeductScore(5);
+        }
+    }
+
 
 
 }
