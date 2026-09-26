@@ -46,9 +46,53 @@ public class BasketController : MonoBehaviour
         }
     }
 
+    public Slot GetFreshItemSlot(int ID)
+    {
+       Slot freeSlot = null;
+
+       foreach (Slot slot in basketPanel.GetComponentsInChildren<Slot>())
+        {
+            if (slot.slotID == ID)
+            {
+                freeSlot = slot;
+                break;
+            }
+        }
+
+        return freeSlot;
+    }
+
     public void PlayerHasChosenBag()
     {
         basketPanel.SetActive(true);
+    }
+
+    public int GetFirstEmptySlot()
+    {
+        for(int i=0; i<basketSlots.Length; i++)
+        {
+            if (basketSlots[i] == null)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public int GetNumOfOccupiedSlots()
+    {
+        int occupiedSlots = 0;
+        
+        foreach(GameObject item in basketSlots)
+        {
+            if (item != null)
+            {
+                occupiedSlots++;
+            }
+        }
+
+        return occupiedSlots;
     }
 
     public void MoveInBasket(GameObject itemToMove, int slotID)

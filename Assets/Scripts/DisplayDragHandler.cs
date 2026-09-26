@@ -7,6 +7,7 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
     [SerializeField] private GameObject itemPrefab;
     [SerializeField] public GameObject basketPanel;
     private CounterDisplayController counterDisplayController;
+    private BasketController basketController;
     private GameObject newItem;
     private CanvasGroup canvasGroup;
     private ItemDragHandler itemDragHandler;
@@ -16,13 +17,24 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
     private void Start()
     {
         counterDisplayController = FindAnyObjectByType<CounterDisplayController>();
+        basketController = FindAnyObjectByType<BasketController>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        // no plastic bag yet
         if (!counterDisplayController.CanUserStartDragging())
         {
             isDragging = false;
+            Debug.Log("Choose a bag first!");
+            return;
+        }
+
+        // basket is full
+        if (basketController.GetNumOfOccupiedSlots() == 9)
+        {
+            isDragging = false;
+            Debug.Log("The basket is full, put back an item first before adding again.");
             return;
         }
         
@@ -37,6 +49,7 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
         itemDragHandler = newItem.GetComponent<ItemDragHandler>();
         itemComponent = newItem.GetComponent<Item>();
 
+        itemComponent.SetSlotID(basketController.GetFirstEmptySlot());
         itemComponent.BeingDragged();
         itemDragHandler.ItemIsFresh();
 

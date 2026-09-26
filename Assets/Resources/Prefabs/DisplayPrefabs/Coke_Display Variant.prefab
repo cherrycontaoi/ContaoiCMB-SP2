@@ -27,7 +27,7 @@ PrefabInstance:
     - target: {fileID: 3262087200872043374, guid: 5e55f5519eb1e4e95a08a39e11e71778, type: 3}
       propertyPath: basketPanel
       value: 
-      objectReference: {fileID: 316445642391207088, guid: 09aaaa77a5e46481e916577d097979aa, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4549305757844716572, guid: 5e55f5519eb1e4e95a08a39e11e71778, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

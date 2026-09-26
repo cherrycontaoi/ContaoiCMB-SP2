@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalmoliveGreen
       objectReference: {fileID: 0}
+    - target: {fileID: 8179031434132328423, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
+      propertyPath: m_TagString
+      value: Shampoo
+      objectReference: {fileID: 0}
     - target: {fileID: 8278605234870786553, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -98,8 +102,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8827064087478928757, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
       propertyPath: itemType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827064087478928757, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
+      propertyPath: matchingObject.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8827064087478928757, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
+      propertyPath: 'matchingObject.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1763294529161388004, guid: de842ea4c632d4f2dbf63edc14c98b7a, type: 3}
+    - target: {fileID: 8827064087478928757, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
+      propertyPath: 'matchingObject.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7022407994356024256, guid: 98ae8f8907f71469f85b200729a5e473, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

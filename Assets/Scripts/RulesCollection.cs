@@ -1,63 +1,73 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class RulesCollection : MonoBehaviour
 {
-
     private ScoreChecker scoreChecker;
-    private bool foundBawang, foundChickenNoodles, foundSuka, foundChips;
-    private int ilangSibuyasMatched, ilangChickenNoodlesMatched, ilangSukaMatched, ilangSodaMatched;
+    private List<int> cornerSlots = new List<int>{0,2,6,8};    // corners
 
     void Start()
     {
         scoreChecker = gameObject.GetComponent<ScoreChecker>();
     }
 
-    public void ApplyRule(GameObject item)
+    public void ApplyRule(GameObject itemToCheck)
     {
-        if (item.name == "Itlog")
+        ItemType itemType = itemToCheck.GetComponent<Item>().GetItemType();
+
+        if (itemType == ItemType.PartOfPair)
         {
-            ApplyRulesOnItlog(item);
+            ApplyAdjacencyRules(itemToCheck);
         }
 
-        if (item.name == "Sibuyas")
+        else if (itemType == ItemType.Constricted)
         {
-            ApplyRulesOnSibuyas(item);
+            ApplyIndividualRules(itemToCheck);
         }
 
-        if (item.name == "Toyo")
+        else    // nothing to do, no rule  -> Free item
         {
-            ApplyRulesOnToyo(item);
+            return;
+        }
+    }
+
+    private void ApplyAdjacencyRules(GameObject itemToCheck)
+    {
+        List<GameObject> neighbors = scoreChecker.GetNeighboringItems(itemToCheck);
+        List<string> nameOfPossiblePairs = itemToCheck.GetComponent<Item>().GetMatchingItemNames();
+        
+        foreach(GameObject neighbor in neighbors)
+        {
+            if (nameOfPossiblePairs.Contains(neighbor.name))
+            {
+                return;
+            }
         }
 
-        if (item.CompareTag("Glass Bottle"))
-        {
-            ApplyRulesOnBottle(item);
-        }
+        // if matching item not found
+        Debug.Log("The matching item for "+ itemToCheck.name +" is not found!");
+        scoreChecker.DeductScore(5);
+    }
 
-        if (item.CompareTag("Soda"))
-        {
-            ApplyRulesOnSoda(item);
-        }
-
-        if (item.CompareTag("Detergent"))
-        {
-            ApplyRulesOnDetergent(item);
-        }
-
+    private void ApplyIndividualRules(GameObject itemToCheck)
+    {
+        if (itemToCheck.name == "Itlog") ApplyItlogRules(itemToCheck);
+        else if (itemToCheck.name == "Ajinomoto") ApplyAjinomotoRules(itemToCheck);
+        else if (itemToCheck.CompareTag("Glass Bottle")) ApplyBottleRules(itemToCheck);
+        else if (itemToCheck.CompareTag("Detergent")) ApplyDetergentRules(itemToCheck);
     }
 
     public void ApplyRulesOnItemsOrder(List<GameObject> basketQueue)
     {
+
+        int itlogCount = scoreChecker.GetItlogCount();
+        int cannedCount = scoreChecker.GetCannedCount();
+
         // egg should be the last to be put sa bag
         // iterate through the array from the last index
-        if (scoreChecker.ilangItlog > 0)
+        if (itlogCount > 0)
         {
-            int endIndex = basketQueue.Count - scoreChecker.ilangItlog;
+            int endIndex = basketQueue.Count - itlogCount;
             for(int i = basketQueue.Count-1 ; i >= endIndex; i--)
             {
                 if (basketQueue[i].name != "Itlog")
@@ -69,10 +79,10 @@ public class RulesCollection : MonoBehaviour
         }
 
         // canned should be placed first
-        if (scoreChecker.ilangCanned > 0)
+        if (cannedCount > 0)
         {
 
-            for (int i=0; i<scoreChecker.ilangCanned; i++)
+            for (int i=0; i<cannedCount; i++)
             {
                 if (!basketQueue[i].CompareTag("Canned"))
                 {
@@ -83,253 +93,322 @@ public class RulesCollection : MonoBehaviour
         }
     }
 
-    // adjacent = matched
-    // get minimum of the two items to get the required amount of matches
-    public void ApplyMatchingRules()
+    private void ApplyItlogRules(GameObject itemToCheck)
     {
-        int requiredMatches, mismatches;
+        // RULE 1: Itlog cannot be placed next to Glass Bottles
+        List<GameObject> neighbors = scoreChecker.GetNeighboringItems(itemToCheck);
 
-        // for egg to noodles matching
-        requiredMatches = Mathf.Min(scoreChecker.ilangItlog, scoreChecker.ilangChickenNoodles);
-        if (ilangChickenNoodlesMatched < requiredMatches)
+        foreach (GameObject neighbor in neighbors)
         {
-            mismatches = requiredMatches - ilangChickenNoodlesMatched;
-            for (int i=0; i< mismatches; i++)
-            {
-                Debug.Log("Itlog should be placed next to chicken noodle!");
-                scoreChecker.DeductScore(5);
-            }
-        }
-
-        // for sibuyas to garlic matching
-        requiredMatches = Mathf.Min(scoreChecker.ilangBawang, scoreChecker.ilangSibuyas);
-        if (ilangSibuyasMatched < requiredMatches)
-        {
-            mismatches =  requiredMatches - ilangSibuyasMatched;
-            for (int i=0; i<mismatches; i++)
-            {
-                Debug.Log("Sibuyas should be placed next to bawang!");
-                scoreChecker.DeductScore(5);
-            }
-        }
-
-        // for toyo to suka matching
-        requiredMatches = Mathf.Min(scoreChecker.ilangToyo, scoreChecker.ilangSuka);
-        if (ilangSukaMatched < requiredMatches)
-        {
-            mismatches =  requiredMatches - ilangSukaMatched;
-            for (int i=0; i<mismatches; i++)
-            {
-                Debug.Log("Suka should be placed next to Toyo!");
-                scoreChecker.DeductScore(5);
-            }
-        }
-
-        // for soda to chips matching
-        requiredMatches = Mathf.Min(scoreChecker.ilangSoda, scoreChecker.ilangChips);
-        if (ilangSodaMatched < requiredMatches)
-        {
-            mismatches =  requiredMatches - ilangSodaMatched;
-            for (int i=0; i<mismatches; i++)
-            {
-                Debug.Log("Soda should be placed next to Chips!");
-                scoreChecker.DeductScore(5);
-            }
-        }
-    }
-
-    public void ResetItemCounters()
-    {
-        ilangSibuyasMatched = ilangChickenNoodlesMatched = ilangSodaMatched = ilangSukaMatched = 0;
-    }
-
-    // itlog cannot be put next to glass bottle (tag)
-    // itlog cannot be placed at the corners
-    // if there is also chicken noodle, itlog must be adjacent to it
-    private void ApplyRulesOnItlog(GameObject item)
-    {
-        List<GameObject> neighboringItems = scoreChecker.GetNeighboringItems(item);
-        int[] cornerSlotIDs = {0,2,6,8};
-
-
-        // check if there's a bottle in neighbors
-        foreach(GameObject neighboringItem in neighboringItems)
-        {
-            if (neighboringItem.CompareTag("Glass Bottle"))
+            if (neighbor.CompareTag("Glass Bottle"))
             {
                 Debug.Log("Itlog cannot be placed next to a glass bottle!");
-                scoreChecker.DeductScore(5);    // deduct 5
-            }
-        }
-
-        // if there's one, egg should be placed next to chicken noodle
-        // check if there's chicken noodle in neighbors (1:1 ratio)
-        if (scoreChecker.ilangChickenNoodles > 0)
-        {
-            // if (scoreChecker.ilangChickenNoodles > ilangChickenNoodlesMatched)
-            // {
-                foreach(GameObject neighboringItem in neighboringItems)
-                {
-                    if(neighboringItem.name == "LuckyMeChicken")
-                    { 
-                        Item itlog = item.GetComponent<Item>();
-                        Item chickenNoodle = neighboringItem.GetComponent<Item>();
-
-                        if (!itlog.isMatched && !chickenNoodle.isMatched)
-                        {
-                            itlog.isMatched = chickenNoodle.isMatched = true;    
-                            ilangChickenNoodlesMatched++;
-                            break;
-                        }
-                            
-                    }   
-                }
-            // }
-        }
-        
-        // check if itlog is at the corner
-        if (cornerSlotIDs.Contains(item.GetComponent<Item>().GetSlotID()))
-        {
-            Debug.Log("Itlog cannot be placed at the corner!");
-            scoreChecker.DeductScore(5);
-        }
-    }
-
-    private void ApplyRulesOnSibuyas(GameObject item)
-    {
-        // sibuyas and bawang should be next to each other (1:1)
-        if (scoreChecker.ilangBawang > 0)
-        {
-            // if (scoreChecker.ilangBawang > ilangBawangMatched)
-            // {
-                List<GameObject> neighboringItems = scoreChecker.GetNeighboringItems(item);
-                foreach(GameObject neighboringItem in neighboringItems)
-                {
-                    if(neighboringItem.name == "Bawang")
-                    {
-                        Item sibuyas = item.GetComponent<Item>();
-                        Item bawang = neighboringItem.GetComponent<Item>();
-
-                        if (!sibuyas.isMatched && !bawang.isMatched)
-                        {
-                            sibuyas.isMatched = bawang.isMatched = true;
-                            ilangSibuyasMatched++;
-                            break;
-                        }
-                    }
-                }
-            // }
-        }
-    }
-
-    private void ApplyRulesOnBottle(GameObject item)
-    {
-        List<GameObject> neighboringItems = scoreChecker.GetNeighboringItems(item);
-
-        // a glass bottle cannot be put next to another bottle
-        foreach(GameObject neighboringItem in neighboringItems)
-        {
-            if(neighboringItem.CompareTag("Glass Bottle"))
-            {
-                Debug.Log("Glass bottles cannot be put next to each other!");
                 scoreChecker.DeductScore(5);
             }
         }
 
-    }
-
-    private void ApplyRulesOnSoda(GameObject item)
-    {
-        if (scoreChecker.ilangChips > 0)
+        // RULE 2: Itlog cannot be placed in a corner slot
+        if (cornerSlots.Contains(itemToCheck.GetComponent<Item>().GetSlotID()))
         {
-            // if (scoreChecker.ilangChips > ilangChipsMatched)
-            // {
-                List<GameObject> neighboringItems = scoreChecker.GetNeighboringItems(item);
-
-                foreach(GameObject neighboringItem in neighboringItems)
-                {
-                    if (neighboringItem.CompareTag("Chips")) // (1:1)
-                    {
-
-                        Item soda = item.GetComponent<Item>();
-                        Item chips = neighboringItem.GetComponent<Item>();
-
-                        if (!soda.isMatched && !chips.isMatched)
-                        {
-                            soda.isMatched = chips.isMatched = true;
-                            ilangSodaMatched++;
-                            break;
-                        }
-                        // foundChips = true;
-                    }
-                }
-
-                // if (!foundChips)
-                // {
-                //     Debug.Log("Chips should be placed next to Soda!");
-                //     scoreChecker.DeductScore(5);
-                // }
-
-                // foundChips = false;
-
-            // }
-        }
-    }
-
-    private void ApplyRulesOnDetergent(GameObject item)
-    {
-        if (scoreChecker.mayProduceBa)
-        {
-            List<GameObject> neighboringItems = scoreChecker.GetNeighboringItems(item);
-
-            foreach(GameObject neighboringItem in neighboringItems)
-            {
-                if (neighboringItem.CompareTag("Produce"))
-                {
-                    Debug.Log("Produce items cannot be put next to Detergent!");
-                    scoreChecker.DeductScore(5);
-                }
-            }    
+            Debug.Log("Itlog cannot be placd at the corner!");
+            scoreChecker.DeductScore(5);
         }
         
     }
 
-    private void ApplyRulesOnToyo(GameObject item)
+    private void ApplyBottleRules(GameObject itemToCheck)
     {
-        if (scoreChecker.ilangSuka > 0)
+        // RULE: Glass bottle cannot be placed next to a glass bottle
+        List<GameObject> neighbors = scoreChecker.GetNeighboringItems(itemToCheck);
+
+        foreach (GameObject neighbor in neighbors)
         {
-            // if (scoreChecker.ilangSuka > ilangSukaMatched)
-            // {
-                List<GameObject> neighboringItems = scoreChecker.GetNeighboringItems(item);
-                foreach(GameObject neighboringItem in neighboringItems)
-                {
-                    if(neighboringItem.name == "Suka")
-                    {
-                        // foundSuka = true;
-
-                        Item toyo = item.GetComponent<Item>();
-                        Item suka = neighboringItem.GetComponent<Item>();
-
-                        if (!toyo.isMatched && !suka.isMatched)
-                        {
-                            toyo.isMatched = suka.isMatched = true;
-                            ilangSukaMatched++;
-                            break;
-                        }
-                    }
-                }
-
-                // if (!foundSuka)
-                // {
-                //     Debug.Log("Suka should be next to Toyo!");
-                //     scoreChecker.DeductScore(5);
-                // }
-
-                // // reset
-                // foundSuka = false;
-            // }
-            
+            if (neighbor.CompareTag("Glass Bottle"))
+            {
+                Debug.Log("A glass bottle can't be put next to another one!");
+                scoreChecker.DeductScore(5);
+            }
         }
     }
+
+    private void ApplyDetergentRules(GameObject itemToCheck)
+    {
+        // RULE: Detergent cannot be put next to produce
+        List<GameObject> neighbors = scoreChecker.GetNeighboringItems(itemToCheck);
+
+        foreach (GameObject neighbor in neighbors)
+        {
+            if (neighbor.CompareTag("Produce"))
+            {
+                Debug.Log("Detergent can't be put next to produce!");
+                scoreChecker.DeductScore(5);
+            }
+        }
+    }
+
+    private void ApplyAjinomotoRules(GameObject itemToCheck)
+    {
+        // RULE: Ajinomoto item cannot be put next to MagicSarap item
+        List<GameObject> neighbors = scoreChecker.GetNeighboringItems(itemToCheck);
+
+        foreach (GameObject neighbor in neighbors)
+        {
+            if (neighbor.name == "MagicSarap")
+            {
+                Debug.Log("Ajinomoto can't be put next to Magic Sarap");
+                scoreChecker.DeductScore(5);
+            }
+        }
+    }
+
+
+    // // adjacent = matched
+    // // get minimum of the two items to get the required amount of matches
+    // public void ApplyMatchingRules()
+    // {
+    //     int requiredMatches, mismatches;
+
+    //     // for egg to noodles matching
+    //     requiredMatches = Mathf.Min(scoreChecker.ilangItlog, scoreChecker.ilangChickenNoodles);
+    //     if (ilangChickenNoodlesMatched < requiredMatches)
+    //     {
+    //         mismatches = requiredMatches - ilangChickenNoodlesMatched;
+    //         for (int i=0; i< mismatches; i++)
+    //         {
+    //             Debug.Log("Itlog should be placed next to chicken noodle!");
+    //             scoreChecker.DeductScore(5);
+    //         }
+    //     }
+
+    //     // for sibuyas to garlic matching
+    //     requiredMatches = Mathf.Min(scoreChecker.ilangBawang, scoreChecker.ilangSibuyas);
+    //     if (ilangSibuyasMatched < requiredMatches)
+    //     {
+    //         mismatches =  requiredMatches - ilangSibuyasMatched;
+    //         for (int i=0; i<mismatches; i++)
+    //         {
+    //             Debug.Log("Sibuyas should be placed next to bawang!");
+    //             scoreChecker.DeductScore(5);
+    //         }
+    //     }
+
+    //     // for toyo to suka matching
+    //     requiredMatches = Mathf.Min(scoreChecker.ilangToyo, scoreChecker.ilangSuka);
+    //     if (ilangSukaMatched < requiredMatches)
+    //     {
+    //         mismatches =  requiredMatches - ilangSukaMatched;
+    //         for (int i=0; i<mismatches; i++)
+    //         {
+    //             Debug.Log("Suka should be placed next to Toyo!");
+    //             scoreChecker.DeductScore(5);
+    //         }
+    //     }
+
+    //     // for soda to chips matching
+    //     requiredMatches = Mathf.Min(scoreChecker.ilangSoda, scoreChecker.ilangChips);
+    //     if (ilangSodaMatched < requiredMatches)
+    //     {
+    //         mismatches =  requiredMatches - ilangSodaMatched;
+    //         for (int i=0; i<mismatches; i++)
+    //         {
+    //             Debug.Log("Soda should be placed next to Chips!");
+    //             scoreChecker.DeductScore(5);
+    //         }
+    //     }
+    // }
+
+    // public void ResetItemCounters()
+    // {
+    //     ilangSibuyasMatched = ilangChickenNoodlesMatched = ilangSodaMatched = ilangSukaMatched = 0;
+    // }
+
+    // // itlog cannot be put next to glass bottle (tag)
+    // // itlog cannot be placed at the corners
+    // // if there is also chicken noodle, itlog must be adjacent to it
+    // private void ApplyRulesOnItlog(GameObject item)
+    // {
+    //     List<GameObject> neighboringItems = scoreChecker.GetNeighboringItems(item);
+    //     int[] cornerSlotIDs = {0,2,6,8};
+
+
+    //     // check if there's a bottle in neighbors
+    //     foreach(GameObject neighboringItem in neighboringItems)
+    //     {
+    //         if (neighboringItem.CompareTag("Glass Bottle"))
+    //         {
+    //             Debug.Log("Itlog cannot be placed next to a glass bottle!");
+    //             scoreChecker.DeductScore(5);    // deduct 5
+    //         }
+    //     }
+
+    //     // if there's one, egg should be placed next to chicken noodle
+    //     // check if there's chicken noodle in neighbors (1:1 ratio)
+    //     if (scoreChecker.ilangChickenNoodles > 0)
+    //     {
+    //         // if (scoreChecker.ilangChickenNoodles > ilangChickenNoodlesMatched)
+    //         // {
+    //             foreach(GameObject neighboringItem in neighboringItems)
+    //             {
+    //                 if(neighboringItem.name == "LuckyMeChicken")
+    //                 { 
+    //                     Item itlog = item.GetComponent<Item>();
+    //                     Item chickenNoodle = neighboringItem.GetComponent<Item>();
+
+    //                     if (!itlog.isMatched && !chickenNoodle.isMatched)
+    //                     {
+    //                         itlog.isMatched = chickenNoodle.isMatched = true;    
+    //                         ilangChickenNoodlesMatched++;
+    //                         break;
+    //                     }
+                            
+    //                 }   
+    //             }
+    //         // }
+    //     }
+        
+    //     // check if itlog is at the corner
+    //     if (cornerSlotIDs.Contains(item.GetComponent<Item>().GetSlotID()))
+    //     {
+    //         Debug.Log("Itlog cannot be placed at the corner!");
+    //         scoreChecker.DeductScore(5);
+    //     }
+    // }
+
+    // private void ApplyRulesOnSibuyas(GameObject item)
+    // {
+    //     // sibuyas and bawang should be next to each other (1:1)
+    //     if (scoreChecker.ilangBawang > 0)
+    //     {
+    //         // if (scoreChecker.ilangBawang > ilangBawangMatched)
+    //         // {
+    //             List<GameObject> neighboringItems = scoreChecker.GetNeighboringItems(item);
+    //             foreach(GameObject neighboringItem in neighboringItems)
+    //             {
+    //                 if(neighboringItem.name == "Bawang")
+    //                 {
+    //                     Item sibuyas = item.GetComponent<Item>();
+    //                     Item bawang = neighboringItem.GetComponent<Item>();
+
+    //                     if (!sibuyas.isMatched && !bawang.isMatched)
+    //                     {
+    //                         sibuyas.isMatched = bawang.isMatched = true;
+    //                         ilangSibuyasMatched++;
+    //                         break;
+    //                     }
+    //                 }
+    //             }
+    //         // }
+    //     }
+    // }
+
+    // private void ApplyRulesOnBottle(GameObject item)
+    // {
+    //     List<GameObject> neighboringItems = scoreChecker.GetNeighboringItems(item);
+
+    //     // a glass bottle cannot be put next to another bottle
+    //     foreach(GameObject neighboringItem in neighboringItems)
+    //     {
+    //         if(neighboringItem.CompareTag("Glass Bottle"))
+    //         {
+    //             Debug.Log("Glass bottles cannot be put next to each other!");
+    //             scoreChecker.DeductScore(5);
+    //         }
+    //     }
+
+    // }
+
+    // private void ApplyRulesOnSoda(GameObject item)
+    // {
+    //     if (scoreChecker.ilangChips > 0)
+    //     {
+    //         // if (scoreChecker.ilangChips > ilangChipsMatched)
+    //         // {
+    //             List<GameObject> neighboringItems = scoreChecker.GetNeighboringItems(item);
+
+    //             foreach(GameObject neighboringItem in neighboringItems)
+    //             {
+    //                 if (neighboringItem.CompareTag("Chips")) // (1:1)
+    //                 {
+
+    //                     Item soda = item.GetComponent<Item>();
+    //                     Item chips = neighboringItem.GetComponent<Item>();
+
+    //                     if (!soda.isMatched && !chips.isMatched)
+    //                     {
+    //                         soda.isMatched = chips.isMatched = true;
+    //                         ilangSodaMatched++;
+    //                         break;
+    //                     }
+    //                     // foundChips = true;
+    //                 }
+    //             }
+
+    //             // if (!foundChips)
+    //             // {
+    //             //     Debug.Log("Chips should be placed next to Soda!");
+    //             //     scoreChecker.DeductScore(5);
+    //             // }
+
+    //             // foundChips = false;
+
+    //         // }
+    //     }
+    // }
+
+    // private void ApplyRulesOnDetergent(GameObject item)
+    // {
+    //     if (scoreChecker.mayProduceBa)
+    //     {
+    //         List<GameObject> neighboringItems = scoreChecker.GetNeighboringItems(item);
+
+    //         foreach(GameObject neighboringItem in neighboringItems)
+    //         {
+    //             if (neighboringItem.CompareTag("Produce"))
+    //             {
+    //                 Debug.Log("Produce items cannot be put next to Detergent!");
+    //                 scoreChecker.DeductScore(5);
+    //             }
+    //         }    
+    //     }
+        
+    // }
+
+    // private void ApplyRulesOnToyo(GameObject item)
+    // {
+    //     if (scoreChecker.ilangSuka > 0)
+    //     {
+    //         // if (scoreChecker.ilangSuka > ilangSukaMatched)
+    //         // {
+    //             List<GameObject> neighboringItems = scoreChecker.GetNeighboringItems(item);
+    //             foreach(GameObject neighboringItem in neighboringItems)
+    //             {
+    //                 if(neighboringItem.name == "Suka")
+    //                 {
+    //                     // foundSuka = true;
+
+    //                     Item toyo = item.GetComponent<Item>();
+    //                     Item suka = neighboringItem.GetComponent<Item>();
+
+    //                     if (!toyo.isMatched && !suka.isMatched)
+    //                     {
+    //                         toyo.isMatched = suka.isMatched = true;
+    //                         ilangSukaMatched++;
+    //                         break;
+    //                     }
+    //                 }
+    //             }
+
+    //             // if (!foundSuka)
+    //             // {
+    //             //     Debug.Log("Suka should be next to Toyo!");
+    //             //     scoreChecker.DeductScore(5);
+    //             // }
+
+    //             // // reset
+    //             // foundSuka = false;
+    //         // }
+            
+    //     }
+    // }
     
 }

@@ -8,110 +8,52 @@ public class ScoreChecker : MonoBehaviour
     private GameObject[] placedItems;
     private List<GameObject> actualItemsOnly = new List<GameObject>();
     // private 
-    [SerializeField] private string[] TagsWithConstraints;          // for rules e.g. 'Itlog'
-
     [SerializeField] private int playerScore = 100;
-    public bool mayBawangBa, mayChickenNoodlesBa, maySukaBa, mayChipsBa, mayProduceBa;
-    public int ilangCanned, ilangItlog, ilangChickenNoodles, ilangBawang, ilangSibuyas;
-    public int ilangChips, ilangSoda, ilangSuka, ilangToyo;
     
     void Start()
     {
         basketController = gameObject.GetComponent<BasketController>();
         rulesCollection = gameObject.GetComponent<RulesCollection>();
-    }
-
-    private void MeronBa()
-    {
         actualItemsOnly = basketController.GetActualItemsInBasket();
-
-        foreach(GameObject item in actualItemsOnly)
-        {
-            if (item.name == "Bawang")
-            {
-                mayBawangBa = true;
-                ilangBawang++;
-            }
-
-            if (item.name == "Sibuyas")
-            {
-                ilangSibuyas++;
-            }
-
-            if (item.name == "Itlog")
-            {
-                ilangItlog++;
-            }
-
-            if (item.name == "LuckyMeChicken")
-            {
-                mayChickenNoodlesBa = true;
-                ilangChickenNoodles++;
-            }
-
-            if (item.name == "Suka")
-            {
-                maySukaBa = true;
-                ilangSuka++;
-            }
-
-            if (item.name == "Toyo")
-            {
-                ilangToyo++;
-            }
-            
-            if (item.CompareTag("Chips"))
-            {
-                mayChipsBa = true;
-                ilangChips++;
-            }
-
-            if (item.CompareTag("Soda"))
-            {
-                ilangSoda++;
-            }
-
-            if (item.CompareTag("Produce"))
-            {
-                mayProduceBa = true;
-            }
-
-            if (item.CompareTag("Canned"))
-            {
-                ilangCanned++;
-            }
-
-        }
     }
 
     public void CheckItems()
     {
         placedItems = basketController.GetFullBasket();     // need full basket for checking neighbors
 
-        MeronBa();
+        // foreach (GameObject item in placedItems)
+        // {
+        //     if (item!= null)
+        //     {
+        //         rulesCollection.ApplyRule(item);
+        //     }
+        // }
 
-        foreach (GameObject item in placedItems)
+        foreach(GameObject item in placedItems)
         {
-            if (item!= null)
+            if (item != null)
             {
                 rulesCollection.ApplyRule(item);
             }
         }
 
         rulesCollection.ApplyRulesOnItemsOrder(actualItemsOnly);
-        rulesCollection.ApplyMatchingRules();
 
 
-        // foreach (GameObject item in placedItems)
-        // {
-        //     Debug.Log("The Neighboring Items of "+ item.name + "are: ");
-        //     GetNeighboringItems(item);
-        // }
+        // rulesCollection.ApplyRulesOnItemsOrder(actualItemsOnly);
+        // rulesCollection.ApplyMatchingRules();
+
+
+        // // foreach (GameObject item in placedItems)
+        // // {
+        // //     Debug.Log("The Neighboring Items of "+ item.name + "are: ");
+        // //     GetNeighboringItems(item);
+        // // }
         
-        // reset
-        rulesCollection.ResetItemCounters();
-        mayBawangBa = mayChickenNoodlesBa = maySukaBa = mayChipsBa = mayProduceBa = false;
-        ilangItlog = ilangCanned = ilangChickenNoodles = ilangBawang = ilangSibuyas = ilangSuka = ilangToyo = ilangChips = ilangSoda = 0;
+        // // reset
+        // rulesCollection.ResetItemCounters();
+        // mayBawangBa = mayChickenNoodlesBa = maySukaBa = mayChipsBa = mayProduceBa = false;
+        // ilangItlog = ilangCanned = ilangChickenNoodles = ilangBawang = ilangSibuyas = ilangSuka = ilangToyo = ilangChips = ilangSoda = 0;
 
     }
 
@@ -150,6 +92,37 @@ public class ScoreChecker : MonoBehaviour
         // {
         //     Debug.Log(neighboringItem.name);
         // }
+    }
+
+    public int GetItlogCount()
+    {
+        int itlogCount = 0;
+
+        foreach (GameObject item in actualItemsOnly)
+        {
+            if (item.name == "Itlog")
+            {
+                itlogCount++;
+            }
+        }
+
+        return itlogCount;
+    }
+
+    public int GetCannedCount()
+    {
+        int cannedCount = 0;
+
+        foreach (GameObject item in actualItemsOnly)
+        {
+            if (item.CompareTag("Canned"))
+            {
+                cannedCount++;
+            }
+        }
+
+        return cannedCount;
+
     }
 
     public void DeductScore(int deduction)
