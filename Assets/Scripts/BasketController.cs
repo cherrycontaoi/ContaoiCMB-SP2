@@ -46,7 +46,7 @@ public class BasketController : MonoBehaviour
         }
     }
 
-    public Slot GetFreshItemSlot(int ID)
+    public Slot GetSlotWithID(int ID)
     {
        Slot freeSlot = null;
 
@@ -67,7 +67,7 @@ public class BasketController : MonoBehaviour
         basketPanel.SetActive(true);
     }
 
-    public int GetFirstEmptySlot()
+    public int GetFirstEmptySlotID()
     {
         for(int i=0; i<basketSlots.Length; i++)
         {
@@ -95,6 +95,13 @@ public class BasketController : MonoBehaviour
         return occupiedSlots;
     }
 
+    public void SwapInBasket(int slot1, int slot2)
+    {
+        GameObject temp = basketSlots[slot1];
+
+        basketSlots[slot1] = basketSlots[slot2];
+        basketSlots[slot2] = temp;
+    }
     public void MoveInBasket(GameObject itemToMove, int slotID)
     {
         basketSlots[slotID] = itemToMove;

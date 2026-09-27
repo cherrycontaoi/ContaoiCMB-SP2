@@ -51,12 +51,17 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         // item is fresh from display (no parent slot)
         if (freshItem)
         {
-            int itemSlotID = gameObject.GetComponent<Item>().GetSlotID();
+            // int itemSlotID = gameObject.GetComponent<Item>().GetSlotID();
             
-            dropSlot = basketController.GetFreshItemSlot(itemSlotID);
+            // dropSlot = basketController.GetFreshItemSlot(itemSlotID);
 
             if (dropSlot != null)
             {
+                if (dropSlot.currentItem != null)
+                {
+                    int itemSlotID = basketController.GetFirstEmptySlotID();   
+                    dropSlot = basketController.GetSlotWithID(itemSlotID);  
+                }
                 transform.SetParent(dropSlot.transform);
                 dropSlot.currentItem = gameObject;
                 basketController.AddToBasket(gameObject, dropSlot.slotID);
@@ -104,31 +109,33 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 if(dropSlot.currentItem != null)
                 {
                     dropSlot.currentItem.transform.SetParent(originalSlot.transform);
-                    originalSlot.currentItem = dropSlot.currentItem;
                     dropSlot.currentItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
-                    basketController.MoveInBasket(gameObject, dropSlot.slotID);
+                    originalSlot.currentItem = dropSlot.currentItem;
+                    dropSlot.currentItem = gameObject;
+
+                    basketController.SwapInBasket(originalSlot.slotID, dropSlot.slotID);
+                    // basketController.MoveInBasket(gameObject, dropSlot.slotID);
                 }
                 else
                 {
                     originalSlot.currentItem = null;
-                    
+                    dropSlot.currentItem = gameObject;
+
                     basketController.EmptySlot(originalSlot.slotID);    // remove from items
+                    basketController.MoveInBasket(gameObject, dropSlot.slotID);
                 }
 
                 // move item to drop slot
                 transform.SetParent(dropSlot.transform);
-                dropSlot.currentItem = gameObject;
-
-                basketController.MoveInBasket(gameObject, dropSlot.slotID);
             }
             else
             {
                 // no slot under drop point
                 transform.SetParent(originalParent);    // snap back to orig parent
             }
-            itemComponent.PlacedInBasket();
             GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            itemComponent.PlacedInBasket();
         }
         
         itemComponent.NotBeingDragged();

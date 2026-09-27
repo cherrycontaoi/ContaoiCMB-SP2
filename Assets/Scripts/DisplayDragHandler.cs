@@ -49,7 +49,7 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
         itemDragHandler = newItem.GetComponent<ItemDragHandler>();
         itemComponent = newItem.GetComponent<Item>();
 
-        itemComponent.SetSlotID(basketController.GetFirstEmptySlot());
+
         itemComponent.BeingDragged();
         itemDragHandler.ItemIsFresh();
 
