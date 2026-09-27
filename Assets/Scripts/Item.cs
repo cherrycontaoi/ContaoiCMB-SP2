@@ -14,6 +14,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private float holdDownStartTime;
     private float holdDownTime;
     [SerializeField] private int slotID;
+    [SerializeField] private bool isGlassBottle;
     
 
     public bool isMatched;
@@ -92,6 +93,11 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         return itemType;
     }
 
+    public bool IsItGlassBottle()
+    {
+        return isGlassBottle;
+    }
+
     public void AddMatchingObject(GameObject matchingObject)
     {
         matchingObjects.Add(matchingObject);
@@ -107,6 +113,11 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
 
         return matchingItemNames;
+    }
+
+    public void ResetMatchingObjects()
+    {
+        matchingObjects.Clear();
     }
 
 

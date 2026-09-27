@@ -6,10 +6,9 @@ using UnityEngine;
 public class Order : MonoBehaviour
 {
     [SerializeField] private GameObject[] itemsToBuy;
-    [SerializeField] private List<GameObject> sortedItemsToBuy = new List<GameObject>();
     private GameObject[] possibleSolution = new GameObject[9];      // nine slots
     
-    private List<int> cannotPlaceItlog = new List<int>{0,2,6,8};    // corners
+    private List<int> cornerSlotsID = new List<int>{0,2,6,8};    // cant place itlog here
     // private int numOfItems, placedItems, index,       // max num of items is 9
     //             numOfItlog, numOfBawang, numOfSoda, numOfToyo,
     //             numOfChickenNoodles, numOfSibuyas, numOfChips, numOfSuka,
@@ -17,7 +16,7 @@ public class Order : MonoBehaviour
     //             ilangChickenNoodlesMatched, ilangSibuyasMatched, ilangSukaMatched, ilangChipsMatched;
 
     private int itlogLimit = 5;
-    // private bool isSolvable;
+    private bool isSolvable;
     // private GameObject matchedItem;
 
     [SerializeField] private Dictionary<int, bool> pairTracker = new Dictionary<int, bool>(); // tracks which pairs are active
@@ -26,7 +25,9 @@ public class Order : MonoBehaviour
     private List<GameObject> constrictedItems = new List<GameObject>(); // individual items w/ rules
     private List<GameObject> freeItems = new List<GameObject>();        // no rules, can be placed anywhere
     private List<GameObject> listToBuy = new List<GameObject>();
-    private int totalItemsToBuy, numOfPairs, numOfConstrictedItems, numOfFreeItems, numOfItlog;
+    private int totalItemsToBuy, placedItems, index,
+                numOfPairs, numOfConstrictedItems, numOfFreeItems, numOfItlog;
+
 
     private void Start()
     {
@@ -84,30 +85,6 @@ public class Order : MonoBehaviour
     //     foreach(var item in paninda)
     //     {
     //         Debug.Log(item.name);
-    //     }
-    // }
-
-    // private void CreateOrder()
-    // {
-    //     for(int i=0; i<numOfItems; i++)
-    //     {
-    //         int index = Random.Range(0, paninda.Length);
-    //         if (paninda[index].name == "Itlog")
-    //         {
-    //             if (numOfItlog < itlogLimit)   // egg has a limit of 5
-    //             {
-    //                 itemsToBuy[i] = paninda[index];     // randomize ano bibilhin
-    //                 numOfItlog++;
-    //             }
-    //             else
-    //             {
-    //                 i--;        // go back to the slot since egg wasn't added
-    //             }
-    //         }
-    //         else
-    //         {
-    //             itemsToBuy[i] = paninda[index];     // randomize ano bibilhin
-    //         }
     //     }
     // }
 
@@ -205,12 +182,14 @@ public class Order : MonoBehaviour
     // this means both items in the pair will only appear once.
     private GameObject[] GetPair(int pairID)
     {
+        // pair 1 -> ItemType.PartOfPair - will be checked for adjacency rules
+        // pair 0 -> ItemType.Free
         GameObject[] pair = new GameObject[2];
         switch (pairID)
         {
             case 0:
-                pair[0] = LookForItemWithName("Sibuyas");
-                pair[1] = LookForItemWithName("Bawang");
+                pair[0] = LookForItemWithName("Bawang");
+                pair[1] = LookForItemWithName("Sibuyas");
 
                 freeItems.Remove(freeItems.Find(item => item.name == "Bawang"));
                 break;
@@ -228,8 +207,8 @@ public class Order : MonoBehaviour
                 break;
 
             case 3:
-                pair[0] = LookForItemWithName("Ketchup");
-                pair[1] = LookForItemWithName("MeatLoaf");
+                pair[0] = LookForItemWithName("MeatLoaf");
+                pair[1] = LookForItemWithName("Ketchup");
                 freeItems.Remove(freeItems.Find(item => item.name == "MeatLoaf"));
                 break;
 
@@ -238,15 +217,15 @@ public class Order : MonoBehaviour
                 pair[1] = LookForItemWithTag("Alcohol");
 
                 // add the specific chips item as matching object
-                pair[1].GetComponent<Item>().AddMatchingObject(pair[0]);
+        
                 freeItems.RemoveAll(item => item.CompareTag("Chips"));
                 break;
             
             case 5:
-                pair[0] = LookForItemWithTag("Shampoo");
-                pair[1] = LookForItemWithTag("Conditioner");
+                pair[0] = LookForItemWithTag("Conditioner");
+                pair[1] = LookForItemWithTag("Shampoo");
 
-                pair[1].GetComponent<Item>().AddMatchingObject(pair[0]);
+                
                 freeItems.RemoveAll(item => item.CompareTag("Conditioner"));
                 break;
 
@@ -254,14 +233,35 @@ public class Order : MonoBehaviour
                 pair[0] = LookForItemWithTag("Biscuit");
                 pair[1] = LookForItemWithTag("Soda");
 
-                pair[1].GetComponent<Item>().AddMatchingObject(pair[0]);
+                
                 freeItems.RemoveAll(item => item.CompareTag("Biscuit"));
                 break;
 
         }
 
+        GameObject actualItemPair0 = GetActualItemWithName(pair[0].name);
+        GameObject actualItemPair1 = GetActualItemWithName(pair[1].name);
+
+        // add to actual prefab instance
+        actualItemPair1.GetComponent<Item>().AddMatchingObject(actualItemPair0);
+
+        // pair[1].GetComponent<Item>().AddMatchingObject(pair[0]);
+
         pairTracker[pairID] = true;
         return pair;
+    }
+
+    private GameObject GetActualItemWithName(string itemName)   // actual prefab
+    {
+        GameObject actualItem = null;
+        foreach(GameObject item in paninda)
+        {
+            if (item.name == itemName)
+            {
+                actualItem = item;
+            }
+        }
+        return actualItem;
     }
 
     private GameObject LookForItemWithName(string itemName)
@@ -293,64 +293,70 @@ public class Order : MonoBehaviour
             }
         }
 
-        index = Random.Range(0, itemsWithTag.Count-1);
-        foundItem = itemsWithTag[index];
+        index = Random.Range(0, itemsWithTag.Count);
+        foundItem = Instantiate(itemsWithTag[index]);
+        foundItem.name = foundItem.name.Replace("(Clone)", "");
 
         return foundItem;
 
     }
 
-    // // backtrack backtrack backtrack backtrack
-    // private void VerifyOrder()
-    // {
-    //     // base case - all items have been placed
-    //     if (placedItems == itemsToBuy.Length)       // base case
-    //     {
-    //         isSolvable = true;
-    //         return;
-    //     }
-    //     // --------
+    // backtracking algo
+    // checks if the generated order is solvable
+    private void VerifyOrder()
+    {
+        // base case - all items have been placed
+        if (placedItems == itemsToBuy.Length)
+        {
+            isSolvable = true;
+            return;
+        }
 
-    //     GameObject itemToPlace = sortedItemsToBuy[index];
+        GameObject itemToPlace = itemsToBuy[index];
 
-    //     for (int i=0; i<9; i++)     // try to place within the nine slots
-    //     {
-    //         matchedItem = null;
-    //         if(Placeable(itemToPlace, i))
-    //         {
-    //             possibleSolution[i] = itemToPlace;
-    //             placedItems++;
-    //             index++;
+        for (int i=0; i<possibleSolution.Length; i++)
+        {
+            if (Placeable(itemToPlace, i))
+            {
+                possibleSolution[i] = itemToPlace;
+                placedItems++;
+                index++;
 
-    //             GameObject currentMatchedItem = matchedItem;
+                VerifyOrder();
 
-    //             VerifyOrder();  // move on
+                if (isSolvable)
+                {
+                    return;
+                }
 
-    //             if (isSolvable)
-    //             {
-    //                 return;
-    //             }
-                
-    //             // if the current slot doesn't work for the item, backtrack
-    //             index--;
-    //             placedItems--;
-    //             possibleSolution[i] = null;
-                
-    //             if (currentMatchedItem != null) 
-    //             {
-    //                 currentMatchedItem.GetComponent<Item>().Unmatch();
-                    
-    //                 if (itemToPlace.name == "LuckyMeChicken") ilangChickenNoodlesMatched--;
-    //                 else if (itemToPlace.name == "Sibuyas") ilangSibuyasMatched--;
-    //                 else if (itemToPlace.name == "Suka") ilangSukaMatched--;
-    //                 else if (itemToPlace.CompareTag("Chips")) ilangChipsMatched--;
-    //             }
+                // go back if not item is not placeable in slot
+                index--;
+                placedItems--;
+                possibleSolution[i] = null;
+            }
+        }
+    }
 
+    // check if item can be placed in a slot
+    private bool Placeable(GameObject itemToPlace, int slotIndex)
+    {
+        if (possibleSolution[slotIndex] != null) return false;  // slot is already occupied
 
-    //         }
-    //     }
+        // Part of pair 
+        if (itemToPlace.GetComponent<Item>().GetItemType() == ItemType.PartOfPair)
+        {
+            
+        }
+        return false;
+    }
 
-    // }
+    public void ResetItemMatchings()
+    {
+        foreach(GameObject item in paninda)
+        {
+            item.GetComponent<Item>().ResetMatchingObjects();
+        }
+    }
 
     // // check if item can be placed in a slot
     // private bool Placeable(GameObject itemToPlace, int slotIndex)   
@@ -460,6 +466,58 @@ public class Order : MonoBehaviour
     //     {
     //         return true;
     //     }
+    // }
+
+        // // backtrack backtrack backtrack backtrack
+    // private void VerifyOrder()
+    // {
+    //     // base case - all items have been placed
+    //     if (placedItems == itemsToBuy.Length)       // base case
+    //     {
+    //         isSolvable = true;
+    //         return;
+    //     }
+    //     // --------
+
+    //     GameObject itemToPlace = sortedItemsToBuy[index];
+
+    //     for (int i=0; i<9; i++)     // try to place within the nine slots
+    //     {
+    //         matchedItem = null;
+    //         if(Placeable(itemToPlace, i))
+    //         {
+    //             possibleSolution[i] = itemToPlace;
+    //             placedItems++;
+    //             index++;
+
+    //             GameObject currentMatchedItem = matchedItem;
+
+    //             VerifyOrder();  // move on
+
+    //             if (isSolvable)
+    //             {
+    //                 return;
+    //             }
+                
+    //             // if the current slot doesn't work for the item, backtrack
+    //             index--;
+    //             placedItems--;
+    //             possibleSolution[i] = null;
+                
+    //             if (currentMatchedItem != null) 
+    //             {
+    //                 currentMatchedItem.GetComponent<Item>().Unmatch();
+                    
+    //                 if (itemToPlace.name == "LuckyMeChicken") ilangChickenNoodlesMatched--;
+    //                 else if (itemToPlace.name == "Sibuyas") ilangSibuyasMatched--;
+    //                 else if (itemToPlace.name == "Suka") ilangSukaMatched--;
+    //                 else if (itemToPlace.CompareTag("Chips")) ilangChipsMatched--;
+    //             }
+
+
+    //         }
+    //     }
+
     // }
 
     // // checks if an item's pair is in the current slot's neighbors

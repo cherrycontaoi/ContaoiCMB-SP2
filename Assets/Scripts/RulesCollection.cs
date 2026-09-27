@@ -17,7 +17,7 @@ public class RulesCollection : MonoBehaviour
 
         if (itemType == ItemType.PartOfPair)
         {
-            ApplyAdjacencyRules(itemToCheck);
+            ApplyAdjacencyRules(itemToCheck);       // glass bottle rules not being applied to part of pair yet
         }
 
         else if (itemType == ItemType.Constricted)
@@ -53,7 +53,7 @@ public class RulesCollection : MonoBehaviour
     {
         if (itemToCheck.name == "Itlog") ApplyItlogRules(itemToCheck);
         else if (itemToCheck.name == "Ajinomoto") ApplyAjinomotoRules(itemToCheck);
-        else if (itemToCheck.CompareTag("Glass Bottle")) ApplyBottleRules(itemToCheck);
+        else if (itemToCheck.GetComponent<Item>().IsItGlassBottle()) ApplyBottleRules(itemToCheck);
         else if (itemToCheck.CompareTag("Detergent")) ApplyDetergentRules(itemToCheck);
     }
 
@@ -100,7 +100,7 @@ public class RulesCollection : MonoBehaviour
 
         foreach (GameObject neighbor in neighbors)
         {
-            if (neighbor.CompareTag("Glass Bottle"))
+            if (neighbor.GetComponent<Item>().IsItGlassBottle())
             {
                 Debug.Log("Itlog cannot be placed next to a glass bottle!");
                 scoreChecker.DeductScore(5);
@@ -123,7 +123,7 @@ public class RulesCollection : MonoBehaviour
 
         foreach (GameObject neighbor in neighbors)
         {
-            if (neighbor.CompareTag("Glass Bottle"))
+            if (neighbor.GetComponent<Item>().IsItGlassBottle())
             {
                 Debug.Log("A glass bottle can't be put next to another one!");
                 scoreChecker.DeductScore(5);

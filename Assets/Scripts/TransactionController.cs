@@ -111,11 +111,14 @@ public class TransactionController : MonoBehaviour
         //     customer.ChangeCustomerState(CustomerState.NeutralExpression);
         // }
         
+        // customer.GetComponent<Order>().ResetItemMatchings();
+        customer.order.ResetItemMatchings();
         CompleteTransaction();
     }
 
     private void CompleteTransaction()
     {
+
         int playerScore = scoreChecker.GetPlayerScore();
         Debug.Log("The player's score for this level: " + playerScore);
         if (playerScore < 100)
