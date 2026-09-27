@@ -8,7 +8,7 @@ public class Order : MonoBehaviour
     
     private List<int> cornerSlots = new List<int>{0,2,6,8};    // cant place itlog here
 
-    private int itlogLimit = 5;
+    private int itlogLimit;
     private bool isSolvable;
     private Difficulty difficulty;
     private PlayerData playerData;
@@ -102,6 +102,7 @@ public class Order : MonoBehaviour
                 numOfPairs = 1;
                 numOfConstrictedItems = Random.Range(1,3);
                 numOfFreeItems = Random.Range(1,6);
+                itlogLimit = 2;
                 break;
 
             // 2 pairs, 2-3 constricted, 1-2 free
@@ -109,6 +110,7 @@ public class Order : MonoBehaviour
                 numOfPairs = 2;
                 numOfConstrictedItems = Random.Range(2,4);
                 numOfFreeItems = Random.Range(1,3);
+                itlogLimit = 3;
                 break;
 
             // 2 pairs, 3-4 constricted, 1-2 free
@@ -116,6 +118,7 @@ public class Order : MonoBehaviour
                 numOfPairs = 2;
                 numOfConstrictedItems = Random.Range(3,5);
                 numOfFreeItems = Random.Range(1,3);
+                itlogLimit = 3;
                 break;
         }
     }
@@ -434,6 +437,7 @@ public class Order : MonoBehaviour
     private void ResetVars()
     {
         // clear all lists
+        numOfItlog = 0;
         itemsInPair.Clear();
         constrictedItems.Clear();
         freeItems.Clear();
