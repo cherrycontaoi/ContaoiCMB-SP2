@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    [SerializeField] private PuzzleLevel playerPuzzleLevels;     // varies
+    [SerializeField] private Difficulty playerPuzzleLevels;     // varies
     [SerializeField] private int averageScore;                   // = totalScore/transactionsCompleted, determines puzzle level
     [SerializeField] private int totalScore;
     [SerializeField] private int transactionsCompleted;          // ilang customers nacomplete
@@ -11,22 +11,22 @@ public class PlayerData : MonoBehaviour
     
     void Start()
     {
-        playerPuzzleLevels = PuzzleLevel.Easy;
+        playerPuzzleLevels = Difficulty.Easy;
     }
 
     private void UpdatePlayerLevel()
     {
         if (averageScore <= 50)
         {
-            playerPuzzleLevels = PuzzleLevel.Easy;
+            playerPuzzleLevels = Difficulty.Easy;
         }
         else if (averageScore > 50 && averageScore <= 75)
         {
-            playerPuzzleLevels = PuzzleLevel.Medium;
+            playerPuzzleLevels = Difficulty.Medium;
         }
         else
         {
-            playerPuzzleLevels = PuzzleLevel.Hard;
+            playerPuzzleLevels = Difficulty.Hard;
         }
     }
 
@@ -44,14 +44,14 @@ public class PlayerData : MonoBehaviour
         UpdatePlayerLevel();
     }
 
-    public PuzzleLevel GetPlayerPuzzleLevel()
+    public Difficulty GetPlayerPuzzleLevel()
     {
         return playerPuzzleLevels;
     }
 
 }
 
-public enum PuzzleLevel
+public enum Difficulty
 {
     Easy,
     Medium,

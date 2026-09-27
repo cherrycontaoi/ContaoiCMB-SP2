@@ -10,7 +10,7 @@ public class Order : MonoBehaviour
 
     private int itlogLimit = 5;
     private bool isSolvable;
-    private PuzzleLevel puzzleLevel;
+    private Difficulty difficulty;
     private PlayerData playerData;
 
     // private int numOfGenerations;
@@ -93,26 +93,26 @@ public class Order : MonoBehaviour
         }
     }
 
-    private void GetNums(PuzzleLevel puzzleLevel)
+    private void GetNums(Difficulty difficulty)
     {
-        switch (puzzleLevel)
+        switch (difficulty)
         {
             // 1 pair, 1-2 constricted, 1-5 free
-            case PuzzleLevel.Easy:
+            case Difficulty.Easy:
                 numOfPairs = 1;
                 numOfConstrictedItems = Random.Range(1,3);
                 numOfFreeItems = Random.Range(1,6);
                 break;
 
             // 2 pairs, 2-3 constricted, 1-2 free
-            case PuzzleLevel.Medium:
+            case Difficulty.Medium:
                 numOfPairs = 2;
                 numOfConstrictedItems = Random.Range(2,4);
                 numOfFreeItems = Random.Range(1,3);
                 break;
 
             // 2 pairs, 3-4 constricted, 1-2 free
-            case PuzzleLevel.Hard:
+            case Difficulty.Hard:
                 numOfPairs = 2;
                 numOfConstrictedItems = Random.Range(3,5);
                 numOfFreeItems = Random.Range(1,3);
@@ -122,8 +122,8 @@ public class Order : MonoBehaviour
 
     private void CreateOrder()
     {
-        puzzleLevel = playerData.GetPlayerPuzzleLevel();
-        GetNums(puzzleLevel);
+        difficulty = playerData.GetPlayerPuzzleLevel();
+        GetNums(difficulty);
         // numOfPairs = Random.Range(1,4);             // set based on user level
         // numOfConstrictedItems = Random.Range(1,3);  // set based on user level
         // numOfFreeItems = totalItemsToBuy - (numOfPairs * 2) - numOfConstrictedItems;
