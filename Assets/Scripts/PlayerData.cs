@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    private PuzzleLevel playerPuzzleLevels;     // varies
-    private int averageScore;                   // = totalScore/transactionsCompleted, determines puzzle level
-    private int totalScore;
-    private int transactionsCompleted;          // ilang customers nacomplete
+    [SerializeField] private PuzzleLevel playerPuzzleLevels;     // varies
+    [SerializeField] private int averageScore;                   // = totalScore/transactionsCompleted, determines puzzle level
+    [SerializeField] private int totalScore;
+    [SerializeField] private int transactionsCompleted;          // ilang customers nacomplete
     private int preTestAverageScore, postTestAverageScore;
 
     

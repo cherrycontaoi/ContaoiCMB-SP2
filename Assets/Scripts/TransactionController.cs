@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TransactionController : MonoBehaviour
 {
+    private PlayerData playerData;
     private Customer customer;
     private BasketController basketController;
     private CounterDisplayController counterDisplayController;
@@ -15,6 +16,7 @@ public class TransactionController : MonoBehaviour
 
     void Start()
     {
+        playerData = FindAnyObjectByType<PlayerData>();
         customer = FindAnyObjectByType<Customer>();
         basketController = gameObject.GetComponent<BasketController>();
         counterDisplayController = gameObject.GetComponent<CounterDisplayController>();
@@ -137,7 +139,8 @@ public class TransactionController : MonoBehaviour
         basketController.ResetBasket();
         scoreChecker.ResetScore();
         StartCoroutine(ByeCustomer());
-
+        
+        playerData.AddFinishedTransaction(playerScore);
         
     }
 

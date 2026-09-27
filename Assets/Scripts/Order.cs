@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Order : MonoBehaviour
@@ -12,6 +10,8 @@ public class Order : MonoBehaviour
 
     private int itlogLimit = 5;
     private bool isSolvable;
+    private PuzzleLevel puzzleLevel;
+    private PlayerData playerData;
 
     // private int numOfGenerations;
 
@@ -26,9 +26,8 @@ public class Order : MonoBehaviour
   
     private void Start()
     {
-        totalItemsToBuy = Random.Range(7,10);
+        playerData = FindAnyObjectByType<PlayerData>();
 
-        itemsToBuy = new GameObject[totalItemsToBuy];
         paninda = Resources.LoadAll<GameObject>("Prefabs/ItemPrefabs");     // get all GameObject 
 
         if (paninda.Length == 0)
@@ -47,6 +46,8 @@ public class Order : MonoBehaviour
         }
         // Debug.Log("There are "+numOfGenerations+ " order generations");
 
+        totalItemsToBuy = numOfPairs + numOfConstrictedItems + numOfFreeItems;
+        itemsToBuy = new GameObject[totalItemsToBuy];
         // populate gameobject[]
         for(int i=0; i<itemsToBuy.Length; i++)
         {
@@ -63,7 +64,7 @@ public class Order : MonoBehaviour
 
         // }
 
-        foreach(GameObject item in listToBuy)
+        foreach(GameObject item in itemsToBuy)
         {
             Debug.Log(item.name);
         }
@@ -92,12 +93,40 @@ public class Order : MonoBehaviour
         }
     }
 
+    private void GetNums(PuzzleLevel puzzleLevel)
+    {
+        switch (puzzleLevel)
+        {
+            // 1 pair, 1-2 constricted, 1-5 free
+            case PuzzleLevel.Easy:
+                numOfPairs = 1;
+                numOfConstrictedItems = Random.Range(1,3);
+                numOfFreeItems = Random.Range(1,6);
+                break;
+
+            // 2 pairs, 2-3 constricted, 1-2 free
+            case PuzzleLevel.Medium:
+                numOfPairs = 2;
+                numOfConstrictedItems = Random.Range(2,4);
+                numOfFreeItems = Random.Range(1,3);
+                break;
+
+            // 2 pairs, 3-4 constricted, 1-2 free
+            case PuzzleLevel.Hard:
+                numOfPairs = 2;
+                numOfConstrictedItems = Random.Range(3,5);
+                numOfFreeItems = Random.Range(1,3);
+                break;
+        }
+    }
+
     private void CreateOrder()
     {
-
-        numOfPairs = Random.Range(1,4);             // set based on user level
-        numOfConstrictedItems = Random.Range(1,3);  // set based on user level
-        numOfFreeItems = totalItemsToBuy - (numOfPairs * 2) - numOfConstrictedItems;
+        puzzleLevel = playerData.GetPlayerPuzzleLevel();
+        GetNums(puzzleLevel);
+        // numOfPairs = Random.Range(1,4);             // set based on user level
+        // numOfConstrictedItems = Random.Range(1,3);  // set based on user level
+        // numOfFreeItems = totalItemsToBuy - (numOfPairs * 2) - numOfConstrictedItems;
 
         GeneratePairs();
         GenerateSingleItems();
@@ -221,42 +250,20 @@ public class Order : MonoBehaviour
 
         }
 
-        GameObject actualItemPair0 = GetActualItemWithName(pair[0].name);
-        GameObject actualItemPair1 = GetActualItemWithName(pair[1].name);
-
         // add to actual prefab instance
-        actualItemPair1.GetComponent<Item>().AddMatchingObject(actualItemPair0);
-
-        // pair[1].GetComponent<Item>().AddMatchingObject(pair[0]);
+        pair[1].GetComponent<Item>().AddMatchingObject(pair[0]);
 
         pairTracker[pairID] = true;
         return pair;
     }
 
-    // retrieves actual item prefab
-    private GameObject GetActualItemWithName(string itemName)
-    {
-        GameObject actualItem = null;
-        foreach(GameObject item in paninda)
-        {
-            if (item.name == itemName)
-            {
-                actualItem = item;
-            }
-        }
-        return actualItem;
-    }
-
     private GameObject LookForItemWithName(string itemName)
     {
-        GameObject foundItem;
         foreach(GameObject item in paninda)
         {
             if (item.name == itemName)
             {
-                foundItem = Instantiate(item);
-                foundItem.name = foundItem.name.Replace("(Clone)", "");
-                return foundItem;
+                return item;
             }
         }
         return null;
@@ -265,7 +272,6 @@ public class Order : MonoBehaviour
     private GameObject LookForItemWithTag(string tag)
     {
         int index;
-        GameObject foundItem;
         List<GameObject> itemsWithTag = new List<GameObject>();
 
         foreach(GameObject item in paninda)
@@ -277,10 +283,7 @@ public class Order : MonoBehaviour
         }
 
         index = Random.Range(0, itemsWithTag.Count);
-        foundItem = Instantiate(itemsWithTag[index]);
-        foundItem.name = foundItem.name.Replace("(Clone)", "");
-
-        return foundItem;
+        return itemsWithTag[index];
 
     }
 
