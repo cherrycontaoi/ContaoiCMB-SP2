@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Customer : MonoBehaviour
@@ -7,8 +8,15 @@ public class Customer : MonoBehaviour
     [SerializeField] private Sprite[] expressions;
     private SpriteRenderer customerSpriteRenderer;
     private CustomerState customerState = CustomerState.Idle;
-
     [SerializeField] public Order order;
+
+    // Dialogue stuff
+    public Dialogue dialogueData;
+    public GameObject dialoguePanel;
+    public TMP_Text dialogueText;
+    
+    private int dialogueIndex;
+    private bool isTyping, isDialogueActive;
 
     void Start()
     {

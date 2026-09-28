@@ -1,17 +1,24 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    [SerializeField] private Difficulty playerPuzzleLevels;     // varies
-    [SerializeField] private int averageScore;                   // = totalScore/transactionsCompleted, determines puzzle level
-    [SerializeField] private int totalScore;
-    [SerializeField] private int transactionsCompleted;          // ilang customers nacomplete
-    private int preTestAverageScore, postTestAverageScore;
+    [SerializeField] public Difficulty playerPuzzleLevels;     // varies
+    [SerializeField] public int averageScore;                   // = totalScore/transactionsCompleted, determines puzzle level
+    [SerializeField] public int totalScore;
+    [SerializeField] public int transactionsCompleted;          // ilang customers nacomplete
+    
+    public int lastFinishedLevel = 0;
+    public int preTestAverageScore, postTestAverageScore = 0;
+
+    public TMP_Text aveScoreText;
+    public TMP_Text transactionsText;
+    public TMP_Text difficultyText;
 
     
     void Start()
     {
-        playerPuzzleLevels = Difficulty.Easy;
+        UpdatePlayerInfo();
     }
 
     private void UpdatePlayerLevel()
@@ -28,11 +35,19 @@ public class PlayerData : MonoBehaviour
         {
             playerPuzzleLevels = Difficulty.Hard;
         }
+
     }
 
     private void UpdateAverageScore()
     {
         averageScore = totalScore / transactionsCompleted;
+    }
+
+    private void UpdatePlayerInfo()
+    {
+        difficultyText.SetText(playerPuzzleLevels.ToString());
+        aveScoreText.SetText(averageScore.ToString());
+        transactionsText.SetText(transactionsCompleted.ToString());
     }
 
     public void AddFinishedTransaction(int score)
@@ -42,12 +57,15 @@ public class PlayerData : MonoBehaviour
 
         UpdateAverageScore();
         UpdatePlayerLevel();
+        UpdatePlayerInfo();
     }
 
     public Difficulty GetPlayerPuzzleLevel()
     {
         return playerPuzzleLevels;
     }
+
+
 
 }
 

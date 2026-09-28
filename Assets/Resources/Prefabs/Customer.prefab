@@ -105,8 +105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   orderPrefab: {fileID: 3847494131611796121, guid: 74a34f97080664e308d32d1e7c7f1b4e, type: 3}
-  order: {fileID: 0}
   expressions:
   - {fileID: 1581277078940950190, guid: 0fb19ccd6869f47d9b0cb70d750586c6, type: 3}
   - {fileID: -2741036132238627156, guid: 0fb19ccd6869f47d9b0cb70d750586c6, type: 3}
   - {fileID: 3751151932447079472, guid: 0fb19ccd6869f47d9b0cb70d750586c6, type: 3}
+  order: {fileID: 0}
