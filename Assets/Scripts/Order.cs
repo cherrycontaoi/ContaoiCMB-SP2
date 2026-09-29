@@ -28,7 +28,7 @@ public class Order : MonoBehaviour
     {
         playerData = FindAnyObjectByType<PlayerData>();
 
-        paninda = Resources.LoadAll<GameObject>("Prefabs/ItemPrefabs");     // get all GameObject 
+        paninda = Resources.LoadAll<GameObject>("Prefabs/ItemPrefabs");     // get all paninda GameObjects 
 
         if (paninda.Length == 0)
         {
