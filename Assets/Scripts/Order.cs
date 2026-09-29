@@ -24,7 +24,7 @@ public class Order : MonoBehaviour
     private int totalItemsToBuy, placedItems, index,
                 numOfPairs, numOfConstrictedItems, numOfFreeItems, numOfItlog;
   
-    private void Start()
+    public void GenerateOrder()
     {
         playerData = FindAnyObjectByType<PlayerData>();
 
@@ -48,6 +48,7 @@ public class Order : MonoBehaviour
 
         totalItemsToBuy = numOfPairs + numOfConstrictedItems + numOfFreeItems;
         itemsToBuy = new GameObject[totalItemsToBuy];
+
         // populate gameobject[]
         for(int i=0; i<itemsToBuy.Length; i++)
         {

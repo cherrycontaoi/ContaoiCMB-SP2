@@ -10,7 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1088204520409257102, guid: 9bdfe029e255b41499e1c54ddf2a1aec, type: 3}
       propertyPath: m_Name
-      value: Manong Ben Variant
+      value: Manong Ben
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994252669407058662, guid: 9bdfe029e255b41499e1c54ddf2a1aec, type: 3}
+      propertyPath: customerName
+      value: Manong Ben
       objectReference: {fileID: 0}
     - target: {fileID: 5994252669407058662, guid: 9bdfe029e255b41499e1c54ddf2a1aec, type: 3}
       propertyPath: expressions.Array.size

@@ -13,6 +13,8 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private bool isBeingDragged;
     private float holdDownStartTime;
     private float holdDownTime;
+    [SerializeField] public string displayName;    // name in dialogue
+    [SerializeField] public string supplementaryNameInfo;
     [SerializeField] private int slotID;
     [SerializeField] private bool isGlassBottle;
     

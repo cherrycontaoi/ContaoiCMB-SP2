@@ -101,9 +101,17 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8827064087478928757, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
+      propertyPath: displayName
+      value: HappyMe
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827064087478928757, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
       propertyPath: matchingObject
       value: 
       objectReference: {fileID: 5032622037862916255, guid: b3062ffe5e52a4308b6fb27732631fcd, type: 3}
+    - target: {fileID: 8827064087478928757, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
+      propertyPath: supplementaryNameInfo
+      value: ', yung chicken'
+      objectReference: {fileID: 0}
     - target: {fileID: 8827064087478928757, guid: e0fb3adadb2cb496581fcee0f0843491, type: 3}
       propertyPath: matchingObject.Array.size
       value: 1
