@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using System;
+using TMPro;
 
 public class ToggleSystem : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class ToggleSystem : MonoBehaviour
 
     public string getToggledOn()
     {
-        string selected = toggle.GetComponentInChildren<Text>().text;
+        string selected = toggle.GetComponentInChildren<TMP_Text>().text;
         return selected;
     }
 

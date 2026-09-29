@@ -66,13 +66,13 @@ public class NotesController : MonoBehaviour
             //  Text = "- " + textInput.text
         };
 
-        if (noteType == "Note")
+        if (noteType == "Habilin")
         {
             AddNote(newNote);
             notes.Add(newNote);
         }
 
-        else if (noteType == "Order")
+        else if (noteType == "Bibilhin")
         {
             AddOrder(newNote);
             orders.Add(newNote);

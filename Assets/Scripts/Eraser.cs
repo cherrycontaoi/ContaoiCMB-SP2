@@ -23,7 +23,7 @@ public class Eraser : MonoBehaviour
     {
         if (!isActive) return;
 
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (Mouse.current.rightButton.wasPressedThisFrame)
         {
             DeactivateEraser();
             return;
