@@ -18,6 +18,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (PauseController.IsGamePaused) return;
         itemComponent.BeingDragged();
         originalParent = transform.parent;  // save the original parent
         freshItem = false;
@@ -30,11 +31,13 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (PauseController.IsGamePaused) return;
         transform.position = eventData.position;    // follow the mouse
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (PauseController.IsGamePaused) return;
         canvasGroup.blocksRaycasts = true;  //enable raycasts
         canvasGroup.alpha = 1f;
 

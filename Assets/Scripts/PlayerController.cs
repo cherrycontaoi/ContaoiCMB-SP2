@@ -36,16 +36,21 @@ public class PlayerController : MonoBehaviour
         if(rayHit.collider.gameObject.name == "Pencil") {
             // Debug.Log("pencil");
             pencil.ActivatePencil();
-            eraser.DeactivateEraser();
+            eraser.canActivate = false;
+            // eraser.DeactivateEraser();
         }
         else if(rayHit.collider.gameObject.name == "Eraser")
         {
-
-            pencil.DeactivatePencil();
+            if (!pencil.isActive)
+            {
+                eraser.canActivate = true;
+            }
             eraser.ActivateEraser();
+            // pencil.DeactivatePencil();
         }
         else if(rayHit.collider.gameObject.CompareTag("PlasticBag"))
         {
+            if (PauseController.IsGamePaused) return;
             counterDisplayController.ChoosePlasticBag(rayHit.collider.gameObject.name);
         }
     }

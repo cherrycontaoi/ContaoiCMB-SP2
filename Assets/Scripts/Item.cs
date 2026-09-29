@@ -29,6 +29,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (PauseController.IsGamePaused) return;
         if (isInBasket && isBeingDragged==false)
         {
             Debug.Log("clicked!");
@@ -37,6 +38,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (PauseController.IsGamePaused) return;
         if (isInBasket && isBeingDragged==false)
         {
             Debug.Log("unclicked!");

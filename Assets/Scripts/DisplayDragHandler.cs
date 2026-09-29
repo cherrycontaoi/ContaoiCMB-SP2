@@ -18,10 +18,12 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
     {
         counterDisplayController = FindAnyObjectByType<CounterDisplayController>();
         basketController = FindAnyObjectByType<BasketController>();
+        
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (PauseController.IsGamePaused) return;
         // no plastic bag yet
         if (!counterDisplayController.CanUserStartDragging())
         {
@@ -59,12 +61,14 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (PauseController.IsGamePaused) return;
         if (!isDragging) return;
         newItem.transform.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (PauseController.IsGamePaused) return;
         if (!isDragging) return;
 
         canvasGroup.blocksRaycasts = true;

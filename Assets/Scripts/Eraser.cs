@@ -10,9 +10,10 @@ public class Eraser : MonoBehaviour
     // TO DO: NEED TO INCREASE SIZE OF ERASER CURSOR!!!!
 
     private Camera mainCamera;
-    private bool isActive;
+    public bool isActive;
     [SerializeField] private CursorController cursorController;
     [SerializeField] public GameObject eraserReminder;
+    public bool canActivate = true;
 
 
     private void Awake()
@@ -54,14 +55,20 @@ public class Eraser : MonoBehaviour
     }
     public void ActivateEraser()
     {
-        isActive = true;
-        cursorController.SetToEraser();
-        eraserReminder.SetActive(true);
+        if (canActivate)
+        {
+            isActive = true;
+            PauseController.SetPause(true);
+            cursorController.SetToEraser();
+            eraserReminder.SetActive(true);
+        }
+
     }
 
     public void DeactivateEraser()
     {
         isActive = false;
+        PauseController.SetPause(false);
         cursorController.SetToDefault();
         eraserReminder.SetActive(false);
     }
