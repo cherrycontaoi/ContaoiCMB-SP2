@@ -55,4 +55,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        Customer customer = FindAnyObjectByType<Customer>();
+        if (context.performed)
+        {
+            customer.Interact();
+        }
+    }
+
 }

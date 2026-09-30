@@ -1,9 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
 
-public class Customer : MonoBehaviour
+public class Customer : MonoBehaviour, IInteractable
 {
 
     [SerializeField] Order orderPrefab;
@@ -14,7 +15,8 @@ public class Customer : MonoBehaviour
     [SerializeField] public Order order;
 
     // Dialogue stuff
-    public List<Dialogue> dialogueData;
+    // public List<Dialogue> dialogueData;
+    public Dialogue dialogueData;
     public GameObject dialoguePanel;
     public TMP_Text dialogueText;
     
@@ -38,8 +40,11 @@ public class Customer : MonoBehaviour
         SaveNewOrderDialogue(orderDialogue);
 
         // add order dialogue to dialogues;
-        dialogueData.Add(orderDialogue);
+        // dialogueData.Add(orderDialogue);
+        dialogueData = orderDialogue;
 
+        StartCoroutine(StartTalking());
+        
 
     }
 
@@ -54,7 +59,7 @@ public class Customer : MonoBehaviour
                 customerSpriteRenderer.sprite = expressions[1];     // just smile
                 break;
 
-            case CustomerState.StatingOrder:
+            case CustomerState.Talking:
                 Debug.Log("Customer is stating his order");
                 customerSpriteRenderer.sprite = expressions[0];
                 break;
@@ -90,12 +95,114 @@ public class Customer : MonoBehaviour
         AssetDatabase.CreateAsset(orderDialogue, filePath);
         AssetDatabase.SaveAssets();
     }
+
+    public bool CanInteract()
+    {
+        return !isDialogueActive;
+    }
+
+    public void Interact()
+    {   
+        // no dialogue or menu is open
+        if (dialogueData == null || (PauseController.IsGamePaused && !isDialogueActive))
+        {
+            return;
+        }
+
+        if (isDialogueActive)
+        {
+            // next line in dialogue
+            NextLine();
+        }
+        else
+        {
+            // start dialogue
+            StartDialogue();
+        }
+    }
+
+    private IEnumerator StartTalking()
+    {
+        // delay 3 secs
+        yield return new WaitForSeconds(2f);
+
+        ChangeCustomerState(CustomerState.Talking);
+        // already active with the first line in the dialogue;
+        isDialogueActive = true;
+        dialogueIndex = 0;
+        dialoguePanel.SetActive(true);
+        StartCoroutine(TypeLine());
+    }
+
+    private void StartDialogue()
+    {
+        isDialogueActive = true;
+        dialogueIndex = 0;
+
+        dialoguePanel.SetActive(true);
+        // PauseController.SetPause(false);     //true - prevents things from happening
+
+        //type line
+        StartCoroutine(TypeLine());
+    }
+
+    private void NextLine()
+    {
+        if (isTyping) 
+        {
+            // skip the typing animation and show the full line
+            StopAllCoroutines();
+            dialogueText.SetText(dialogueData.lines[dialogueIndex]);
+            isTyping = false;
+        }
+        else if (++dialogueIndex < dialogueData.lines.Count)  // still have a line
+        {
+            StartCoroutine(TypeLine()); // type next line
+        }
+        else
+        {
+            // end the dialogue - no more lines
+            EndDialogue();
+            ChangeCustomerState(CustomerState.Idle);    // waiting
+        }
+    }
+
+    IEnumerator TypeLine()
+    {
+        isTyping = true;
+        dialogueText.SetText("");
+
+        foreach(char letter in dialogueData.lines[dialogueIndex])
+        {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(dialogueData.typingSpeed);
+        }
+
+        isTyping = false;
+
+        if (dialogueData.linesToAutoProgress.Count > dialogueIndex && dialogueData.linesToAutoProgress[dialogueIndex])
+        {
+            yield return new WaitForSeconds(dialogueData.autoProgressDelay);
+            // display next line
+            NextLine();
+        }
+    }
+
+    public void EndDialogue()
+    {
+        StopAllCoroutines();
+        isDialogueActive = false;
+        dialogueText.SetText("");
+        dialoguePanel.SetActive(false);
+        
+    }
+
 }
 
 public enum CustomerState
 {
     Idle,
-    StatingOrder,
+    Talking,
     HappyExpression,
     NeutralExpression
 }
