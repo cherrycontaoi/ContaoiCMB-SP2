@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408dc5927b85e45149ab3df9647326bd, type: 3}
+  m_Name: Order (3)
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  lines:
+  - Pabili po.
+  - Isang Bawang,
+  - Isang Sibuyas,
+  - Isang Calamansi,
+  - Isang Meat Loaf,
+  - Isang HappyMe, yung chicken,
+  - Isang Sardinas, yung green,
+  - tapos Isang Tidy, yung sabong pang-laba.
+  linesToAutoProgress: 0000000000000000
+  endLines: 0000000000000001
+  autoProgressDelay: 1.5
+  typingSpeed: 0.05
+  dialogueType: 1

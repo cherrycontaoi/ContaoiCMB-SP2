@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Pencil pencil;
     [SerializeField] private Eraser eraser;
     [SerializeField] private CounterDisplayController counterDisplayController;
+    public GameObject dialoguePanel;
 
     private void Start()
     {
@@ -57,10 +58,17 @@ public class PlayerController : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
+        RectTransform rectTransform = dialoguePanel.GetComponent<RectTransform>();
         Customer customer = FindAnyObjectByType<Customer>();
+
         if (context.performed)
         {
-            customer.Interact();
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
+
+            if (RectTransformUtility.RectangleContainsScreenPoint(rectTransform, mousePosition, null))
+            {
+                customer.Interact();   
+            }
         }
     }
 
