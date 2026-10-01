@@ -7,7 +7,7 @@ public class ScoreChecker : MonoBehaviour
     [SerializeField] private RulesCollection rulesCollection;
     private GameObject[] placedItems;
     private List<GameObject> actualItemsOnly = new List<GameObject>();
-    // private 
+    
     [SerializeField] private int playerScore = 100;
     
     void Start()
@@ -21,14 +21,6 @@ public class ScoreChecker : MonoBehaviour
     {
         placedItems = basketController.GetFullBasket();     // need full basket for checking neighbors
 
-        // foreach (GameObject item in placedItems)
-        // {
-        //     if (item!= null)
-        //     {
-        //         rulesCollection.ApplyRule(item);
-        //     }
-        // }
-
         foreach(GameObject item in placedItems)
         {
             if (item != null)
@@ -38,22 +30,6 @@ public class ScoreChecker : MonoBehaviour
         }
 
         rulesCollection.ApplyRulesOnItemsOrder(actualItemsOnly);
-
-
-        // rulesCollection.ApplyRulesOnItemsOrder(actualItemsOnly);
-        // rulesCollection.ApplyMatchingRules();
-
-
-        // // foreach (GameObject item in placedItems)
-        // // {
-        // //     Debug.Log("The Neighboring Items of "+ item.name + "are: ");
-        // //     GetNeighboringItems(item);
-        // // }
-        
-        // // reset
-        // rulesCollection.ResetItemCounters();
-        // mayBawangBa = mayChickenNoodlesBa = maySukaBa = mayChipsBa = mayProduceBa = false;
-        // ilangItlog = ilangCanned = ilangChickenNoodles = ilangBawang = ilangSibuyas = ilangSuka = ilangToyo = ilangChips = ilangSoda = 0;
 
     }
 
@@ -87,11 +63,6 @@ public class ScoreChecker : MonoBehaviour
         }
 
         return neighboringItems;
-
-        // foreach(GameObject neighboringItem in neighboringItems)
-        // {
-        //     Debug.Log(neighboringItem.name);
-        // }
     }
 
     public int GetItlogCount()

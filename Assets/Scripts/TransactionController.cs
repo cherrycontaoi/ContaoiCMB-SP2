@@ -31,10 +31,6 @@ public class TransactionController : MonoBehaviour
             Debug.Log("No customer found!");
             return;
         }
-        // else
-        // {
-        //     Debug.Log(customer.name);
-        // 
 
     }
 
