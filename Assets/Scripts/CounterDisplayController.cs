@@ -40,8 +40,8 @@ public class CounterDisplayController : MonoBehaviour
 
     public void ChoosePlasticBag(string PBColor)
     {
-        // Debug.Log("CHOOSEPB SECTION- Game is " + PauseController.IsGamePaused);
-        if(PauseController.IsGamePaused) return;
+        // can't choose pb if game is paused or if there are no customers
+        if(PauseController.IsGamePaused || FindAnyObjectByType<Customer>() == null) return;
 
         Debug.Log("The plastic bag to be used is: " + PBColor);
         if(PBColor == "PBGreen")
