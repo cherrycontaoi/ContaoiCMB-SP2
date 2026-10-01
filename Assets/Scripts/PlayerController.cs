@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Eraser eraser;
     [SerializeField] private CounterDisplayController counterDisplayController;
     public GameObject dialoguePanel;
+    public GameObject notesPanel;
 
     private void Start()
     {
@@ -57,15 +58,24 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnInteract(InputAction.CallbackContext context)
-    {
-        RectTransform rectTransform = dialoguePanel.GetComponent<RectTransform>();
+    {        
+        RectTransform dialogueRectTransform = dialoguePanel.GetComponent<RectTransform>();
+        RectTransform noteRectTransform = notesPanel.GetComponent<RectTransform>();
+
         Customer customer = FindAnyObjectByType<Customer>();
 
         if (context.performed)
         {
             Vector2 mousePosition = Mouse.current.position.ReadValue();
 
-            if (RectTransformUtility.RectangleContainsScreenPoint(rectTransform, mousePosition, null))
+            // if clicked on the dialogue box
+            bool isDialoguePanelActive = RectTransformUtility.RectangleContainsScreenPoint(dialogueRectTransform, mousePosition, null);
+
+            // if clicked on the create note panel (which can overlap with dialogue box)
+            bool isNotePanelActive = RectTransformUtility.RectangleContainsScreenPoint(noteRectTransform, mousePosition, null);
+
+            // prevents dialogue from moving on if note panel is on top of it and player clicked
+            if (isDialoguePanelActive && !isNotePanelActive)
             {
                 customer.Interact();   
             }
