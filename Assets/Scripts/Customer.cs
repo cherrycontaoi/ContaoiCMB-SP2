@@ -13,68 +13,91 @@ public class Customer : MonoBehaviour, IInteractable
     private SpriteRenderer customerSpriteRenderer;
     private CustomerState customerState = CustomerState.Idle;
     [SerializeField] public Order order;
+    public bool isDone;
 
     // Dialogue stuff
     // public List<Dialogue> dialogueData;
-    public Dialogue dialogueData;
-    public GameObject dialoguePanel;
-    public TMP_Text dialogueText;
-    
+    private DialogueController dialogueController;
+    public Dialogue dialogueData;       // dialogue to be displayed.
+    public Dialogue smallTalkDialogue;
+    public Dialogue orderDialogue;
+    public Dialogue endDialogue;
     private int dialogueIndex;
-    private bool isTyping, isDialogueActive, hasSmallTalk;
+    private bool isTyping, isDialogueActive;
 
-    void Start()
+    // hasSmallTalk -> hindi bibili agad, willBuy -> bibili (generate order)
+    public bool hasSmallTalk, willBuy, willBuyAfterSmallTalk;       
+
+    void Awake()
     {
-        transform.position = new Vector3(-5f, 3.61f, 1f);   // position ng orderan
+        dialogueController = DialogueController.Instance;
+    }
 
-        order = Instantiate(orderPrefab, transform);
-        order.GenerateOrder();
-
+    public void ShowCustomer()
+    {
+        // position ng orderan, show customer here
+        transform.position = new Vector3(-5f, 3.61f, 1f);
+        
+        // initial state
         customerSpriteRenderer = GetComponent<SpriteRenderer>();
         Debug.Log(gameObject.name + "'s current state is: " + customerState);
         ChangeCustomerState(CustomerState.Idle);
-
-        Dialogue orderDialogue = DialogueBuilder.BuildOrderDialogue(order, false);
-
-        // add created order dialogue to assets
-        SaveNewOrderDialogue(orderDialogue);
-
-        // add order dialogue to dialogues;
-        // dialogueData.Add(orderDialogue);
-        dialogueData = orderDialogue;
-
-        StartCoroutine(StartTalking());
-        
-
     }
 
-    public void ChangeCustomerState(CustomerState newCustomerState)
+    public void StartCustomer()
     {
-        customerState = newCustomerState;
+        ShowCustomer();
 
-        switch (customerState)
+        if (willBuy)
         {
-            case CustomerState.Idle:
-                Debug.Log("Customer is waiting.");
-                customerSpriteRenderer.sprite = expressions[1];     // just smile
-                break;
+            order = Instantiate(orderPrefab, transform);
+            order.GenerateOrder();      // create order;
 
-            case CustomerState.Talking:
-                Debug.Log("Customer is stating his order");
-                customerSpriteRenderer.sprite = expressions[0];
-                break;
-            
-            case CustomerState.HappyExpression:
-                Debug.Log("Customer is satisfied with the service!");
-                customerSpriteRenderer.sprite = expressions[1];
-                break;
-            
-            case CustomerState.NeutralExpression:
-                Debug.Log("Customer is not so satisfied.");
-                customerSpriteRenderer.sprite = expressions[2];
-                break;
+            orderDialogue = DialogueBuilder.BuildOrderDialogue(order, hasSmallTalk);
+            SaveNewOrderDialogue(orderDialogue);        // for tracking purposes maybe, jic
+
+            if (hasSmallTalk)
+            {
+                // small talk first
+                dialogueData = smallTalkDialogue;
+                willBuyAfterSmallTalk = true;
+                StartCoroutine(StartTalking());
+                // // then order
+                // dialogueData = orderDialogue;
+                // StartCoroutine(StartTalking());
+            }
+            else    // will buy only
+            {
+                // set order as the dialogue right away.
+                dialogueData = orderDialogue;
+                StartCoroutine(StartTalking());
+            }
         }
+        else        // small talk only
+        {
+            dialogueData = smallTalkDialogue;
+            // dialogueData = smallTalkDialogue
+            StartCoroutine(StartTalking());
+        }
+
     }
+
+    // private IEnumerator SmallTalkThenBuy()
+    // {
+    //     // start small talk first
+    //     dialogueData = smallTalkDialogue;
+    //     yield return StartCoroutine(StartTalking());
+
+    //     // still making small talk
+    //     while (isDialogueActive)
+    //     {
+    //         yield return null;
+    //     }
+
+    //     dialogueData = orderDialogue;
+    //     yield return StartCoroutine(StartTalking());
+    // }
+
 
     private void SaveNewOrderDialogue(Dialogue orderDialogue)
     {
@@ -116,10 +139,13 @@ public class Customer : MonoBehaviour, IInteractable
         }
         else
         {
-            // start dialogue
+            // start dialogue , doesn't really get called (clean up later!!!)
             StartDialogue();
         }
     }
+
+    // don't directly access the dialogueData.
+    // pass dialogue as parameter
 
     private IEnumerator StartTalking()
     {
@@ -130,8 +156,8 @@ public class Customer : MonoBehaviour, IInteractable
         // already active with the first line in the dialogue;
         isDialogueActive = true;
         dialogueIndex = 0;
-        dialoguePanel.SetActive(true);
-        StartCoroutine(TypeLine());
+        dialogueController.ShowDialogueUI(true);
+        DisplayCurrentLine();
     }
 
     private void StartDialogue()
@@ -139,11 +165,11 @@ public class Customer : MonoBehaviour, IInteractable
         isDialogueActive = true;
         dialogueIndex = 0;
 
-        dialoguePanel.SetActive(true);
+        dialogueController.ShowDialogueUI(true);
         // PauseController.SetPause(false);     //true - prevents things from happening
 
         //type line
-        StartCoroutine(TypeLine());
+        DisplayCurrentLine();
     }
 
     private void NextLine()
@@ -152,29 +178,54 @@ public class Customer : MonoBehaviour, IInteractable
         {
             // skip the typing animation and show the full line
             StopAllCoroutines();
-            dialogueText.SetText(dialogueData.lines[dialogueIndex]);
+            dialogueController.SetDialogueText(dialogueData.lines[dialogueIndex]);
             isTyping = false;
+            return;
         }
-        else if (++dialogueIndex < dialogueData.lines.Count)  // still have a line
+
+        // clear choices
+        dialogueController.ClearChoices();
+
+        // check endDialogueLines
+        if(dialogueData.endLines.Count > dialogueIndex && dialogueData.endLines[dialogueIndex])
         {
-            StartCoroutine(TypeLine()); // type next line
+            EndDialogue();
+            return;
+        }
+
+        if(dialogueData.dialogueType == DialogueType.SmallTalk)
+        {
+            // check if there are choices and display
+            foreach(DialogueChoice dialogueChoice in dialogueData.choices)
+            {
+                if(dialogueChoice.dialogueIndex == dialogueIndex)
+                {
+                    // display choices
+                    DisplayChoices(dialogueChoice);
+                    return;
+                }
+            }
+        }
+
+        if (++dialogueIndex < dialogueData.lines.Count)  // still have a line
+        {
+            DisplayCurrentLine(); // type next line
         }
         else
         {
             // end the dialogue - no more lines
             EndDialogue();
-            ChangeCustomerState(CustomerState.Idle);    // waiting
         }
     }
 
     IEnumerator TypeLine()
     {
         isTyping = true;
-        dialogueText.SetText("");
+        dialogueController.SetDialogueText("");
 
         foreach(char letter in dialogueData.lines[dialogueIndex])
         {
-            dialogueText.text += letter;
+            dialogueController.SetDialogueText(dialogueController.dialogueText.text += letter);
             yield return new WaitForSeconds(dialogueData.typingSpeed);
         }
 
@@ -188,13 +239,93 @@ public class Customer : MonoBehaviour, IInteractable
         }
     }
 
+    void DisplayChoices(DialogueChoice choice)
+    {
+        for(int i=0; i<choice.choices.Length; i++)
+        {
+            int nextIndex = choice.nextDialogueIndices[i];
+            dialogueController.CreateChoiceButton(choice.choices[i], () => ChooseOption(nextIndex));
+        }
+    }
+
+    void ChooseOption(int nextIndex)
+    {
+        dialogueIndex = nextIndex;
+        dialogueController.ClearChoices();
+        DisplayCurrentLine();
+    }
+
+    void DisplayCurrentLine()
+    {
+        StopAllCoroutines();
+        StartCoroutine(TypeLine());
+    }
+
     public void EndDialogue()
     {
         StopAllCoroutines();
         isDialogueActive = false;
-        dialogueText.SetText("");
-        dialoguePanel.SetActive(false);
-        
+        dialogueController.SetDialogueText("");
+        dialogueController.ShowDialogueUI(false);
+        ChangeCustomerState(CustomerState.Idle);    // waiting
+        // stop dialogue from showing again.
+        // dialogueData = null;
+        if (willBuyAfterSmallTalk)
+        {
+            willBuyAfterSmallTalk = false;
+
+            // buying time
+            dialogueData = orderDialogue;
+            StartCoroutine(StartTalking());
+        }
+        else
+        {
+            // everything done
+            dialogueData = null;
+
+            if (!willBuy)   // only small talk. end already
+            {
+                isDone = true;
+                StartCoroutine(DestroySmallTalkNPC());
+            }
+        }
+    }
+
+
+    private IEnumerator DestroySmallTalkNPC()
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+    }
+
+
+
+    public void ChangeCustomerState(CustomerState newCustomerState)
+    {
+        customerState = newCustomerState;
+
+        switch (customerState)
+        {
+            case CustomerState.Idle:
+                Debug.Log("Customer is waiting.");
+                customerSpriteRenderer.sprite = expressions[1];     // just smile
+                break;
+
+            case CustomerState.Talking:
+                Debug.Log("Customer is stating his order");
+                customerSpriteRenderer.sprite = expressions[0];
+                break;
+            
+            case CustomerState.HappyExpression:
+                Debug.Log("Customer is satisfied with the service!");
+                customerSpriteRenderer.sprite = expressions[1];
+                break;
+            
+            case CustomerState.NeutralExpression:
+                Debug.Log("Customer is not so satisfied.");
+                customerSpriteRenderer.sprite = expressions[2];
+                break;
+        }
     }
 
 }

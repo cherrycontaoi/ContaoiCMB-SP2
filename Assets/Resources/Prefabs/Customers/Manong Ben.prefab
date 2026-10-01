@@ -17,6 +17,18 @@ PrefabInstance:
       value: Manong Ben
       objectReference: {fileID: 0}
     - target: {fileID: 5994252669407058662, guid: 9bdfe029e255b41499e1c54ddf2a1aec, type: 3}
+      propertyPath: dialogueData
+      value: 
+      objectReference: {fileID: 11400000, guid: 313197f41eff041c19dd2a2133330a13, type: 2}
+    - target: {fileID: 5994252669407058662, guid: 9bdfe029e255b41499e1c54ddf2a1aec, type: 3}
+      propertyPath: hasSmallTalk
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994252669407058662, guid: 9bdfe029e255b41499e1c54ddf2a1aec, type: 3}
+      propertyPath: smallTalkDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 313197f41eff041c19dd2a2133330a13, type: 2}
+    - target: {fileID: 5994252669407058662, guid: 9bdfe029e255b41499e1c54ddf2a1aec, type: 3}
       propertyPath: expressions.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -54,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7252824033482048933, guid: 9bdfe029e255b41499e1c54ddf2a1aec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7252824033482048933, guid: 9bdfe029e255b41499e1c54ddf2a1aec, type: 3}
       propertyPath: m_LocalRotation.w

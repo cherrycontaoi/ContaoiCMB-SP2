@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class TransactionController : MonoBehaviour
 {
+    public static TransactionController Instance { get; private set; } // Singleton
     private PlayerData playerData;
-    private Customer customer;
+    public Customer customer;
     private BasketController basketController;
     private CounterDisplayController counterDisplayController;
     private ScoreChecker scoreChecker;
     private List<GameObject> itemsInBasket = new List<GameObject>();
     private GameObject[] customerOrder;
 
-    private bool transactionDone;
-
     void Start()
     {
         playerData = FindAnyObjectByType<PlayerData>();
-        customer = FindAnyObjectByType<Customer>();
         basketController = gameObject.GetComponent<BasketController>();
         counterDisplayController = gameObject.GetComponent<CounterDisplayController>();
         scoreChecker = gameObject.GetComponent<ScoreChecker>();
@@ -38,6 +36,17 @@ public class TransactionController : MonoBehaviour
         //     Debug.Log(customer.name);
         // 
 
+    }
+
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);   // make only 1 instance
+    }
+
+    public void SetCustomer(Customer newCustomer)
+    {
+        customer = newCustomer;
     }
 
     public void Checkout()
@@ -148,6 +157,7 @@ public class TransactionController : MonoBehaviour
     {
         yield return StartCoroutine(counterDisplayController.WaitAndClearCoroutine());
 
+        customer.isDone = true;
         Destroy(customer.gameObject);
     }
 

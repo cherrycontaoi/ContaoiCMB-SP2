@@ -12,6 +12,15 @@ public class Dialogue : ScriptableObject
     public float typingSpeed = 0.05f;
     public DialogueType dialogueType;
 
+    public DialogueChoice[] choices;
+}
+
+[System.Serializable]
+public class DialogueChoice
+{
+    public int dialogueIndex;           // dialogue line with question (choices appear here)
+    public string[] choices;             // response option
+    public int[] nextDialogueIndices;   // where choice leads
 }
 
 public enum DialogueType
