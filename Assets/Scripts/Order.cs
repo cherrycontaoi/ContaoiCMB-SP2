@@ -439,10 +439,16 @@ public class Order : MonoBehaviour
     {
         // clear all lists
         numOfItlog = 0;
+        placedItems = 0;
+        index = 0;
+
         itemsInPair.Clear();
         constrictedItems.Clear();
         freeItems.Clear();
+        listToBuy.Clear();
 
+        isSolvable = false;
+        
         ResetPairTracker();
 
         // reset possible solution list

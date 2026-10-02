@@ -32,6 +32,7 @@ public class CounterDisplayController : MonoBehaviour
         RemovePBFromPlayerSpace();
 
         Debug.Log("Bag already on the counter!");
+        DialogueController.Instance.ShowDialogueUI(false);      // clear unnecessary lines
 
         
         // gameObject.GetComponentInParent<BasketController>().ResetBasket();

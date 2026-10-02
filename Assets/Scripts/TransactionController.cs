@@ -12,6 +12,7 @@ public class TransactionController : MonoBehaviour
     private ScoreChecker scoreChecker;
     private List<GameObject> itemsInBasket = new List<GameObject>();
     private GameObject[] customerOrder;
+    private CustomerState finalExpression;
 
     void Start()
     {
@@ -70,8 +71,6 @@ public class TransactionController : MonoBehaviour
         //     Debug.Log(item.name);
         // }
 
-        
-        
 
         if (itemsInBasket.Count != customerOrder.Length)
         {
@@ -132,13 +131,13 @@ public class TransactionController : MonoBehaviour
         if (playerScore < 100)
         {
             Debug.Log("There are some mistakes on the customer's order");
-            customer.ChangeCustomerState(CustomerState.NeutralExpression);
+            finalExpression = CustomerState.NeutralExpression;
         }
 
         else
         {
             Debug.Log("Customer is happy!");
-            customer.ChangeCustomerState(CustomerState.HappyExpression);
+            finalExpression = CustomerState.HappyExpression;
         }
 
 
@@ -184,6 +183,11 @@ public class TransactionController : MonoBehaviour
             customer.orderErrors["wrongPlasticBag"] = true;
             scoreChecker.DeductScore(5);
         }
+    }
+
+    public CustomerState GetFinalExpression()
+    {
+        return finalExpression;
     }
 
 

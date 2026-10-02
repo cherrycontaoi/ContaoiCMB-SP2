@@ -89,6 +89,7 @@ public class Customer : MonoBehaviour, IInteractable
         {
             dialogueData = smallTalkDialogue;
         }
+        StartTalking();
         if (talkingCoroutine == null)
         {
             talkingCoroutine = StartCoroutine(StartTalking());
@@ -122,12 +123,19 @@ public class Customer : MonoBehaviour, IInteractable
 
     private IEnumerator StartTalking()
     {
-        // delay 3 secs
+        // delay 2 secs
         yield return new WaitForSeconds(2f);
 
         talkingCoroutine = null;
 
-        ChangeCustomerState(CustomerState.Talking);
+        if (dialogueData.dialogueType == DialogueType.Buying || dialogueData.dialogueType == DialogueType.SmallTalk)
+        {
+            ChangeCustomerState(CustomerState.Talking);
+        }
+        else
+        {
+            ChangeCustomerState(CustomerState.CheckingItems);
+        }
         // already active with the first line in the dialogue;
         isDialogueActive = true;
         dialogueIndex = 0;
@@ -223,6 +231,7 @@ public class Customer : MonoBehaviour, IInteractable
 
     void DisplayChoices(DialogueChoice choice)
     {
+        ChangeCustomerState(CustomerState.Idle);
         for(int i=0; i<choice.choices.Length; i++)
         {
             int nextIndex = choice.nextDialogueIndices[i];
@@ -234,6 +243,7 @@ public class Customer : MonoBehaviour, IInteractable
     {
         dialogueIndex = nextIndex;
         dialogueController.ClearChoices();
+        ChangeCustomerState(CustomerState.Talking);
         DisplayCurrentLine();
     }
 
@@ -243,6 +253,13 @@ public class Customer : MonoBehaviour, IInteractable
         {
             StopCoroutine(typingCoroutine);
         }
+
+        // either neutral or happy expression at the end
+        if (dialogueIndex == dialogueData.lines.Count - 1 && dialogueData.dialogueType == DialogueType.EndDialogue)
+        {
+            ChangeCustomerState(TransactionController.Instance.GetFinalExpression());
+        }
+
         typingCoroutine = StartCoroutine(TypeLine());
     }
 
@@ -264,7 +281,13 @@ public class Customer : MonoBehaviour, IInteractable
             isEndingDialogue = false;
             dialogueData = null;
             isDone = true;
-            DestroyNPC();
+            
+            if (orderDialogue != null && endingDialogue != null)
+                {
+                    SaveNewDialogue(orderDialogue);
+                    SaveNewDialogue(endingDialogue);
+            }
+
             return;
         }
 
@@ -274,6 +297,7 @@ public class Customer : MonoBehaviour, IInteractable
 
             // buying time
             dialogueData = orderDialogue;
+            // StartTalking();
             if (talkingCoroutine == null)
             {
                 talkingCoroutine = StartCoroutine(StartTalking());
@@ -286,7 +310,8 @@ public class Customer : MonoBehaviour, IInteractable
 
             if (!willBuy)   // only small talk. end already
             {
-                DestroyNPC();
+                isDone = true;
+                
             }
         }
     }
@@ -298,25 +323,27 @@ public class Customer : MonoBehaviour, IInteractable
 
         isEndingDialogue = true;
         dialogueData = endingDialogue;
+        ChangeCustomerState(CustomerState.CheckingItems);
         if (talkingCoroutine == null)
         {
             talkingCoroutine = StartCoroutine(StartTalking());
         }
+        // StartTalking();
     }
 
 
-    private void DestroyNPC()
-    {
-        // if (orderDialogue != null && endingDialogue != null)
-        // {
-        //     SaveNewDialogue(orderDialogue);
-        //     SaveNewDialogue(endingDialogue);   
-        // }
+    // private void DestroyNPC()
+    // {
+    //     // if (orderDialogue != null && endingDialogue != null)
+    //     // {
+    //     //     SaveNewDialogue(orderDialogue);
+    //     //     SaveNewDialogue(endingDialogue);
+    //     // }
 
-        // add walking away animation
-        isDone = true;
-        Destroy(gameObject);
-    }
+    //     // add walking away animation
+    //     isDone = true;
+    //     Destroy(gameObject);
+    // }
 
     private void SaveNewDialogue(Dialogue dialogue)
     {
@@ -366,6 +393,11 @@ public class Customer : MonoBehaviour, IInteractable
                 customerSpriteRenderer.sprite = expressions[0];
                 break;
             
+            case CustomerState.CheckingItems:
+                Debug.Log("Customer is checking what you gave.");
+                customerSpriteRenderer.sprite = expressions[3];
+                break;
+            
             case CustomerState.HappyExpression:
                 Debug.Log("Customer is satisfied with the service!");
                 customerSpriteRenderer.sprite = expressions[1];
@@ -384,6 +416,7 @@ public enum CustomerState
 {
     Idle,
     Talking,
+    CheckingItems,
     HappyExpression,
     NeutralExpression
 }

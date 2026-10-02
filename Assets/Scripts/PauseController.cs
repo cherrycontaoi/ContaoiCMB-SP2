@@ -9,3 +9,6 @@ public class PauseController : MonoBehaviour
         IsGamePaused = pause;
     }
 }
+
+
+// so far, pause controller only controls the items-related stuff (dragging, basket stuff)

@@ -12,7 +12,6 @@ public class Pencil : MonoBehaviour
     {
         isActive = true;
         PauseController.SetPause(true);
-        Debug.Log("IsPaused is "+ PauseController.IsGamePaused);
         createNotePanel.SetActive(true);
         pencilReminder.SetActive(true);
     }

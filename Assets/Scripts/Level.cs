@@ -56,6 +56,8 @@ public class Level : MonoBehaviour
             {
                 yield return null;
             }
+
+            Destroy(customer.gameObject);
             
             // wait for 5 seconds before next customer appears
             yield return new WaitForSeconds(5f);
@@ -76,5 +78,6 @@ public class Level : MonoBehaviour
         isDone = true;
         ResetCustomers(); 
     }
+    
 
 }
