@@ -4,16 +4,21 @@ using UnityEngine;
 public class ScoreChecker : MonoBehaviour
 {
     private BasketController basketController;
+    private Customer customer;
     [SerializeField] private RulesCollection rulesCollection;
     private GameObject[] placedItems;
     private List<GameObject> actualItemsOnly = new List<GameObject>();
     
     [SerializeField] private int playerScore = 100;
+
+    // to be used by dialogueBuilder for endDialogue
+
     
     void Start()
     {
         basketController = gameObject.GetComponent<BasketController>();
         rulesCollection = gameObject.GetComponent<RulesCollection>();
+        customer = FindAnyObjectByType<Customer>();
         actualItemsOnly = basketController.GetActualItemsInBasket();
     }
 
@@ -102,6 +107,14 @@ public class ScoreChecker : MonoBehaviour
         Debug.Log("Deducted a score of: "+ deduction);
     }
 
+    public void ResetErrorTally()
+    {
+        foreach(string errorKey in customer.orderErrors.Keys)
+        {
+            customer.orderErrors[errorKey] = false;
+        }
+    }
+
     public void ResetScore()
     {
         playerScore = 100;
@@ -117,3 +130,20 @@ public class ScoreChecker : MonoBehaviour
         return actualItemsOnly;
     }
 }
+
+public enum Error
+{
+    noMatchingItem,
+    itlogNotLast,
+    cannedNotFirst,
+    itlogAndBottle,
+    itlogAtCorner,
+    bottleAndBottle,
+    detergentAndProduce,
+    ajinomotoAndMagicSarap,
+    notSameCount,
+    wrongPlasticBag
+
+}
+
+

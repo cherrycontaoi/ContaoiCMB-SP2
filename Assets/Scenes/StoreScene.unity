@@ -16222,6 +16222,7 @@ MonoBehaviour:
   eraser: {fileID: 162673603}
   counterDisplayController: {fileID: 0}
   dialoguePanel: {fileID: 646117198}
+  notesPanel: {fileID: 1012056188}
 --- !u!114 &1212922187
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,8 +5,8 @@ using UnityEngine;
 public class TransactionController : MonoBehaviour
 {
     public static TransactionController Instance { get; private set; } // Singleton
-    private PlayerData playerData;
     public Customer customer;
+    private PlayerData playerData;
     private BasketController basketController;
     private CounterDisplayController counterDisplayController;
     private ScoreChecker scoreChecker;
@@ -76,6 +76,7 @@ public class TransactionController : MonoBehaviour
         if (itemsInBasket.Count != customerOrder.Length)
         {
             Debug.Log("The number of items in the basket doesn't match with the customer's order!");
+            customer.orderErrors["notSameCount"] = true;
             scoreChecker.DeductScore(5);
             // customer.ChangeCustomerState(CustomerState.NeutralExpression);
             // counterDisplayController.DisplayPlasticBag(customerOrder.Length);
@@ -143,6 +144,7 @@ public class TransactionController : MonoBehaviour
 
         basketController.ResetBasket();
         scoreChecker.ResetScore();
+
         StartCoroutine(ByeCustomer());
         
         playerData.AddFinishedTransaction(playerScore);
@@ -153,8 +155,8 @@ public class TransactionController : MonoBehaviour
     {
         yield return StartCoroutine(counterDisplayController.WaitAndClearCoroutine());
 
-        customer.isDone = true;
-        Destroy(customer.gameObject);
+        customer.StartEndingDialogue();
+        // Destroy(customer.gameObject);
     }
 
     private void ApplyPlasticBagRule()
@@ -179,6 +181,7 @@ public class TransactionController : MonoBehaviour
         if (correctPlasticBag != playerChosenBag)
         {
             Debug.Log("The correct plastic bag to use is "+ correctPlasticBag + ", not " + playerChosenBag);
+            customer.orderErrors["wrongPlasticBag"] = true;
             scoreChecker.DeductScore(5);
         }
     }

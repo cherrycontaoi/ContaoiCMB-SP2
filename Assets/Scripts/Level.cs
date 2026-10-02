@@ -66,7 +66,7 @@ public class Level : MonoBehaviour
     {
         foreach(Customer customer in customers) 
         {
-            customer.smallTalkDialogue = customer.orderDialogue = customer.endDialogue = null;
+            customer.smallTalkDialogue = customer.orderDialogue = customer.endingDialogue = null;
             customer.hasSmallTalk = customer.willBuy = false;
         }
     }

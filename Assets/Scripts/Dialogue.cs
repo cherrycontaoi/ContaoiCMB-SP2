@@ -26,5 +26,6 @@ public class DialogueChoice
 public enum DialogueType
 {
     SmallTalk,
-    Buying
+    Buying,
+    EndDialogue
 }

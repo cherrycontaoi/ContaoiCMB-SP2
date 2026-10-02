@@ -75,10 +75,11 @@ public class PlayerController : MonoBehaviour
             bool isNotePanelActive = RectTransformUtility.RectangleContainsScreenPoint(noteRectTransform, mousePosition, null);
 
             // prevents dialogue from moving on if note panel is on top of it and player clicked
-            if (isDialoguePanelActive && !isNotePanelActive)
+            if (isDialoguePanelActive && !isNotePanelActive && customer != null && dialoguePanel.activeInHierarchy)
             {
                 customer.Interact();   
             }
+            
         }
     }
 

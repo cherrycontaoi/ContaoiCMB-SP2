@@ -17,16 +17,32 @@ public class Customer : MonoBehaviour, IInteractable
 
     // Dialogue stuff
     // public List<Dialogue> dialogueData;
+    private Coroutine typingCoroutine;
+    private Coroutine talkingCoroutine;
     private DialogueController dialogueController;
     public Dialogue dialogueData;       // dialogue to be displayed.
     public Dialogue smallTalkDialogue;
     public Dialogue orderDialogue;
-    public Dialogue endDialogue;
+    public Dialogue endingDialogue;
     private int dialogueIndex;
-    private bool isTyping, isDialogueActive;
+    private bool isTyping, isDialogueActive, isEndingDialogue;
 
     // hasSmallTalk -> hindi bibili agad, willBuy -> bibili (generate order)
     public bool hasSmallTalk, willBuy, willBuyAfterSmallTalk;       
+
+    public Dictionary<string, bool> orderErrors = new Dictionary<string, bool>()
+    {
+        { "wrongPlasticBag", false },
+        { "noMatchingItem", false },            // matching items not adjacent
+        { "itlogNotLast", false },              // itlog not placed last
+        { "cannedNotFirst", false },            // canned not placed first
+        { "itlogAndBottle", false },            // itlog next to bottle
+        { "itlogAtCorner", false },             // itlog at the corner
+        { "bottleAndBottle" , false },          // bottle next to bottle
+        { "detergentAndProduce", false },       // detergent next to produce
+        { "ajinomotoAndMagicSarap", false },    // ajinomoto next to magic sarap
+        { "notSameCount", false },              // items given != order
+    };
 
     void Awake()
     {
@@ -54,69 +70,29 @@ public class Customer : MonoBehaviour, IInteractable
             order.GenerateOrder();      // create order;
 
             orderDialogue = DialogueBuilder.BuildOrderDialogue(order, hasSmallTalk);
-            SaveNewOrderDialogue(orderDialogue);        // for tracking purposes maybe, jic
+            // SaveNewDialogue(orderDialogue);        // for tracking purposes maybe, jic
 
             if (hasSmallTalk)
             {
                 // small talk first
                 dialogueData = smallTalkDialogue;
                 willBuyAfterSmallTalk = true;
-                StartCoroutine(StartTalking());
-                // // then order
-                // dialogueData = orderDialogue;
-                // StartCoroutine(StartTalking());
+                // then order
             }
             else    // will buy only
             {
                 // set order as the dialogue right away.
                 dialogueData = orderDialogue;
-                StartCoroutine(StartTalking());
             }
         }
         else        // small talk only
         {
             dialogueData = smallTalkDialogue;
-            // dialogueData = smallTalkDialogue
-            StartCoroutine(StartTalking());
         }
-
-    }
-
-    // private IEnumerator SmallTalkThenBuy()
-    // {
-    //     // start small talk first
-    //     dialogueData = smallTalkDialogue;
-    //     yield return StartCoroutine(StartTalking());
-
-    //     // still making small talk
-    //     while (isDialogueActive)
-    //     {
-    //         yield return null;
-    //     }
-
-    //     dialogueData = orderDialogue;
-    //     yield return StartCoroutine(StartTalking());
-    // }
-
-
-    private void SaveNewOrderDialogue(Dialogue orderDialogue)
-    {
-        string path = "Assets/Resources/Dialogues/" + customerName + "/";
-        string filename = "Order";
-        string filePath = path + filename + ".asset";
-
-        int orderCount = 1;
-        
-        // if there is already an existing file named Order.asset
-        // name the others like this: Order (n).asset
-        while (AssetDatabase.LoadAssetAtPath<Dialogue>(filePath) != null)
+        if (talkingCoroutine == null)
         {
-            filePath = path + filename + " (" + orderCount + ").asset";
-            orderCount++;
+            talkingCoroutine = StartCoroutine(StartTalking());
         }
-
-        AssetDatabase.CreateAsset(orderDialogue, filePath);
-        AssetDatabase.SaveAssets();
     }
 
     public bool CanInteract()
@@ -144,13 +120,12 @@ public class Customer : MonoBehaviour, IInteractable
         }
     }
 
-    // don't directly access the dialogueData.
-    // pass dialogue as parameter
-
     private IEnumerator StartTalking()
     {
         // delay 3 secs
         yield return new WaitForSeconds(2f);
+
+        talkingCoroutine = null;
 
         ChangeCustomerState(CustomerState.Talking);
         // already active with the first line in the dialogue;
@@ -177,7 +152,8 @@ public class Customer : MonoBehaviour, IInteractable
         if (isTyping) 
         {
             // skip the typing animation and show the full line
-            StopAllCoroutines();
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
             dialogueController.SetDialogueText(dialogueData.lines[dialogueIndex]);
             isTyping = false;
             return;
@@ -187,7 +163,7 @@ public class Customer : MonoBehaviour, IInteractable
         dialogueController.ClearChoices();
 
         // check endDialogueLines
-        if(dialogueData.endLines.Count > dialogueIndex && dialogueData.endLines[dialogueIndex])
+        if(dialogueData.endLines != null && dialogueData.endLines.Count > dialogueIndex && dialogueData.endLines[dialogueIndex])
         {
             EndDialogue();
             return;
@@ -229,14 +205,20 @@ public class Customer : MonoBehaviour, IInteractable
             yield return new WaitForSeconds(dialogueData.typingSpeed);
         }
 
-        isTyping = false;
-
         if (dialogueData.linesToAutoProgress.Count > dialogueIndex && dialogueData.linesToAutoProgress[dialogueIndex])
         {
             yield return new WaitForSeconds(dialogueData.autoProgressDelay);
+            isTyping = false;
+            typingCoroutine = null;
             // display next line
             NextLine();
         }
+        else
+        {
+            isTyping = false;
+            typingCoroutine = null;
+        }
+        
     }
 
     void DisplayChoices(DialogueChoice choice)
@@ -257,26 +239,45 @@ public class Customer : MonoBehaviour, IInteractable
 
     void DisplayCurrentLine()
     {
-        StopAllCoroutines();
-        StartCoroutine(TypeLine());
+        if(typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+        typingCoroutine = StartCoroutine(TypeLine());
     }
 
     public void EndDialogue()
     {
-        StopAllCoroutines();
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+        }
+
         isDialogueActive = false;
         dialogueController.SetDialogueText("");
         dialogueController.ShowDialogueUI(false);
-        ChangeCustomerState(CustomerState.Idle);    // waiting
-        // stop dialogue from showing again.
-        // dialogueData = null;
+        ChangeCustomerState(CustomerState.Idle);
+
+        if (isEndingDialogue)
+        {
+            isEndingDialogue = false;
+            dialogueData = null;
+            isDone = true;
+            DestroyNPC();
+            return;
+        }
+
         if (willBuyAfterSmallTalk)
         {
             willBuyAfterSmallTalk = false;
 
             // buying time
             dialogueData = orderDialogue;
-            StartCoroutine(StartTalking());
+            if (talkingCoroutine == null)
+            {
+                talkingCoroutine = StartCoroutine(StartTalking());
+            }
         }
         else
         {
@@ -285,17 +286,66 @@ public class Customer : MonoBehaviour, IInteractable
 
             if (!willBuy)   // only small talk. end already
             {
-                isDone = true;
-                StartCoroutine(DestroySmallTalkNPC());
+                DestroyNPC();
             }
         }
     }
 
-
-    private IEnumerator DestroySmallTalkNPC()
+    public void StartEndingDialogue()
     {
-        yield return new WaitForSeconds(2f);
+        endingDialogue = DialogueBuilder.BuildEndDialogue(orderErrors);    // dialogue for thank u etc.
+        // SaveNewDialogue(endingDialogue);   
+
+        isEndingDialogue = true;
+        dialogueData = endingDialogue;
+        if (talkingCoroutine == null)
+        {
+            talkingCoroutine = StartCoroutine(StartTalking());
+        }
+    }
+
+
+    private void DestroyNPC()
+    {
+        // if (orderDialogue != null && endingDialogue != null)
+        // {
+        //     SaveNewDialogue(orderDialogue);
+        //     SaveNewDialogue(endingDialogue);   
+        // }
+
+        // add walking away animation
+        isDone = true;
         Destroy(gameObject);
+    }
+
+    private void SaveNewDialogue(Dialogue dialogue)
+    {
+        string filename;
+        string path = "Assets/Resources/Dialogues/" + customerName + "/";
+
+        if (dialogue.dialogueType == DialogueType.Buying)
+        {
+            filename = "Order";
+        }
+        else    // end dialogue
+        {
+            filename = "EndDialogue";
+        }
+
+        string filePath = path + filename + ".asset";
+
+        int orderCount = 1;
+        
+        // if there is already an existing file named Order.asset
+        // name the others like this: Order (n).asset
+        while (AssetDatabase.LoadAssetAtPath<Dialogue>(filePath) != null)
+        {
+            filePath = path + filename + " (" + orderCount + ").asset";
+            orderCount++;
+        }
+
+        AssetDatabase.CreateAsset(dialogue, filePath);
+        AssetDatabase.SaveAssets();
     }
 
 
@@ -312,7 +362,7 @@ public class Customer : MonoBehaviour, IInteractable
                 break;
 
             case CustomerState.Talking:
-                Debug.Log("Customer is stating his order");
+                Debug.Log("Customer is talking.");
                 customerSpriteRenderer.sprite = expressions[0];
                 break;
             

@@ -4,6 +4,7 @@ using UnityEngine;
 public class RulesCollection : MonoBehaviour
 {
     private ScoreChecker scoreChecker;
+    private Customer customer;
     private List<int> cornerSlots = new List<int>{0,2,6,8};    // corners
 
     void Start()
@@ -13,6 +14,8 @@ public class RulesCollection : MonoBehaviour
 
     public void ApplyRule(GameObject itemToCheck)
     {
+        customer = FindAnyObjectByType<Customer>();
+
         ItemType itemType = itemToCheck.GetComponent<Item>().GetItemType();
 
         if (itemType == ItemType.PartOfPair)
@@ -46,6 +49,7 @@ public class RulesCollection : MonoBehaviour
 
         // if matching item not found
         Debug.Log("The matching item for "+ itemToCheck.name +" is not found!");
+        customer.orderErrors["noMatchingItem"] = true;
         scoreChecker.DeductScore(5);
     }
 
@@ -59,6 +63,7 @@ public class RulesCollection : MonoBehaviour
 
     public void ApplyRulesOnItemsOrder(List<GameObject> basketQueue)
     {
+        customer = FindAnyObjectByType<Customer>();
 
         int itlogCount = scoreChecker.GetItlogCount();
         int cannedCount = scoreChecker.GetCannedCount();
@@ -73,6 +78,7 @@ public class RulesCollection : MonoBehaviour
                 if (basketQueue[i].name != "Itlog")
                 {
                     Debug.Log("Eggs should be placed last!");
+                    customer.orderErrors["itlogNotLast"] = true;
                     scoreChecker.DeductScore(5);
                 }
             }
@@ -87,6 +93,7 @@ public class RulesCollection : MonoBehaviour
                 if (!basketQueue[i].CompareTag("Canned"))
                 {
                     Debug.Log("Canned should be placed first!");
+                    customer.orderErrors["cannedNotFirst"] = true;
                     scoreChecker.DeductScore(5);
                 }
             }
@@ -95,6 +102,7 @@ public class RulesCollection : MonoBehaviour
 
     private void ApplyItlogRules(GameObject itemToCheck)
     {
+        customer = FindAnyObjectByType<Customer>();
         // RULE 1: Itlog cannot be placed next to Glass Bottles
         List<GameObject> neighbors = scoreChecker.GetNeighboringItems(itemToCheck);
 
@@ -103,6 +111,7 @@ public class RulesCollection : MonoBehaviour
             if (neighbor.GetComponent<Item>().IsItGlassBottle())
             {
                 Debug.Log("Itlog cannot be placed next to a glass bottle!");
+                customer.orderErrors["itlogAndBottle"] = true;
                 scoreChecker.DeductScore(5);
             }
         }
@@ -111,6 +120,7 @@ public class RulesCollection : MonoBehaviour
         if (cornerSlots.Contains(itemToCheck.GetComponent<Item>().GetSlotID()))
         {
             Debug.Log("Itlog cannot be placd at the corner!");
+            customer.orderErrors["itlogAtCorner"] = true;
             scoreChecker.DeductScore(5);
         }
         
@@ -118,6 +128,7 @@ public class RulesCollection : MonoBehaviour
 
     private void ApplyBottleRules(GameObject itemToCheck)
     {
+        customer = FindAnyObjectByType<Customer>();
         // RULE: Glass bottle cannot be placed next to a glass bottle
         List<GameObject> neighbors = scoreChecker.GetNeighboringItems(itemToCheck);
 
@@ -126,6 +137,7 @@ public class RulesCollection : MonoBehaviour
             if (neighbor.GetComponent<Item>().IsItGlassBottle())
             {
                 Debug.Log("A glass bottle can't be put next to another one!");
+                customer.orderErrors["bottleAndBottle"] = true;
                 scoreChecker.DeductScore(5);
             }
         }
@@ -133,6 +145,7 @@ public class RulesCollection : MonoBehaviour
 
     private void ApplyDetergentRules(GameObject itemToCheck)
     {
+        customer = FindAnyObjectByType<Customer>();
         // RULE: Detergent cannot be put next to produce
         List<GameObject> neighbors = scoreChecker.GetNeighboringItems(itemToCheck);
 
@@ -141,6 +154,7 @@ public class RulesCollection : MonoBehaviour
             if (neighbor.CompareTag("Produce"))
             {
                 Debug.Log("Detergent can't be put next to produce!");
+                customer.orderErrors["detergentAndProduce"] = true;
                 scoreChecker.DeductScore(5);
             }
         }
@@ -148,6 +162,7 @@ public class RulesCollection : MonoBehaviour
 
     private void ApplyAjinomotoRules(GameObject itemToCheck)
     {
+        customer = FindAnyObjectByType<Customer>();
         // RULE: Ajinomoto item cannot be put next to MagicSarap item
         List<GameObject> neighbors = scoreChecker.GetNeighboringItems(itemToCheck);
 
@@ -156,6 +171,7 @@ public class RulesCollection : MonoBehaviour
             if (neighbor.name == "MagicSarap")
             {
                 Debug.Log("Ajinomoto can't be put next to Magic Sarap");
+                customer.orderErrors["ajinomotoAndMagicSarap"] = true;
                 scoreChecker.DeductScore(5);
             }
         }
