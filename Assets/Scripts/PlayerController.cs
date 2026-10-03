@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
             bool isDialoguePanelActive = RectTransformUtility.RectangleContainsScreenPoint(dialogueRectTransform, mousePosition, null);
 
             // if clicked on the create note panel (which can overlap with dialogue box)
-            bool isNotePanelActive = RectTransformUtility.RectangleContainsScreenPoint(noteRectTransform, mousePosition, null);
+            bool isNotePanelActive = notesPanel.activeInHierarchy && RectTransformUtility.RectangleContainsScreenPoint(noteRectTransform, mousePosition, null);
 
             // prevents dialogue from moving on if note panel is on top of it and player clicked
             if (isDialoguePanelActive && !isNotePanelActive && customer != null && dialoguePanel.activeInHierarchy)

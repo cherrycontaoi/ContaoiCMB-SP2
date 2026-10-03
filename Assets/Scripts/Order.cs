@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Order : MonoBehaviour
@@ -497,8 +498,21 @@ public class Order : MonoBehaviour
         return neighboringItems;
     }
 
+    // shuffle list
     public GameObject[] GetItems()
     {
-        return itemsToBuy;
+        GameObject[] shuffledList = itemsToBuy.ToArray();
+
+        for (int i=0; i<shuffledList.Length; i++)
+        {
+            GameObject temp = shuffledList[i];
+            int index = Random.Range(i, shuffledList.Length);
+            shuffledList[i] = shuffledList[index]; 
+            shuffledList[index] = temp;
+        }
+
+        return shuffledList;
     }   
+
+
 }
