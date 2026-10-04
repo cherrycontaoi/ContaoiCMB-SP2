@@ -8,7 +8,7 @@ public class Level : MonoBehaviour
     public Dialogue[] smallTalkDialogues;       // smallTalk[i] -> customer[i]
     public bool[] buyingCustomers;              // if array[i] = true, customer[i] will buy
 
-    void Start()
+    public void StartLevel()
     {   
         // setup customers
         for(int i=0; i<customers.Length; i++)
@@ -35,10 +35,10 @@ public class Level : MonoBehaviour
             }
         }
 
-        StartCoroutine(StartLevel());
+        StartCoroutine(RunCustomers());
     }
 
-    private IEnumerator StartLevel()
+    private IEnumerator RunCustomers()
     {
         foreach(Customer customerPrefab in customers)
         {

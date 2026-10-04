@@ -17,6 +17,7 @@ TagManager:
   - Conditioner
   - Shampoo
   - Alcohol
+  - ExitWP
   layers:
   - Default
   - TransparentFX
