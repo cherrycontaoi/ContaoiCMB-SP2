@@ -9,8 +9,7 @@ public class Level : MonoBehaviour
     public bool[] buyingCustomers;              // if array[i] = true, customer[i] will buy
 
     void Start()
-    {
-        
+    {   
         // setup customers
         for(int i=0; i<customers.Length; i++)
         {
@@ -45,17 +44,19 @@ public class Level : MonoBehaviour
         {
 
             Customer customer = Instantiate(customerPrefab);
+            WaypointMover customerMover = customer.GetComponent<WaypointMover>();
 
             customer.isDone = false;
             customer.gameObject.SetActive(true);
 
             TransactionController.Instance.SetCustomer(customer);
-            customer.StartCustomer();
 
-            while (!customer.isDone)
+            while (!customerMover.hasExited)
             {
                 yield return null;
             }
+
+            Debug.Log("hasExited: " + customerMover.hasExited);
 
             Destroy(customer.gameObject);
             
@@ -78,6 +79,7 @@ public class Level : MonoBehaviour
         isDone = true;
         ResetCustomers(); 
     }
+
     
 
 }

@@ -84,7 +84,7 @@ public class CounterDisplayController : MonoBehaviour
 
     public IEnumerator WaitAndClearCoroutine()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         ClearCounter();
         Debug.Log("Coroutine done!");

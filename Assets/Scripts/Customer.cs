@@ -17,6 +17,7 @@ public class Customer : MonoBehaviour, IInteractable
 
     // Dialogue stuff
     // public List<Dialogue> dialogueData;
+    private WaypointMover waypointMover;
     private Coroutine typingCoroutine;
     private Coroutine talkingCoroutine;
     private DialogueController dialogueController;
@@ -44,6 +45,11 @@ public class Customer : MonoBehaviour, IInteractable
         { "notSameCount", false },              // items given != order
     };
 
+    void Start()
+    {
+        waypointMover = GetComponent<WaypointMover>();
+    }
+
     void Awake()
     {
         dialogueController = DialogueController.Instance;
@@ -52,7 +58,7 @@ public class Customer : MonoBehaviour, IInteractable
     public void ShowCustomer()
     {
         // position ng orderan, show customer here
-        transform.position = new Vector3(-5f, 3.61f, 1f);
+        // transform.position = new Vector3(-5f, 3.61f, 1f);
         
         // initial state
         customerSpriteRenderer = GetComponent<SpriteRenderer>();
@@ -62,6 +68,8 @@ public class Customer : MonoBehaviour, IInteractable
 
     public void StartCustomer()
     {
+
+        Debug.Log("========== START CUSTOMER ==========");
         ShowCustomer();
 
         if (willBuy)
@@ -89,7 +97,6 @@ public class Customer : MonoBehaviour, IInteractable
         {
             dialogueData = smallTalkDialogue;
         }
-        StartTalking();
         if (talkingCoroutine == null)
         {
             talkingCoroutine = StartCoroutine(StartTalking());
@@ -274,13 +281,13 @@ public class Customer : MonoBehaviour, IInteractable
         isDialogueActive = false;
         dialogueController.SetDialogueText("");
         dialogueController.ShowDialogueUI(false);
-        ChangeCustomerState(CustomerState.Idle);
 
         if (isEndingDialogue)
         {
             isEndingDialogue = false;
             dialogueData = null;
             isDone = true;
+            waypointMover.isBuying = false;
             
             if (orderDialogue != null && endingDialogue != null)
                 {
@@ -310,8 +317,9 @@ public class Customer : MonoBehaviour, IInteractable
 
             if (!willBuy)   // only small talk. end already
             {
+                ChangeCustomerState(CustomerState.Idle);
                 isDone = true;
-                
+                waypointMover.isBuying = false;
             }
         }
     }
@@ -384,7 +392,7 @@ public class Customer : MonoBehaviour, IInteractable
         switch (customerState)
         {
             case CustomerState.Idle:
-                Debug.Log("Customer is waiting.");
+                // Debug.Log("Customer is waiting.");
                 customerSpriteRenderer.sprite = expressions[1];     // just smile
                 break;
 

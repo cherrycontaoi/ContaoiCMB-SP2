@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7252824033482048933}
   - component: {fileID: 6447284107448530617}
   - component: {fileID: 5994252669407058662}
+  - component: {fileID: 8074537183658833258}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Customer
@@ -109,4 +110,30 @@ MonoBehaviour:
   - {fileID: 1581277078940950190, guid: 0fb19ccd6869f47d9b0cb70d750586c6, type: 3}
   - {fileID: -2741036132238627156, guid: 0fb19ccd6869f47d9b0cb70d750586c6, type: 3}
   - {fileID: 3751151932447079472, guid: 0fb19ccd6869f47d9b0cb70d750586c6, type: 3}
+  customerName: 
   order: {fileID: 0}
+  isDone: 0
+  dialogueData: {fileID: 0}
+  smallTalkDialogue: {fileID: 0}
+  orderDialogue: {fileID: 0}
+  endingDialogue: {fileID: 0}
+  hasSmallTalk: 0
+  willBuy: 0
+  willBuyAfterSmallTalk: 0
+--- !u!114 &8074537183658833258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088204520409257102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a0cc790492534debbab7b53c8a1db3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  waypointParent: {fileID: 0}
+  moveSpeed: 2
+  waitTime: 1
+  loopWaypoints: 0
+  isWaiting: 0
