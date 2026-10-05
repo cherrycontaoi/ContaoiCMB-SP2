@@ -154,10 +154,10 @@ public class DialogueBuilder : MonoBehaviour
     {
         Dialogue endDialogue = ScriptableObject.CreateInstance<Dialogue>();
 
-        foreach (KeyValuePair<string, bool> error in errors)
-        {
-            Debug.Log(error.Key + " = " + error.Value);
-        }
+        // foreach (KeyValuePair<string, bool> error in errors)
+        // {
+        //     Debug.Log(error.Key + " = " + error.Value);
+        // }
 
         // Fill lines
         foreach(string errorKey in errors.Keys)

@@ -69,7 +69,6 @@ public class Customer : MonoBehaviour, IInteractable
     public void StartCustomer()
     {
 
-        Debug.Log("========== START CUSTOMER ==========");
         ShowCustomer();
 
         if (willBuy)

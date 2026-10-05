@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaypointMover : MonoBehaviour
 {
     public Transform waypointParent;
-    public float moveSpeed = 4f;
+    public float moveSpeed = 6f;
     // public float waitTime = 2f;
     public bool loopWaypoints = false;
     public bool isBuying;
@@ -118,16 +118,7 @@ public class WaypointMover : MonoBehaviour
         // done buying
         StartCoroutine(DarkenSprite(true));
 
-        // if waypoints are looped, increment currentwaypointindex and wrap around
-        // if not, increment with the last waypoint as limit
         currentWaypointIndex++;
-
-        // if(currentWaypointIndex == waypoints.Length)
-        // {
-        //     hasExited = true;
-        //     Debug.Log("has exited: " + hasExited);
-        //     yield break;
-        // }
 
     }
     

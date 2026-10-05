@@ -19,6 +19,11 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (PauseController.IsGamePaused) return;
+
+        itemComponent.isHolding = false;
+        itemComponent.holdIndicator.fillAmount = 0;
+        itemComponent.holdIndicator.gameObject.SetActive(false);
+
         itemComponent.BeingDragged();
         originalParent = transform.parent;  // save the original parent
         freshItem = false;

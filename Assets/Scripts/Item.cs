@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -18,14 +19,32 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private int slotID;
     [SerializeField] private bool isGlassBottle;
     
+    public GameObject holdObject;
+    public Image holdIndicator;
+    public bool isHolding = false;
+    private float holdDuration = 1f;
 
     public bool isMatched;
     
 
-    public void Start()
+    private void Start()
     {
         gameController = GameObject.Find("GameController");
         basketController = gameController.GetComponent<BasketController>();
+        
+        holdObject = basketController.holdObject;
+        holdIndicator = holdObject.GetComponent<Image>();
+        holdObject.SetActive(false);
+        
+    }
+
+    private void Update()
+    {
+        if (isHolding)
+        {
+            holdIndicator.transform.position = gameObject.transform.position;
+            holdIndicator.fillAmount = (Time.time - holdDownStartTime) / holdDuration;  // 2 secs
+        }
     }
 
 
@@ -36,22 +55,32 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             Debug.Log("clicked!");
             holdDownStartTime = Time.time;
+            isHolding = true;
+
+            holdIndicator.fillAmount = 0;
+            holdIndicator.gameObject.SetActive(true);
+            holdIndicator.transform.position = gameObject.transform.position;
         }
     }
     public void OnPointerUp(PointerEventData eventData)
     {
         if (PauseController.IsGamePaused) return;
-        if (isInBasket && isBeingDragged==false)
+
+        if (isInBasket && isBeingDragged==false && isHolding)
         {
             Debug.Log("unclicked!");
             holdDownTime = Time.time - holdDownStartTime;
             Debug.Log(holdDownTime);
-        }
 
-        if (holdDownTime >= 3)
-        {
-            Destroy(gameObject);        // remove from basket
-            basketController.RemoveFromBasket(slotID);
+            isHolding = false;
+            holdIndicator.fillAmount = 0;
+            holdIndicator.gameObject.SetActive(false);
+
+            if (holdDownTime >= holdDuration)
+            {
+                Destroy(gameObject);        // remove from basket
+                basketController.RemoveFromBasket(slotID);
+            }
         }
     }
 

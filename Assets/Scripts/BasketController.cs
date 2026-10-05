@@ -13,6 +13,7 @@ public class BasketController : MonoBehaviour
 
     [SerializeField] public List<GameObject> basketQueue = new List<GameObject>();  // based on the order items were put in the bag
     
+    public GameObject holdObject;
     // private CounterDisplayController counterDisplayController;
     // private int slotIDCounter;
 

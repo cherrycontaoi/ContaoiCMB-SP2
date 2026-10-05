@@ -87,7 +87,7 @@ public class CounterDisplayController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         ClearCounter();
-        Debug.Log("Coroutine done!");
+        // Debug.Log("Coroutine done!");
     }
 
     private void ClearCounter()
@@ -96,7 +96,7 @@ public class CounterDisplayController : MonoBehaviour
         plasticBag.SetActive(false);
         userCanStartDragging = false;
 
-        Debug.Log("Counter is cleared!");
+        // Debug.Log("Counter is cleared!");
     }
 
     private void RemovePBFromPlayerSpace()
