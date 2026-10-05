@@ -5,8 +5,8 @@ using UnityEngine;
 public class WaypointMover : MonoBehaviour
 {
     public Transform waypointParent;
-    public float moveSpeed = 2f;
-    public float waitTime = 2f;
+    public float moveSpeed = 4f;
+    // public float waitTime = 2f;
     public bool loopWaypoints = false;
     public bool isBuying;
     public bool hasExited, hasStoppedAtStore;
