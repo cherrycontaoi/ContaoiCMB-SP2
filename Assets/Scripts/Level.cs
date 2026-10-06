@@ -70,7 +70,7 @@ public class Level : MonoBehaviour
             // wait for 5 seconds before next customer appears
             yield return new WaitForSeconds(5f);
         }
-        LevelCompleted();
+        yield return StartCoroutine(LevelCompleted());
     }
 
     public void ResetCustomers()
@@ -82,14 +82,18 @@ public class Level : MonoBehaviour
         }
     }
 
-    public void LevelCompleted()
+
+    public IEnumerator LevelCompleted()
     {
         isDone = true;
-        LevelCompleteScreenHandler.Instance.SetStars(levelScore);
-        LevelCompleteScreenHandler.Instance.ShowScreen();
+        OtherScreensController.Instance.ShowTransitionDialogue(true);
+        OtherScreensController.Instance.SetStars(levelScore);
+
+        yield return new WaitForSeconds(3f);
+
+        OtherScreensController.Instance.ShowTransitionDialogue(false);
+        OtherScreensController.Instance.ShowScreen();
         ResetCustomers(); 
     }
-
     
-
 }

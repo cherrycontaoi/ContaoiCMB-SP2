@@ -1,21 +1,46 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LevelCompleteScreenHandler : MonoBehaviour
+public class OtherScreensController : MonoBehaviour
 {
 
-    public static LevelCompleteScreenHandler Instance { get; private set; }
+    public static OtherScreensController Instance { get; private set; }
     public GameObject levelCompleteScreen;
+    public GameObject transitionPanel;
+    public TMP_Text transitionText;
     public GameObject[] starsContainer;
     private List<Image> starImages = new List<Image>();
+    private string[] transitionLines = {
+        "Anak, kain na!",
+        "Anak, halika't bumili ako ng meryenda.",
+        "Palitan na kita, 'nak.",
+        "May customer ka? Halika muna dito.",
+        "'Nak, ako na dyan. Bukas ka na ulit magbantay."
+    };
 
     void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);   // make only 1 instance
+    }
+
+    public void ChooseTransitionText()
+    {
+        int index = Random.Range(0, transitionLines.Length);
+
+        transitionText.text = transitionLines[index];
+    }
+
+    public void ShowTransitionDialogue(bool show)
+    {
+        if (show)
+        {
+            ChooseTransitionText();
+        }
+        transitionPanel.SetActive(show);
     }
 
     public void OnMenuClick()
@@ -61,6 +86,7 @@ public class LevelCompleteScreenHandler : MonoBehaviour
             starImages[i].color = color;
         }
 
-
     }
+
+
 }
