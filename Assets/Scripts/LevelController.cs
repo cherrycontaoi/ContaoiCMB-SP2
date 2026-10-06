@@ -21,6 +21,7 @@ public class LevelController : MonoBehaviour
     {
         foreach(Level level in levels)
         {
+            LevelCompleteScreenHandler.Instance.HideScreen();
             level.StartLevel();
             // add transition
         }

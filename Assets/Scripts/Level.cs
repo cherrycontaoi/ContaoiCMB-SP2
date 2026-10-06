@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
+    public int levelScore;
     public bool isDone;                         // player is done with the level
     public Customer[] customers;                // customers to appear in the level (3)
     public Dialogue[] smallTalkDialogues;       // smallTalk[i] -> customer[i]
@@ -10,6 +11,9 @@ public class Level : MonoBehaviour
 
     public void StartLevel()
     {   
+        levelScore = 0;
+        isDone = false;
+
         // setup customers
         for(int i=0; i<customers.Length; i++)
         {
@@ -36,6 +40,7 @@ public class Level : MonoBehaviour
         }
 
         StartCoroutine(RunCustomers());
+        // if done
     }
 
     private IEnumerator RunCustomers()
@@ -58,11 +63,14 @@ public class Level : MonoBehaviour
 
             Debug.Log("hasExited: " + customerMover.hasExited);
 
+            levelScore += TransactionController.Instance.GetPlayerScore();
+
             Destroy(customer.gameObject);
             
             // wait for 5 seconds before next customer appears
             yield return new WaitForSeconds(5f);
         }
+        LevelCompleted();
     }
 
     public void ResetCustomers()
@@ -77,6 +85,8 @@ public class Level : MonoBehaviour
     public void LevelCompleted()
     {
         isDone = true;
+        LevelCompleteScreenHandler.Instance.SetStars(levelScore);
+        LevelCompleteScreenHandler.Instance.ShowScreen();
         ResetCustomers(); 
     }
 

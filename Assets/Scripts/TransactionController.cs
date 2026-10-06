@@ -7,6 +7,7 @@ public class TransactionController : MonoBehaviour
     public static TransactionController Instance { get; private set; } // Singleton
     public Customer customer;
     private PlayerData playerData;
+    private int playerScore;
     private BasketController basketController;
     private CounterDisplayController counterDisplayController;
     private ScoreChecker scoreChecker;
@@ -126,7 +127,7 @@ public class TransactionController : MonoBehaviour
     private void CompleteTransaction()
     {
 
-        int playerScore = scoreChecker.GetPlayerScore();
+        playerScore = scoreChecker.GetPlayerScore();
         Debug.Log("The player's score for this level: " + playerScore);
         if (playerScore < 100)
         {
@@ -188,6 +189,11 @@ public class TransactionController : MonoBehaviour
     public CustomerState GetFinalExpression()
     {
         return finalExpression;
+    }
+
+    public int GetPlayerScore()
+    {
+        return playerScore;
     }
 
 

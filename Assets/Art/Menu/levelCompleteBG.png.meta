@@ -1,0 +1,257 @@
+fileFormatVersion: 2
+guid: 202ee71965db5434d8afa69b044dd07b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7993658026011902592
+    second: setup_skins_0
+  - first:
+      213: -4648054348118104858
+    second: setup_skins_1
+  - first:
+      213: -632385252968367726
+    second: setup_skins_2
+  - first:
+      213: 7046562909839269699
+    second: setup_skins_3
+  - first:
+      213: 3452465383319195120
+    second: setup_skins_4
+  - first:
+      213: 2086083277054861763
+    second: setup_skins_5
+  - first:
+      213: 9100568812640930724
+    second: setup_skins_6
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: setup_skins_90
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 3
+        width: 52
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 8, z: 6, w: 6}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb9719a8ad26a4ff591a80db95e1060e
+      internalID: -1484379428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: af91f4d4f3fa0448996640d937a6efce
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      setup_skins_0: -7993658026011902592
+      setup_skins_1: -4648054348118104858
+      setup_skins_10: -1346617214
+      setup_skins_11: 1344248452
+      setup_skins_12: -2080713064
+      setup_skins_13: -788344140
+      setup_skins_14: 1240275451
+      setup_skins_15: -449830088
+      setup_skins_16: 1030788821
+      setup_skins_17: -1938645746
+      setup_skins_18: -1029465567
+      setup_skins_19: 497385649
+      setup_skins_2: -632385252968367726
+      setup_skins_20: -381428346
+      setup_skins_21: -1992891680
+      setup_skins_22: 1438589693
+      setup_skins_23: -708107898
+      setup_skins_24: -40849892
+      setup_skins_25: -1202456421
+      setup_skins_26: 1217260583
+      setup_skins_27: 1491160250
+      setup_skins_28: 141622837
+      setup_skins_29: -418040457
+      setup_skins_3: 7046562909839269699
+      setup_skins_30: 1877025557
+      setup_skins_31: -1629149788
+      setup_skins_32: 208082037
+      setup_skins_33: -693688190
+      setup_skins_34: -1236391072
+      setup_skins_35: -757936550
+      setup_skins_36: 1623095179
+      setup_skins_37: 802626185
+      setup_skins_38: -225524128
+      setup_skins_39: -895208061
+      setup_skins_4: 3452465383319195120
+      setup_skins_40: -261387737
+      setup_skins_41: 1301481438
+      setup_skins_42: -584926871
+      setup_skins_43: -790685046
+      setup_skins_44: -773181454
+      setup_skins_45: -602287858
+      setup_skins_46: -1902180934
+      setup_skins_47: -1306568354
+      setup_skins_48: 1907946414
+      setup_skins_49: -2123995540
+      setup_skins_5: 2086083277054861763
+      setup_skins_50: 229080896
+      setup_skins_51: 422546701
+      setup_skins_52: -286560299
+      setup_skins_53: -599843542
+      setup_skins_54: -1458893505
+      setup_skins_55: -660766676
+      setup_skins_56: 1338075700
+      setup_skins_57: 1982334791
+      setup_skins_58: -266772805
+      setup_skins_59: 263811859
+      setup_skins_6: 9100568812640930724
+      setup_skins_60: 1090211231
+      setup_skins_61: 900158372
+      setup_skins_62: -557219431
+      setup_skins_63: -32661979
+      setup_skins_64: -582602145
+      setup_skins_65: -368172626
+      setup_skins_66: -1792293781
+      setup_skins_67: -1058982115
+      setup_skins_68: -1303838632
+      setup_skins_69: 1497781243
+      setup_skins_7: -1972824780
+      setup_skins_70: 596555203
+      setup_skins_71: 529696393
+      setup_skins_72: -1973501358
+      setup_skins_73: -2021200417
+      setup_skins_74: 1801793981
+      setup_skins_75: -152094830
+      setup_skins_76: 10658889
+      setup_skins_77: 1100234803
+      setup_skins_78: 1699764169
+      setup_skins_79: 1462093605
+      setup_skins_8: 950334813
+      setup_skins_80: 998815728
+      setup_skins_81: 532853371
+      setup_skins_82: 265052569
+      setup_skins_83: 1728699681
+      setup_skins_84: -1818705717
+      setup_skins_85: -1236292270
+      setup_skins_86: -607780805
+      setup_skins_87: 502517606
+      setup_skins_88: -113961763
+      setup_skins_89: -1367253241
+      setup_skins_9: 70912826
+      setup_skins_90: -1484379428
+      setup_skins_91: -1051445328
+      setup_skins_92: -1354391605
+      setup_skins_93: -1365251186
+      setup_skins_94: 1036206136
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
