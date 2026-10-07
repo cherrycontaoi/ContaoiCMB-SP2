@@ -6,6 +6,8 @@ public class LevelController : MonoBehaviour
     public Level[] levels;
     public int[] levelsCompleted;      // Level.levelNo
 
+    private int currentLevelIndex;
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -14,16 +16,28 @@ public class LevelController : MonoBehaviour
 
     void Start()
     {
-        StartGame();
+        StartCurrentLevel();
     }
 
-    private void StartGame()
+    private void StartCurrentLevel()
     {
-        foreach(Level level in levels)
+        OtherScreensController.Instance.HideScreen();
+        levels[currentLevelIndex].StartLevel();
+ 
+    }
+
+    public void StartNextLevel()
+    {
+        currentLevelIndex++;
+
+        if (currentLevelIndex < levels.Length)
         {
             OtherScreensController.Instance.HideScreen();
-            level.StartLevel();
-            // add transition
+            levels[currentLevelIndex].StartLevel();
+        }
+        else
+        {
+            Debug.Log("No more levels left!");
         }
     }
 }

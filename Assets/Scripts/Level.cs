@@ -94,6 +94,8 @@ public class Level : MonoBehaviour
         OtherScreensController.Instance.ShowTransitionDialogue(false);
         OtherScreensController.Instance.ShowScreen();
         ResetCustomers(); 
+
+        // LevelController.Instance.StartNextLevel();
     }
     
 }

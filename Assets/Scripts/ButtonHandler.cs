@@ -16,11 +16,14 @@ public class ButtonHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         buttonImage = GetComponent<Button>().image;
         color = buttonImage.color;
+
+        color.a = 0f;
+        buttonImage.color = color;
     }
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-        color.a = 100f;
+        color.a = 1f;
         buttonImage.color = color;
 
         buttonText.text = hoverText;

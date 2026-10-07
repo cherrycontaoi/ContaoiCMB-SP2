@@ -52,6 +52,7 @@ public class OtherScreensController : MonoBehaviour
     {
         // just continue
         levelCompleteScreen.SetActive(false);
+        LevelController.Instance.StartNextLevel();
     }
 
     public void ShowScreen()
