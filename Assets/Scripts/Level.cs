@@ -14,6 +14,9 @@ public class Level : MonoBehaviour
         levelScore = 0;
         isDone = false;
 
+        OtherScreensController.Instance.ShowStartAnimation();
+        OtherScreensController.Instance.CloseStore();
+
         // setup customers
         for(int i=0; i<customers.Length; i++)
         {

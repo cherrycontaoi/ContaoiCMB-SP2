@@ -58,7 +58,7 @@ public class Eraser : MonoBehaviour
         if (canActivate)
         {
             isActive = true;
-            PauseController.SetPause(true);
+            // PauseController.SetPause(true);
             cursorController.SetToEraser();
             eraserReminder.SetActive(true);
         }
@@ -68,7 +68,7 @@ public class Eraser : MonoBehaviour
     public void DeactivateEraser()
     {
         isActive = false;
-        PauseController.SetPause(false);
+        // PauseController.SetPause(false);
         cursorController.SetToDefault();
         eraserReminder.SetActive(false);
     }

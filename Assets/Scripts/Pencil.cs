@@ -11,7 +11,7 @@ public class Pencil : MonoBehaviour
     public void ActivatePencil()
     {
         isActive = true;
-        PauseController.SetPause(true);
+        // PauseController.SetPause(true);
         createNotePanel.SetActive(true);
         pencilReminder.SetActive(true);
     }
@@ -19,7 +19,7 @@ public class Pencil : MonoBehaviour
     public void DeactivatePencil()
     {
         isActive = false;
-        PauseController.SetPause(false);
+        // PauseController.SetPause(false);
         createNotePanel.SetActive(false);
         pencilReminder.SetActive(false);
     }
