@@ -8,12 +8,14 @@ public class Level : MonoBehaviour
     public Customer[] customers;                // customers to appear in the level (3)
     public Dialogue[] smallTalkDialogues;       // smallTalk[i] -> customer[i]
     public bool[] buyingCustomers;              // if array[i] = true, customer[i] will buy
+    public string instructionsFileName;
 
     public void StartLevel()
     {   
         levelScore = 0;
         isDone = false;
 
+        OtherScreensController.Instance.SetInstructions(instructionsFileName);
         OtherScreensController.Instance.ShowStartAnimation();
         OtherScreensController.Instance.CloseStore();
 
@@ -43,11 +45,19 @@ public class Level : MonoBehaviour
         }
 
         StartCoroutine(RunCustomers());
-        // if done
+        
     }
 
     private IEnumerator RunCustomers()
     {
+        while (!OtherScreensController.Instance.storeIsOpen)
+        {
+            yield return null;
+        }
+
+        // wait muna
+        yield return new WaitForSeconds(5f);
+
         foreach(Customer customerPrefab in customers)
         {
 
@@ -84,7 +94,6 @@ public class Level : MonoBehaviour
             customer.hasSmallTalk = customer.willBuy = false;
         }
     }
-
 
     public IEnumerator LevelCompleted()
     {

@@ -1,8 +1,7 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Tilemaps;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -41,8 +40,12 @@ public class OtherScreensController : MonoBehaviour
     public GameObject[] paperTileSets;
     public GameObject displayPaper;
     public GameObject paperElements;
-    
+
+
+    public Transform paperContentWindow;    
+    public GameObject paperText;
     private bool hasReadPaper;
+    public bool storeIsOpen;
     private int index;
 
     
@@ -132,6 +135,8 @@ public class OtherScreensController : MonoBehaviour
 
     public void CloseStore()
     {
+        storeIsOpen = false;
+
         blockageTileset.SetActive(true);
         storeTakip.SetActive(true);
         clickReminder.SetActive(true);
@@ -143,10 +148,11 @@ public class OtherScreensController : MonoBehaviour
     {
         if (!hasReadPaper)
         {
-            reminderText.text = "Read the instructions first!";
+            reminderText.text = "Wait! Baka may mga habilin.";
             return;
         }
 
+        storeIsOpen = true;
         blockageTileset.SetActive(false);
         storeTakip.SetActive(false);
         clickReminder.SetActive(false);
@@ -165,7 +171,21 @@ public class OtherScreensController : MonoBehaviour
         hasReadPaper = true;
         paperTileSets[index].SetActive(false);
         paperElements.SetActive(false);
-        reminderText.text = "Click the cover to open the store!";
+        reminderText.text = "I-click yung cover para buksan yung store!";
+    }
+
+    public void SetInstructions(string filename)
+    {
+        string readFromFilePath = "Assets/Resources/Levels/Instructions/" + filename;
+
+        List<string> fileLines = File.ReadAllLines(readFromFilePath).ToList();
+        
+        foreach(string line in fileLines)
+        {
+            Instantiate(paperText, paperContentWindow);
+            paperText.GetComponentInChildren<TMP_Text>().text = line;
+        }
+
     }
 
 }
