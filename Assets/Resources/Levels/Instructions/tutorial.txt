@@ -1,0 +1,12 @@
+Welcome!
+Sa simula ng bawat level, kailangan mo muna basahin ang nakasulat dito sa papel bago buksan ang sari-sari store.
+Bakit? Sa pag-aayos kasi ng mga pinamili ng customer, may mga 'rules' na kailangang sundin. Kung may mali sa pagkakalagay mo ng mga 'items' o kaya naman ay may kulang, mababawasan ang score mo. Syempre, hindi rin matutuwa yung customer.
+Ang mga rules ay nakasulat dito sa papel kaya dapat ay basahin mo muna ito nang maigi at tandaan ang mga importanteng impormasyon.
+Halimbawa, baka bawal pagtabihin sa plastic bag ang babasaging bote pati ang itlog. Syempre, 'pag hindi mo nasunod yung rule, mababawasan ang score mo.
+Isang beses lang pwedeng buksan yung papel sa bawat level kaya dapat ay sure ka nang natandaan at nailista mo lahat ng importanteng detalye bago mo 'to i-close.
+Pwede kang gumamit ng mga tools na nasa workspace. Merong notebook, notepad, lapis, at eraser. Yung notebook at notepad ay pwedeng gamitin sa paglilista. 
+For example, yung mga rules ay nakasulat sa notebook habang yung mga bibilhin naman ng customer ay nakasulat sa notepad. Para magsulat, gamitin ang lapis. Para naman magbura, gamitin lang ang eraser.
+Madali lang namang ang mechanics ng game. Ang kailangan mo lang gawin ay magbantay ng tindahan.
+Ano? Kaya, diba? 
+Kung okay na, pindutin mo lang yung [close] button sa top-right corner ng papel.
+Good luck!!!

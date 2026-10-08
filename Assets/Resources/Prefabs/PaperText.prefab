@@ -169,11 +169,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A little reckless around the edges call it young dumb, love and it's just
-    enough keep me guessing how the story unfolds with youA little reckless around
-    the edges call it young dumb, love and it's just enough keep me guessing how
-    the story unfolds with you.A little reckless around the edges call it young dumb,
-    love and it's just enough keep me guessing how the story unfolds with you.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f5abcb559c3d47c5a4c817f892bcca0, type: 2}
   m_sharedMaterial: {fileID: -3350259483488396161, guid: 7f5abcb559c3d47c5a4c817f892bcca0, type: 2}
