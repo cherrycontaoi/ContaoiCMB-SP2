@@ -67,6 +67,8 @@ public class OtherScreensController : MonoBehaviour
 
     public void ShowTransitionDialogue(bool show)
     {
+        Pencil.Instance.DeactivatePencil();
+        Eraser.Instance.DeactivateEraser();
         if (show)
         {
             ChooseTransitionText();
@@ -129,6 +131,12 @@ public class OtherScreensController : MonoBehaviour
         displayPaper.GetComponent<Image>().sprite = paperSprites[index];
         
         hasReadPaper = false;
+        storeIsOpen = false;
+
+        displayPaper.SetActive(true);
+        blockageTileset.SetActive(true);
+        clickReminder.SetActive(true);
+        paperElements.SetActive(false);
 
         startPanel.SetActive(true);
     }

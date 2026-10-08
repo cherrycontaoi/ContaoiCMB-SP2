@@ -8,8 +8,7 @@ public class PlayerController : MonoBehaviour
     private Camera mainCamera;
     private CursorController cursorController;
 
-    [SerializeField] private Pencil pencil;
-    [SerializeField] private Eraser eraser;
+    
     [SerializeField] private CounterDisplayController counterDisplayController;
     public GameObject dialoguePanel;
     public GameObject notesPanel;
@@ -17,14 +16,13 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         counterDisplayController = FindAnyObjectByType<CounterDisplayController>();
+        Pencil.Instance.DeactivatePencil();
+        Eraser.Instance.DeactivateEraser();
     }
 
     private void Awake()
     {
         mainCamera = Camera.main;
-        pencil.DeactivatePencil();
-        eraser.DeactivateEraser();
-        
     }
 
     public void Update()
@@ -37,17 +35,17 @@ public class PlayerController : MonoBehaviour
 
         if(rayHit.collider.gameObject.name == "Pencil") {
             // Debug.Log("pencil");
-            pencil.ActivatePencil();
-            eraser.canActivate = false;
+            Pencil.Instance.ActivatePencil();
+            Eraser.Instance.canActivate = false;
             // eraser.DeactivateEraser();
         }
         else if(rayHit.collider.gameObject.name == "Eraser")
         {
-            if (!pencil.isActive)
+            if (!Pencil.Instance.isActive)
             {
-                eraser.canActivate = true;
+                Eraser.Instance.canActivate = true;
             }
-            eraser.ActivateEraser();
+            Eraser.Instance.ActivateEraser();
             // pencil.DeactivatePencil();
         }
         else if(rayHit.collider.gameObject.CompareTag("PlasticBag"))

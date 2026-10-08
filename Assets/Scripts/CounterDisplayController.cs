@@ -43,7 +43,7 @@ public class CounterDisplayController : MonoBehaviour
     {
         Customer customer = FindAnyObjectByType<Customer>();
         // can't choose pb if game is paused or if there are no customers
-        if(PauseController.IsGamePaused || customer == null || !customer.willBuy || !customer.GetComponent<WaypointMover>().hasStoppedAtStore) return;
+        if(PauseController.IsGamePaused || customer == null || !customer.willBuy || !customer.GetComponent<WaypointMover>().hasStoppedAtStore || Pencil.Instance.isActive) return;
 
         Debug.Log("The plastic bag to be used is: " + PBColor);
         if(PBColor == "PBGreen")

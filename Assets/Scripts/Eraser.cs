@@ -9,6 +9,7 @@ public class Eraser : MonoBehaviour
 {
     // TO DO: NEED TO INCREASE SIZE OF ERASER CURSOR!!!!
 
+    public static Eraser Instance { get; private set; }
     private Camera mainCamera;
     public bool isActive;
     [SerializeField] private CursorController cursorController;
@@ -18,8 +19,12 @@ public class Eraser : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);   // make only 1 instance
+
         mainCamera = Camera.main;
     }
+
     private void Update()
     {
         if (!isActive) return;
