@@ -15020,6 +15020,7 @@ GameObject:
   - component: {fileID: 1031242761}
   - component: {fileID: 1031242762}
   - component: {fileID: 1031242763}
+  - component: {fileID: 1031242764}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -15174,6 +15175,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4dc7d1229304496d981c02d892b244e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &1031242764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031242753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a02cc8f10b834826b2bd6cb6d5db42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RulesTracker
 --- !u!1001 &1046257187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22566,8 +22579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67abc8cdb70ff4c6fb939908649784b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  pencil: {fileID: 1977510290}
-  eraser: {fileID: 162673603}
   counterDisplayController: {fileID: 0}
   dialoguePanel: {fileID: 646117198}
   notesPanel: {fileID: 1012056188}

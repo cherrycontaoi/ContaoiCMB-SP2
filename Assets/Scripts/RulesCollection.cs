@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RulesCollection : MonoBehaviour
@@ -56,9 +57,9 @@ public class RulesCollection : MonoBehaviour
     private void ApplyIndividualRules(GameObject itemToCheck)
     {
         if (itemToCheck.name == "Itlog") ApplyItlogRules(itemToCheck);
-        else if (itemToCheck.name == "Ajinomoto") ApplyAjinomotoRules(itemToCheck);
-        else if (itemToCheck.GetComponent<Item>().IsItGlassBottle()) ApplyBottleRules(itemToCheck);
-        else if (itemToCheck.CompareTag("Detergent")) ApplyDetergentRules(itemToCheck);
+        else if (itemToCheck.name == "Ajinomoto" && RulesTracker.Instance.activeRulesInLevel[Rule.TooMuchUmami]) ApplyAjinomotoRules(itemToCheck);
+        else if (itemToCheck.GetComponent<Item>().IsItGlassBottle() && RulesTracker.Instance.activeRulesInLevel[Rule.GlassBottles]) ApplyBottleRules(itemToCheck);
+        else if (itemToCheck.CompareTag("Detergent") && RulesTracker.Instance.activeRulesInLevel[Rule.DetergentProduce]) ApplyDetergentRules(itemToCheck);
     }
 
     public void ApplyRulesOnItemsOrder(List<GameObject> basketQueue)
@@ -102,26 +103,32 @@ public class RulesCollection : MonoBehaviour
 
     private void ApplyItlogRules(GameObject itemToCheck)
     {
-        customer = FindAnyObjectByType<Customer>();
-        // RULE 1: Itlog cannot be placed next to Glass Bottles
-        List<GameObject> neighbors = scoreChecker.GetNeighboringItems(itemToCheck);
-
-        foreach (GameObject neighbor in neighbors)
+        if (RulesTracker.Instance.activeRulesInLevel[Rule.ItlogInCornerSlot])
         {
-            if (neighbor.GetComponent<Item>().IsItGlassBottle())
+            customer = FindAnyObjectByType<Customer>();
+            // RULE 1: Itlog cannot be placed next to Glass Bottles
+            List<GameObject> neighbors = scoreChecker.GetNeighboringItems(itemToCheck);
+
+            foreach (GameObject neighbor in neighbors)
             {
-                Debug.Log("Itlog cannot be placed next to a glass bottle!");
-                customer.orderErrors["itlogAndBottle"] = true;
-                scoreChecker.DeductScore(5);
+                if (neighbor.GetComponent<Item>().IsItGlassBottle())
+                {
+                    Debug.Log("Itlog cannot be placed next to a glass bottle!");
+                    customer.orderErrors["itlogAndBottle"] = true;
+                    scoreChecker.DeductScore(5);
+                }
             }
         }
-
-        // RULE 2: Itlog cannot be placed in a corner slot
-        if (cornerSlots.Contains(itemToCheck.GetComponent<Item>().GetSlotID()))
+        
+        if (RulesTracker.Instance.activeRulesInLevel[Rule.ItlogAndBottle])
         {
-            Debug.Log("Itlog cannot be placd at the corner!");
-            customer.orderErrors["itlogAtCorner"] = true;
-            scoreChecker.DeductScore(5);
+            // RULE 2: Itlog cannot be placed in a corner slot
+            if (cornerSlots.Contains(itemToCheck.GetComponent<Item>().GetSlotID()))
+            {
+                Debug.Log("Itlog cannot be placd at the corner!");
+                customer.orderErrors["itlogAtCorner"] = true;
+                scoreChecker.DeductScore(5);
+            }
         }
         
     }
@@ -178,4 +185,13 @@ public class RulesCollection : MonoBehaviour
     }
 
     
+}
+
+public enum Rule
+{
+    ItlogAndBottle,
+    ItlogInCornerSlot,
+    GlassBottles,
+    DetergentProduce,
+    TooMuchUmami
 }

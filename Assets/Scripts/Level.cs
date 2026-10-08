@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class Level : MonoBehaviour
@@ -9,6 +11,15 @@ public class Level : MonoBehaviour
     public Dialogue[] smallTalkDialogues;       // smallTalk[i] -> customer[i]
     public bool[] buyingCustomers;              // if array[i] = true, customer[i] will buy
     public string instructionsFileName;
+    public Dictionary<Rule, bool> activeRules = new Dictionary<Rule, bool>
+    {
+        { Rule.ItlogAndBottle, false },
+        { Rule.ItlogInCornerSlot, false },
+        { Rule.GlassBottles, false },
+        { Rule.DetergentProduce, false },
+        { Rule.TooMuchUmami, false },
+    };
+    public bool[] activeRulesArr = new bool[5];
 
     public void StartLevel()
     {   
@@ -43,6 +54,8 @@ public class Level : MonoBehaviour
                 customers[i].willBuy = false;
             }
         }
+        SetRulesDictionary();
+        RulesTracker.Instance.SetRules(activeRules);
 
         StartCoroutine(RunCustomers());
         
@@ -108,6 +121,15 @@ public class Level : MonoBehaviour
         ResetCustomers(); 
 
         // LevelController.Instance.StartNextLevel();
+    }
+
+    private void SetRulesDictionary()
+    {
+        activeRules[Rule.ItlogAndBottle] = activeRulesArr[0];
+        activeRules[Rule.ItlogInCornerSlot] = activeRulesArr[1];
+        activeRules[Rule.GlassBottles] = activeRulesArr[2];
+        activeRules[Rule.DetergentProduce] = activeRulesArr[3];
+        activeRules[Rule.TooMuchUmami] = activeRulesArr[4];
     }
     
 }

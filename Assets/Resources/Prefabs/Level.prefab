@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e797175296cd5409baf6f23591b1ab78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  levelScore: 0
   isDone: 0
   customers: []
   smallTalkDialogues: []
   buyingCustomers: 
+  instructionsFileName: 
+  activeRulesArr: 0101000001
