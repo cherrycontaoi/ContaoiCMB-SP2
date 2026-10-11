@@ -184,6 +184,11 @@ public class OtherScreensController : MonoBehaviour
 
     public void SetInstructions(string filename)
     {
+        foreach (Transform child in paperContentWindow)
+        {
+            Destroy(child.gameObject);    
+        }
+
         string readFromFilePath = "Assets/Resources/Levels/Instructions/" + filename;
 
         List<string> fileLines = File.ReadAllLines(readFromFilePath).ToList();

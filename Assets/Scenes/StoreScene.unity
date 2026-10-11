@@ -5119,7 +5119,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I-click yung cover para buksan yung store!
+  m_text: I-click ang cover para buksan ang store!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f5abcb559c3d47c5a4c817f892bcca0, type: 2}
   m_sharedMaterial: {fileID: -3350259483488396161, guid: 7f5abcb559c3d47c5a4c817f892bcca0, type: 2}
@@ -36951,6 +36951,38 @@ PrefabInstance:
     - target: {fileID: 5438780340420288405, guid: d1e1599aee0bb4fd1939b7ef18d46be6, type: 3}
       propertyPath: instructionsFileName
       value: sample.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438780340420288405, guid: d1e1599aee0bb4fd1939b7ef18d46be6, type: 3}
+      propertyPath: activeRulesArr.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438780340420288405, guid: d1e1599aee0bb4fd1939b7ef18d46be6, type: 3}
+      propertyPath: 'activeRulesArr.Array.data[2]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438780340420288405, guid: d1e1599aee0bb4fd1939b7ef18d46be6, type: 3}
+      propertyPath: 'activeRulesArr.Array.data[3]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438780340420288405, guid: d1e1599aee0bb4fd1939b7ef18d46be6, type: 3}
+      propertyPath: 'activeRulesArr.Array.data[5]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438780340420288405, guid: d1e1599aee0bb4fd1939b7ef18d46be6, type: 3}
+      propertyPath: 'activeRulesArr.Array.data[6]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438780340420288405, guid: d1e1599aee0bb4fd1939b7ef18d46be6, type: 3}
+      propertyPath: 'activeRulesArr.Array.data[7]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438780340420288405, guid: d1e1599aee0bb4fd1939b7ef18d46be6, type: 3}
+      propertyPath: 'activeRulesArr.Array.data[8]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438780340420288405, guid: d1e1599aee0bb4fd1939b7ef18d46be6, type: 3}
+      propertyPath: 'activeRulesArr.Array.data[9]'
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5438780340420288405, guid: d1e1599aee0bb4fd1939b7ef18d46be6, type: 3}
       propertyPath: 'buyingCustomers.Array.data[0]'
