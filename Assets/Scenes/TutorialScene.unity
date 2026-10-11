@@ -24164,6 +24164,10 @@ MonoBehaviour:
   plasticbagNote: {fileID: 1174789264}
   customerNote: {fileID: 1033797318}
   bagChoosingNote: {fileID: 1906770496}
+  plasticBagGrids:
+  - {fileID: 1636122777}
+  - {fileID: 1956646580}
+  - {fileID: 1928746740}
 --- !u!1001 &1267534877
 PrefabInstance:
   m_ObjectHideFlags: 0

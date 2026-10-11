@@ -23,8 +23,9 @@ public class Level : MonoBehaviour
         { Rule.TooMuchUmami, false },
         { Rule.ProperPlasticBag, false },
         { Rule.Pairings, false },
+        { Rule.ContentRules, false },
     };
-    public bool[] activeRulesArr = new bool[9];
+    public bool[] activeRulesArr = new bool[10];
 
     public void StartLevel()
     {   
@@ -36,7 +37,7 @@ public class Level : MonoBehaviour
         {
             levelScore = 0;
         }
-        
+
         isDone = false;
 
         OtherScreensController.Instance.SetInstructions(instructionsFileName);
@@ -138,11 +139,16 @@ public class Level : MonoBehaviour
 
     private void SetRulesDictionary()
     {
-        activeRules[Rule.ItlogAndBottle] = activeRulesArr[0];
-        activeRules[Rule.ItlogInCornerSlot] = activeRulesArr[1];
-        activeRules[Rule.GlassBottles] = activeRulesArr[2];
-        activeRules[Rule.DetergentProduce] = activeRulesArr[3];
-        activeRules[Rule.TooMuchUmami] = activeRulesArr[4];
+        activeRules[Rule.ItlogLast] = activeRulesArr[0];
+        activeRules[Rule.ItlogAndBottle] = activeRulesArr[1];
+        activeRules[Rule.ItlogInCornerSlot] = activeRulesArr[2];
+        activeRules[Rule.CannedFirst] = activeRulesArr[3];
+        activeRules[Rule.GlassBottles] = activeRulesArr[4];
+        activeRules[Rule.DetergentProduce] = activeRulesArr[5];
+        activeRules[Rule.TooMuchUmami] = activeRulesArr[6];
+        activeRules[Rule.ProperPlasticBag] = activeRulesArr[7];
+        activeRules[Rule.Pairings] = activeRulesArr[8];
+        activeRules[Rule.ContentRules] = activeRulesArr[9];
     }
     
 }

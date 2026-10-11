@@ -130,20 +130,3 @@ public class ScoreChecker : MonoBehaviour
         return actualItemsOnly;
     }
 }
-
-public enum Error
-{
-    noMatchingItem,
-    itlogNotLast,
-    cannedNotFirst,
-    itlogAndBottle,
-    itlogAtCorner,
-    bottleAndBottle,
-    detergentAndProduce,
-    ajinomotoAndMagicSarap,
-    notSameCount,
-    wrongPlasticBag
-
-}
-
-

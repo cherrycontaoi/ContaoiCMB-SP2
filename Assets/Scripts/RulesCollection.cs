@@ -197,5 +197,6 @@ public enum Rule
     DetergentProduce,
     TooMuchUmami,
     ProperPlasticBag,
-    Pairings
+    Pairings,
+    ContentRules    // some items not found, wrong items in the bag
 }

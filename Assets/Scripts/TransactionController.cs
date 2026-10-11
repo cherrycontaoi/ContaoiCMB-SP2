@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class TransactionController : MonoBehaviour
 {
@@ -47,6 +48,7 @@ public class TransactionController : MonoBehaviour
         customer = newCustomer;
     }
 
+
     public void Checkout()
     {
         scoreChecker.CheckItems();
@@ -72,18 +74,18 @@ public class TransactionController : MonoBehaviour
         //     Debug.Log(item.name);
         // }
 
+        // if (itemsInBasket.Count != customerOrder.Length)
+        // {
+        //     Debug.Log("The number of items in the basket doesn't match with the customer's order!");
+        //     customer.orderErrors["notSameCount"] = true;
+        //     scoreChecker.DeductScore(5);
+        //     // customer.ChangeCustomerState(CustomerState.NeutralExpression);
+        //     // counterDisplayController.DisplayPlasticBag(customerOrder.Length);
+        //     // CompleteTransaction();
+        //     // return;
+        // }
 
-        if (itemsInBasket.Count != customerOrder.Length)
-        {
-            Debug.Log("The number of items in the basket doesn't match with the customer's order!");
-            customer.orderErrors["notSameCount"] = true;
-            scoreChecker.DeductScore(5);
-            // customer.ChangeCustomerState(CustomerState.NeutralExpression);
-            // counterDisplayController.DisplayPlasticBag(customerOrder.Length);
-            // CompleteTransaction();
-            // return;
-        }
-
+        if (RulesTracker.Instance.activeRulesInLevel[Rule.ContentRules]) CheckIfSame(itemsInBasket, customerOrder);
 
         // compare by name, check if the orders match with the basket content
         foreach(GameObject item in itemsInBasket)
@@ -122,6 +124,30 @@ public class TransactionController : MonoBehaviour
         // customer.GetComponent<Order>().ResetItemMatchings();
         customer.order.ResetItemMatchings();
         CompleteTransaction();
+    }
+
+    private void CheckIfSame(List<GameObject> basketItems, GameObject[] orders)
+    {
+        List<string> basketCopy = new List<string>();
+
+        foreach(GameObject basketItem in basketItems)
+        {
+            basketCopy.Add(basketItem.name);
+        }
+
+        foreach (GameObject orderItem in orders)
+        {
+            if (basketCopy.Contains(orderItem.name))
+            {
+                basketCopy.Remove(orderItem.name);
+            }
+            else
+            {
+                scoreChecker.DeductScore(10);   // 10 per item not in the bag
+            }
+        }
+
+        if (basketCopy.Count != 0) scoreChecker.DeductScore(5); // may item sa bag na di order
     }
 
     private void CompleteTransaction()
