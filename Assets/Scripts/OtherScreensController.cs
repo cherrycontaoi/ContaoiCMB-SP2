@@ -44,6 +44,7 @@ public class OtherScreensController : MonoBehaviour
 
     public Transform paperContentWindow;    
     public GameObject paperText;
+    public GameObject paperImage;
     private bool hasReadPaper;
     public bool storeIsOpen;
     private int index;
@@ -156,7 +157,7 @@ public class OtherScreensController : MonoBehaviour
     {
         if (!hasReadPaper)
         {
-            reminderText.text = "Wait! Baka may mga habilin.";
+            reminderText.text = "Wait! Baka may mga bilin.";
             return;
         }
 
@@ -189,14 +190,27 @@ public class OtherScreensController : MonoBehaviour
             Destroy(child.gameObject);    
         }
 
-        string readFromFilePath = "Assets/Resources/Levels/Instructions/" + filename;
+        string readFromFilePath = "Assets/Resources/Instructions/" + filename;
 
         List<string> fileLines = File.ReadAllLines(readFromFilePath).ToList();
         
         foreach(string line in fileLines)
         {
-            GameObject newPaperText = Instantiate(paperText, paperContentWindow);
-            newPaperText.GetComponentInChildren<TMP_Text>().text = line;
+            if (line.StartsWith("img_src="))
+            {
+                string imgPath = line.Replace("img_src=", "");
+
+                Sprite instructionPhoto = Resources.Load<Sprite>(imgPath);
+                GameObject newPaperPhoto = Instantiate(paperImage, paperContentWindow);
+
+                newPaperPhoto.GetComponentInChildren<Image>().sprite = instructionPhoto;
+            }
+            else
+            {
+                GameObject newPaperText = Instantiate(paperText, paperContentWindow);
+                newPaperText.GetComponentInChildren<TMP_Text>().text = line;
+            }
+
         }
 
     }
