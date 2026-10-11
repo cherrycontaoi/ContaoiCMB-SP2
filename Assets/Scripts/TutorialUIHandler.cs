@@ -8,6 +8,7 @@ public class TutorialUIHandler : MonoBehaviour
     public GameObject plasticbagNote;
     public GameObject customerNote;
     public GameObject bagChoosingNote;
+    public GameObject[] plasticBagGrids;
 
     private void Update()
     {
@@ -20,6 +21,14 @@ public class TutorialUIHandler : MonoBehaviour
             customerNote.SetActive(true);
             bagChoosingNote.SetActive(true);
 
+            foreach(GameObject grid in plasticBagGrids)
+            {
+                if (grid.activeSelf)
+                {
+                    bagChoosingNote.SetActive(false);
+                    break;
+                }
+            }
         }
     }
 }

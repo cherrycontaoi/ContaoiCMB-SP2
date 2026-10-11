@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
@@ -13,17 +14,29 @@ public class Level : MonoBehaviour
     public string instructionsFileName;
     public Dictionary<Rule, bool> activeRules = new Dictionary<Rule, bool>
     {
+        { Rule.ItlogLast, false},
         { Rule.ItlogAndBottle, false },
         { Rule.ItlogInCornerSlot, false },
+        { Rule.CannedFirst, false },
         { Rule.GlassBottles, false },
         { Rule.DetergentProduce, false },
         { Rule.TooMuchUmami, false },
+        { Rule.ProperPlasticBag, false },
+        { Rule.Pairings, false },
     };
-    public bool[] activeRulesArr = new bool[5];
+    public bool[] activeRulesArr = new bool[9];
 
     public void StartLevel()
     {   
-        levelScore = 0;
+        if (SceneManager.GetActiveScene().name == "TutorialScene")
+        {
+            levelScore = 300;
+        }
+        else
+        {
+            levelScore = 0;
+        }
+        
         isDone = false;
 
         OtherScreensController.Instance.SetInstructions(instructionsFileName);

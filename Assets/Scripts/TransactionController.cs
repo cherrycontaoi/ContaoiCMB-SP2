@@ -105,7 +105,7 @@ public class TransactionController : MonoBehaviour
             }
         }
 
-        ApplyPlasticBagRule();
+        if (RulesTracker.Instance.activeRulesInLevel[Rule.ProperPlasticBag]) ApplyPlasticBagRule();
         counterDisplayController.DisplayPlasticBag(customerOrder.Length);
 
         // if (itemsToCheck.Count == 0)

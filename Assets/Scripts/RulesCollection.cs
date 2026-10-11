@@ -19,7 +19,7 @@ public class RulesCollection : MonoBehaviour
 
         ItemType itemType = itemToCheck.GetComponent<Item>().GetItemType();
 
-        if (itemType == ItemType.PartOfPair)
+        if (itemType == ItemType.PartOfPair && RulesTracker.Instance.activeRulesInLevel[Rule.Pairings])
         {
             ApplyAdjacencyRules(itemToCheck);       // glass bottle rules not being applied to part of pair yet
         }
@@ -71,7 +71,7 @@ public class RulesCollection : MonoBehaviour
 
         // egg should be the last to be put sa bag
         // iterate through the array from the last index
-        if (itlogCount > 0)
+        if (itlogCount > 0 && RulesTracker.Instance.activeRulesInLevel[Rule.ItlogLast])
         {
             int endIndex = basketQueue.Count - itlogCount;
             for(int i = basketQueue.Count-1 ; i >= endIndex; i--)
@@ -86,7 +86,7 @@ public class RulesCollection : MonoBehaviour
         }
 
         // canned should be placed first
-        if (cannedCount > 0)
+        if (cannedCount > 0 && RulesTracker.Instance.activeRulesInLevel[Rule.CannedFirst])
         {
 
             for (int i=0; i<cannedCount; i++)
@@ -189,9 +189,13 @@ public class RulesCollection : MonoBehaviour
 
 public enum Rule
 {
+    ItlogLast,
     ItlogAndBottle,
     ItlogInCornerSlot,
+    CannedFirst,
     GlassBottles,
     DetergentProduce,
-    TooMuchUmami
+    TooMuchUmami,
+    ProperPlasticBag,
+    Pairings
 }

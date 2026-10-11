@@ -37881,6 +37881,10 @@ PrefabInstance:
       value: tutorial.txt
       objectReference: {fileID: 0}
     - target: {fileID: 5438780340420288405, guid: d1e1599aee0bb4fd1939b7ef18d46be6, type: 3}
+      propertyPath: activeRulesArr.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5438780340420288405, guid: d1e1599aee0bb4fd1939b7ef18d46be6, type: 3}
       propertyPath: buyingCustomers.Array.size
       value: 1
       objectReference: {fileID: 0}
