@@ -190,8 +190,8 @@ public class OtherScreensController : MonoBehaviour
         
         foreach(string line in fileLines)
         {
-            Instantiate(paperText, paperContentWindow);
-            paperText.GetComponentInChildren<TMP_Text>().text = line;
+            GameObject newPaperText = Instantiate(paperText, paperContentWindow);
+            newPaperText.GetComponentInChildren<TMP_Text>().text = line;
         }
 
     }

@@ -7,6 +7,5 @@ Isang beses lang pwedeng buksan yung papel sa bawat level kaya dapat ay sure ka 
 Pwede kang gumamit ng mga tools na nasa workspace. Merong notebook, notepad, lapis, at eraser. Yung notebook at notepad ay pwedeng gamitin sa paglilista. 
 For example, yung mga rules ay nakasulat sa notebook habang yung mga bibilhin naman ng customer ay nakasulat sa notepad. Para magsulat, gamitin ang lapis. Para naman magbura, gamitin lang ang eraser.
 Madali lang namang ang mechanics ng game. Ang kailangan mo lang gawin ay magbantay ng tindahan.
-Ano? Kaya, diba? 
 Kung okay na, pindutin mo lang yung [close] button sa top-right corner ng papel.
 Good luck!!!
