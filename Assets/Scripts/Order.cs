@@ -47,7 +47,7 @@ public class Order : MonoBehaviour
         }
         // Debug.Log("There are "+numOfGenerations+ " order generations");
 
-        totalItemsToBuy = numOfPairs + numOfConstrictedItems + numOfFreeItems;
+        totalItemsToBuy = (numOfPairs * 2) + numOfConstrictedItems + numOfFreeItems;
         itemsToBuy = new GameObject[totalItemsToBuy];
 
         // populate gameobject[]
@@ -115,24 +115,38 @@ public class Order : MonoBehaviour
                 itlogLimit = 3;
                 break;
 
-            // 2 pairs, 3-4 constricted, 1-2 free
+            // 2 pairs, 3-4 constricted, 1 free
             case Difficulty.Hard:
                 numOfPairs = 2;
                 numOfConstrictedItems = Random.Range(3,5);
-                numOfFreeItems = Random.Range(1,3);
+                numOfFreeItems = 1;
                 itlogLimit = 3;
+                break;
+            
+            case Difficulty.TestMode:
+                numOfPairs = 2;
+                numOfConstrictedItems = 2;
+                numOfFreeItems = 3;
+                itlogLimit = 2;
                 break;
         }
     }
 
     private void CreateOrder()
     {
-        difficulty = playerData.GetPlayerPuzzleLevel();
-        GetNums(difficulty);
-        // numOfPairs = Random.Range(1,4);             // set based on user level
-        // numOfConstrictedItems = Random.Range(1,3);  // set based on user level
-        // numOfFreeItems = totalItemsToBuy - (numOfPairs * 2) - numOfConstrictedItems;
+        // for normal levels
+        if (LevelController.Instance.currentLevel.levelType == LevelType.Training)
+        {
+            Debug.Log("Current level is for training.");
+            difficulty = playerData.GetPlayerPuzzleLevel();
+        }
+        else    // pretest / posttest
+        {
+            Debug.Log("Current level is for testing.");
+            difficulty = Difficulty.TestMode;
+        }
 
+        GetNums(difficulty);
         GeneratePairs();
         GenerateSingleItems();
 
@@ -467,7 +481,7 @@ public class Order : MonoBehaviour
         }
     }
 
-        private List<GameObject> GetNeighboringItems(int slotIndex)
+    private List<GameObject> GetNeighboringItems(int slotIndex)
     {
         List<GameObject> neighboringItems = new List<GameObject>();
         // List<int> neighborSlots = new List<int>();

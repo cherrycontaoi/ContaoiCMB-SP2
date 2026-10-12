@@ -12,6 +12,7 @@ public class Level : MonoBehaviour
     public Dialogue[] smallTalkDialogues;       // smallTalk[i] -> customer[i]
     public bool[] buyingCustomers;              // if array[i] = true, customer[i] will buy
     public string instructionsFileName;
+    public LevelType levelType;
     public Dictionary<Rule, bool> activeRules = new Dictionary<Rule, bool>
     {
         { Rule.ItlogLast, false},
@@ -151,4 +152,11 @@ public class Level : MonoBehaviour
         activeRules[Rule.ContentRules] = activeRulesArr[9];
     }
     
+}
+
+public enum LevelType
+{
+    PreTest,
+    Training,
+    PostTest
 }

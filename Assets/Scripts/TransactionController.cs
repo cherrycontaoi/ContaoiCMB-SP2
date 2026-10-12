@@ -172,8 +172,19 @@ public class TransactionController : MonoBehaviour
         scoreChecker.ResetScore();
 
         StartCoroutine(ByeCustomer());
-        
-        playerData.AddFinishedTransaction(playerScore);
+
+        if (LevelController.Instance.currentLevel.levelType == LevelType.PreTest)
+        {
+            playerData.AddPreTestScore(playerScore);
+        }
+        else if (LevelController.Instance.currentLevel.levelType == LevelType.PostTest)
+        {
+            playerData.AddPostTestScore(playerScore);
+        }
+        else
+        {
+            playerData.AddFinishedTransaction(playerScore);   
+        }
         
     }
 

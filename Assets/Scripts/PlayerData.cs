@@ -3,17 +3,21 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    [SerializeField] public Difficulty playerPuzzleLevels;     // varies
-    [SerializeField] public int averageScore;                   // = totalScore/transactionsCompleted, determines puzzle level
-    [SerializeField] public int totalScore;
-    [SerializeField] public int transactionsCompleted;          // ilang customers nacomplete
+    public Difficulty playerPuzzleLevels;     // varies
+    public int averageScore;                   // = totalScore/transactionsCompleted, determines puzzle level
+    public int totalScore;
+    public int transactionsCompleted;          // ilang customers nacomplete
     
     public int lastFinishedLevel = 0;
+    public int preTestTotalScore, postTestTotalScore = 0;
     public int preTestAverageScore, postTestAverageScore = 0;
+    public int preTestCompleted, postTestCompleted = 0;
 
     public TMP_Text aveScoreText;
     public TMP_Text transactionsText;
     public TMP_Text difficultyText;
+    public TMP_Text averagePreTestText;
+    public TMP_Text averagePostTestText;
 
     
     void Start()
@@ -38,9 +42,9 @@ public class PlayerData : MonoBehaviour
 
     }
 
-    private void UpdateAverageScore()
+    private void UpdateAverageScore(ref int aveCounter, int typeTotalScore, int divider)
     {
-        averageScore = totalScore / transactionsCompleted;
+        aveCounter = typeTotalScore / divider;
     }
 
     private void UpdatePlayerInfo()
@@ -55,9 +59,25 @@ public class PlayerData : MonoBehaviour
         totalScore += score;
         transactionsCompleted++;
 
-        UpdateAverageScore();
+        UpdateAverageScore(ref averageScore, totalScore, transactionsCompleted);
         UpdatePlayerLevel();
         UpdatePlayerInfo();
+    }
+
+    public void AddPreTestScore(int score)
+    {
+        preTestTotalScore += score;
+        preTestCompleted++;
+        UpdateAverageScore(ref preTestAverageScore, preTestTotalScore, preTestCompleted);
+        averagePreTestText.SetText(preTestAverageScore.ToString());
+    }
+
+    public void AddPostTestScore(int score)
+    {
+        postTestTotalScore += score;
+        postTestCompleted++;
+        UpdateAverageScore(ref postTestAverageScore, postTestTotalScore, postTestCompleted);
+        averagePostTestText.SetText(postTestAverageScore.ToString());
     }
 
     public Difficulty GetPlayerPuzzleLevel()
@@ -65,20 +85,12 @@ public class PlayerData : MonoBehaviour
         return playerPuzzleLevels;
     }
 
-
-
 }
 
 public enum Difficulty
 {
     Easy,
     Medium,
-    Hard
-}
-
-public enum PlayerGameMode
-{
-    PreTest,
-    Training,
-    PostTest
+    Hard,
+    TestMode
 }

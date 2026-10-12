@@ -5,7 +5,7 @@ public class LevelController : MonoBehaviour
     public static LevelController Instance { get; private set; }
     public Level[] levels;
     public int[] levelsCompleted;      // Level.levelNo
-
+    public Level currentLevel;
     private int currentLevelIndex;
 
     void Awake()
@@ -22,8 +22,8 @@ public class LevelController : MonoBehaviour
     private void StartCurrentLevel()
     {
         OtherScreensController.Instance.HideScreen();
+        currentLevel = levels[currentLevelIndex];
         levels[currentLevelIndex].StartLevel();
- 
     }
 
     public void StartNextLevel()
@@ -33,6 +33,7 @@ public class LevelController : MonoBehaviour
         if (currentLevelIndex < levels.Length)
         {
             OtherScreensController.Instance.HideScreen();
+            currentLevel = levels[currentLevelIndex];
             levels[currentLevelIndex].StartLevel();
         }
         else
