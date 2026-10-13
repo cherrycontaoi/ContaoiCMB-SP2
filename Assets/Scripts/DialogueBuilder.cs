@@ -234,8 +234,10 @@ public class DialogueBuilder : MonoBehaviour
             {
                 endDialogue.linesToAutoProgress.Add(true);  // automatically end last line
             }
-
-            endDialogue.linesToAutoProgress.Add(false);
+            else
+            {
+                endDialogue.linesToAutoProgress.Add(false);   
+            }
         }
 
         // FILL endLines ----------------------------------------------------------

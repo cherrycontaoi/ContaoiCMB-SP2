@@ -15,7 +15,7 @@ public class RulesCollection : MonoBehaviour
 
     public void ApplyRule(GameObject itemToCheck)
     {
-        customer = FindAnyObjectByType<Customer>();
+        customer = TransactionController.Instance.customer;
 
         ItemType itemType = itemToCheck.GetComponent<Item>().GetItemType();
 
@@ -103,7 +103,7 @@ public class RulesCollection : MonoBehaviour
 
     private void ApplyItlogRules(GameObject itemToCheck)
     {
-        if (RulesTracker.Instance.activeRulesInLevel[Rule.ItlogInCornerSlot])
+        if (RulesTracker.Instance.activeRulesInLevel[Rule.ItlogAndBottle])
         {
             customer = FindAnyObjectByType<Customer>();
             // RULE 1: Itlog cannot be placed next to Glass Bottles
@@ -120,7 +120,7 @@ public class RulesCollection : MonoBehaviour
             }
         }
         
-        if (RulesTracker.Instance.activeRulesInLevel[Rule.ItlogAndBottle])
+        if (RulesTracker.Instance.activeRulesInLevel[Rule.ItlogInCornerSlot])
         {
             // RULE 2: Itlog cannot be placed in a corner slot
             if (cornerSlots.Contains(itemToCheck.GetComponent<Item>().GetSlotID()))
