@@ -6,6 +6,7 @@ public class LevelController : MonoBehaviour
     public Level[] levels;
     public int[] levelsCompleted;      // Level.levelNo
     public Level currentLevel;
+    public GameObject notetakingSpace;
     private int currentLevelIndex;
 
     void Awake()
@@ -23,6 +24,20 @@ public class LevelController : MonoBehaviour
     {
         OtherScreensController.Instance.HideScreen();
         currentLevel = levels[currentLevelIndex];
+
+        if (currentLevel.levelType == LevelType.PreTest)
+        {
+            Pencil.Instance.gameObject.SetActive(false);
+            Eraser.Instance.gameObject.SetActive(false);
+            notetakingSpace.SetActive(false);
+        }
+        else
+        {
+            Pencil.Instance.gameObject.SetActive(true);
+            Eraser.Instance.gameObject.SetActive(true);
+            notetakingSpace.SetActive(true);
+        }
+
         levels[currentLevelIndex].StartLevel();
     }
 

@@ -33,13 +33,13 @@ public class PlayerController : MonoBehaviour
 
         if (!rayHit.collider) return;
 
-        if(rayHit.collider.gameObject.name == "Pencil") {
+        if(rayHit.collider.gameObject.name == "Pencil" && LevelController.Instance.currentLevel.levelType != LevelType.PreTest) {
             // Debug.Log("pencil");
             Pencil.Instance.ActivatePencil();
             Eraser.Instance.canActivate = false;
             // eraser.DeactivateEraser();
         }
-        else if(rayHit.collider.gameObject.name == "Eraser")
+        else if(rayHit.collider.gameObject.name == "Eraser" && LevelController.Instance.currentLevel.levelType != LevelType.PreTest)
         {
             if (!Pencil.Instance.isActive)
             {
