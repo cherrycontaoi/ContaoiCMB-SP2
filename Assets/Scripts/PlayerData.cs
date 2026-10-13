@@ -67,17 +67,33 @@ public class PlayerData : MonoBehaviour
     public void AddPreTestScore(int score)
     {
         preTestTotalScore += score;
+        totalScore += score;
+
         preTestCompleted++;
+        transactionsCompleted++;
+
         UpdateAverageScore(ref preTestAverageScore, preTestTotalScore, preTestCompleted);
         averagePreTestText.SetText(preTestAverageScore.ToString());
+
+        UpdateAverageScore(ref averageScore, totalScore, transactionsCompleted);
+        UpdatePlayerLevel();
+        UpdatePlayerInfo();
     }
 
     public void AddPostTestScore(int score)
     {
         postTestTotalScore += score;
+        totalScore += score;
+        
         postTestCompleted++;
+        transactionsCompleted++;
+        
         UpdateAverageScore(ref postTestAverageScore, postTestTotalScore, postTestCompleted);
         averagePostTestText.SetText(postTestAverageScore.ToString());
+
+        UpdateAverageScore(ref averageScore, totalScore, transactionsCompleted);
+        UpdatePlayerLevel();
+        UpdatePlayerInfo();
     }
 
     public Difficulty GetPlayerPuzzleLevel()

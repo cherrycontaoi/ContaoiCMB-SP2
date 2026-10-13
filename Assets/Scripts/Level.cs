@@ -105,6 +105,7 @@ public class Level : MonoBehaviour
             Debug.Log("hasExited: " + customerMover.hasExited);
 
             levelScore += TransactionController.Instance.GetPlayerScore();
+            TransactionController.Instance.ResetTransactionScore();
 
             Destroy(customer.gameObject);
             

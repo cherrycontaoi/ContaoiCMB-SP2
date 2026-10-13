@@ -228,6 +228,11 @@ public class TransactionController : MonoBehaviour
         return finalExpression;
     }
 
+    public void ResetTransactionScore()
+    {
+        playerScore = 0;
+    }
+
     public int GetPlayerScore()
     {
         return playerScore;

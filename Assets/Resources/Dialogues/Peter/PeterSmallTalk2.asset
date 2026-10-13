@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408dc5927b85e45149ab3df9647326bd, type: 3}
+  m_Name: PeterSmallTalk2
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  lines:
+  - Tao po.
+  - Ay, oo. Salamat ulit ha.
+  - May dineliver kasi ako kanina.
+  - Eh hindi sumasagot yung may-ari ng parcel.
+  - Baka i-report ako pag di ko na-deliver.
+  - '''Sya, may yosi ba kayo?'
+  - Ganoon ba?
+  - Sabagay... Malalanghap niyo pa yung usok.
+  linesToAutoProgress: 0000010101000000
+  endLines: 0000000000000001
+  autoProgressDelay: 1.5
+  typingSpeed: 0.05
+  dialogueType: 0
+  choices:
+  - dialogueIndex: 0
+    choices:
+    - 'O, kuya! Nahanap niyo naman po yung street? '
+    nextDialogueIndices: 01000000
+  - dialogueIndex: 5
+    choices:
+    - 'Ay, wala po kuya eh. '
+    nextDialogueIndices: 06000000
+  - dialogueIndex: 6
+    choices:
+    - Ayaw po kasi ni Mama ng tumatambay sa harap ng tindahan.
+    nextDialogueIndices: 01000000010000000100000001000000010000000100000001000000

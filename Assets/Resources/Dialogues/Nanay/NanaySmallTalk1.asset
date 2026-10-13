@@ -10,22 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 408dc5927b85e45149ab3df9647326bd, type: 3}
-  m_Name: SmallTalk1
+  m_Name: NanaySmallTalk1
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
-  - Hay...
-  - May paparating nanaman pala na bagyo.
-  - Nandyan ba mama mo?
-  - Ah, sige, kakausapin ko siya mamaya.
-  - Ah, ganoon ba. Sige, mamaya nalang.
-  linesToAutoProgress: 0100000000
-  endLines: 0000000101
+  - Lydia...
+  - Ah, ikaw pala ang bantay ngayon, 'nak.
+  - Ganoon ba...
+  linesToAutoProgress: 010000
+  endLines: 000001
   autoProgressDelay: 1.5
   typingSpeed: 0.05
   dialogueType: 0
   choices:
-  - dialogueIndex: 2
+  - dialogueIndex: 1
     choices:
-    - Ah, opo. Nasa kwarto po siya.
-    - Hala, wala po eh. Lumabas po siya.
-    nextDialogueIndices: 0300000004000000
+    - Ah, opo. Pumunta po kasi ng school si Mama.
+    nextDialogueIndices: 02000000

@@ -50,4 +50,5 @@ MonoBehaviour:
   smallTalkDialogues: []
   buyingCustomers: 
   instructionsFileName: 
-  activeRulesArr: 0101000001
+  levelType: 0
+  activeRulesArr: 00000000000000000000

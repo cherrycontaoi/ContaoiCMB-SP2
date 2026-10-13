@@ -25,18 +25,7 @@ public class LevelController : MonoBehaviour
         OtherScreensController.Instance.HideScreen();
         currentLevel = levels[currentLevelIndex];
 
-        if (currentLevel.levelType == LevelType.PreTest)
-        {
-            Pencil.Instance.gameObject.SetActive(false);
-            Eraser.Instance.gameObject.SetActive(false);
-            notetakingSpace.SetActive(false);
-        }
-        else
-        {
-            Pencil.Instance.gameObject.SetActive(true);
-            Eraser.Instance.gameObject.SetActive(true);
-            notetakingSpace.SetActive(true);
-        }
+        AllowAnnotation(currentLevel.levelType);
 
         levels[currentLevelIndex].StartLevel();
     }
@@ -49,11 +38,28 @@ public class LevelController : MonoBehaviour
         {
             OtherScreensController.Instance.HideScreen();
             currentLevel = levels[currentLevelIndex];
+            AllowAnnotation(currentLevel.levelType);
             levels[currentLevelIndex].StartLevel();
         }
         else
         {
             Debug.Log("No more levels left!");
+        }
+    }
+
+    private void AllowAnnotation(LevelType levelType)
+    {
+        if (levelType == LevelType.PreTest)
+        {
+            Pencil.Instance.gameObject.SetActive(false);
+            Eraser.Instance.gameObject.SetActive(false);
+            notetakingSpace.SetActive(false);
+        }
+        else
+        {
+            Pencil.Instance.gameObject.SetActive(true);
+            Eraser.Instance.gameObject.SetActive(true);
+            notetakingSpace.SetActive(true);
         }
     }
 }
