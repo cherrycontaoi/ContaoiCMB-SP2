@@ -7,7 +7,6 @@ public class TransactionController : MonoBehaviour
 {
     public static TransactionController Instance { get; private set; } // Singleton
     public Customer customer;
-    private PlayerData playerData;
     private int playerScore;
     private BasketController basketController;
     private CounterDisplayController counterDisplayController;
@@ -18,7 +17,6 @@ public class TransactionController : MonoBehaviour
 
     void Start()
     {
-        playerData = FindAnyObjectByType<PlayerData>();
         basketController = gameObject.GetComponent<BasketController>();
         counterDisplayController = gameObject.GetComponent<CounterDisplayController>();
         scoreChecker = gameObject.GetComponent<ScoreChecker>();
@@ -143,6 +141,7 @@ public class TransactionController : MonoBehaviour
             }
             else
             {
+                customer.orderErrors["notSameCount"] = true;    
                 scoreChecker.DeductScore(10);   // 10 per item not in the bag
             }
         }
@@ -175,15 +174,15 @@ public class TransactionController : MonoBehaviour
 
         if (LevelController.Instance.currentLevel.levelType == LevelType.PreTest)
         {
-            playerData.AddPreTestScore(playerScore);
+            PlayerData.Instance.AddPreTestScore(playerScore);
         }
         else if (LevelController.Instance.currentLevel.levelType == LevelType.PostTest)
         {
-            playerData.AddPostTestScore(playerScore);
+            PlayerData.Instance.AddPostTestScore(playerScore);
         }
         else
         {
-            playerData.AddFinishedTransaction(playerScore);   
+            PlayerData.Instance.AddFinishedTransaction(playerScore);   
         }
         
     }

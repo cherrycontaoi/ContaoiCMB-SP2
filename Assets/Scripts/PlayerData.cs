@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
+    public static PlayerData Instance { get; private set; }
     public Difficulty playerPuzzleLevels;     // varies
     public int averageScore;                   // = totalScore/transactionsCompleted, determines puzzle level
     public int totalScore;
@@ -24,22 +25,36 @@ public class PlayerData : MonoBehaviour
     {
         UpdatePlayerInfo();
     }
+    
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
 
     private void UpdatePlayerLevel()
     {
-        if (averageScore <= 50)
+        if (LevelController.Instance.currentLevel.levelType == LevelType.PreTest || 
+            LevelController.Instance.currentLevel.levelType == LevelType.PostTest)
         {
-            playerPuzzleLevels = Difficulty.Easy;
-        }
-        else if (averageScore > 50 && averageScore <= 75)
-        {
-            playerPuzzleLevels = Difficulty.Medium;
-        }
-        else
-        {
-            playerPuzzleLevels = Difficulty.Hard;
+            playerPuzzleLevels = Difficulty.Test;
         }
 
+        else
+        {
+            if (averageScore <= 50)
+            {
+                playerPuzzleLevels = Difficulty.Easy;
+            }
+            else if (averageScore > 50 && averageScore <= 75)
+            {
+                playerPuzzleLevels = Difficulty.Medium;
+            }
+            else
+            {
+                playerPuzzleLevels = Difficulty.Hard;
+            }
+        }
     }
 
     private void UpdateAverageScore(ref int aveCounter, int typeTotalScore, int divider)
@@ -47,7 +62,7 @@ public class PlayerData : MonoBehaviour
         aveCounter = typeTotalScore / divider;
     }
 
-    private void UpdatePlayerInfo()
+    public void UpdatePlayerInfo()
     {
         difficultyText.SetText(playerPuzzleLevels.ToString());
         aveScoreText.SetText(averageScore.ToString());
@@ -108,5 +123,5 @@ public enum Difficulty
     Easy,
     Medium,
     Hard,
-    TestMode
+    Test
 }

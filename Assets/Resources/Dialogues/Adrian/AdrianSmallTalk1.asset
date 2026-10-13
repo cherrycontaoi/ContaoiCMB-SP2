@@ -15,9 +15,9 @@ MonoBehaviour:
   lines:
   - Uy! Ikaw yung bantay? Nasan po si Tita?
   - Wala lang po...
-  - Baka naman may libre pong lollipop oh.
-  - Joke lang!
-  - Hehe, ako laging nauutusan eh.
+  - Baka naman po may libre  lollipop oh.
+  - Joke lang po!
+  - Hehe, ako po laging nauutusan eh.
   linesToAutoProgress: 0001000000
   endLines: 0000000101
   autoProgressDelay: 1.5

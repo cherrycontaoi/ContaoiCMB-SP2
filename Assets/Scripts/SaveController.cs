@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class SaveController : MonoBehaviour
 {
-    private PlayerData playerData;
     private string saveLocation;
     
     void Start()
@@ -15,16 +14,15 @@ public class SaveController : MonoBehaviour
 
     public void SaveGame()
     {
-        playerData = FindAnyObjectByType<PlayerData>();
         SaveData saveData = new SaveData
         {
-            difficulty = playerData.playerPuzzleLevels,
-            averageScore = playerData.averageScore,
-            totalScore = playerData.totalScore,
-            transactionsCompleted = playerData.transactionsCompleted,
-            lastFinishedLevel = playerData.lastFinishedLevel,
-            preTestAverageScore = playerData.preTestAverageScore,
-            postTestAverageScore = playerData.postTestAverageScore
+            difficulty = PlayerData.Instance.playerPuzzleLevels,
+            averageScore = PlayerData.Instance.averageScore,
+            totalScore = PlayerData.Instance.totalScore,
+            transactionsCompleted = PlayerData.Instance.transactionsCompleted,
+            lastFinishedLevel = PlayerData.Instance.lastFinishedLevel,
+            preTestAverageScore = PlayerData.Instance.preTestAverageScore,
+            postTestAverageScore = PlayerData.Instance.postTestAverageScore
         };
 
         File.WriteAllText(saveLocation, JsonUtility.ToJson(saveData));
@@ -34,16 +32,15 @@ public class SaveController : MonoBehaviour
     {
         if (File.Exists(saveLocation))
         {
-            playerData = FindAnyObjectByType<PlayerData>();
             SaveData saveData = JsonUtility.FromJson<SaveData>(File.ReadAllText(saveLocation));
 
-            playerData.playerPuzzleLevels = saveData.difficulty;
-            playerData.averageScore = saveData.averageScore;
-            playerData.totalScore = saveData.totalScore;
-            playerData.transactionsCompleted = saveData.transactionsCompleted;
-            playerData.lastFinishedLevel = saveData.lastFinishedLevel;
-            playerData.preTestAverageScore = saveData.postTestAverageScore;
-            playerData.postTestAverageScore = saveData.postTestAverageScore;
+            PlayerData.Instance.playerPuzzleLevels = saveData.difficulty;
+            PlayerData.Instance.averageScore = saveData.averageScore;
+            PlayerData.Instance.totalScore = saveData.totalScore;
+            PlayerData.Instance.transactionsCompleted = saveData.transactionsCompleted;
+            PlayerData.Instance.lastFinishedLevel = saveData.lastFinishedLevel;
+            PlayerData.Instance.preTestAverageScore = saveData.postTestAverageScore;
+            PlayerData.Instance.postTestAverageScore = saveData.postTestAverageScore;
 
         }
         else

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408dc5927b85e45149ab3df9647326bd, type: 3}
+  m_Name: AdrianSmallTalk2
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  lines:
+  - Good morning!
+  - Hehe...
+  - Aalis daw kami ni Mama mamayang tanghali eh.
+  - Ah, sa susunod naman daw po.
+  - Malapit na raw po kasi bayaran ng bills.
+  - Kailangan daw muna magtipid.
+  - Sabi nga po ni Mama.
+  linesToAutoProgress: 00010001010000
+  endLines: 00000000000001
+  autoProgressDelay: 1.5
+  typingSpeed: 0.05
+  dialogueType: 0
+  choices:
+  - dialogueIndex: 0
+    choices:
+    - Aba! Ang aga mo ngayon ah, Adrian.
+    - Good morning!
+    nextDialogueIndices: 0100000001000000
+  - dialogueIndex: 2
+    choices:
+    - Hulaan ko, dalawang itlog at isang corned beef?
+    nextDialogueIndices: 03000000
+  - dialogueIndex: 5
+    choices:
+    - Sabagay, hindi rin magandang laging de lata.
+    nextDialogueIndices: 06000000

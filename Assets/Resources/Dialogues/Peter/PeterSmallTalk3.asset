@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408dc5927b85e45149ab3df9647326bd, type: 3}
+  m_Name: PeterSmallTalk3
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  lines:
+  - Tao po...
+  - Oo, pero uuwi muna ako saglit at papasok ang misis ko.
+  - Dito nalang ako bibili sa inyo.
+  - Ang mahal ng bilihin doon sa tindahan sa bungad eh.
+  - Wala eh, hindi ko kaya yung presyo nila.
+  linesToAutoProgress: 0001010000
+  endLines: 0000000001
+  autoProgressDelay: 1.5
+  typingSpeed: 0.05
+  dialogueType: 0
+  choices:
+  - dialogueIndex: 0
+    choices:
+    - Uy, kuya! May delivery ka nanaman po?
+    nextDialogueIndices: 01000000
+  - dialogueIndex: 3
+    choices:
+    - Ah, magdamag daw po ata kasi sila bukas.
+    nextDialogueIndices: 04000000

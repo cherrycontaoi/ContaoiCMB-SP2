@@ -12,7 +12,6 @@ public class Order : MonoBehaviour
     private int itlogLimit;
     private bool isSolvable;
     private Difficulty difficulty;
-    private PlayerData playerData;
 
     // private int numOfGenerations;
 
@@ -27,7 +26,6 @@ public class Order : MonoBehaviour
   
     public void GenerateOrder()
     {
-        playerData = FindAnyObjectByType<PlayerData>();
 
         paninda = Resources.LoadAll<GameObject>("Prefabs/ItemPrefabs");     // get all paninda GameObjects 
 
@@ -123,7 +121,7 @@ public class Order : MonoBehaviour
                 itlogLimit = 3;
                 break;
             
-            case Difficulty.TestMode:
+            case Difficulty.Test:
                 numOfPairs = 2;
                 numOfConstrictedItems = 2;
                 numOfFreeItems = 3;
@@ -138,12 +136,12 @@ public class Order : MonoBehaviour
         if (LevelController.Instance.currentLevel.levelType == LevelType.Training)
         {
             Debug.Log("Current level is for training.");
-            difficulty = playerData.GetPlayerPuzzleLevel();
+            difficulty = PlayerData.Instance.GetPlayerPuzzleLevel();
         }
         else    // pretest / posttest
         {
             Debug.Log("Current level is for testing.");
-            difficulty = Difficulty.TestMode;
+            difficulty = Difficulty.Test;
         }
 
         GetNums(difficulty);
