@@ -124,7 +124,10 @@ public class Level : MonoBehaviour
                 yield return null;
             }
 
-            Debug.Log("hasExited: " + customerMover.hasExited);
+            while (CounterDisplayController.Instance.MoneyIsStillOnCounter())
+            {
+                yield return null;
+            }
 
             levelScore += TransactionController.Instance.GetPlayerScore();
             TransactionController.Instance.ResetTransactionScore();

@@ -85,7 +85,6 @@ public class WaypointMover : MonoBehaviour
             if(currentWaypointIndex == waypoints.Length - 1)
             {
                 hasExited = true;
-                Debug.Log("has exited: " + hasExited);
                 return;
             }
 

@@ -89,6 +89,7 @@ public class Customer : MonoBehaviour, IInteractable
             else    // will buy only
             {
                 // set order as the dialogue right away.
+                currentlyBuying = true;
                 dialogueData = orderDialogue;
             }
         }
@@ -283,6 +284,7 @@ public class Customer : MonoBehaviour, IInteractable
 
         if (isEndingDialogue)
         {
+            CounterDisplayController.Instance.DisplayMoney();
             isEndingDialogue = false;
             dialogueData = null;
             isDone = true;

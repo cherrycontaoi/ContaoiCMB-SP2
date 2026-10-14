@@ -6,7 +6,6 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
 {
     [SerializeField] private GameObject itemPrefab;
     [SerializeField] public GameObject basketPanel;
-    private CounterDisplayController counterDisplayController;
     private BasketController basketController;
     private GameObject newItem;
     private CanvasGroup canvasGroup;
@@ -16,7 +15,6 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     private void Start()
     {
-        counterDisplayController = FindAnyObjectByType<CounterDisplayController>();
         basketController = FindAnyObjectByType<BasketController>();
         
     }
@@ -25,7 +23,7 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
     {
         if (PauseController.IsGamePaused) return;
         // no plastic bag yet
-        if (!counterDisplayController.CanUserStartDragging())
+        if (!CounterDisplayController.Instance.CanUserStartDragging())
         {
             isDragging = false;
             Debug.Log("Choose a bag first!");

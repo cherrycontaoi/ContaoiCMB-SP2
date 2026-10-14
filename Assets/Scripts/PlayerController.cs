@@ -7,15 +7,11 @@ public class PlayerController : MonoBehaviour
 {
     private Camera mainCamera;
     private CursorController cursorController;
-
-    
-    [SerializeField] private CounterDisplayController counterDisplayController;
     public GameObject dialoguePanel;
     public GameObject notesPanel;
 
     private void Start()
     {
-        counterDisplayController = FindAnyObjectByType<CounterDisplayController>();
         Pencil.Instance.DeactivatePencil();
         Eraser.Instance.DeactivateEraser();
     }
@@ -51,7 +47,7 @@ public class PlayerController : MonoBehaviour
         else if(rayHit.collider.gameObject.CompareTag("PlasticBag"))
         {
             if (PauseController.IsGamePaused) return;
-            counterDisplayController.ChoosePlasticBag(rayHit.collider.gameObject.name);
+            CounterDisplayController.Instance.ChoosePlasticBag(rayHit.collider.gameObject.name);
         }
     }
 

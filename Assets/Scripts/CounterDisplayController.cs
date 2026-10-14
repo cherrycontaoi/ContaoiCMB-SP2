@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class CounterDisplayController : MonoBehaviour
 {
+
+    public static CounterDisplayController Instance { get; private set; }
+
     [SerializeField] private GameObject plasticBag;
     [SerializeField] private Sprite[] plasticBagSprites = new Sprite[3];
     [SerializeField] private GameObject givePanel;
@@ -11,6 +13,13 @@ public class CounterDisplayController : MonoBehaviour
     [SerializeField] private GameObject plasticBagYellow;
     [SerializeField] private GameObject plasticBagOrange;
     [SerializeField] private BasketController basketController;
+
+    [SerializeField] private GameObject money;
+    [SerializeField] private Sprite[] easyMoneySprites = new Sprite[3];
+    [SerializeField] private Sprite[] mediumMoneySprites = new Sprite[3];
+    [SerializeField] private Sprite[] hardMoneySprites = new Sprite[3];
+    
+    private bool moneyOnCounter = false;
     private bool alreadyInBag;
     private bool userCanStartDragging = false;
     private string colorChosen;
@@ -22,6 +31,48 @@ public class CounterDisplayController : MonoBehaviour
         basketController = GetComponent<BasketController>();
         bagImage = plasticBag.GetComponent<SpriteRenderer>();
         userCanStartDragging = false;
+    }
+
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);   // make only 1 instance
+    }
+
+    public void DisplayMoney()
+    {
+        int index = Random.Range(0,3);
+        switch (PlayerData.Instance.playerPuzzleLevels)
+        {
+            case Difficulty.Easy:
+                money.GetComponent<SpriteRenderer>().sprite = easyMoneySprites[index];
+                break;
+
+            case Difficulty.Medium:
+                money.GetComponent<SpriteRenderer>().sprite = mediumMoneySprites[index];
+                break;
+
+            case Difficulty.Hard:
+                money.GetComponent<SpriteRenderer>().sprite = hardMoneySprites[index];
+                break;
+            
+            case Difficulty.Test:
+                money.GetComponent<SpriteRenderer>().sprite = hardMoneySprites[index];
+                break;
+        }
+
+        money.SetActive(true);
+        moneyOnCounter = true;
+    }
+    
+    public void GetMoney()
+    {
+        if (!moneyOnCounter) return;
+
+        moneyOnCounter = false;
+        money.SetActive(false);
+
+        Debug.Log("Payment is collected!");
     }
     
     public void DisplayPlasticBag(int noOfOrders)
@@ -97,6 +148,7 @@ public class CounterDisplayController : MonoBehaviour
         plasticBag.SetActive(false);
         userCanStartDragging = false;
 
+        // DisplayMoney(); // display money after customer gets the bag
         // Debug.Log("Counter is cleared!");
     }
 
@@ -110,6 +162,11 @@ public class CounterDisplayController : MonoBehaviour
     public bool CanUserStartDragging()
     {
         return userCanStartDragging;
+    }
+
+    public bool MoneyIsStillOnCounter()
+    {
+        return moneyOnCounter;
     }
 
     public string GetUserChosenPB()

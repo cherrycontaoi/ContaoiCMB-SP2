@@ -9,7 +9,6 @@ public class TransactionController : MonoBehaviour
     public Customer customer;
     private int playerScore;
     private BasketController basketController;
-    private CounterDisplayController counterDisplayController;
     private ScoreChecker scoreChecker;
     private List<GameObject> itemsInBasket = new List<GameObject>();
     private GameObject[] customerOrder;
@@ -18,7 +17,6 @@ public class TransactionController : MonoBehaviour
     void Start()
     {
         basketController = gameObject.GetComponent<BasketController>();
-        counterDisplayController = gameObject.GetComponent<CounterDisplayController>();
         scoreChecker = gameObject.GetComponent<ScoreChecker>();
 
         if (basketController == null)
@@ -106,7 +104,7 @@ public class TransactionController : MonoBehaviour
         }
 
         if (RulesTracker.Instance.activeRulesInLevel[Rule.ProperPlasticBag]) ApplyPlasticBagRule();
-        counterDisplayController.DisplayPlasticBag(customerOrder.Length);
+        CounterDisplayController.Instance.DisplayPlasticBag(customerOrder.Length);
 
         // if (itemsToCheck.Count == 0)
         // {
@@ -189,7 +187,7 @@ public class TransactionController : MonoBehaviour
 
     private IEnumerator ByeCustomer()
     {
-        yield return StartCoroutine(counterDisplayController.WaitAndClearCoroutine());
+        yield return StartCoroutine(CounterDisplayController.Instance.WaitAndClearCoroutine());
 
         customer.StartEndingDialogue();
         // Destroy(customer.gameObject);
@@ -198,7 +196,7 @@ public class TransactionController : MonoBehaviour
     private void ApplyPlasticBagRule()
     {
 
-        string playerChosenBag = counterDisplayController.GetUserChosenPB();
+        string playerChosenBag = CounterDisplayController.Instance.GetUserChosenPB();
         string correctPlasticBag;
 
         if (customerOrder.Length <= 3)
