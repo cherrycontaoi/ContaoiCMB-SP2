@@ -17,6 +17,7 @@ public class SaveController : MonoBehaviour
         SaveData saveData = new SaveData
         {
             difficulty = PlayerData.Instance.playerPuzzleLevels,
+            scores = PlayerData.Instance.scores,
             averageScore = PlayerData.Instance.averageScore,
             totalScore = PlayerData.Instance.totalScore,
             transactionsCompleted = PlayerData.Instance.transactionsCompleted,
@@ -35,6 +36,7 @@ public class SaveController : MonoBehaviour
             SaveData saveData = JsonUtility.FromJson<SaveData>(File.ReadAllText(saveLocation));
 
             PlayerData.Instance.playerPuzzleLevels = saveData.difficulty;
+            PlayerData.Instance.scores = saveData.scores;
             PlayerData.Instance.averageScore = saveData.averageScore;
             PlayerData.Instance.totalScore = saveData.totalScore;
             PlayerData.Instance.transactionsCompleted = saveData.transactionsCompleted;

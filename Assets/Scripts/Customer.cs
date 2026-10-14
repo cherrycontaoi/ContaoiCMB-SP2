@@ -29,7 +29,7 @@ public class Customer : MonoBehaviour, IInteractable
     private bool isTyping, isDialogueActive, isEndingDialogue;
 
     // hasSmallTalk -> hindi bibili agad, willBuy -> bibili (generate order)
-    public bool hasSmallTalk, willBuy, willBuyAfterSmallTalk;       
+    public bool hasSmallTalk, willBuy, willBuyAfterSmallTalk, currentlyBuying;       
 
     public Dictionary<string, bool> orderErrors = new Dictionary<string, bool>()
     {
@@ -303,6 +303,7 @@ public class Customer : MonoBehaviour, IInteractable
 
             // buying time
             dialogueData = orderDialogue;
+            currentlyBuying = true;
             // StartTalking();
             if (talkingCoroutine == null)
             {

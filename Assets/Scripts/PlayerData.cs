@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class PlayerData : MonoBehaviour
     public int averageScore;                   // = totalScore/transactionsCompleted, determines puzzle level
     public int totalScore;
     public int transactionsCompleted;          // ilang customers nacomplete
+    public List<int> scores = new List<int>();
     
     public int lastFinishedLevel = 0;
     public int preTestTotalScore, postTestTotalScore = 0;
@@ -32,7 +34,7 @@ public class PlayerData : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    private void UpdatePlayerLevel()
+    public void UpdatePlayerLevel()
     {
         if (LevelController.Instance.currentLevel.levelType == LevelType.PreTest || 
             LevelController.Instance.currentLevel.levelType == LevelType.PostTest)
@@ -72,6 +74,7 @@ public class PlayerData : MonoBehaviour
     public void AddFinishedTransaction(int score)
     {
         totalScore += score;
+        scores.Add(score);
         transactionsCompleted++;
 
         UpdateAverageScore(ref averageScore, totalScore, transactionsCompleted);
@@ -83,6 +86,7 @@ public class PlayerData : MonoBehaviour
     {
         preTestTotalScore += score;
         totalScore += score;
+        scores.Add(score);
 
         preTestCompleted++;
         transactionsCompleted++;
@@ -99,6 +103,7 @@ public class PlayerData : MonoBehaviour
     {
         postTestTotalScore += score;
         totalScore += score;
+        scores.Add(score);
         
         postTestCompleted++;
         transactionsCompleted++;

@@ -52,7 +52,7 @@ public class LevelController : MonoBehaviour
         if (levelType == LevelType.PreTest)
         {
             PlayerData.Instance.playerPuzzleLevels = Difficulty.Test;
-            PlayerData.Instance.UpdatePlayerInfo();
+            // PlayerData.Instance.UpdatePlayerInfo();
             Pencil.Instance.gameObject.SetActive(false);
             Eraser.Instance.gameObject.SetActive(false);
             notetakingSpace.SetActive(false);

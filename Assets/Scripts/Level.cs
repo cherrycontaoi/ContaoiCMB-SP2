@@ -11,7 +11,7 @@ public class Level : MonoBehaviour
     public Customer[] customers;                // customers to appear in the level (3)
     public Dialogue[] smallTalkDialogues;       // smallTalk[i] -> customer[i]
     public bool[] buyingCustomers;              // if array[i] = true, customer[i] will buy
-    public string instructionsFileName;
+    public string[] instructionsFileNames = new string[3];
     public LevelType levelType;
     public Dictionary<Rule, bool> activeRules = new Dictionary<Rule, bool>
     {
@@ -40,8 +40,28 @@ public class Level : MonoBehaviour
         }
 
         isDone = false;
+        
+        // set text content based on difficulty
+        switch (PlayerData.Instance.playerPuzzleLevels)
+        {
+            case Difficulty.Easy:
+                OtherScreensController.Instance.SetInstructions(instructionsFileNames[0]);
+                break;
 
-        OtherScreensController.Instance.SetInstructions(instructionsFileName);
+            case Difficulty.Medium:
+                OtherScreensController.Instance.SetInstructions(instructionsFileNames[1]);
+                break;
+            
+            case Difficulty.Hard:
+                OtherScreensController.Instance.SetInstructions(instructionsFileNames[2]);
+                break;
+
+            // only 1 text for tests
+            case Difficulty.Test:
+                OtherScreensController.Instance.SetInstructions(instructionsFileNames[0]);
+                break;
+        }
+        // OtherScreensController.Instance.SetInstructions(instructionsFileName);
         OtherScreensController.Instance.ShowStartAnimation();
         OtherScreensController.Instance.CloseStore();
 
@@ -71,6 +91,8 @@ public class Level : MonoBehaviour
         }
         SetRulesDictionary();
         RulesTracker.Instance.SetRules(activeRules);
+        PlayerData.Instance.UpdatePlayerLevel();
+        PlayerData.Instance.UpdatePlayerInfo();
 
         StartCoroutine(RunCustomers());
         
