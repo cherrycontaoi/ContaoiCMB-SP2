@@ -155,6 +155,8 @@ public class OtherScreensController : MonoBehaviour
 
     public void OpenStore()
     {
+        if (Eraser.Instance.isActive) return;
+
         if (!hasReadPaper)
         {
             reminderText.text = "Wait! Baka may mga bilin.";
@@ -170,6 +172,8 @@ public class OtherScreensController : MonoBehaviour
 
     public void ReadPaper()
     {
+        if (Eraser.Instance.isActive) return;
+        
         displayPaper.SetActive(false);
         paperTileSets[index].SetActive(true);
         paperElements.SetActive(true);

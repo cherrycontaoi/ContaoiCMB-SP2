@@ -1,42 +1,26 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Order_Note : MonoBehaviour
+public class Order_Note : MonoBehaviour,IPointerClickHandler
 {
     [SerializeField] private TMP_Text textField;
-
-    private BoxCollider2D boxCollider;
-    private RectTransform rectTransform;
-
-    private void Awake()
-    {
-        rectTransform = GetComponent<RectTransform>();
-        boxCollider = GetComponent<BoxCollider2D>();
-    }
 
     private void Reset()
     {
         textField = GetComponent<TMP_Text>();
     }
 
-    private void UpdateColliderSize()
-    {
-        boxCollider.size = new Vector2(
-            rectTransform.rect.width,
-            rectTransform.rect.height/4f
-        );
-        boxCollider.offset = new Vector2(0f, -80f); // estimate
-    }
-
-    private void LateUpdate()
-    {
-        UpdateColliderSize();
-    }
-
     public void SetOrder(string text)
     {
         textField.SetText(text);
     }
-    
-    
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (!PauseController.IsGamePaused || !Eraser.Instance.isActive) return;
+
+        Destroy(gameObject);
+        Debug.Log("A bilihin note was deleted!");
+    }
 }

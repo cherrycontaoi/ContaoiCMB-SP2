@@ -38,26 +38,26 @@ public class Eraser : MonoBehaviour
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             Debug.Log("Clicked!");
-            Erase();
+            // Erase();
         }
         
     }
-    public void Erase()
-    {
-        var rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));
+    // public void Erase()
+    // {
+    //     var rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));
     
-        if (!rayHit.collider) {
-            Debug.Log("nothing here."); 
-            return;
-            }
+    //     if (!rayHit.collider) {
+    //         Debug.Log("nothing here."); 
+    //         return;
+    //         }
 
-        if(rayHit.collider.gameObject.CompareTag("Note"))
-        {
-            Debug.Log("A note was deleted.");
-            Destroy(rayHit.collider.gameObject); //erase
-        }
+    //     if(rayHit.collider.gameObject.CompareTag("Note"))
+    //     {
+    //         Debug.Log("A note was deleted.");
+    //         Destroy(rayHit.collider.gameObject); //erase
+    //     }
 
-    }
+    // }
     public void ActivateEraser()
     {
         if (canActivate)

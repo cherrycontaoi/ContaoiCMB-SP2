@@ -9,7 +9,7 @@ public class CursorController : MonoBehaviour
 
     public void SetToEraser()
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        Cursor.SetCursor(cursorTexture, Vector2.zero, cursorMode);
     }
 
     public void SetToDefault()
