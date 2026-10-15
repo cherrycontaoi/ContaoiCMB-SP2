@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -357,32 +358,65 @@ public class Customer : MonoBehaviour, IInteractable
 
     private void SaveNewDialogue(Dialogue dialogue)
     {
+    
+        // for unity_editor onlyyyy
+        // string filename;
+        // string path = "Assets/Resources/Dialogues/" + customerName + "/";
+
+        // if (dialogue.dialogueType == DialogueType.Buying)
+        // {
+        //     filename = "Order";
+        // }
+        // else    // end dialogue
+        // {
+        //     filename = "EndDialogue";
+        // }
+
+        // string filePath = path + filename + ".asset";
+
+        // int orderCount = 1;
+        
+        // // if there is already an existing file named Order.asset
+        // // name the others like this: Order (n).asset
+        // while (AssetDatabase.LoadAssetAtPath<Dialogue>(filePath) != null)
+        // {
+        //     filePath = path + filename + " (" + orderCount + ").asset";
+        //     orderCount++;
+        // }
+
+        // AssetDatabase.CreateAsset(dialogue, filePath);
+        // AssetDatabase.SaveAssets();
+    
+
         string filename;
-        string path = "Assets/Resources/Dialogues/" + customerName + "/";
 
         if (dialogue.dialogueType == DialogueType.Buying)
         {
             filename = "Order";
         }
-        else    // end dialogue
+        else
         {
             filename = "EndDialogue";
         }
 
-        string filePath = path + filename + ".asset";
+        string directoryPath = Path.Combine(Application.persistentDataPath, "Dialogues", customerName);
+        Directory.CreateDirectory(directoryPath);
 
-        int orderCount = 1;
-        
+        string filePath = Path.Combine(directoryPath, filename + ".json");
+
+        int count = 1;
+
         // if there is already an existing file named Order.asset
         // name the others like this: Order (n).asset
-        while (AssetDatabase.LoadAssetAtPath<Dialogue>(filePath) != null)
+        while (File.Exists(filePath))
         {
-            filePath = path + filename + " (" + orderCount + ").asset";
-            orderCount++;
+            filePath = Path.Combine(directoryPath, filename + " (" + count + ").json");
+            count++;
         }
 
-        AssetDatabase.CreateAsset(dialogue, filePath);
-        AssetDatabase.SaveAssets();
+        string json = JsonUtility.ToJson(dialogue, true);
+        File.WriteAllText(filePath, json);
+
     }
 
 

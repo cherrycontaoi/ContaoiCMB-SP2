@@ -202,22 +202,38 @@ public class OtherScreensController : MonoBehaviour
 
     public void SetInstructions(string filename)
     {
+
         foreach (Transform child in paperContentWindow)
         {
             Destroy(child.gameObject);    
         }
 
-        string readFromFilePath = "Assets/Resources/Instructions/" + filename;
+        TextAsset file = Resources.Load<TextAsset>("Instructions/" + filename);
 
-        List<string> fileLines = File.ReadAllLines(readFromFilePath).ToList();
-        
-        foreach(string line in fileLines)
+        if (file == null)
+        {
+            Debug.LogError("Couldn't load instruction file with name: " +filename);
+            return;
+        }
+
+        List<string> fileLines = file.text
+        .Split(new[] { "\r\n", "\n", "\r" }, System.StringSplitOptions.None)
+        .ToList();
+
+        foreach (string line in fileLines)
         {
             if (line.StartsWith("img_src="))
             {
-                string imgPath = line.Replace("img_src=", "");
+                string imgPath = line.Replace("img_src=", "").Trim();
 
                 Sprite instructionPhoto = Resources.Load<Sprite>(imgPath);
+
+                if (instructionPhoto == null)
+                {
+                    Debug.LogError("Could not load instruction image: " + imgPath);
+                    continue;
+                }
+
                 GameObject newPaperPhoto = Instantiate(paperImage, paperContentWindow);
 
                 newPaperPhoto.GetComponentInChildren<Image>().sprite = instructionPhoto;
@@ -227,9 +243,32 @@ public class OtherScreensController : MonoBehaviour
                 GameObject newPaperText = Instantiate(paperText, paperContentWindow);
                 newPaperText.GetComponentInChildren<TMP_Text>().text = line;
             }
-
         }
-
     }
+
+    //     string readFromFilePath = "Assets/Resources/Instructions/" + filename;
+
+    //     List<string> fileLines = File.ReadAllLines(readFromFilePath).ToList();
+        
+    //     foreach(string line in fileLines)
+    //     {
+    //         if (line.StartsWith("img_src="))
+    //         {
+    //             string imgPath = line.Replace("img_src=", "");
+
+    //             Sprite instructionPhoto = Resources.Load<Sprite>(imgPath);
+    //             GameObject newPaperPhoto = Instantiate(paperImage, paperContentWindow);
+
+    //             newPaperPhoto.GetComponentInChildren<Image>().sprite = instructionPhoto;
+    //         }
+    //         else
+    //         {
+    //             GameObject newPaperText = Instantiate(paperText, paperContentWindow);
+    //             newPaperText.GetComponentInChildren<TMP_Text>().text = line;
+    //         }
+
+    //     }
+
+    // }
 
 }
