@@ -18,13 +18,14 @@ public class MenuController : MonoBehaviour
         // escape to open/close menu
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
+            
+            // if (!menuCanvas.activeSelf && PauseController.IsGamePaused)
+            // {
+            //     return;
+            // }
             SoundFXController.Play("Menu");
-            if (!menuCanvas.activeSelf && PauseController.IsGamePaused)
-            {
-                return;
-            }
             menuCanvas.SetActive(!menuCanvas.activeSelf);
-            PauseController.SetPause(menuCanvas.activeSelf);
+            PauseController.SetPause(menuCanvas.activeSelf || OtherScreensController.Instance.storeIsOpen);
         }
     }
 

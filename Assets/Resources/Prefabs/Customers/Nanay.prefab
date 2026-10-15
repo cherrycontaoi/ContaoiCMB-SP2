@@ -17,6 +17,10 @@ PrefabInstance:
       value: Nanay
       objectReference: {fileID: 0}
     - target: {fileID: 5994252669407058662, guid: 9bdfe029e255b41499e1c54ddf2a1aec, type: 3}
+      propertyPath: hasSmallTalk
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994252669407058662, guid: 9bdfe029e255b41499e1c54ddf2a1aec, type: 3}
       propertyPath: expressions.Array.size
       value: 4
       objectReference: {fileID: 0}

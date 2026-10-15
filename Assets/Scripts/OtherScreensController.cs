@@ -13,7 +13,9 @@ public class OtherScreensController : MonoBehaviour
 
     // level complete screen
     public GameObject levelCompleteScreen;
+    public GameObject nextLevelButton;
     public GameObject[] starsContainer;
+
     private List<Image> starImages = new List<Image>();
 
     // end of level transition to level complete screen
@@ -50,8 +52,6 @@ public class OtherScreensController : MonoBehaviour
     private int index;
 
     
-
-
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -97,6 +97,12 @@ public class OtherScreensController : MonoBehaviour
     {
         SoundFXController.Play("LevelComplete");
         levelCompleteScreen.SetActive(true);
+
+        int lastLevelIndex = LevelController.Instance.levels.Length-1;
+        if (LevelController.Instance.currentLevel == LevelController.Instance.levels[lastLevelIndex])
+        {
+            nextLevelButton.SetActive(false);
+        }
     }
 
     public void HideScreen()

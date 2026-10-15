@@ -30,6 +30,7 @@ public class Level : MonoBehaviour
 
     public void StartLevel()
     {   
+        FadeTransition();
         if (SceneManager.GetActiveScene().name == "TutorialScene")
         {
             levelScore = 300;
@@ -68,30 +69,6 @@ public class Level : MonoBehaviour
         OtherScreensController.Instance.ShowStartAnimation();
         OtherScreensController.Instance.CloseStore();
 
-        // setup customers
-        for(int i=0; i<customers.Length; i++)
-        {
-            // if has small talk ----------------------------------------------
-            if (smallTalkDialogues[i] != null)
-            {
-                customers[i].hasSmallTalk = true;
-                customers[i].smallTalkDialogue = smallTalkDialogues[i];
-            }
-            else
-            {
-                customers[i].hasSmallTalk = false;
-            }
-
-            // if customer will buy -------------------------------------------
-            if (buyingCustomers[i])
-            {
-                customers[i].willBuy = true;
-            }
-            else
-            {
-                customers[i].willBuy = false;
-            }
-        }
         SetRulesDictionary();
         RulesTracker.Instance.SetRules(activeRules);
         PlayerData.Instance.UpdatePlayerLevel();
@@ -110,13 +87,38 @@ public class Level : MonoBehaviour
 
         // wait muna
         yield return new WaitForSeconds(5f);
-
-        foreach(Customer customerPrefab in customers)
+        
+        // setup customers
+        for(int i=0; i<customers.Length; i++)
         {
 
-            Customer customer = Instantiate(customerPrefab);
-            WaypointMover customerMover = customer.GetComponent<WaypointMover>();
+            Customer customer = Instantiate(customers[i]);
+            customer.smallTalkDialogue = null;
+            customer.orderDialogue = null;
+            customer.endingDialogue = null;
 
+            // if has small talk ----------------------------------------------
+            if (smallTalkDialogues[i] != null)
+            {
+                customer.hasSmallTalk = true;
+                customer.smallTalkDialogue = smallTalkDialogues[i];
+            }
+            else
+            {
+                customer.hasSmallTalk = false;
+            }
+
+            // if customer will buy -------------------------------------------
+            if (buyingCustomers[i])
+            {
+                customer.willBuy = true;
+            }
+            else
+            {
+                customer.willBuy = false;
+            }
+
+            WaypointMover customerMover = customer.GetComponent<WaypointMover>();
             customer.isDone = false;
             customer.gameObject.SetActive(true);
 
@@ -139,8 +141,40 @@ public class Level : MonoBehaviour
             
             // wait for 5 seconds before next customer appears
             yield return new WaitForSeconds(5f);
+
         }
+
         yield return StartCoroutine(LevelCompleted());
+
+        // foreach(Customer customerPrefab in customers)
+        // {
+
+        //     Customer customer = Instantiate(customerPrefab);
+        //     WaypointMover customerMover = customer.GetComponent<WaypointMover>();
+
+        //     customer.isDone = false;
+        //     customer.gameObject.SetActive(true);
+
+        //     TransactionController.Instance.SetCustomer(customer);
+
+        //     while (!customerMover.hasExited)
+        //     {
+        //         yield return null;
+        //     }
+
+        //     while (CounterDisplayController.Instance.MoneyIsStillOnCounter())
+        //     {
+        //         yield return null;
+        //     }
+
+        //     levelScore += TransactionController.Instance.GetPlayerScore();
+        //     TransactionController.Instance.ResetTransactionScore();
+
+        //     Destroy(customer.gameObject);
+            
+        //     // wait for 5 seconds before next customer appears
+        //     yield return new WaitForSeconds(5f);
+        // }
     }
 
     public void ResetCustomers()
@@ -150,6 +184,12 @@ public class Level : MonoBehaviour
             customer.smallTalkDialogue = customer.orderDialogue = customer.endingDialogue = null;
             customer.hasSmallTalk = customer.willBuy = false;
         }
+    }
+
+    private async void FadeTransition()
+    {
+        await ScreenFader.Instance.FadeOut();
+        await ScreenFader.Instance.FadeIn();
     }
 
     public IEnumerator LevelCompleted()
@@ -162,7 +202,7 @@ public class Level : MonoBehaviour
 
         OtherScreensController.Instance.ShowTransitionDialogue(false);
         OtherScreensController.Instance.ShowScreen();
-        ResetCustomers(); 
+        // ResetCustomers(); 
 
         // LevelController.Instance.StartNextLevel();
     }

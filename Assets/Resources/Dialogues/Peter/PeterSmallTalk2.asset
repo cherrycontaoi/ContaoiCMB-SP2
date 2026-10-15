@@ -21,7 +21,7 @@ MonoBehaviour:
   - '''Sya, may yosi ba kayo?'
   - Ganoon ba?
   - Sabagay... Malalanghap niyo pa yung usok.
-  linesToAutoProgress: 0000010101000000
+  linesToAutoProgress: 0000000000000000
   endLines: 0000000000000001
   autoProgressDelay: 1.5
   typingSpeed: 0.05
@@ -38,4 +38,4 @@ MonoBehaviour:
   - dialogueIndex: 6
     choices:
     - Ayaw po kasi ni Mama ng tumatambay sa harap ng tindahan.
-    nextDialogueIndices: 01000000010000000100000001000000010000000100000001000000
+    nextDialogueIndices: 07000000

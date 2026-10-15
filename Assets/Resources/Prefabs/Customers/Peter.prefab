@@ -13,8 +13,16 @@ PrefabInstance:
       value: Peter
       objectReference: {fileID: 0}
     - target: {fileID: 5994252669407058662, guid: 9bdfe029e255b41499e1c54ddf2a1aec, type: 3}
+      propertyPath: willBuy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994252669407058662, guid: 9bdfe029e255b41499e1c54ddf2a1aec, type: 3}
       propertyPath: customerName
       value: Peter
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994252669407058662, guid: 9bdfe029e255b41499e1c54ddf2a1aec, type: 3}
+      propertyPath: hasSmallTalk
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5994252669407058662, guid: 9bdfe029e255b41499e1c54ddf2a1aec, type: 3}
       propertyPath: expressions.Array.size
