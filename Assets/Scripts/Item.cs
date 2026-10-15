@@ -9,6 +9,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private GameObject gameController;
     [SerializeField] private List<GameObject> matchingObjects;   // should be neighbor
     [SerializeField] private ItemType itemType;
+    [SerializeField] private string soundName;
     private BasketController basketController;
     private bool isInBasket;
     private bool isBeingDragged;
@@ -53,6 +54,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (PauseController.IsGamePaused) return;
         if (isInBasket && isBeingDragged==false)
         {
+            SoundFXController.Play(soundName);
             Debug.Log("clicked!");
             holdDownStartTime = Time.time;
             isHolding = true;
@@ -78,6 +80,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             if (holdDownTime >= holdDuration)
             {
+                SoundFXController.Play("ThudSound");
                 Destroy(gameObject);        // remove from basket
                 basketController.RemoveFromBasket(slotID);
             }
@@ -87,6 +90,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void PlacedInBasket()
     {
         GetComponent<Image>().SetNativeSize();
+        // SoundFXController.Play("ThudSound");
         isInBasket = true;
         slotID = gameObject.GetComponentInParent<Slot>().slotID;
         Debug.Log(gameObject.name + " is dropped in the basket");

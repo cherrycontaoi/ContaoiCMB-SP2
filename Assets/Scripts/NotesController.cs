@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class NotesController : MonoBehaviour
 {
 
+    public static NotesController Instance { get; private set; }
+
     // [SerializeField] private GameObject notesPanel;
     [SerializeField] private ToggleSystem toggleSystem;
     [SerializeField] private Transform notesContainer;
@@ -28,6 +30,12 @@ public class NotesController : MonoBehaviour
         CreateNotes();
     }
 
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);   // make only 1 instance
+    }
+
     private void CreateNotes()
     {
         ClearNotes();
@@ -44,7 +52,7 @@ public class NotesController : MonoBehaviour
             newOrder.SetOrder(order.Text);
         }
     }
-    private void ClearNotes()
+    public void ClearNotes()
     {
         foreach(Transform child in notesContainer)
         {

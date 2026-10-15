@@ -69,6 +69,7 @@ public class CounterDisplayController : MonoBehaviour
     {
         if (!moneyOnCounter) return;
 
+        SoundFXController.Play("GetMoney");
         moneyOnCounter = false;
         money.SetActive(false);
 
@@ -77,6 +78,7 @@ public class CounterDisplayController : MonoBehaviour
     
     public void DisplayPlasticBag(int noOfOrders)
     {        
+        SoundFXController.Play("Plastic");
         alreadyInBag = true;
         plasticBag.SetActive(true);
         givePanel.SetActive(false);
@@ -96,6 +98,7 @@ public class CounterDisplayController : MonoBehaviour
         // can't choose pb if game is paused or if there are no customers
         if(PauseController.IsGamePaused || customer == null || !customer.willBuy || !customer.currentlyBuying || !customer.GetComponent<WaypointMover>().hasStoppedAtStore || Pencil.Instance.isActive) return;
 
+        SoundFXController.Play("Plastic");
         Debug.Log("The plastic bag to be used is: " + PBColor);
         if(PBColor == "PBGreen")
         {

@@ -19,7 +19,7 @@ public class Rule_Note : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         if (!PauseController.IsGamePaused || !Eraser.Instance.isActive) return;
-
+        SoundFXController.Play("Eraser");
         Destroy(gameObject);
         Debug.Log("A bilin note was deleted!");
     }

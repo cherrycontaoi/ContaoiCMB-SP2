@@ -17,6 +17,7 @@ public class MenuController : MonoBehaviour
         // escape to open/close menu
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
+            SoundFXController.Play("Menu");
             if (!menuCanvas.activeSelf && PauseController.IsGamePaused)
             {
                 return;

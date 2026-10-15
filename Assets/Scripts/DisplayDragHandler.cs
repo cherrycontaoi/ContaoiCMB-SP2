@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private GameObject itemPrefab;
-    [SerializeField] public GameObject basketPanel;
+    [SerializeField] private string audioName;
+    public GameObject basketPanel;
     private BasketController basketController;
     private GameObject newItem;
     private CanvasGroup canvasGroup;
@@ -39,6 +40,7 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
         }
         
         isDragging = true;
+        SoundFXController.Play(audioName);
 
         newItem = Instantiate(itemPrefab,basketPanel.transform);
         newItem.transform.position = eventData.position;
@@ -68,6 +70,8 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
     {
         if (PauseController.IsGamePaused) return;
         if (!isDragging) return;
+
+        // SoundFXController.Play("ThudSound");
 
         canvasGroup.blocksRaycasts = true;
         canvasGroup.alpha = 1f;

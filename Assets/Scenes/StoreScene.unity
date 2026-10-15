@@ -152,6 +152,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7831702094321484330, guid: ec9c9cb53ecba4d289a99996450b2531, type: 3}
+      propertyPath: audioName
+      value: DragCanned
+      objectReference: {fileID: 0}
+    - target: {fileID: 7831702094321484330, guid: ec9c9cb53ecba4d289a99996450b2531, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -434,6 +438,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9032416188785695995, guid: 1c33dfd7ea5cd4403b75d9517c9ee84a, type: 3}
+      propertyPath: audioName
+      value: DragPlasticBottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032416188785695995, guid: 1c33dfd7ea5cd4403b75d9517c9ee84a, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -551,6 +559,10 @@ PrefabInstance:
     - target: {fileID: 962560446032126071, guid: e266635f9b8ee4302b5e011954267f5a, type: 3}
       propertyPath: m_SortingOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182849467158458613, guid: e266635f9b8ee4302b5e011954267f5a, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
       objectReference: {fileID: 0}
     - target: {fileID: 3182849467158458613, guid: e266635f9b8ee4302b5e011954267f5a, type: 3}
       propertyPath: basketPanel
@@ -3239,6 +3251,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8127483217526628845, guid: 45b60e550104e413bbcaba0997166ec5, type: 3}
+      propertyPath: audioName
+      value: DragProduce
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127483217526628845, guid: 45b60e550104e413bbcaba0997166ec5, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -3365,6 +3381,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8795469842649785099, guid: 45930cd808e61454fa9bb91898356c99, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 8795469842649785099, guid: 45930cd808e61454fa9bb91898356c99, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -3483,6 +3503,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8722616777289769767, guid: 2d3a45d42cc914325bdd173e1fbb5bb0, type: 3}
+      propertyPath: audioName
+      value: DragProduce
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722616777289769767, guid: 2d3a45d42cc914325bdd173e1fbb5bb0, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -3527,6 +3551,10 @@ PrefabInstance:
     - target: {fileID: 5332745422964093730, guid: b46b5d7eab05448769ff979f97e7e283, type: 3}
       propertyPath: m_SortingOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742185492041311136, guid: b46b5d7eab05448769ff979f97e7e283, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
       objectReference: {fileID: 0}
     - target: {fileID: 7742185492041311136, guid: b46b5d7eab05448769ff979f97e7e283, type: 3}
       propertyPath: itemPrefab
@@ -4015,6 +4043,10 @@ PrefabInstance:
     - target: {fileID: 2314920518551927307, guid: 735058ff0146c4853b2b8dcadefbd70e, type: 3}
       propertyPath: m_Name
       value: PalmoliveGreen_Display Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4950870207908578073, guid: 735058ff0146c4853b2b8dcadefbd70e, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
       objectReference: {fileID: 0}
     - target: {fileID: 4950870207908578073, guid: 735058ff0146c4853b2b8dcadefbd70e, type: 3}
       propertyPath: basketPanel
@@ -4720,6 +4752,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3718122863594809072, guid: 2d9c6312559514d329d219c6cb263486, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718122863594809072, guid: 2d9c6312559514d329d219c6cb263486, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -4979,6 +5015,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1202732770613334624, guid: af2860f3ef2994ba1824b5a75421f788, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202732770613334624, guid: af2860f3ef2994ba1824b5a75421f788, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -5016,6 +5056,42 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 204866951871970578, guid: af2860f3ef2994ba1824b5a75421f788, type: 3}
   m_PrefabInstance: {fileID: 331502575}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &332265315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 332265316}
+  m_Layer: 5
+  m_Name: Fill Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &332265316
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332265315}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1396893454}
+  m_Father: {fileID: 1945901376}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
+  m_AnchoredPosition: {x: -5, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &336156040
 GameObject:
   m_ObjectHideFlags: 0
@@ -5050,7 +5126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13.68, y: 0.0000076293945}
+  m_AnchoredPosition: {x: -13.68, y: 0.0000038146973}
   m_SizeDelta: {x: 27.36, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &336156042
@@ -6141,6 +6217,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8500549654803783024, guid: 72127c917a601461f91e1086d96d25ce, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500549654803783024, guid: 72127c917a601461f91e1086d96d25ce, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -6339,6 +6419,10 @@ PrefabInstance:
       value: -0.0046771765
       objectReference: {fileID: 0}
     - target: {fileID: 6974094829360121715, guid: c5957c4851b1d478e8971c9cd31cf2a9, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974094829360121715, guid: c5957c4851b1d478e8971c9cd31cf2a9, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -6463,6 +6547,10 @@ PrefabInstance:
     - target: {fileID: 5340418785664055382, guid: 94aa4ed06b0d548e6873fa001d605a19, type: 3}
       propertyPath: m_Offset.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6924947952781538679, guid: 94aa4ed06b0d548e6873fa001d605a19, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
       objectReference: {fileID: 0}
     - target: {fileID: 6924947952781538679, guid: 94aa4ed06b0d548e6873fa001d605a19, type: 3}
       propertyPath: basketPanel
@@ -6727,6 +6815,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1954702824619811690, guid: eb9e92b127bd24190a3e3c78d6311e92, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954702824619811690, guid: eb9e92b127bd24190a3e3c78d6311e92, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -6889,6 +6981,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8195172195358696979, guid: bcf45e83f79194179a3bb34fdcb8b055, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195172195358696979, guid: bcf45e83f79194179a3bb34fdcb8b055, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -6910,6 +7006,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1430088471}
     m_Modifications:
+    - target: {fileID: 1093747246508070596, guid: e90304a01beee4a789c0c1ece957359c, type: 3}
+      propertyPath: audioName
+      value: DragProduce
+      objectReference: {fileID: 0}
     - target: {fileID: 1093747246508070596, guid: e90304a01beee4a789c0c1ece957359c, type: 3}
       propertyPath: basketPanel
       value: 
@@ -7427,6 +7527,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9132942956598777440, guid: 0a9cfe8cdc3f3414ba0e900335198482, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
+      objectReference: {fileID: 0}
+    - target: {fileID: 9132942956598777440, guid: 0a9cfe8cdc3f3414ba0e900335198482, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -7615,6 +7719,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6349916940620958582, guid: 18b66a7d4762f4878a8856585f4fb871, type: 3}
+      propertyPath: audioName
+      value: DragCanned
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349916940620958582, guid: 18b66a7d4762f4878a8856585f4fb871, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -7679,6 +7787,10 @@ PrefabInstance:
     - target: {fileID: 5255162156954160984, guid: f7a99ceb83aa84204ae751c9a0dd96d2, type: 3}
       propertyPath: m_Offset.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7127148504104600185, guid: f7a99ceb83aa84204ae751c9a0dd96d2, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
       objectReference: {fileID: 0}
     - target: {fileID: 7127148504104600185, guid: f7a99ceb83aa84204ae751c9a0dd96d2, type: 3}
       propertyPath: basketPanel
@@ -7805,6 +7917,10 @@ PrefabInstance:
     - target: {fileID: 5644317510494974844, guid: 2b098d36d26d14146ae85b74f778bb07, type: 3}
       propertyPath: m_SortingOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8008763277800809470, guid: 2b098d36d26d14146ae85b74f778bb07, type: 3}
+      propertyPath: audioName
+      value: DragProduce
       objectReference: {fileID: 0}
     - target: {fileID: 8008763277800809470, guid: 2b098d36d26d14146ae85b74f778bb07, type: 3}
       propertyPath: basketPanel
@@ -7991,6 +8107,10 @@ PrefabInstance:
     - target: {fileID: 5577060020474418194, guid: 228380279873c4e8485b7d5ab5322934, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846193774755036000, guid: 228380279873c4e8485b7d5ab5322934, type: 3}
+      propertyPath: audioName
+      value: DragPlasticBottle
       objectReference: {fileID: 0}
     - target: {fileID: 6846193774755036000, guid: 228380279873c4e8485b7d5ab5322934, type: 3}
       propertyPath: basketPanel
@@ -9160,6 +9280,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1430088471}
     m_Modifications:
     - target: {fileID: 437516144769054979, guid: 8796bb961c20c416a899826e208cdcb2, type: 3}
+      propertyPath: audioName
+      value: DragGlassBottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 437516144769054979, guid: 8796bb961c20c416a899826e208cdcb2, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -9361,6 +9485,217 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &619496439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 619496440}
+  - component: {fileID: 619496442}
+  - component: {fileID: 619496441}
+  - component: {fileID: 619496443}
+  m_Layer: 0
+  m_Name: SoundFXController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &619496440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619496439}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2079932312}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &619496441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619496439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8f69cf7c2314153b38fc9854e81322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  soundFXGroups:
+  - name: ThudSound
+    audioClips:
+    - {fileID: 8300000, guid: c9fccc55a34e242f285c23652340fb43, type: 3}
+    - {fileID: 8300000, guid: 1b6ee85a2aa4749189a0824441ed00f0, type: 3}
+    - {fileID: 8300000, guid: 3a9e88f87af284c06b934f497d60cc32, type: 3}
+    - {fileID: 8300000, guid: cff76dbac2f6b47f786ac8c550cafe77, type: 3}
+    - {fileID: 8300000, guid: c5552c0f9dc9b40f1af26b09949b3a17, type: 3}
+  - name: GetMoney
+    audioClips:
+    - {fileID: 8300000, guid: 6e4fdf22e1fc344afb7b05b30883efcb, type: 3}
+  - name: ReadPaper
+    audioClips:
+    - {fileID: 8300000, guid: 4e2007ba0a99e4a8abae2dc352d66c5b, type: 3}
+  - name: OpenStore
+    audioClips:
+    - {fileID: 8300000, guid: e4f17eef5adbd4ef6b72a9301ee22278, type: 3}
+  - name: DragCanned
+    audioClips:
+    - {fileID: 8300000, guid: 9c0f27220eaf54a3ab32591c2c4a5fd2, type: 3}
+  - name: DragGlassBottle
+    audioClips:
+    - {fileID: 8300000, guid: 819b6b5895a30483eb10989ab578258c, type: 3}
+    - {fileID: 8300000, guid: cd298050c5c4a44249ba4d72584ba1c8, type: 3}
+  - name: DragPlasticBottle
+    audioClips:
+    - {fileID: 8300000, guid: 810f8d98a34664014a5056ba6df90eac, type: 3}
+  - name: DragChipsNBiscuits
+    audioClips:
+    - {fileID: 8300000, guid: d789d43cce2b145119c946f4211cd30f, type: 3}
+  - name: DragOtherPlastic
+    audioClips:
+    - {fileID: 8300000, guid: f95b7e8f37edd43d7955a8027103a92f, type: 3}
+  - name: DragProduce
+    audioClips:
+    - {fileID: 8300000, guid: 2c4f0f648bf2d4c1f9a71d1f366c4dae, type: 3}
+  - name: Plastic
+    audioClips:
+    - {fileID: 8300000, guid: 45bd90991cbac4973af8ce58ed3610dc, type: 3}
+    - {fileID: 8300000, guid: 78d39218dec3a4243b72b340177138e8, type: 3}
+    - {fileID: 8300000, guid: 6de1c240d0004440a8d92d3595fdac90, type: 3}
+  - name: Eraser
+    audioClips:
+    - {fileID: 8300000, guid: b83d5dd12d04a4cbe9707fc414ec8cdf, type: 3}
+    - {fileID: 8300000, guid: 55f79657b779b4015b7acac219dfe577, type: 3}
+  - name: TransitionToEnd
+    audioClips:
+    - {fileID: 8300000, guid: 4f2a9399d502e4429b7c2eef6d8e0f6d, type: 3}
+    - {fileID: 8300000, guid: 1014f45c7bf94438597e10f6c6741b32, type: 3}
+    - {fileID: 8300000, guid: 4ed08f8da781146fe897ba423c090a1f, type: 3}
+  - name: LevelComplete
+    audioClips:
+    - {fileID: 8300000, guid: e958325a5017043b0932357187296efe, type: 3}
+    - {fileID: 8300000, guid: 0fcdc1e22994d4daab5db038b5e80042, type: 3}
+    - {fileID: 8300000, guid: f70f5f15c5c3d4df2b32983597391631, type: 3}
+--- !u!82 &619496442
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619496439}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &619496443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619496439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf416b3d572b1433e971643d21aac5ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  sfxSlider: {fileID: 1945901375}
 --- !u!1 &631633094
 GameObject:
   m_ObjectHideFlags: 0
@@ -9503,6 +9838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 646117199}
   - component: {fileID: 646117201}
+  - component: {fileID: 646117202}
   - component: {fileID: 646117200}
   m_Layer: 5
   m_Name: DialoguePanel
@@ -9572,6 +9908,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 646117198}
   m_CullTransparentMesh: 1
+--- !u!225 &646117202
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646117198}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &663527650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9685,6 +10033,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3750773848283814539, guid: eeda70c23b52a4971aef93d9f5e958a0, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 3750773848283814539, guid: eeda70c23b52a4971aef93d9f5e958a0, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -9713,6 +10065,10 @@ PrefabInstance:
     - target: {fileID: 2410245893034954999, guid: b13310965e1f64df19f0822af17de293, type: 3}
       propertyPath: m_Name
       value: KnorrShrimp_Display Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037223500394867173, guid: b13310965e1f64df19f0822af17de293, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
       objectReference: {fileID: 0}
     - target: {fileID: 5037223500394867173, guid: b13310965e1f64df19f0822af17de293, type: 3}
       propertyPath: basketPanel
@@ -9839,6 +10195,10 @@ PrefabInstance:
     - target: {fileID: 2602903484752309076, guid: a12a1225ba90e471ebad32edaf9de152, type: 3}
       propertyPath: m_Name
       value: SanMarino_Display Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650642981503750726, guid: a12a1225ba90e471ebad32edaf9de152, type: 3}
+      propertyPath: audioName
+      value: DragCanned
       objectReference: {fileID: 0}
     - target: {fileID: 4650642981503750726, guid: a12a1225ba90e471ebad32edaf9de152, type: 3}
       propertyPath: basketPanel
@@ -10034,7 +10394,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54, y: -7}
+  m_AnchoredPosition: {x: 44.8, y: -7}
   m_SizeDelta: {x: 164.4258, y: 69.4653}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &699048903
@@ -10861,6 +11221,10 @@ PrefabInstance:
       value: CSPink_Display Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5437992989629990425, guid: 01656d36fd21047c794e360479d93a0b, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437992989629990425, guid: 01656d36fd21047c794e360479d93a0b, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -11009,7 +11373,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 347.1, y: 8}
+  m_AnchoredPosition: {x: 179.7, y: 8}
   m_SizeDelta: {x: 172.7942, y: 28.529}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &717533690
@@ -11147,6 +11511,10 @@ PrefabInstance:
     - target: {fileID: 890006918577897109, guid: c9d0ba8eade144cf6902f5a5c882598c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179411192858218983, guid: c9d0ba8eade144cf6902f5a5c882598c, type: 3}
+      propertyPath: audioName
+      value: DragPlasticBottle
       objectReference: {fileID: 0}
     - target: {fileID: 2179411192858218983, guid: c9d0ba8eade144cf6902f5a5c882598c, type: 3}
       propertyPath: basketPanel
@@ -11485,6 +11853,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1430088471}
     m_Modifications:
     - target: {fileID: 84714303437766183, guid: 39c715800974d4d9d98fe5da9a922b05, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
+      objectReference: {fileID: 0}
+    - target: {fileID: 84714303437766183, guid: 39c715800974d4d9d98fe5da9a922b05, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -11632,8 +12004,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 958780454}
   - {fileID: 717533689}
+  - {fileID: 958780454}
   m_Father: {fileID: 1012056189}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -11666,6 +12038,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6609f9352516f424aae804dc4d66a0f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!1 &801663864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 801663865}
+  - component: {fileID: 801663866}
+  - component: {fileID: 801663867}
+  m_Layer: 5
+  m_Name: Handle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &801663865
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801663864}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 918608190}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &801663866
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801663864}
+  m_CullTransparentMesh: 1
+--- !u!114 &801663867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801663864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &822396586
 GameObject:
   m_ObjectHideFlags: 0
@@ -11772,6 +12219,10 @@ PrefabInstance:
     - target: {fileID: 5665613291307556134, guid: 206b1ba1ce81b4e9dad871f6f5c28485, type: 3}
       propertyPath: m_SortingOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8057008312921427364, guid: 206b1ba1ce81b4e9dad871f6f5c28485, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
       objectReference: {fileID: 0}
     - target: {fileID: 8057008312921427364, guid: 206b1ba1ce81b4e9dad871f6f5c28485, type: 3}
       propertyPath: basketPanel
@@ -12110,6 +12561,10 @@ PrefabInstance:
       value: 0.073340416
       objectReference: {fileID: 0}
     - target: {fileID: 7141526140066515961, guid: 77ab7c409a8ba4d4c8fa94f558c71793, type: 3}
+      propertyPath: audioName
+      value: DragProduce
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141526140066515961, guid: 77ab7c409a8ba4d4c8fa94f558c71793, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -12214,6 +12669,10 @@ PrefabInstance:
     - target: {fileID: 2714129651412145989, guid: 25ef96a9345aa41a1bf3ea69633b1359, type: 3}
       propertyPath: m_Name
       value: CSGreen_Display Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701686829445738071, guid: 25ef96a9345aa41a1bf3ea69633b1359, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
       objectReference: {fileID: 0}
     - target: {fileID: 4701686829445738071, guid: 25ef96a9345aa41a1bf3ea69633b1359, type: 3}
       propertyPath: basketPanel
@@ -12608,6 +13067,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1430088471}
     m_Modifications:
     - target: {fileID: 179334382519407984, guid: 034318474b4794390bf961370fccd6e8, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
+      objectReference: {fileID: 0}
+    - target: {fileID: 179334382519407984, guid: 034318474b4794390bf961370fccd6e8, type: 3}
       propertyPath: itemPrefab
       value: 
       objectReference: {fileID: 1747771054743194925, guid: 46d1b92b61caa4197b57a41c60097b4c, type: 3}
@@ -12780,6 +13243,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912390240}
   m_CullTransparentMesh: 1
+--- !u!1 &918608189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 918608190}
+  m_Layer: 5
+  m_Name: Handle Slide Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &918608190
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918608189}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 801663865}
+  m_Father: {fileID: 1945901376}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &928101599
 GameObject:
   m_ObjectHideFlags: 0
@@ -12969,6 +13468,10 @@ PrefabInstance:
     - target: {fileID: 3375458001998796911, guid: 38f6d0479359d4d01ac192a5b4c98578, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377265012801664797, guid: 38f6d0479359d4d01ac192a5b4c98578, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
       objectReference: {fileID: 0}
     - target: {fileID: 4377265012801664797, guid: 38f6d0479359d4d01ac192a5b4c98578, type: 3}
       propertyPath: basketPanel
@@ -13473,6 +13976,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1922873275993662755, guid: 1b7bcb8d70d134adb888b642ba08491c, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922873275993662755, guid: 1b7bcb8d70d134adb888b642ba08491c, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -13545,7 +14052,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 209.3971, y: -4.2648}
+  m_AnchoredPosition: {x: 379.1, y: -4.2648}
   m_SizeDelta: {x: 172.7942, y: 28.5295}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &958780455
@@ -14149,6 +14656,10 @@ PrefabInstance:
     - target: {fileID: 5604359316528360832, guid: 4abf97b74e5d74bc694a9d0cce53fc4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890944380723020530, guid: 4abf97b74e5d74bc694a9d0cce53fc4a, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
       objectReference: {fileID: 0}
     - target: {fileID: 6890944380723020530, guid: 4abf97b74e5d74bc694a9d0cce53fc4a, type: 3}
       propertyPath: basketPanel
@@ -15022,6 +15533,19 @@ MonoBehaviour:
   plasticBagYellow: {fileID: 1956646580}
   plasticBagOrange: {fileID: 1928746740}
   basketController: {fileID: 0}
+  money: {fileID: 2045185226}
+  easyMoneySprites:
+  - {fileID: 9178378467445011060, guid: 62bf9740a836d4124b80ccdc42cc107b, type: 3}
+  - {fileID: -1582964351235925322, guid: 62bf9740a836d4124b80ccdc42cc107b, type: 3}
+  - {fileID: 2453399927682280498, guid: 62bf9740a836d4124b80ccdc42cc107b, type: 3}
+  mediumMoneySprites:
+  - {fileID: -3123566958475502282, guid: 62bf9740a836d4124b80ccdc42cc107b, type: 3}
+  - {fileID: -2596213577664052700, guid: 62bf9740a836d4124b80ccdc42cc107b, type: 3}
+  - {fileID: 7149809413915089612, guid: 62bf9740a836d4124b80ccdc42cc107b, type: 3}
+  hardMoneySprites:
+  - {fileID: 7643774969404080213, guid: 62bf9740a836d4124b80ccdc42cc107b, type: 3}
+  - {fileID: -3335120316808778047, guid: 62bf9740a836d4124b80ccdc42cc107b, type: 3}
+  - {fileID: 3806519704458617997, guid: 62bf9740a836d4124b80ccdc42cc107b, type: 3}
 --- !u!114 &1031242758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15124,6 +15648,10 @@ PrefabInstance:
     - target: {fileID: 1081744138880062766, guid: 1e8e537ef2df44affab3cd505b23639c, type: 3}
       propertyPath: m_SortingOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3347110801258169772, guid: 1e8e537ef2df44affab3cd505b23639c, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
       objectReference: {fileID: 0}
     - target: {fileID: 3347110801258169772, guid: 1e8e537ef2df44affab3cd505b23639c, type: 3}
       propertyPath: basketPanel
@@ -15330,6 +15858,10 @@ PrefabInstance:
     - target: {fileID: 3210343555020490786, guid: ea2e295859dbd4e2da63af4afb428944, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4533519577100625744, guid: ea2e295859dbd4e2da63af4afb428944, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
       objectReference: {fileID: 0}
     - target: {fileID: 4533519577100625744, guid: ea2e295859dbd4e2da63af4afb428944, type: 3}
       propertyPath: basketPanel
@@ -15664,6 +16196,10 @@ PrefabInstance:
     - target: {fileID: 2421932338584125226, guid: c37b4235c3f834556a99de7261230508, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745672023468986456, guid: c37b4235c3f834556a99de7261230508, type: 3}
+      propertyPath: audioName
+      value: DragProduce
       objectReference: {fileID: 0}
     - target: {fileID: 3745672023468986456, guid: c37b4235c3f834556a99de7261230508, type: 3}
       propertyPath: basketPanel
@@ -18270,6 +18806,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1756793355674514901, guid: 2d60a1a0f59204dc5bf1b8fd942981ed, type: 3}
+      propertyPath: audioName
+      value: DragPlasticBottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1756793355674514901, guid: 2d60a1a0f59204dc5bf1b8fd942981ed, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -19350,6 +19890,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1430088471}
     m_Modifications:
+    - target: {fileID: 715261884185532812, guid: b171b4b1d2ce643e78ae781c478bed99, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
     - target: {fileID: 715261884185532812, guid: b171b4b1d2ce643e78ae781c478bed99, type: 3}
       propertyPath: basketPanel
       value: 
@@ -22642,7 +23186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67abc8cdb70ff4c6fb939908649784b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  counterDisplayController: {fileID: 0}
   dialoguePanel: {fileID: 646117198}
   notesPanel: {fileID: 1012056188}
 --- !u!114 &1212922187
@@ -22979,6 +23522,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2034570854105012653, guid: 78401f65cc99a4c138b24758e161db20, type: 3}
+      propertyPath: audioName
+      value: DragGlassBottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034570854105012653, guid: 78401f65cc99a4c138b24758e161db20, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -23038,6 +23585,10 @@ PrefabInstance:
     - target: {fileID: 882136589089376954, guid: d73a41d2df9a545db83546855159d1cd, type: 3}
       propertyPath: m_Offset.y
       value: 0.0019567013
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754896081967155099, guid: d73a41d2df9a545db83546855159d1cd, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
       objectReference: {fileID: 0}
     - target: {fileID: 2754896081967155099, guid: d73a41d2df9a545db83546855159d1cd, type: 3}
       propertyPath: basketPanel
@@ -23395,6 +23946,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8367544274876722210, guid: 2d774004858b541198eea7de245b6284, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
+      objectReference: {fileID: 0}
+    - target: {fileID: 8367544274876722210, guid: 2d774004858b541198eea7de245b6284, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -23430,6 +23985,10 @@ PrefabInstance:
     - target: {fileID: 3398993540113253308, guid: be4beed8dc0b24af2a559bce5992ee23, type: 3}
       propertyPath: m_Name
       value: SardinesRed_Display Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5457974993502878382, guid: be4beed8dc0b24af2a559bce5992ee23, type: 3}
+      propertyPath: audioName
+      value: DragCanned
       objectReference: {fileID: 0}
     - target: {fileID: 5457974993502878382, guid: be4beed8dc0b24af2a559bce5992ee23, type: 3}
       propertyPath: basketPanel
@@ -24697,6 +25256,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6429116292465624989, guid: be146cb6d41f54a67ba97d6bcbaaaaf9, type: 3}
+      propertyPath: audioName
+      value: DragProduce
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429116292465624989, guid: be146cb6d41f54a67ba97d6bcbaaaaf9, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -24873,6 +25436,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4382809115209323662, guid: b720e853d27d0486a82be23300503ef0, type: 3}
+      propertyPath: audioName
+      value: DragCanned
+      objectReference: {fileID: 0}
+    - target: {fileID: 4382809115209323662, guid: b720e853d27d0486a82be23300503ef0, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -24909,6 +25476,10 @@ PrefabInstance:
     - target: {fileID: 921451750125353932, guid: 8f738498cf51b40fd8934a76b3d4f1ca, type: 3}
       propertyPath: m_Offset.y
       value: -0.35367358
+      objectReference: {fileID: 0}
+    - target: {fileID: 2796461118580242157, guid: 8f738498cf51b40fd8934a76b3d4f1ca, type: 3}
+      propertyPath: audioName
+      value: DragProduce
       objectReference: {fileID: 0}
     - target: {fileID: 2796461118580242157, guid: 8f738498cf51b40fd8934a76b3d4f1ca, type: 3}
       propertyPath: basketPanel
@@ -25230,6 +25801,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2000635656951110099, guid: 1a942f73809f542138baca6c33f27ee9, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000635656951110099, guid: 1a942f73809f542138baca6c33f27ee9, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -25393,6 +25968,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8121366966062022208, guid: 759e074c9ed8949509d0914fb12fea4c, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121366966062022208, guid: 759e074c9ed8949509d0914fb12fea4c, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -25475,6 +26054,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1311935811}
+  - {fileID: 1945901376}
   m_Father: {fileID: 74359809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -26177,6 +26757,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6067420379363187875, guid: 57cf867533dab4129973781cf078624a, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067420379363187875, guid: 57cf867533dab4129973781cf078624a, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -26349,6 +26933,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6107570992705253947, guid: a35052558bf3248ebad9b0ef92848538, type: 3}
+      propertyPath: audioName
+      value: DragCanned
+      objectReference: {fileID: 0}
+    - target: {fileID: 6107570992705253947, guid: a35052558bf3248ebad9b0ef92848538, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -26382,6 +26970,81 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5090564048614301001, guid: a35052558bf3248ebad9b0ef92848538, type: 3}
   m_PrefabInstance: {fileID: 1382446409}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1396893453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1396893454}
+  - component: {fileID: 1396893456}
+  - component: {fileID: 1396893455}
+  m_Layer: 5
+  m_Name: Fill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1396893454
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396893453}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 332265316}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 10, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1396893455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396893453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.85132366, b: 0.495283, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1396893456
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396893453}
+  m_CullTransparentMesh: 1
 --- !u!1 &1397105519
 GameObject:
   m_ObjectHideFlags: 0
@@ -26635,6 +27298,10 @@ PrefabInstance:
       value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 2773320839238531373, guid: 403006bda18df44abb1145a0c2cb6564, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773320839238531373, guid: 403006bda18df44abb1145a0c2cb6564, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -26823,6 +27490,10 @@ PrefabInstance:
     - target: {fileID: 4697342147353019238, guid: 8de1ee3fd11294e50aa181c74b463729, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6005389259892599828, guid: 8de1ee3fd11294e50aa181c74b463729, type: 3}
+      propertyPath: audioName
+      value: DragPlasticBottle
       objectReference: {fileID: 0}
     - target: {fileID: 6005389259892599828, guid: 8de1ee3fd11294e50aa181c74b463729, type: 3}
       propertyPath: basketPanel
@@ -27024,6 +27695,10 @@ PrefabInstance:
     - target: {fileID: 5631510775608268133, guid: 2da373051d0d440a3ac7aa7cac1dad93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647321071995386391, guid: 2da373051d0d440a3ac7aa7cac1dad93, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
       objectReference: {fileID: 0}
     - target: {fileID: 6647321071995386391, guid: 2da373051d0d440a3ac7aa7cac1dad93, type: 3}
       propertyPath: itemPrefab
@@ -27404,6 +28079,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1430088471}
     m_Modifications:
+    - target: {fileID: 468161473681417645, guid: fd658f659712f41cc8c66f25e6397729, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
     - target: {fileID: 468161473681417645, guid: fd658f659712f41cc8c66f25e6397729, type: 3}
       propertyPath: basketPanel
       value: 
@@ -27894,6 +28573,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3503035271734255796, guid: 92838c7a0f8b543b4abb6f8e2223de4d, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 3503035271734255796, guid: 92838c7a0f8b543b4abb6f8e2223de4d, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -27919,6 +28602,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1430088471}
     m_Modifications:
+    - target: {fileID: 354227566745639495, guid: 1b703b4fdd0b5415485227a5feb4c0ed, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
     - target: {fileID: 354227566745639495, guid: 1b703b4fdd0b5415485227a5feb4c0ed, type: 3}
       propertyPath: itemPrefab
       value: 
@@ -28135,6 +28822,10 @@ PrefabInstance:
       value: -0.12862325
       objectReference: {fileID: 0}
     - target: {fileID: 7401771116770407723, guid: 20289c7f1f3a6462cb5ae32c86d13ca7, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
+      objectReference: {fileID: 0}
+    - target: {fileID: 7401771116770407723, guid: 20289c7f1f3a6462cb5ae32c86d13ca7, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -28259,6 +28950,10 @@ PrefabInstance:
     - target: {fileID: 5480822769024662953, guid: 51a7285ef722445e1ac2d89d9a866dbe, type: 3}
       propertyPath: m_Offset.y
       value: 0.064172745
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352525150176080008, guid: 51a7285ef722445e1ac2d89d9a866dbe, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
       objectReference: {fileID: 0}
     - target: {fileID: 7352525150176080008, guid: 51a7285ef722445e1ac2d89d9a866dbe, type: 3}
       propertyPath: basketPanel
@@ -28613,6 +29308,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4361444542853294459, guid: a9331ffd2752345c0af1db1992d14928, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361444542853294459, guid: a9331ffd2752345c0af1db1992d14928, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -28932,6 +29631,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8226151545467969256, guid: dccaa9671dbc34b3f8e6ac466c744ad8, type: 3}
+      propertyPath: audioName
+      value: DragGlassBottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226151545467969256, guid: dccaa9671dbc34b3f8e6ac466c744ad8, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -28945,6 +29648,81 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6939496455070331290, guid: dccaa9671dbc34b3f8e6ac466c744ad8, type: 3}
   m_PrefabInstance: {fileID: 1603192144}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1603265073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1603265074}
+  - component: {fileID: 1603265076}
+  - component: {fileID: 1603265075}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1603265074
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603265073}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1945901376}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1603265075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603265073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1603265076
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603265073}
+  m_CullTransparentMesh: 1
 --- !u!1 &1619652549
 GameObject:
   m_ObjectHideFlags: 0
@@ -30493,6 +31271,10 @@ PrefabInstance:
       value: RebiscoChoco_Display Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4963516381752451536, guid: f52a7acf28db543e1ab38f8572fa45a6, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963516381752451536, guid: f52a7acf28db543e1ab38f8572fa45a6, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -30695,6 +31477,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1535167059324016102, guid: 1c6438f33069c4419a46918f29237acd, type: 3}
+      propertyPath: audioName
+      value: DragPlasticBottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535167059324016102, guid: 1c6438f33069c4419a46918f29237acd, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -30811,10 +31597,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   levels:
+  - {fileID: 747565134}
   - {fileID: 328777138}
   - {fileID: 1911536038}
   - {fileID: 1190257700}
-  - {fileID: 747565134}
   - {fileID: 2079330255}
   - {fileID: 1355404898}
   - {fileID: 1258584198}
@@ -31076,6 +31862,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1430088471}
     m_Modifications:
+    - target: {fileID: 37456352338272969, guid: 270fd92fddfb74b6e85bcb00f41c4f12, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
     - target: {fileID: 37456352338272969, guid: 270fd92fddfb74b6e85bcb00f41c4f12, type: 3}
       propertyPath: basketPanel
       value: 
@@ -31853,6 +32643,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037158969171426295, guid: 93a55ebb817c44c04a2f58de8c0eac88, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037158969171426295, guid: 93a55ebb817c44c04a2f58de8c0eac88, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -32131,6 +32925,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1941751042833974904, guid: 3ca034104c53d40408619989daae5e3c, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941751042833974904, guid: 3ca034104c53d40408619989daae5e3c, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -32259,6 +33057,10 @@ PrefabInstance:
     - target: {fileID: 5065214551248998228, guid: d1c5367b6477f4c1f876bb1002636534, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6065332411413864486, guid: d1c5367b6477f4c1f876bb1002636534, type: 3}
+      propertyPath: audioName
+      value: DragGlassBottle
       objectReference: {fileID: 0}
     - target: {fileID: 6065332411413864486, guid: d1c5367b6477f4c1f876bb1002636534, type: 3}
       propertyPath: basketPanel
@@ -33685,6 +34487,10 @@ PrefabInstance:
       value: FlatTops_Display Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5692417993341039212, guid: 49a2374a9db464522a23b8b5161e248c, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692417993341039212, guid: 49a2374a9db464522a23b8b5161e248c, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -34711,6 +35517,96 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1945901374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1945901376}
+  - component: {fileID: 1945901375}
+  m_Layer: 5
+  m_Name: SFXVolumeSlider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1945901375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945901374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 801663867}
+  m_FillRect: {fileID: 1396893454}
+  m_HandleRect: {fileID: 801663865}
+  m_Direction: 0
+  m_MinValue: 0
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!224 &1945901376
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945901374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1603265074}
+  - {fileID: 332265316}
+  - {fileID: 918608190}
+  m_Father: {fileID: 1324733428}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -236, y: -55}
+  m_SizeDelta: {x: 160, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1953934167
 GameObject:
   m_ObjectHideFlags: 0
@@ -35465,6 +36361,10 @@ PrefabInstance:
     - target: {fileID: 3434191096509306712, guid: b5718d4a794fc4907850491249d8ef1d, type: 3}
       propertyPath: m_Name
       value: LMBeef_Display Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421642702653976138, guid: b5718d4a794fc4907850491249d8ef1d, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
       objectReference: {fileID: 0}
     - target: {fileID: 5421642702653976138, guid: b5718d4a794fc4907850491249d8ef1d, type: 3}
       propertyPath: basketPanel
@@ -36358,6 +37258,157 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032106558}
   m_CullTransparentMesh: 1
+--- !u!1 &2045185226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2045185230}
+  - component: {fileID: 2045185229}
+  - component: {fileID: 2045185228}
+  - component: {fileID: 2045185227}
+  m_Layer: 0
+  m_Name: Money
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &2045185227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045185226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ae119943d2a4d39b07cc6057b043bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!61 &2045185228
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045185226}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8125, y: 0.8125}
+    newSize: {x: 0.13, y: 0.18}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.8125, y: 0.8125}
+  m_EdgeRadius: 0
+--- !u!212 &2045185229
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045185226}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 100
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 7149809413915089612, guid: 62bf9740a836d4124b80ccdc42cc107b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.13, y: 0.18}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+--- !u!4 &2045185230
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045185226}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.87, y: 1.58, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2066347162
 GameObject:
   m_ObjectHideFlags: 0
@@ -36663,6 +37714,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7573816265253757274, guid: ae192f88137374d768367ddcfc423614, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7573816265253757274, guid: ae192f88137374d768367ddcfc423614, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -36801,6 +37856,7 @@ Transform:
   - {fileID: 2080027340}
   - {fileID: 1501958344}
   - {fileID: 1651926593}
+  - {fileID: 619496440}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2080027338
@@ -36832,8 +37888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6718641e4b14c8697efa3aeb439815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorController
-  cursorTexture: {fileID: 2800000, guid: d1924cf869a7d46ab93694a547795cf1, type: 3}
-  hotSpot: {x: 50, y: 50}
+  cursorTexture: {fileID: 2800000, guid: a4ef18c1ebcb342f798262087829eb59, type: 3}
+  hotSpot: {x: 0, y: 0}
   cursorMode: 0
 --- !u!4 &2080027340
 Transform:
@@ -37337,6 +38393,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4144210030658994669, guid: e6eb758a265f5464aa8896f445a496b9, type: 3}
+      propertyPath: audioName
+      value: DragOtherPlastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144210030658994669, guid: e6eb758a265f5464aa8896f445a496b9, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -37467,6 +38527,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8599488422985232811, guid: adc5d800d569c4b0aaae47583932dc93, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599488422985232811, guid: adc5d800d569c4b0aaae47583932dc93, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -37593,6 +38657,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8429965115133354431, guid: 1a9e914d2661540958ea783e870571ad, type: 3}
+      propertyPath: audioName
+      value: DragChipsNBiscuits
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429965115133354431, guid: 1a9e914d2661540958ea783e870571ad, type: 3}
       propertyPath: basketPanel
       value: 
       objectReference: {fileID: 1013944632}
@@ -37663,7 +38731,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Habilin
+  m_text: Binilin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f5abcb559c3d47c5a4c817f892bcca0, type: 2}
   m_sharedMaterial: {fileID: -3350259483488396161, guid: 7f5abcb559c3d47c5a4c817f892bcca0, type: 2}
@@ -37894,6 +38962,7 @@ SceneRoots:
   - {fileID: 1140151136}
   - {fileID: 1430088471}
   - {fileID: 2007290111}
+  - {fileID: 2045185230}
   - {fileID: 1646834516}
   - {fileID: 970910735}
   - {fileID: 2079932312}

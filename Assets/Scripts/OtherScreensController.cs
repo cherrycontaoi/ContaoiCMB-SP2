@@ -68,6 +68,7 @@ public class OtherScreensController : MonoBehaviour
 
     public void ShowTransitionDialogue(bool show)
     {
+        SoundFXController.Play("TransitionToEnd");
         Pencil.Instance.DeactivatePencil();
         Eraser.Instance.DeactivateEraser();
         if (show)
@@ -80,18 +81,21 @@ public class OtherScreensController : MonoBehaviour
     // FOR LEVEL COMPLETE! -----------------------------------------------------
     public void OnMenuClick()
     {
+        SoundFXController.Play("ThudSound");
         SceneManager.LoadScene("StartScene");
     }
 
     public void OnNextClick()
     {
         // just continue
+        SoundFXController.Play("ThudSound");
         levelCompleteScreen.SetActive(false);
         LevelController.Instance.StartNextLevel();
     }
 
     public void ShowScreen()
     {
+        SoundFXController.Play("LevelComplete");
         levelCompleteScreen.SetActive(true);
     }
 
@@ -163,6 +167,7 @@ public class OtherScreensController : MonoBehaviour
             return;
         }
 
+        SoundFXController.Play("OpenStore");
         storeIsOpen = true;
         blockageTileset.SetActive(false);
         storeTakip.SetActive(false);
@@ -174,6 +179,7 @@ public class OtherScreensController : MonoBehaviour
     {
         if (Eraser.Instance.isActive) return;
         
+        SoundFXController.Play("ReadPaper");
         displayPaper.SetActive(false);
         paperTileSets[index].SetActive(true);
         paperElements.SetActive(true);
@@ -181,6 +187,7 @@ public class OtherScreensController : MonoBehaviour
     
     public void ClosePaper()
     {
+        SoundFXController.Play("Paper");
         hasReadPaper = true;
         paperTileSets[index].SetActive(false);
         paperElements.SetActive(false);

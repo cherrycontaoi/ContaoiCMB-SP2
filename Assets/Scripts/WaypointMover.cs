@@ -15,6 +15,9 @@ public class WaypointMover : MonoBehaviour
     private SpriteRenderer customerSprite;
     private Transform[] waypoints;
     private int currentWaypointIndex;
+
+    public bool playingFootsteps = false;
+    public float footstepSpeed = 0.5f;
     
     void Start()
     {
@@ -46,6 +49,7 @@ public class WaypointMover : MonoBehaviour
     {
         if(PauseController.IsGamePaused || isBuying)
         {
+            StopFootsteps();
             return;
         }
 
@@ -72,6 +76,7 @@ public class WaypointMover : MonoBehaviour
 
     private void MoveToWaypoint()
     {
+        StartFootsteps();
         Transform target = waypoints[currentWaypointIndex];
 
         transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
@@ -81,6 +86,7 @@ public class WaypointMover : MonoBehaviour
 
         if (Vector2.Distance(transform.position, target.position) < 0.001f)
         {
+            StopFootsteps();
             // wait at waypoint
             if(currentWaypointIndex == waypoints.Length - 1)
             {
@@ -148,6 +154,26 @@ public class WaypointMover : MonoBehaviour
         {
             waypointParent.GetChild(i).gameObject.SetActive(true);
         }
+    }
+
+    private void StartFootsteps()
+    {
+        if (!playingFootsteps)
+        {
+            playingFootsteps = true;
+            InvokeRepeating(nameof(PlayFootstep), 0f, footstepSpeed);
+        }
+    }
+
+    private void StopFootsteps()
+    {
+        playingFootsteps = false;
+        CancelInvoke(nameof(PlayFootstep));
+    }
+
+    private void PlayFootstep()
+    {
+        SoundFXController.Play("Footsteps", true);
     }
 
 

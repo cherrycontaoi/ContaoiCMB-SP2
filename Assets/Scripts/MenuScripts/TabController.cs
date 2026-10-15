@@ -19,6 +19,7 @@ public class TabController : MonoBehaviour
             pages[i].SetActive(false);
             tabImages[i].color = Color.gray;
         }
+        SoundFXController.Play("ThudSound");
         pages[tabNum].SetActive(true);
         tabImages[tabNum].color = Color.white;
     }
