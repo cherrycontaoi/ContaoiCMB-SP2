@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -25,5 +26,11 @@ public class MenuController : MonoBehaviour
             menuCanvas.SetActive(!menuCanvas.activeSelf);
             PauseController.SetPause(menuCanvas.activeSelf);
         }
+    }
+
+    public void OnExitClick()
+    {
+        SoundFXController.Play("ThudSound");
+        SceneManager.LoadScene("StartScene");
     }
 }
