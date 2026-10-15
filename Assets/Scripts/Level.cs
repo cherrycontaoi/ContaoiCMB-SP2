@@ -39,6 +39,8 @@ public class Level : MonoBehaviour
             levelScore = 0;
         }
 
+        SoundFXController.Play("StartOfLevel");
+
         isDone = false;
         NotesController.Instance.ClearNotes();
         
