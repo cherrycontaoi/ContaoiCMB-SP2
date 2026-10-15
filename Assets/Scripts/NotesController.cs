@@ -60,13 +60,16 @@ public class NotesController : MonoBehaviour
     public void AddNoteButton()
     {
         string noteType = toggleSystem.getToggledOn();
+
+        if (string.IsNullOrWhiteSpace(textInput.text)) return;
+
         NoteText newNote = new NoteText
         {
             Text = textInput.text
             //  Text = "- " + textInput.text
         };
 
-        if (noteType == "Habilin")
+        if (noteType == "Binilin")
         {
             AddNote(newNote);
             notes.Add(newNote);
