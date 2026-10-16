@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,13 +8,12 @@ using UnityEngine.InputSystem;
 
 public class Eraser : MonoBehaviour
 {
-    // TO DO: NEED TO INCREASE SIZE OF ERASER CURSOR!!!!
-
     public static Eraser Instance { get; private set; }
     private Camera mainCamera;
     public bool isActive;
     [SerializeField] private CursorController cursorController;
-    [SerializeField] public GameObject eraserReminder;
+    public GameObject eraserReminder;
+    public GameObject eraserDisabled;
     public bool canActivate = true;
 
 
@@ -61,7 +61,13 @@ public class Eraser : MonoBehaviour
     public void ActivateEraser()
     {
         if (canActivate)
-        {
+        {   
+            if (TransactionController.Instance.customer.IsCustomerTalking())
+            {
+                Eraser.Instance.ShowDisabledReminder();
+                return;
+            }
+
             isActive = true;
             // PauseController.SetPause(true);
             cursorController.SetToEraser();
@@ -76,5 +82,17 @@ public class Eraser : MonoBehaviour
         // PauseController.SetPause(false);
         cursorController.SetToDefault();
         eraserReminder.SetActive(false);
+    }
+
+    public void ShowDisabledReminder()
+    {
+        eraserDisabled.SetActive(true);
+        StartCoroutine(HideDisabledReminder());
+    }
+
+    public IEnumerator HideDisabledReminder()
+    {
+        yield return new WaitForSeconds(3f);
+        eraserDisabled.SetActive(false);
     }
 }

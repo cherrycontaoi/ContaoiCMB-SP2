@@ -8,9 +8,7 @@ public class SoundFXController : MonoBehaviour
     private static AudioSource audioSource;
     private static AudioSource randomPitchAudioSource;
     private static SoundFXLibrary soundFXLibrary;
-    [SerializeField] private Slider sfxSlider;
-
-    private const string SFX_VOLUME_KEY = "SFXVolume";
+    // [SerializeField] private Slider sfxSlider;
 
     void Awake()
     {
@@ -22,9 +20,6 @@ public class SoundFXController : MonoBehaviour
             randomPitchAudioSource = audioSources[1];
             soundFXLibrary = GetComponent<SoundFXLibrary>();
             DontDestroyOnLoad(gameObject);
-
-            float savedVol = PlayerPrefs.GetFloat(SFX_VOLUME_KEY, 1f);
-            SetVolume(savedVol);
         }
         else
         {
@@ -34,8 +29,8 @@ public class SoundFXController : MonoBehaviour
 
     void Start()
     {
-        sfxSlider.SetValueWithoutNotify(audioSource.volume);
-        sfxSlider.onValueChanged.AddListener(OnVolumeChanged);
+        // sfxSlider.SetValueWithoutNotify(audioSource.volume);
+        // sfxSlider.onValueChanged.AddListener(OnVolumeChanged);
     }
 
     public static void Play(string soundName, bool randomPitch = false)
@@ -53,19 +48,5 @@ public class SoundFXController : MonoBehaviour
                 audioSource.PlayOneShot(audioClip);
             }
         }
-    }
-
-    public static void SetVolume(float volume)
-    {
-        audioSource.volume = volume;
-        randomPitchAudioSource.volume = volume;
-    }
-
-    private void OnVolumeChanged(float volume)
-    {
-        SetVolume(volume);
-
-        PlayerPrefs.SetFloat(SFX_VOLUME_KEY, volume);
-        PlayerPrefs.Save();
     }
 }

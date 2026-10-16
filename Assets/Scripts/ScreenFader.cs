@@ -28,15 +28,24 @@ public class ScreenFader : MonoBehaviour
         canvasGroup.alpha = targetTransparency;
     }
 
+    public void StartFaded()
+    {
+        canvasGroup.gameObject.SetActive(true);
+        canvasGroup.alpha = 1;
+        canvasGroup.blocksRaycasts = true;
+    }
+
     public async Task FadeOut()
     {
         canvasGroup.gameObject.SetActive(true);
+        canvasGroup.blocksRaycasts = true;
         await Fade(1);  // fade to black
     }
 
     public async Task FadeIn()
     {
         await Fade(0); // fade to transparent
+        canvasGroup.blocksRaycasts = false;
         canvasGroup.gameObject.SetActive(false);
     }
 

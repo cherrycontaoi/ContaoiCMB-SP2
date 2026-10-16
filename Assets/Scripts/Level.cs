@@ -30,7 +30,10 @@ public class Level : MonoBehaviour
 
     public void StartLevel()
     {   
-        FadeTransition();
+        // FadeTransition();
+
+        StartCoroutine(StartLevelTransition());
+        
         if (SceneManager.GetActiveScene().name == "TutorialScene")
         {
             levelScore = 300;
@@ -190,6 +193,17 @@ public class Level : MonoBehaviour
     {
         await ScreenFader.Instance.FadeOut();
         await ScreenFader.Instance.FadeIn();
+    }
+
+    private IEnumerator StartLevelTransition()
+    {
+        ScreenFader.Instance.StartFaded();
+        var fadeTask = ScreenFader.Instance.FadeIn();
+
+        while (!fadeTask.IsCompleted)
+        {
+            yield return null;
+        }
     }
 
     public IEnumerator LevelCompleted()

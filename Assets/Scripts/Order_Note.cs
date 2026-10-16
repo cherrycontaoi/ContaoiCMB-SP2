@@ -18,8 +18,9 @@ public class Order_Note : MonoBehaviour,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!PauseController.IsGamePaused || !Eraser.Instance.isActive) return;
+        if (!Eraser.Instance.isActive) return;
 
+        SoundFXController.Play("Eraser");
         Destroy(gameObject);
         Debug.Log("A bilihin note was deleted!");
     }

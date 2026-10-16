@@ -454,6 +454,11 @@ public class Customer : MonoBehaviour, IInteractable
         }
     }
 
+    public bool IsCustomerTalking()
+    {
+        return isDialogueActive;
+    }
+
 }
 
 public enum CustomerState

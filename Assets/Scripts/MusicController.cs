@@ -7,9 +7,6 @@ public class MusicController : MonoBehaviour
 
     private AudioSource audioSource;
     [SerializeField] private AudioClip backgroundMusic;
-    [SerializeField] private Slider musicSlider;
-
-    private const string MUSIC_VOLUME_KEY = "MusicVolume";
 
     void Awake()
     {
@@ -18,9 +15,6 @@ public class MusicController : MonoBehaviour
             Instance = this;
             audioSource = GetComponent<AudioSource>();
             DontDestroyOnLoad(gameObject);
-
-            float savedVol = PlayerPrefs.GetFloat(MUSIC_VOLUME_KEY, 1f);
-            SetVolume(savedVol);
         }
         else
         {
@@ -36,8 +30,8 @@ public class MusicController : MonoBehaviour
             PlayBackgroundMusic(false, backgroundMusic);
         }
 
-        musicSlider.SetValueWithoutNotify(audioSource.volume);
-        musicSlider.onValueChanged.AddListener(SetVolume);
+        // musicSlider.SetValueWithoutNotify(audioSource.volume);
+        // musicSlider.onValueChanged.AddListener(SetVolume);
 
     }
 
@@ -57,10 +51,4 @@ public class MusicController : MonoBehaviour
         }
     }
 
-    public static void SetVolume(float volume)
-    {
-        Instance.audioSource.volume = volume;
-        PlayerPrefs.SetFloat(MUSIC_VOLUME_KEY, volume);
-        PlayerPrefs.Save();
-    }
 }
