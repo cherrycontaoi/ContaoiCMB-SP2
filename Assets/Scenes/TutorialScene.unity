@@ -3652,6 +3652,7 @@ MonoBehaviour:
   isActive: 0
   cursorController: {fileID: 2080027339}
   eraserReminder: {fileID: 1422671218}
+  eraserDisabled: {fileID: 0}
   canActivate: 1
 --- !u!1 &177877760
 GameObject:
@@ -13565,7 +13566,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
   m_UseReflectionProbes: 0
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 100
@@ -15190,7 +15191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   backgroundMusic: {fileID: 8300000, guid: 67e9c6e414a5142c596b78c62179b534, type: 3}
-  musicSlider: {fileID: 0}
 --- !u!82 &1071747060
 AudioSource:
   m_ObjectHideFlags: 0
@@ -24758,7 +24758,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 145, y: -177.75}
+  m_AnchoredPosition: {x: 145, y: -43.75}
   m_SizeDelta: {x: 404.28, y: 332.5405}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1311935812
@@ -28912,7 +28912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf416b3d572b1433e971643d21aac5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  sfxSlider: {fileID: 0}
 --- !u!114 &1626413840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32765,7 +32764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -177, y: -179.75}
+  m_AnchoredPosition: {x: -177, y: -45.75}
   m_SizeDelta: {x: 404.28, y: 332.5405}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1798230577
