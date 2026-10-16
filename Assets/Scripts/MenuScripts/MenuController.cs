@@ -25,7 +25,7 @@ public class MenuController : MonoBehaviour
             // }
             SoundFXController.Play("Menu");
             menuCanvas.SetActive(!menuCanvas.activeSelf);
-            PauseController.SetPause(menuCanvas.activeSelf || OtherScreensController.Instance.storeIsOpen);
+            PauseController.SetPause(menuCanvas.activeSelf);
         }
     }
 

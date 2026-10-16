@@ -111,6 +111,7 @@ public class Customer : MonoBehaviour, IInteractable
 
     public void Interact()
     {   
+        if (PauseController.IsGamePaused) return;
         // no dialogue or menu is open
         if (dialogueData == null || (PauseController.IsGamePaused && !isDialogueActive))
         {
@@ -165,6 +166,8 @@ public class Customer : MonoBehaviour, IInteractable
 
     private void NextLine()
     {
+        if (PauseController.IsGamePaused) return;
+
         if (isTyping) 
         {
             // skip the typing animation and show the full line
@@ -224,6 +227,12 @@ public class Customer : MonoBehaviour, IInteractable
         if (dialogueData.linesToAutoProgress.Count > dialogueIndex && dialogueData.linesToAutoProgress[dialogueIndex])
         {
             yield return new WaitForSeconds(dialogueData.autoProgressDelay);
+
+            while (PauseController.IsGamePaused)
+            {
+                yield return null;
+            }
+
             isTyping = false;
             typingCoroutine = null;
             // display next line
@@ -342,19 +351,6 @@ public class Customer : MonoBehaviour, IInteractable
         // StartTalking();
     }
 
-
-    // private void DestroyNPC()
-    // {
-    //     // if (orderDialogue != null && endingDialogue != null)
-    //     // {
-    //     //     SaveNewDialogue(orderDialogue);
-    //     //     SaveNewDialogue(endingDialogue);
-    //     // }
-
-    //     // add walking away animation
-    //     isDone = true;
-    //     Destroy(gameObject);
-    // }
 
     private void SaveNewDialogue(Dialogue dialogue)
     {
