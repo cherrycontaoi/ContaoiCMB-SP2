@@ -11,7 +11,7 @@ public class PlayerData : MonoBehaviour
     public int transactionsCompleted;          // ilang customers nacomplete
     public List<int> scores = new List<int>();
     
-    public int lastFinishedLevel = 0;
+    public int lastFinishedLevel = -1;  // becomes 0 if first level is completed
     public int preTestTotalScore, postTestTotalScore = 0;
     public int preTestAverageScore, postTestAverageScore = 0;
     public int preTestCompleted, postTestCompleted = 0;

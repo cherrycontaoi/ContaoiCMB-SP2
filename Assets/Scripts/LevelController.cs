@@ -7,7 +7,7 @@ public class LevelController : MonoBehaviour
     public int[] levelsCompleted;      // Level.levelNo
     public Level currentLevel;
     public GameObject notetakingSpace;
-    private int currentLevelIndex;
+    public int currentLevelIndex;
 
     void Awake()
     {
@@ -17,7 +17,16 @@ public class LevelController : MonoBehaviour
 
     void Start()
     {
-        StartCurrentLevel();
+        currentLevelIndex = PlayerData.Instance.lastFinishedLevel+1;    // move to the next level
+
+        if (currentLevelIndex < levels.Length)
+        {
+            StartCurrentLevel();
+        }
+        else
+        {
+            Debug.Log("No more levels left!");
+        }
     }
 
     private void StartCurrentLevel()

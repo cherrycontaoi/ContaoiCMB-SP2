@@ -209,6 +209,8 @@ public class Level : MonoBehaviour
     public IEnumerator LevelCompleted()
     {
         isDone = true;
+
+        PlayerData.Instance.lastFinishedLevel = LevelController.Instance.currentLevelIndex;
         OtherScreensController.Instance.ShowTransitionDialogue(true);
         OtherScreensController.Instance.SetStars(levelScore);
 
