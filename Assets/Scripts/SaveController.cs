@@ -41,7 +41,7 @@ public class SaveController : MonoBehaviour
             PlayerData.Instance.totalScore = saveData.totalScore;
             PlayerData.Instance.transactionsCompleted = saveData.transactionsCompleted;
             PlayerData.Instance.lastFinishedLevel = saveData.lastFinishedLevel;
-            PlayerData.Instance.preTestAverageScore = saveData.postTestAverageScore;
+            PlayerData.Instance.preTestAverageScore = saveData.preTestAverageScore;
             PlayerData.Instance.postTestAverageScore = saveData.postTestAverageScore;
 
         }

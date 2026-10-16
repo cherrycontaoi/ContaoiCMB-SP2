@@ -14322,7 +14322,7 @@ MonoBehaviour:
   totalScore: 0
   transactionsCompleted: 0
   scores: 
-  lastFinishedLevel: 0
+  lastFinishedLevel: -1
   preTestTotalScore: 0
   postTestTotalScore: 0
   preTestAverageScore: 0
@@ -32082,6 +32082,7 @@ MonoBehaviour:
   levelsCompleted: 
   currentLevel: {fileID: 0}
   notetakingSpace: {fileID: 49023609}
+  currentLevelIndex: 0
 --- !u!1 &1652069506
 GameObject:
   m_ObjectHideFlags: 0
@@ -38689,7 +38690,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.397522, y: -4.6677856}
+  m_AnchoredPosition: {x: 7.397461, y: -4.6677246}
   m_SizeDelta: {x: 86.6313, y: 75.186}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &2087782721
