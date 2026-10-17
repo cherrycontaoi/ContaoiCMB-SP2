@@ -26,6 +26,8 @@ public class CounterDisplayController : MonoBehaviour
     // private int noOfOrders;
     private SpriteRenderer bagImage;
 
+    public bool customerIsChecking; // customer has the bag already
+
     private void Start()
     {
         basketController = GetComponent<BasketController>();
@@ -80,6 +82,8 @@ public class CounterDisplayController : MonoBehaviour
     {        
         SoundFXController.Play("Plastic");
         alreadyInBag = true;
+        customerIsChecking = true;
+
         plasticBag.SetActive(true);
         givePanel.SetActive(false);
         RemovePBFromPlayerSpace();
@@ -96,7 +100,7 @@ public class CounterDisplayController : MonoBehaviour
     {
         Customer customer = FindAnyObjectByType<Customer>();
         // can't choose pb if game is paused or if there are no customers
-        if(PauseController.IsGamePaused || customer == null || !customer.willBuy || !customer.currentlyBuying || !customer.GetComponent<WaypointMover>().hasStoppedAtStore || Pencil.Instance.isActive) return;
+        if(PauseController.IsGamePaused || customerIsChecking || customer == null || !customer.willBuy || !customer.currentlyBuying || !customer.GetComponent<WaypointMover>().hasStoppedAtStore || Pencil.Instance.isActive) return;
 
         SoundFXController.Play("Plastic");
         Debug.Log("The plastic bag to be used is: " + PBColor);

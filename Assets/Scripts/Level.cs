@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
+    public List<int> levelScores = new List<int>();
     public int levelScore;
     public bool isDone;                         // player is done with the level
     public Customer[] customers;                // customers to appear in the level (3)
@@ -127,6 +128,7 @@ public class Level : MonoBehaviour
             customer.gameObject.SetActive(true);
 
             TransactionController.Instance.SetCustomer(customer);
+            CounterDisplayController.Instance.customerIsChecking = false;
 
             while (!customerMover.hasExited)
             {
@@ -138,6 +140,7 @@ public class Level : MonoBehaviour
                 yield return null;
             }
 
+            levelScores.Add(TransactionController.Instance.GetPlayerScore());
             levelScore += TransactionController.Instance.GetPlayerScore();
             TransactionController.Instance.ResetTransactionScore();
 
@@ -210,6 +213,8 @@ public class Level : MonoBehaviour
     public IEnumerator LevelCompleted()
     {
         isDone = true;
+
+        PlayerData.Instance.AddCompletedLevel(levelScore, levelScores, levelType);
 
         PlayerData.Instance.lastFinishedLevel = LevelController.Instance.currentLevelIndex;
         OtherScreensController.Instance.ShowTransitionDialogue(true);

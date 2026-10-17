@@ -206,9 +206,12 @@ public class OtherScreensController : MonoBehaviour
         paperTileSets[index].SetActive(false);
         paperElements.SetActive(false);
 
-        bilihinContainer.SetActive(true);
-        clearNotepadButton.SetActive(true);
-        
+        if (LevelController.Instance.currentLevel.levelType != LevelType.PreTest)
+        {
+            bilihinContainer.SetActive(true);
+            clearNotepadButton.SetActive(true);
+        }
+
         reminderText.text = "I-click yung cover para buksan yung store!";
     }
 

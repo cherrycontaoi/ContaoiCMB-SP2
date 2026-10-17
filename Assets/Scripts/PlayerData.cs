@@ -6,15 +6,39 @@ public class PlayerData : MonoBehaviour
 {
     public static PlayerData Instance { get; private set; }
     public Difficulty playerPuzzleLevels;     // varies
+
+    // In-Game stuff --------------------------
     public int averageScore;                   // = totalScore/transactionsCompleted, determines puzzle level
     public int totalScore;
     public int transactionsCompleted;          // ilang customers nacomplete
-    public List<int> scores = new List<int>();
     
     public int lastFinishedLevel = -1;  // becomes 0 if first level is completed
-    public int preTestTotalScore, postTestTotalScore = 0;
-    public int preTestAverageScore, postTestAverageScore = 0;
-    public int preTestCompleted, postTestCompleted = 0;
+    public int preTestTotalScore, postTestTotalScore ;          // total
+    public int preTestAverageScore, postTestAverageScore;       // ave
+    public int preTestCompleted, postTestCompleted;             // count
+
+
+    // USED IN SAVING THE LAST COMPLETED PROGRESS ------------------------
+
+    // overall
+    public int averageScoreInCompletedAll;
+    public int totalScoreInCompletedLevels;     // only the scores in the completed levels will be added here
+    public int totalTransactionsInCompletedLevels;  // completed level transactions only
+     
+    // pre
+    public int averageScoreInCompletedPre;
+    public int totalScoreInCompletedPreLevels;
+    public int totalCompletedPreTransactions;
+
+    // post
+    public int averageScoreInCompletedPost;
+    public int totalScoreInCompletedPostLevels;
+    public int totalCompletedPostTransactions;
+
+    public List<int> completedLevelScores = new List<int>();
+
+
+    // UI -----------------------------------------------------
 
     public TMP_Text aveScoreText;
     public TMP_Text transactionsText;
@@ -26,6 +50,7 @@ public class PlayerData : MonoBehaviour
     void Start()
     {
         UpdatePlayerInfo();
+
     }
     
     void Awake()
@@ -70,13 +95,13 @@ public class PlayerData : MonoBehaviour
     {
         difficultyText.SetText(playerPuzzleLevels.ToString());
         aveScoreText.SetText(averageScore.ToString());
+        averagePreTestText.SetText(preTestAverageScore.ToString());
         transactionsText.SetText(transactionsCompleted.ToString());
     }
 
     public void AddFinishedTransaction(int score)
     {
         totalScore += score;
-        scores.Add(score);
         transactionsCompleted++;
 
         UpdateAverageScore(ref averageScore, totalScore, transactionsCompleted);
@@ -88,7 +113,6 @@ public class PlayerData : MonoBehaviour
     {
         preTestTotalScore += score;
         totalScore += score;
-        scores.Add(score);
 
         preTestCompleted++;
         transactionsCompleted++;
@@ -105,7 +129,6 @@ public class PlayerData : MonoBehaviour
     {
         postTestTotalScore += score;
         totalScore += score;
-        scores.Add(score);
         
         postTestCompleted++;
         transactionsCompleted++;
@@ -121,6 +144,33 @@ public class PlayerData : MonoBehaviour
     public Difficulty GetPlayerPuzzleLevel()
     {
         return playerPuzzleLevels;
+    }
+
+    // data here will be the one to be saved!!
+    public void AddCompletedLevel(int score, List<int> levelScores, LevelType levelType)
+    {
+        if (levelType == LevelType.PreTest)
+        {
+            totalScoreInCompletedPreLevels += score;
+            totalCompletedPreTransactions += 3;     // 3 customer per level
+
+            averageScoreInCompletedPre = totalScoreInCompletedPreLevels / totalCompletedPreTransactions;
+        }
+
+        else if (levelType == LevelType.PostTest)
+        {
+            totalScoreInCompletedPostLevels += score;
+            totalCompletedPostTransactions += 3;
+
+            averageScoreInCompletedPost = totalScoreInCompletedPostLevels / totalCompletedPostTransactions;
+        }
+
+        totalScoreInCompletedLevels += score;
+        totalTransactionsInCompletedLevels += 3;
+
+        averageScoreInCompletedAll = totalScoreInCompletedLevels / totalTransactionsInCompletedLevels;
+
+        completedLevelScores.AddRange(levelScores);
     }
 
 }
