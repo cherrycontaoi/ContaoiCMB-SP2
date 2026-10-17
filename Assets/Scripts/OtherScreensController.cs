@@ -42,6 +42,8 @@ public class OtherScreensController : MonoBehaviour
     public GameObject[] paperTileSets;
     public GameObject displayPaper;
     public GameObject paperElements;
+    public GameObject clearNotepadButton;
+    public GameObject bilihinContainer;
 
 
     public Transform paperContentWindow;    
@@ -187,16 +189,26 @@ public class OtherScreensController : MonoBehaviour
         
         SoundFXController.Play("ReadPaper");
         displayPaper.SetActive(false);
+
+        bilihinContainer.SetActive(false);
+        clearNotepadButton.SetActive(false);
+
         paperTileSets[index].SetActive(true);
         paperElements.SetActive(true);
+        
     }
     
     public void ClosePaper()
     {
         SoundFXController.Play("Paper");
         hasReadPaper = true;
+
         paperTileSets[index].SetActive(false);
         paperElements.SetActive(false);
+
+        bilihinContainer.SetActive(true);
+        clearNotepadButton.SetActive(true);
+        
         reminderText.text = "I-click yung cover para buksan yung store!";
     }
 

@@ -54,11 +54,20 @@ public class NotesController : MonoBehaviour
     }
     public void ClearNotes()
     {
+        ResetBilin();
+        ResetBibilhin();
+    }
+
+    public void ResetBilin()
+    {
         foreach(Transform child in notesContainer)
         {
             Destroy(child.gameObject);
         }
+    }
 
+    public void ResetBibilhin()
+    {
         foreach(Transform child in ordersContainer)
         {
             Destroy(child.gameObject);

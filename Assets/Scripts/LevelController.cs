@@ -7,6 +7,8 @@ public class LevelController : MonoBehaviour
     public int[] levelsCompleted;      // Level.levelNo
     public Level currentLevel;
     public GameObject notetakingSpace;
+    public GameObject resetBilinButton;
+    public GameObject resetBilihinButton;
     public int currentLevelIndex;
 
     void Awake()
@@ -65,12 +67,16 @@ public class LevelController : MonoBehaviour
             Pencil.Instance.gameObject.SetActive(false);
             Eraser.Instance.gameObject.SetActive(false);
             notetakingSpace.SetActive(false);
+            resetBilihinButton.SetActive(false);
+            resetBilinButton.SetActive(false);
         }
         else
         {
             Pencil.Instance.gameObject.SetActive(true);
             Eraser.Instance.gameObject.SetActive(true);
             notetakingSpace.SetActive(true);
+            resetBilihinButton.SetActive(true);
+            resetBilinButton.SetActive(true);
         }
     }
 }

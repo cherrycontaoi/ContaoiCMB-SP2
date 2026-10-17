@@ -29,10 +29,6 @@ public class MusicController : MonoBehaviour
         {
             PlayBackgroundMusic(false, backgroundMusic);
         }
-
-        // musicSlider.SetValueWithoutNotify(audioSource.volume);
-        // musicSlider.onValueChanged.AddListener(SetVolume);
-
     }
 
     public void PlayBackgroundMusic(bool resetSong, AudioClip audioClip = null)

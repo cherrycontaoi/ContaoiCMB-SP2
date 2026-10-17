@@ -19,18 +19,11 @@ public class SoundFXController : MonoBehaviour
             audioSource = audioSources[0];
             randomPitchAudioSource = audioSources[1];
             soundFXLibrary = GetComponent<SoundFXLibrary>();
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-    }
-
-    void Start()
-    {
-        // sfxSlider.SetValueWithoutNotify(audioSource.volume);
-        // sfxSlider.onValueChanged.AddListener(OnVolumeChanged);
     }
 
     public static void Play(string soundName, bool randomPitch = false)
