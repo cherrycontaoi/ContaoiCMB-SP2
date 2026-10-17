@@ -47,6 +47,7 @@ public class Level : MonoBehaviour
 
         isDone = false;
         NotesController.Instance.ClearNotes();
+        CounterDisplayController.Instance.RemovePBFromPlayerSpace();
         
         // set text content based on difficulty
         switch (PlayerData.Instance.playerPuzzleLevels)

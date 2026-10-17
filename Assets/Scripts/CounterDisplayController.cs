@@ -155,7 +155,7 @@ public class CounterDisplayController : MonoBehaviour
         // Debug.Log("Counter is cleared!");
     }
 
-    private void RemovePBFromPlayerSpace()
+    public void RemovePBFromPlayerSpace()
     {
         plasticBagGreen.SetActive(false);
         plasticBagYellow.SetActive(false);
