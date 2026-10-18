@@ -174,6 +174,39 @@ public class PlayerData : MonoBehaviour
         UpdatePlayerLevel();
     }
 
+    public void ResetPlayerData()
+    {
+        playerPuzzleLevels = Difficulty.Test;
+        lastFinishedLevel = 0;
+        completedLevelScores = new List<int>();
+
+        averageScoreInCompletedAll = 0;
+        totalScoreInCompletedLevels = 0;
+        totalTransactionsInCompletedLevels = 0;
+
+        averageScoreInCompletedPre = 0;
+        totalScoreInCompletedPreLevels = 0;
+        totalCompletedPreTransactions = 0;
+
+        averageScoreInCompletedPost = 0;
+        totalScoreInCompletedPostLevels = 0;
+        totalCompletedPostTransactions = 0;
+
+        averageScore = 0;
+        totalScore = 0;
+        transactionsCompleted = 0;
+
+        preTestAverageScore = 0;
+        preTestTotalScore = 0;
+        preTestCompleted = 0;
+
+        postTestAverageScore = 0;
+        postTestTotalScore = 0;
+        postTestCompleted = 0;
+
+        UpdatePlayerInfo();
+    }
+
 }
 
 public enum Difficulty

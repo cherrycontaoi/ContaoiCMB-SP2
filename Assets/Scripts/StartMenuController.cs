@@ -29,7 +29,9 @@ public class StartMenuController : MonoBehaviour
     public void OnNewGameClick()
     {
         SoundFXController.Play("ThudSound");
+        File.Delete(saveLocation);
         SceneManager.LoadScene("StartCutscene");
+        
     }
 
     public void OnContinueGameClick()

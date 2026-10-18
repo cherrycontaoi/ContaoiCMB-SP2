@@ -13,13 +13,16 @@ public class SaveController : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name != "TutorialScene")
         {
-            LoadGame();   
-        }   
+            LoadGame();
+        }
     }
 
     void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null) 
+        {
+            Instance = this;
+        }
         else Destroy(gameObject);   // make only 1 instance
     }
     

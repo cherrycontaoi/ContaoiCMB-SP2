@@ -11,6 +11,7 @@ public class LevelController : MonoBehaviour
     public GameObject notetakingSpace;
     public GameObject resetBilinButton;
     public GameObject resetBilihinButton;
+    public GameObject createNewGamePanel;
     public int currentLevelIndex;
 
     void Awake()
@@ -34,6 +35,7 @@ public class LevelController : MonoBehaviour
         }
         else
         {
+            createNewGamePanel.SetActive(true);
             Debug.Log("No more levels left!");
         }
     }
