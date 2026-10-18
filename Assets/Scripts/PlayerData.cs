@@ -50,7 +50,6 @@ public class PlayerData : MonoBehaviour
     void Start()
     {
         UpdatePlayerInfo();
-
     }
     
     void Awake()
@@ -171,6 +170,7 @@ public class PlayerData : MonoBehaviour
         averageScoreInCompletedAll = totalScoreInCompletedLevels / totalTransactionsInCompletedLevels;
 
         completedLevelScores.AddRange(levelScores);
+        UpdatePlayerLevel();
     }
 
 }

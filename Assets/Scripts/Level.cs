@@ -215,6 +215,7 @@ public class Level : MonoBehaviour
         isDone = true;
 
         PlayerData.Instance.AddCompletedLevel(levelScore, levelScores, levelType);
+        PlayerData.Instance.UpdatePlayerLevel();
 
         PlayerData.Instance.lastFinishedLevel = LevelController.Instance.currentLevelIndex;
         OtherScreensController.Instance.ShowTransitionDialogue(true);

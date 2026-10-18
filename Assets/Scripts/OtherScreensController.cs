@@ -212,7 +212,7 @@ public class OtherScreensController : MonoBehaviour
             clearNotepadButton.SetActive(true);
         }
 
-        reminderText.text = "I-click yung cover para buksan yung store!";
+        reminderText.text = "I-click ang cover para buksan ang store!";
     }
 
     public void SetInstructions(string filename)
