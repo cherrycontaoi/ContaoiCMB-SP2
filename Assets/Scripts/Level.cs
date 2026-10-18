@@ -224,6 +224,7 @@ public class Level : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "TutorialScene")
         {
             PlayerData.Instance.AddCompletedLevel(levelScore, levelScores, levelType);
+            SaveController.Instance.SaveGame();
             PlayerData.Instance.UpdatePlayerLevel();
         }
 

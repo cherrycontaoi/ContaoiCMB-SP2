@@ -177,7 +177,7 @@ public class PlayerData : MonoBehaviour
     public void ResetPlayerData()
     {
         playerPuzzleLevels = Difficulty.Test;
-        lastFinishedLevel = 0;
+        lastFinishedLevel = -1;
         completedLevelScores = new List<int>();
 
         averageScoreInCompletedAll = 0;
