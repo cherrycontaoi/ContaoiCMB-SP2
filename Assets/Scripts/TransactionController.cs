@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VectorGraphics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class TransactionController : MonoBehaviour
@@ -170,17 +172,20 @@ public class TransactionController : MonoBehaviour
 
         StartCoroutine(ByeCustomer());
 
-        if (LevelController.Instance.currentLevel.levelType == LevelType.PreTest)
+        if (SceneManager.GetActiveScene().name != "TutorialScene")
         {
-            PlayerData.Instance.AddPreTestScore(playerScore);
-        }
-        else if (LevelController.Instance.currentLevel.levelType == LevelType.PostTest)
-        {
-            PlayerData.Instance.AddPostTestScore(playerScore);
-        }
-        else
-        {
-            PlayerData.Instance.AddFinishedTransaction(playerScore);   
+            if (LevelController.Instance.currentLevel.levelType == LevelType.PreTest)
+            {
+                PlayerData.Instance.AddPreTestScore(playerScore);
+            }
+            else if (LevelController.Instance.currentLevel.levelType == LevelType.PostTest)
+            {
+                PlayerData.Instance.AddPostTestScore(playerScore);
+            }
+            else
+            {
+                PlayerData.Instance.AddFinishedTransaction(playerScore);   
+            }
         }
         
     }

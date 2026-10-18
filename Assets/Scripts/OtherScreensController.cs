@@ -101,7 +101,8 @@ public class OtherScreensController : MonoBehaviour
         levelCompleteScreen.SetActive(true);
 
         int lastLevelIndex = LevelController.Instance.levels.Length-1;
-        if (LevelController.Instance.currentLevel == LevelController.Instance.levels[lastLevelIndex])
+        if (LevelController.Instance.currentLevel == LevelController.Instance.levels[lastLevelIndex] 
+            && LevelController.Instance.currentLevel.name == "TutorialLevel")
         {
             nextLevelButton.SetActive(false);
         }

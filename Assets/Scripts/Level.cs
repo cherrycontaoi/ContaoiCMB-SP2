@@ -76,8 +76,12 @@ public class Level : MonoBehaviour
 
         SetRulesDictionary();
         RulesTracker.Instance.SetRules(activeRules);
-        PlayerData.Instance.UpdatePlayerLevel();
-        PlayerData.Instance.UpdatePlayerInfo();
+
+        if (SceneManager.GetActiveScene().name != "TutorialScene")
+        {
+            PlayerData.Instance.UpdatePlayerLevel();
+            PlayerData.Instance.UpdatePlayerInfo();
+        }
 
         StartCoroutine(RunCustomers());
         
@@ -140,8 +144,11 @@ public class Level : MonoBehaviour
                 yield return null;
             }
 
-            levelScores.Add(TransactionController.Instance.GetPlayerScore());
-            levelScore += TransactionController.Instance.GetPlayerScore();
+            if (SceneManager.GetActiveScene().name != "TutorialScene")
+            {
+                levelScores.Add(TransactionController.Instance.GetPlayerScore());
+                levelScore += TransactionController.Instance.GetPlayerScore();
+            }
             TransactionController.Instance.ResetTransactionScore();
 
             Destroy(customer.gameObject);
@@ -214,8 +221,12 @@ public class Level : MonoBehaviour
     {
         isDone = true;
 
-        PlayerData.Instance.AddCompletedLevel(levelScore, levelScores, levelType);
-        PlayerData.Instance.UpdatePlayerLevel();
+        if (SceneManager.GetActiveScene().name != "TutorialScene")
+        {
+            PlayerData.Instance.AddCompletedLevel(levelScore, levelScores, levelType);
+            PlayerData.Instance.UpdatePlayerLevel();
+        }
+
 
         PlayerData.Instance.lastFinishedLevel = LevelController.Instance.currentLevelIndex;
         OtherScreensController.Instance.ShowTransitionDialogue(true);

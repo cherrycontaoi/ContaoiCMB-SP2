@@ -1,16 +1,28 @@
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveController : MonoBehaviour
 {
+    public static SaveController Instance;
     private string saveLocation;
     
     void Start()
     {
         saveLocation = Path.Combine(Application.persistentDataPath, "saveData.json");
 
-        LoadGame();
+        if (SceneManager.GetActiveScene().name != "TutorialScene")
+        {
+            LoadGame();   
+        }   
     }
+
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);   // make only 1 instance
+    }
+    
 
     public void SaveGame()
     {
@@ -74,8 +86,6 @@ public class SaveController : MonoBehaviour
             PlayerData.Instance.postTestCompleted = PlayerData.Instance.totalCompletedPostTransactions;
 
             PlayerData.Instance.UpdatePlayerInfo();
-
-
         }
         else
         {

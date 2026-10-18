@@ -1,4 +1,6 @@
+using Unity.VectorGraphics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
@@ -23,6 +25,11 @@ public class LevelController : MonoBehaviour
 
         if (currentLevelIndex < levels.Length)
         {
+            StartCurrentLevel();
+        }
+        else if (SceneManager.GetActiveScene().name == "TutorialScene")
+        {
+            currentLevelIndex = 0;
             StartCurrentLevel();
         }
         else
@@ -54,6 +61,8 @@ public class LevelController : MonoBehaviour
         }
         else
         {
+            SaveController.Instance.SaveGame();
+            SceneManager.LoadScene("EndCutscene");
             Debug.Log("No more levels left!");
         }
     }

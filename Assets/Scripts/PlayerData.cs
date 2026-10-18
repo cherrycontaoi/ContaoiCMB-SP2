@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerData : MonoBehaviour
 {
@@ -49,7 +50,7 @@ public class PlayerData : MonoBehaviour
     
     void Start()
     {
-        UpdatePlayerInfo();
+        if (SceneManager.GetActiveScene().name != "TutorialScene") UpdatePlayerInfo();
     }
     
     void Awake()
