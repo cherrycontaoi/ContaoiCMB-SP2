@@ -14,15 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
   - Lydia...
-  - Ah, ikaw pala ang bantay ngayon, 'nak.
-  - Ganoon ba...
-  linesToAutoProgress: 010000
-  endLines: 000001
+  - Ah... ikaw na ba yung panganay ni Lydia?
+  - Ang laki laki mo na!
+  - Bihira ka nalang ata lumabas, ngayon malang ulit kita nakita.
+  - Ikaw yung makulit na bata noon.
+  - Ikaw nga yun!
+  linesToAutoProgress: 010001010000
+  endLines: 000000000001
   autoProgressDelay: 1.5
   typingSpeed: 0.05
   dialogueType: 0
   choices:
   - dialogueIndex: 1
     choices:
-    - Ah, opo. Pumunta po kasi ng school si Mama.
+    - Ah, opo hehe...
     nextDialogueIndices: 02000000
+  - dialogueIndex: 4
+    choices:
+    - Hehe... Ako nga po siguro.
+    nextDialogueIndices: 05000000

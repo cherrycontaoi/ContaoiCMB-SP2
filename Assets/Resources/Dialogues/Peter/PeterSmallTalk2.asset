@@ -17,11 +17,11 @@ MonoBehaviour:
   - Ay, oo. Salamat ulit ha.
   - May dineliver kasi ako kanina.
   - Eh hindi sumasagot yung may-ari ng parcel.
-  - Baka i-report ako pag di ko na-deliver.
+  - Baka i-report ako pag hindi ko na-deliver. Bawas pa yun.
   - '''Sya, may yosi ba kayo?'
-  - Ganoon ba?
+  - Wala?
   - Sabagay... Malalanghap niyo pa yung usok.
-  linesToAutoProgress: 0000000000000000
+  linesToAutoProgress: 0001010101000000
   endLines: 0000000000000001
   autoProgressDelay: 1.5
   typingSpeed: 0.05
@@ -33,9 +33,9 @@ MonoBehaviour:
     nextDialogueIndices: 01000000
   - dialogueIndex: 5
     choices:
-    - 'Ay, wala po kuya eh. '
+    - Ay, wala po kuya.
     nextDialogueIndices: 06000000
   - dialogueIndex: 6
     choices:
-    - Ayaw po kasi ni Mama ng tumatambay sa harap ng tindahan.
+    - Ayaw po kasi ni Mama ng naninigarilyo sa harap ng tindahan.
     nextDialogueIndices: 07000000

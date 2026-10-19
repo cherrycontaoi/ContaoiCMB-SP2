@@ -17,7 +17,7 @@ MonoBehaviour:
   - Oo, pero uuwi muna ako saglit at papasok ang misis ko.
   - Dito nalang ako bibili sa inyo.
   - Ang mahal ng bilihin doon sa tindahan sa bungad eh.
-  - Wala eh, hindi ko kaya yung presyo nila.
+  - Wala eh, nakakapanghinayang yung limang piso na patong.
   linesToAutoProgress: 0001010000
   endLines: 0000000001
   autoProgressDelay: 1.5
@@ -30,5 +30,5 @@ MonoBehaviour:
     nextDialogueIndices: 01000000
   - dialogueIndex: 3
     choices:
-    - Ah, magdamag daw po ata kasi sila bukas.
+    - Ah, magdamag daw po kasi sila bukas kaya ganon.
     nextDialogueIndices: 04000000

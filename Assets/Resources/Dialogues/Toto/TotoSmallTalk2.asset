@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
   - Good morning!
-  - Ay, grabe naman to!
+  - Ay, grabe naman ka naman!
   - May pambayad na ako! May raket akong nakuha noong isang araw.
   - Isusumbong kita kay Tita Lydia.
   linesToAutoProgress: 00010000

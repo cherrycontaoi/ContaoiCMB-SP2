@@ -18,7 +18,7 @@ MonoBehaviour:
   - Baka naman pwedeng maka-score ng Lemon Dew dyan oh.
   - 'Ito naman... '
   - Palista nalang ako, isang Lemon Dew at tsaka Chipee.
-  - Sige na nga, balik nalang ako mamaya.
+  - Sige na nga, babalik nalang ako mamaya.
   linesToAutoProgress: 010100010000
   endLines: 000000000001
   autoProgressDelay: 1.5
@@ -27,9 +27,9 @@ MonoBehaviour:
   choices:
   - dialogueIndex: 2
     choices:
-    - May pambayad ka ba?
+    - Sure! Basta may 15 pesos ka.
     nextDialogueIndices: 03000000
   - dialogueIndex: 4
     choices:
-    - Hintayin mo nalang siya. Pabalik na siguro yun.
+    - Hintayin mo nalang si Mama. Pabalik na siguro yun.
     nextDialogueIndices: 05000000

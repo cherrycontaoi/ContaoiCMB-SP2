@@ -14,27 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
   - Magandang umaga!
-  - Ah, oo. Pupunta akong palengke.
-  - Nako, wala na.
-  - Nabanggit kasi ng mama mo na naghahanap daw ng driver yung bigasan.
+  - Ah, oo. Pupunta ako sa palengke.
+  - Nako, wala na muna.
+  - Nabanggit kasi ng mama mo na naghahanap ng driver yung bigasan doon.
   - Buti nalang at kinuha ako.
+  - Si Junior na muna.
   - Wala eh.
-  - Mas malaki pa gastos ko sa pataba kaysa sa kita.
-  linesToAutoProgress: 00000101000100
-  endLines: 00000000000001
+  - Mas malaki pa ang gastos ko sa pataba kaysa sa kita.
+  linesToAutoProgress: 0000010100010100
+  endLines: 0000000000000001
   autoProgressDelay: 1.5
   typingSpeed: 0.05
   dialogueType: 0
   choices:
-  - dialogueIndex: 0
-    choices:
-    - Magandang umaga rin po, Tito. Ang aga niyo po ata ngayon?
-    nextDialogueIndices: 01000000
   - dialogueIndex: 1
     choices:
     - May mga ilalako na po ulit kayo?
     nextDialogueIndices: 02000000
+  - dialogueIndex: 3
+    choices:
+    - Ah, talaga po?
+    nextDialogueIndices: 04000000
   - dialogueIndex: 4
     choices:
-    - Ah, mabuti naman po. Paano po pala yung mga pananim niyo?
+    - Paano po yung mga tanim ninyo?
     nextDialogueIndices: 05000000

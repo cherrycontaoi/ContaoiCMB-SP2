@@ -28,5 +28,5 @@ MonoBehaviour:
     nextDialogueIndices: 01000000
   - dialogueIndex: 1
     choices:
-    - Pearl street? Ah, kaliwa po kayo dyan sa may kanto. Yun na po.
+    - Pearl street? Ah, kaliwa po kayo dyan sa kanto. Yun na po.
     nextDialogueIndices: 02000000

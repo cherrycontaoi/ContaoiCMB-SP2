@@ -16,13 +16,29 @@ MonoBehaviour:
   - Mare...
   - Ay! Ikaw pala yan. Nasaan si Mama mo?
   - Ganun ba?
-  linesToAutoProgress: 010000
-  endLines: 000001
+  - Mabuti at nasaktuhan kita. Bihira na kita makita eh.
+  - Kamusta ka naman?
+  - Mabuti at nag-aaral ka pa rin.
+  - Yung ka-edad mo na anak ni Ben, tumigil na.
+  - Nakikisaka na rin sa tatay niya.
+  - Sana nga'y maayos ang kalagayan nila.
+  linesToAutoProgress: 010001010001010000
+  endLines: 000000000000000001
   autoProgressDelay: 1.5
   typingSpeed: 0.05
   dialogueType: 0
   choices:
   - dialogueIndex: 1
     choices:
-    - Umalis po siya tita eh...
+    - Lumabas po siya Tita eh...
     nextDialogueIndices: 02000000
+  - dialogueIndex: 4
+    choices:
+    - Okay naman po.
+    - Sakto lang po
+    nextDialogueIndices: 05000000
+  - dialogueIndex: 7
+    choices:
+    - Baka okay naman po ang kinikita nila doon...
+    - Mabuti po at natuto rin siyang magtanim.
+    nextDialogueIndices: 08000000

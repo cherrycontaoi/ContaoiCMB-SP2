@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: AdrianSmallTalk2
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
-  - Good morning!
+  - Good morning po!
   - Hehe...
-  - Aalis daw kami ni Mama mamayang tanghali eh.
-  - Ah, sa susunod naman daw po.
-  - Malapit na raw po kasi bayaran ng bills.
-  - Kailangan daw muna magtipid.
-  - Sabi nga po ni Mama.
+  - Aalis daw po kami ni Nanay mamaya eh.
+  - Ay hindi po. Sa susunod naman daw po.
+  - Malapit na raw po kasi bayaran ng tubig at kuryente.
+  - Kailangan daw po muna magtipid.
+  - Sabi nga po ni Tatay.
   linesToAutoProgress: 00010001010000
   endLines: 00000000000001
   autoProgressDelay: 1.5
@@ -33,9 +33,9 @@ MonoBehaviour:
     nextDialogueIndices: 0100000001000000
   - dialogueIndex: 2
     choices:
-    - Hulaan ko, dalawang itlog at isang corned beef?
+    - Hulaan ko, tatlong itlog at dalawang corned beef?
     nextDialogueIndices: 03000000
   - dialogueIndex: 5
     choices:
-    - Sabagay, hindi rin magandang laging de lata.
+    - Ah... Hindi rin maganda na laging de lata.
     nextDialogueIndices: 06000000

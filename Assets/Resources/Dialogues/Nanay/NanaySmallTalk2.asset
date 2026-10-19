@@ -15,14 +15,23 @@ MonoBehaviour:
   lines:
   - Anak, nandyan ba mama mo?
   - Ah, ganoon ba.
-  - 'Babalik nalang ako. '
-  linesToAutoProgress: 000100
-  endLines: 000001
+  - Baka pwedeng pasuyo nalang,'nak.
+  - Hmm...
+  - Hindi na pala. Hintayin ko nalang siyang bumalik.
+  - Mas maganda na ako mismo ang humarap sa kanya.
+  - Salamat ha, 'nak.
+  - Pasensya na sa abala.
+  linesToAutoProgress: 0001000101010100
+  endLines: 0000000000000001
   autoProgressDelay: 1.5
   typingSpeed: 0.05
   dialogueType: 0
   choices:
   - dialogueIndex: 0
     choices:
-    - Hala, lumabas po 'nay.
+    - Nako, lumabas po siya, 'Nay.
     nextDialogueIndices: 01000000
+  - dialogueIndex: 2
+    choices:
+    - Ano po yun?
+    nextDialogueIndices: 03000000

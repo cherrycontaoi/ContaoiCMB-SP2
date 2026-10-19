@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: AdrianSmallTalk1
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   lines:
-  - Uy! Ikaw yung bantay? Nasan po si Tita?
-  - Wala lang po...
-  - Baka naman po may libreng lollipop oh.
+  - Uy! Ikaw yung bantay? Nasaan po si Tita?
+  - Wala lang po hehe.
+  - Baka naman po may libreng lollipop dyan oh.
   - Joke lang po!
-  - Hehe, ako po laging nauutusan eh.
-  linesToAutoProgress: 0001000000
-  endLines: 0000000101
+  - 'Minsan lang po, ''pag bagong sweldo si Nanay. '
+  - Baka naman po may libreng lollipop dyan oh.
+  - Joke lang po!
+  linesToAutoProgress: 00010000000100
+  endLines: 00000001000001
   autoProgressDelay: 1.5
   typingSpeed: 0.05
   dialogueType: 0
@@ -28,8 +30,12 @@ MonoBehaviour:
     choices:
     - Ay, lumabas lang si Mama. Bakit?
     - Suki ka pala ni Mama!
-    nextDialogueIndices: 0100000004000000
+    nextDialogueIndices: 0000000004000000
   - dialogueIndex: 2
     choices:
     - Hay nako ka talaga...
     nextDialogueIndices: 03000000
+  - dialogueIndex: 5
+    choices:
+    - Hay nako ka talaga...
+    nextDialogueIndices: 06000000

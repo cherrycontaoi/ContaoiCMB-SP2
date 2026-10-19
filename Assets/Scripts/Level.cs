@@ -95,7 +95,7 @@ public class Level : MonoBehaviour
         }
 
         // wait muna
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         
         // setup customers
         for(int i=0; i<customers.Length; i++)
@@ -154,7 +154,7 @@ public class Level : MonoBehaviour
             Destroy(customer.gameObject);
             
             // wait for 5 seconds before next customer appears
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(2f);
 
         }
 

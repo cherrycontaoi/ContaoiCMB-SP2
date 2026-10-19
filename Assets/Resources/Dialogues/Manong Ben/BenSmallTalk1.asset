@@ -15,21 +15,22 @@ MonoBehaviour:
   lines:
   - Lydia?
   - Ay, 'nak, nandyan ba mama mo?
-  - Ah.
-  - 'May mga bagong pitas kasi akong gulay. '
-  - Baka gusto niyang bumili ng pang-benta o kaya pang-ulam.
+  - Ah... Sayang.
+  - May mga gulay kasi kami, kakapitas lang.
+  - Baka gusto niyong bumili para i-benta.
+  - O kaya pang-ulam niyo rin!
   - Sige. Salamat ha.
-  linesToAutoProgress: 010001010000
-  endLines: 000000000001
+  linesToAutoProgress: 01000101010000
+  endLines: 00000000000001
   autoProgressDelay: 1.5
   typingSpeed: 0.05
   dialogueType: 0
   choices:
   - dialogueIndex: 1
     choices:
-    - Nako, namalengke po siya.
+    - Nako, namalengke po siya eh.
     nextDialogueIndices: 02000000
-  - dialogueIndex: 4
+  - dialogueIndex: 5
     choices:
-    - Sabihan ko po siya pagdating niya.
-    nextDialogueIndices: 05000000
+    - Talaga po? Sabihan ko po siya pagdating niya.
+    nextDialogueIndices: 06000000
