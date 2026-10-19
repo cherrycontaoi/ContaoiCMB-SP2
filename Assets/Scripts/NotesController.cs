@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
@@ -28,6 +29,12 @@ public class NotesController : MonoBehaviour
     private void Start()
     {
         CreateNotes();
+
+        textInput.onSubmit.AddListener((string value) =>
+        {
+            AddNoteButton();
+            textInput.ActivateInputField();
+        });
     }
 
     void Awake()

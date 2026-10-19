@@ -22,6 +22,7 @@ public class Pencil : MonoBehaviour
         // PauseController.SetPause(true);
         createNotePanel.SetActive(true);
         pencilReminder.SetActive(true);
+        NotesController.Instance.textInput.ActivateInputField();
     }
 
     public void DeactivatePencil()
