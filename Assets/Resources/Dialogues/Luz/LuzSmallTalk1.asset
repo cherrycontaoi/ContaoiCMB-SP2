@@ -36,9 +36,9 @@ MonoBehaviour:
     choices:
     - Okay naman po.
     - Sakto lang po
-    nextDialogueIndices: 05000000
+    nextDialogueIndices: 0500000005000000
   - dialogueIndex: 7
     choices:
     - Baka okay naman po ang kinikita nila doon...
     - Mabuti po at natuto rin siyang magtanim.
-    nextDialogueIndices: 08000000
+    nextDialogueIndices: 0800000008000000

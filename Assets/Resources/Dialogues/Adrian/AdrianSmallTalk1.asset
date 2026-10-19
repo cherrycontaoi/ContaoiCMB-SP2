@@ -30,7 +30,7 @@ MonoBehaviour:
     choices:
     - Ay, lumabas lang si Mama. Bakit?
     - Suki ka pala ni Mama!
-    nextDialogueIndices: 0000000004000000
+    nextDialogueIndices: 0100000004000000
   - dialogueIndex: 2
     choices:
     - Hay nako ka talaga...
