@@ -67,6 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "ContaoiCMB-SP2.slnx",
+    "dotnet.defaultSolution": "cmbc_sp2.slnx",
     "dotnet.enableWorkspaceBasedDevelopment": false
 }
