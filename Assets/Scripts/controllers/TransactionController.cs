@@ -10,7 +10,7 @@ public class TransactionController : MonoBehaviour
     public static TransactionController Instance { get; private set; } // Singleton
     public Customer customer;
     private int playerScore;
-    private BasketController basketController;
+    private BagController basketController;
     private ScoreChecker scoreChecker;
     private List<GameObject> itemsInBasket = new List<GameObject>();
     private GameObject[] customerOrder;
@@ -18,7 +18,7 @@ public class TransactionController : MonoBehaviour
 
     void Start()
     {
-        basketController = gameObject.GetComponent<BasketController>();
+        basketController = gameObject.GetComponent<BagController>();
         scoreChecker = gameObject.GetComponent<ScoreChecker>();
 
         if (basketController == null)
@@ -51,7 +51,7 @@ public class TransactionController : MonoBehaviour
     {
         scoreChecker.CheckItems();
 
-        itemsInBasket = basketController.GetActualItemsInBasket();
+        itemsInBasket = basketController.GetActualItemsInBag();
         customerOrder = customer.order.GetItems();
 
         // Debug.Log("Customer ordered " + customerOrder.Length + " items");
@@ -167,7 +167,7 @@ public class TransactionController : MonoBehaviour
         }
 
 
-        basketController.ResetBasket();
+        basketController.ResetBag();
         scoreChecker.ResetScore();
 
         StartCoroutine(ByeCustomer());

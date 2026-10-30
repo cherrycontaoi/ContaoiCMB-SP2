@@ -7,7 +7,7 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
     [SerializeField] private GameObject itemPrefab;
     [SerializeField] private string audioName;
     public GameObject basketPanel;
-    private BasketController basketController;
+    private BagController basketController;
     private GameObject newItem;
     private CanvasGroup canvasGroup;
     private ItemDragHandler itemDragHandler;
@@ -16,7 +16,7 @@ public class DisplayDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     private void Start()
     {
-        basketController = FindAnyObjectByType<BasketController>();
+        basketController = FindAnyObjectByType<BagController>();
         
     }
 

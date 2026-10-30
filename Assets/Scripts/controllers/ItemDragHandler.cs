@@ -6,13 +6,13 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 {
     private Transform originalParent; // slot
     private CanvasGroup canvasGroup;
-    private BasketController basketController;
+    private BagController basketController;
     private bool freshItem;     // dragged from display
     private Item itemComponent;
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        basketController = FindAnyObjectByType<BasketController>();
+        basketController = FindAnyObjectByType<BagController>();
         itemComponent = gameObject.GetComponent<Item>();
     }
 
@@ -72,7 +72,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 }
                 transform.SetParent(dropSlot.transform);
                 dropSlot.currentItem = gameObject;
-                basketController.AddToBasket(gameObject, dropSlot.slotID);
+                basketController.AddToBag(gameObject, dropSlot.slotID);
                 itemComponent.PlacedInBasket();
 
                 GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
@@ -122,7 +122,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                     originalSlot.currentItem = dropSlot.currentItem;
                     dropSlot.currentItem = gameObject;
 
-                    basketController.SwapInBasket(originalSlot.slotID, dropSlot.slotID);
+                    basketController.SwapInBag(originalSlot.slotID, dropSlot.slotID);
                     // basketController.MoveInBasket(gameObject, dropSlot.slotID);
                 }
                 else
@@ -131,7 +131,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                     dropSlot.currentItem = gameObject;
 
                     basketController.EmptySlot(originalSlot.slotID);    // remove from items
-                    basketController.MoveInBasket(gameObject, dropSlot.slotID);
+                    basketController.MoveInBag(gameObject, dropSlot.slotID);
                 }
 
                 // move item to drop slot

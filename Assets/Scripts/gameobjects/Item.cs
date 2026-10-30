@@ -10,7 +10,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private List<GameObject> matchingObjects;   // should be neighbor
     [SerializeField] private ItemType itemType;
     [SerializeField] private string soundName;
-    private BasketController basketController;
+    private BagController basketController;
     private bool isInBasket;
     private bool isBeingDragged;
     private float holdDownStartTime;
@@ -31,7 +31,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void Start()
     {
         gameController = GameObject.Find("GameController");
-        basketController = gameController.GetComponent<BasketController>();
+        basketController = gameController.GetComponent<BagController>();
         
         holdObject = basketController.holdObject;
         holdIndicator = holdObject.GetComponent<Image>();

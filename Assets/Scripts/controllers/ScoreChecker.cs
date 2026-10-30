@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ScoreChecker : MonoBehaviour
 {
-    private BasketController basketController;
+    private BagController basketController;
     private Customer customer;
     [SerializeField] private RulesCollection rulesCollection;
     private GameObject[] placedItems;
@@ -16,15 +16,15 @@ public class ScoreChecker : MonoBehaviour
     
     void Start()
     {
-        basketController = gameObject.GetComponent<BasketController>();
+        basketController = gameObject.GetComponent<BagController>();
         rulesCollection = gameObject.GetComponent<RulesCollection>();
         customer = FindAnyObjectByType<Customer>();
-        actualItemsOnly = basketController.GetActualItemsInBasket();
+        actualItemsOnly = basketController.GetActualItemsInBag();
     }
 
     public void CheckItems()
     {
-        placedItems = basketController.GetFullBasket();     // need full basket for checking neighbors
+        placedItems = basketController.GetFullBag();     // need full basket for checking neighbors
 
         foreach(GameObject item in placedItems)
         {

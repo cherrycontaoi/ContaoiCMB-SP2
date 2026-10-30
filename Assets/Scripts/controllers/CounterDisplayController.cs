@@ -12,7 +12,7 @@ public class CounterDisplayController : MonoBehaviour
     [SerializeField] private GameObject plasticBagGreen;
     [SerializeField] private GameObject plasticBagYellow;
     [SerializeField] private GameObject plasticBagOrange;
-    [SerializeField] private BasketController basketController;
+    [SerializeField] private BagController bagController;
 
     [SerializeField] private GameObject money;
     [SerializeField] private Sprite[] easyMoneySprites = new Sprite[3];
@@ -30,7 +30,7 @@ public class CounterDisplayController : MonoBehaviour
 
     private void Start()
     {
-        basketController = GetComponent<BasketController>();
+        bagController = GetComponent<BagController>();
         bagImage = plasticBag.GetComponent<SpriteRenderer>();
         userCanStartDragging = false;
     }
@@ -130,7 +130,7 @@ public class CounterDisplayController : MonoBehaviour
             bagImage.sprite = plasticBagSprites[2];
         }
 
-        basketController.PlayerHasChosenBag();
+        bagController.PlayerHasChosenBag();
         colorChosen = PBColor;
         userCanStartDragging = true;
         
