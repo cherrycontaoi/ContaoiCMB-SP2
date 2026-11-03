@@ -10,7 +10,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private List<GameObject> matchingObjects;   // should be neighbor
     [SerializeField] private ItemType itemType;
     [SerializeField] private string soundName;
-    private BagController basketController;
+    private BagController bagController;
     private bool isInBasket;
     private bool isBeingDragged;
     private float holdDownStartTime;
@@ -31,9 +31,9 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void Start()
     {
         gameController = GameObject.Find("GameController");
-        basketController = gameController.GetComponent<BagController>();
+        bagController = gameController.GetComponent<BagController>();
         
-        holdObject = basketController.holdObject;
+        holdObject = bagController.holdObject;
         holdIndicator = holdObject.GetComponent<Image>();
         holdObject.SetActive(false);
         
@@ -82,7 +82,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             {
                 SoundFXController.Play("ThudSound");
                 Destroy(gameObject);        // remove from basket
-                basketController.RemoveFromBasket(slotID);
+                bagController.RemoveFromBag(slotID);
             }
         }
     }
