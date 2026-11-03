@@ -580,7 +580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   changeTime: 16
-  sceneName: StartScene
+  sceneName: ResultScene
 --- !u!4 &643608831
 Transform:
   m_ObjectHideFlags: 0
