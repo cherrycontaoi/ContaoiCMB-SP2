@@ -13,7 +13,6 @@ public class Eraser : MonoBehaviour
     public bool isActive;
     [SerializeField] private CursorController cursorController;
     public GameObject eraserReminder;
-    public GameObject eraserDisabled;
     public bool canActivate = true;
 
 
@@ -84,15 +83,4 @@ public class Eraser : MonoBehaviour
         eraserReminder.SetActive(false);
     }
 
-    public void ShowDisabledReminder()
-    {
-        eraserDisabled.SetActive(true);
-        StartCoroutine(HideDisabledReminder());
-    }
-
-    public IEnumerator HideDisabledReminder()
-    {
-        yield return new WaitForSeconds(3f);
-        eraserDisabled.SetActive(false);
-    }
 }
