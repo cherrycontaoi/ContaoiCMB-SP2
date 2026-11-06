@@ -5,10 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance { get; private set; } // Singleton
     private Camera mainCamera;
     private CursorController cursorController;
     public GameObject dialoguePanel;
     public GameObject notesPanel;
+    public bool choosingDialogueOption;
 
     private void Start()
     {
@@ -19,6 +21,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         mainCamera = Camera.main;
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);   // make only 1 instance
     }
 
     public void Update()
@@ -29,13 +33,13 @@ public class PlayerController : MonoBehaviour
 
         if (!rayHit.collider) return;
 
-        if(rayHit.collider.gameObject.name == "Pencil" && LevelController.Instance.currentLevel.levelType != LevelType.PreTest) {
+        if(rayHit.collider.gameObject.name == "Pencil" && LevelController.Instance.currentLevel.levelType != LevelType.PreTest && !choosingDialogueOption) {
             // Debug.Log("pencil");
             Pencil.Instance.ActivatePencil();
             Eraser.Instance.canActivate = false;
             // eraser.DeactivateEraser();
         }
-        else if(rayHit.collider.gameObject.name == "Eraser" && LevelController.Instance.currentLevel.levelType != LevelType.PreTest)
+        else if(rayHit.collider.gameObject.name == "Eraser" && LevelController.Instance.currentLevel.levelType != LevelType.PreTest && !choosingDialogueOption)
         {
             if (!Pencil.Instance.isActive)
             {

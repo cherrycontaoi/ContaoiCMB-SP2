@@ -62,11 +62,11 @@ public class Eraser : MonoBehaviour
     {
         if (canActivate)
         {   
-            if (TransactionController.Instance.customer != null && TransactionController.Instance.customer.IsCustomerTalking())
-            {
-                Instance.ShowDisabledReminder();
-                return;
-            }
+            // if (TransactionController.Instance.customer != null && TransactionController.Instance.customer.IsCustomerTalking())
+            // {
+            //     Instance.ShowDisabledReminder();
+            //     return;
+            // }
 
             isActive = true;
             // PauseController.SetPause(true);

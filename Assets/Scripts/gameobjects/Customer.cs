@@ -249,15 +249,32 @@ public class Customer : MonoBehaviour, IInteractable
     void DisplayChoices(DialogueChoice choice)
     {
         ChangeCustomerState(CustomerState.Idle);
+        
+        PlayerController.Instance.choosingDialogueOption = true;
+        Eraser.Instance.canActivate = false;    // can't use the eraser
+
+        // disable tools when choices are active
+        if (Eraser.Instance.isActive)
+        {
+            Eraser.Instance.DeactivateEraser();
+        }
+        else if (Pencil.Instance.isActive)
+        {
+            Pencil.Instance.DeactivatePencil();
+        }
+
         for(int i=0; i<choice.choices.Length; i++)
         {
             int nextIndex = choice.nextDialogueIndices[i];
             dialogueController.CreateChoiceButton(choice.choices[i], () => ChooseOption(nextIndex));
         }
+        
     }
 
     void ChooseOption(int nextIndex)
     {
+        Eraser.Instance.canActivate = true;     // once done choosing, player can use the eraser again
+        PlayerController.Instance.choosingDialogueOption = false;
         dialogueIndex = nextIndex;
         dialogueController.ClearChoices();
         ChangeCustomerState(CustomerState.Talking);

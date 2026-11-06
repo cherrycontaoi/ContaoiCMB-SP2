@@ -16134,12 +16134,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d612387947964ce985363a10ea2e901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  numOfItemsInBasket: 0
-  basketPanel: {fileID: 1013944632}
+  numOfItemsInBag: 0
+  bagPanel: {fileID: 0}
   givePanel: {fileID: 1862001491}
   slotPrefab: {fileID: 2389190853174096536, guid: a46bffb51f5084c8eab1e97e29d9e375, type: 3}
   slotCount: 9
-  basketSlots:
+  bagSlots:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -16149,7 +16149,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  basketQueue: []
+  bagQueue: []
   holdObject: {fileID: 1435623185}
 --- !u!114 &1031242757
 MonoBehaviour:
@@ -16172,7 +16172,7 @@ MonoBehaviour:
   plasticBagGreen: {fileID: 1636122777}
   plasticBagYellow: {fileID: 1956646580}
   plasticBagOrange: {fileID: 1928746740}
-  basketController: {fileID: 0}
+  bagController: {fileID: 0}
   money: {fileID: 2045185226}
   easyMoneySprites:
   - {fileID: 9178378467445011060, guid: 62bf9740a836d4124b80ccdc42cc107b, type: 3}
